@@ -13,7 +13,7 @@ ls -lh bin/cg.B
 ### Run + temps + RAM
 /usr/bin/time -v ./bin/cg.B
 
-## NPB-SER
+## NPB-OMP
 
 ### Compilation sur la taille B (demandé dans les consignes pour CG)
 cd NPB-OMP
