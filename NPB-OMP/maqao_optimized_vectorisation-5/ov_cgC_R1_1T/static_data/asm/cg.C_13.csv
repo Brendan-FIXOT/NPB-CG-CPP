@@ -1,0 +1,12 @@
+address;source_location;insn;indent
+0x21f0;/usr/include/c++/13/bits/stl_algo.h:1799;CMP	%ESI,%EDX;
+0x21f2;:0;JLE	2211 <main+0xde1>;
+0x21f4;/usr/include/c++/13/bits/stl_algo.h:1801;VMOVDQU	(%RAX),%XMM4;
+0x21f8;:0;VMOVDQU	%XMM4,0x10(%RAX);
+0x21fd;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:835;MOV	-0x10(%RAX),%EDX;
+0x2200;:0;MOV	%RAX,%RCX;
+0x2203;/usr/include/c++/13/bits/stl_algo.h:1799;SUB	$0x10,%RAX;
+0x2207;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:835;CMP	%ESI,%EDX;
+0x2209;:0;JNE	21f0 <main+0xdc0>;
+0x220b;/usr/include/c++/13/bits/stl_algo.h:1799;CMP	%R8D,-0xc(%RCX);
+0x220f;:0;JG	21f4 <main+0xdc4>;

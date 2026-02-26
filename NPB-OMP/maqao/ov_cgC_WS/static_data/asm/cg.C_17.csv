@@ -1,6 +1,0 @@
-address;source_location;insn;indent
-0x1b70;:0;MOVQ	$0,(%R8,%RAX,8);
-0x1b78;:0;MOVL	$-0x1,(%RDI,%RAX,4);
-0x1b7f;:0;ADD	$0x1,%RAX;
-0x1b83;:0;CMP	%EAX,(%RDX);
-0x1b85;:0;JG	1b70 <main+0x8b0>;

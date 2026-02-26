@@ -1,6 +1,0 @@
-/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 945 - 947
---------------------------------------------------------------------------------
-
-945: 		for(k = j1; k < j2; k++){
-946: 			a[k] = a[nza];
-947: 			colidx[k] = colidx[nza];

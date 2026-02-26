@@ -1,7 +1,0 @@
-group_size;pattern;opcodes;offsets;addresses;stride_status;stride;memory_status;accessed_memory;accessed_memory_nooverlap;accessed_memory_overlap;span;head;unroll_factor;
-1;S;VMOVUPD,;0,;0x3578,;Success;32;Success;32;32;0;32;32;1;
-1;S;VMOVUPD,;0,;0x3572,;Success;32;Success;32;32;0;32;32;1;
-1;S;VMOVUPD,;0,;0x3562,;Success;32;Success;32;32;0;32;32;1;
-1;S;VMOVUPD,;0,;0x3567,;Success;32;Success;32;32;0;32;32;1;
-1;L;MOV,;216,;0x355a,;Success;0;Success;8;8;0;8;0;1;
-1;L;VMOVUPD,;0,;0x356d,;Success;32;Success;32;32;0;32;32;1;

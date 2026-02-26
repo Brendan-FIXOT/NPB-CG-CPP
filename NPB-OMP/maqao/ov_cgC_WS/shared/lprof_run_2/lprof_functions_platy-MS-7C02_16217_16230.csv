@@ -1,4 +1,0 @@
-function_id;module;function_name;source_info;inc_time_p;inc_time_s;inc_time_s_min;inc_time_s_avg;inc_time_s_max;inc_cov_deviation;inc_time_deviation;exc_time_p;exc_time_s;exc_time_s_min;exc_time_s_avg;exc_time_s_max;exc_cov_deviation;exc_time_deviation;nb_threads;cats;label_name;flops;flops_sca_sp;flops_sca_dp;flops_vec_sp;flops_vec_dp;flops_sca;flops_vec;flops_sp;flops_dp;
-8;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);;97.352493286133;42.6549949646;0;0;0;0;0;0;0;0;0;0;0;0;;"100,0,0,0,0,0,0,0,0,0,0";_ZL9conj_gradPiS_PdS0_S0_S0_S0_S0_S0_;;;;;;;;;;
-284;libgomp.so.1.0.0;omp_get_num_procs;;2.6018488407135;1.1400001049042;0;0;0;0;0;2.6018488407135;1.1400001049042;0;0;0;0;0;;"0,0,100,0,0,0,0,0,0,0,0";omp_get_num_procs;;;;;;;;;;
-9;cg.C;main._omp_fn.0;;0.045646470040083;0.02000000141561;0;0;0;0;0;0;0;0;0;0;0;0;;"100,0,0,0,0,0,0,0,0,0,0";main._omp_fn.0;;;;;;;;;;

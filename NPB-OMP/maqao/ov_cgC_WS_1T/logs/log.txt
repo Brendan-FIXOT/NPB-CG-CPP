@@ -1,6 +1,0 @@
-********************************************************************************
-MAQAO 2026.0.0 - 7e198a7ec9fb425c75ec6c6a36a98893b37a86d6::20260204-112052 || 2026/02/04
-maqao oneview --replace -R1 -WS --create-report=one --executable=./bin/cg.C --run-command=<executable> --lprof-params=-exclude-kernel --envv_OMP_NUM_THREADS=1 -xp=ov_cgC_WS_1T 
-CPY:  [true] ./bin/cg.C --> /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/ov_cgC_WS_1T/binaries/cg.C
---with-scalability (-WS) option is used but no additional runs have been setup in multiruns_params
-CMD:  OMP_NUM_THREADS=1   /usr/local/bin/maqao lprof _caller=oneview -exclude-kernel --xp="/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/ov_cgC_WS_1T/tools/lprof_run_0" --mpi-command="" --collect-CPU-time-intervals --collect-topology tpp=1   -- /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/ov_cgC_WS_1T/binaries/cg.C

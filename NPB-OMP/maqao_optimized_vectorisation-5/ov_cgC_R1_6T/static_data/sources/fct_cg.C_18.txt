@@ -1,0 +1,48 @@
+/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 857 - 882
+--------------------------------------------------------------------------------
+
+857: 	#pragma omp parallel
+858: 	{
+859: 		int tid = omp_get_thread_num();
+860: 		std::vector<Triplet>& local = thread_triplets[(size_t)tid];
+861: 		size_t reserve_hint = ((size_t)n / (size_t)nthreads + 1ULL) *
+862: 			(size_t)(nozer + 1) * (size_t)(nozer + 1);
+863: 		local.reserve(reserve_hint);
+864: 
+865: 		#pragma omp for schedule(static)
+866: 		for(i = 0; i < n; i++){
+867: 			const double size_i = pow(ratio, (double)i);
+868: 			for(int nza_i = 0; nza_i < arow[i]; nza_i++){
+869: 				const int row_i = acol[i][nza_i];
+870: 				const double scale_i = size_i * aelt[i][nza_i];
+871: 
+872: 				for(int nzrow_i = 0; nzrow_i < arow[i]; nzrow_i++){
+873: 					const int col_i = acol[i][nzrow_i];
+874: 					double val_i = aelt[i][nzrow_i] * scale_i;
+875: 					if(col_i == row_i && row_i == i){
+876: 						val_i = val_i + rcond - shift;
+877: 					}
+878: 
+879: 					Triplet t;
+880: 					t.row = row_i;
+881: 					t.col = col_i;
+882: 					t.val = val_i;
+/usr/include/c++/13/bits/new_allocator.h: 191 - 191
+--------------------------------------------------------------------------------
+
+191: 	{ ::new((void *)__p) _Up(std::forward<_Args>(__args)...); }
+/usr/include/c++/13/bits/stl_vector.h: 1129 - 1292
+--------------------------------------------------------------------------------
+
+1129: 	return *(this->_M_impl._M_start + __n);
+[...]
+1283: 	if (this->_M_impl._M_finish != this->_M_impl._M_end_of_storage)
+1284: 	  {
+1285: 	    _GLIBCXX_ASAN_ANNOTATE_GROW(1);
+1286: 	    _Alloc_traits::construct(this->_M_impl, this->_M_impl._M_finish,
+1287: 				     __x);
+1288: 	    ++this->_M_impl._M_finish;
+1289: 	    _GLIBCXX_ASAN_ANNOTATE_GREW(1);
+1290: 	  }
+1291: 	else
+1292: 	  _M_realloc_insert(end(), __x);

@@ -1,0 +1,18 @@
+/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 700 - 990
+--------------------------------------------------------------------------------
+
+700: 	return (int)(ipwr2 * x);
+[...]
+963: 	while(nzv < nz){
+964: 		vecelt = randlc(&tran, amult);
+[...]
+971: 		vecloc = randlc(&tran, amult);
+972: 		i = icnvrt(vecloc, nn1) + 1;
+973: 		if(i>n){continue;}
+[...]
+981: 		for(ii = 0; ii < nzv; ii++){
+982: 			if(iv[ii] == i){
+[...]
+988: 		v[nzv] = vecelt;
+989: 		iv[nzv] = i;
+990: 		nzv = nzv + 1;

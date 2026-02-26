@@ -1,6 +1,0 @@
-address;source_location;insn;indent
-0x1ba0;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:853;MOVQ	$0,(%R8,%RAX,8);
-0x1ba8;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:854;MOVL	$-0x1,(%RDI,%RAX,4);
-0x1baf;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:852;INC	%RAX;
-0x1bb2;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:852;CMP	%EAX,(%RDX);
-0x1bb4;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:852;JG	1ba0 <main+0x8e0>;

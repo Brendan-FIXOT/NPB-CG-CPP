@@ -1,9 +1,0 @@
-/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 683 - 688
---------------------------------------------------------------------------------
-
-683: 			if(pf < row_end){
-684: 				__builtin_prefetch(&a_l[pf], 0, 1);
-685: 				__builtin_prefetch(&colidx_l[pf], 0, 1);
-686: 				__builtin_prefetch(&z_l[colidx_l[pf]], 0, 1);
-687: 			}
-688: 			suml += a_l[k]*z_l[colidx_l[k]];

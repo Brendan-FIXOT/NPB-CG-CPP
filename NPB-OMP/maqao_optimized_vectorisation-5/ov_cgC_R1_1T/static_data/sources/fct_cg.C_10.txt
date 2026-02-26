@@ -1,0 +1,90 @@
+/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 519 - 692
+--------------------------------------------------------------------------------
+
+519: 		double* rnorm){
+520: 	int j, k;
+521: 	int cgit, cgitmax;
+522: 	double alpha, beta, suml;
+523: 	static double d, sum, rho, rho0;
+524: 	const int nrow = lastrow - firstrow + 1;
+525: 	const int ncol = lastcol - firstcol + 1;
+[...]
+538: 	#pragma omp single nowait
+539: 	{
+540: 
+541: 		rho = 0.0;
+542: 		sum = 0.0;
+543: 	}
+544: 	/* initialize the CG algorithm */
+545: 	#pragma omp for
+546: 	for(j = 0; j < naa+1; j++){
+547: 		q_l[j] = 0.0;
+548: 		z_l[j] = 0.0;
+549: 		r_l[j] = x_l[j];
+550: 		p_l[j] = r_l[j];
+[...]
+559: 	#pragma omp for reduction(+:rho)
+560: 	for(j = 0; j < ncol; j++){
+561: 		rho += r_l[j]*r_l[j];
+562: 	}
+563: 
+564: 	/* the conj grad iteration loop */
+565: 	for(cgit = 1; cgit <= cgitmax; cgit++){
+[...]
+580: 		#pragma omp single nowait
+581: 		{
+582: 			d = 0.0;
+[...]
+588: 			rho0 = rho;
+589: 			rho = 0.0;
+590: 		}
+591: 
+592: 		#pragma omp for nowait schedule(static)
+593: 		for(j = 0; j < nrow; j++){
+594: 			suml = 0.0;
+595: 			const int row_start = rowstr_l[j];
+596: 			const int row_end = rowstr_l[j+1];
+597: 			#pragma omp simd reduction(+:suml)
+598: 			for(k = row_start; k < row_end; k++){
+599: 				suml += a_l[k]*p_l[colidx_l[k]];
+600: 			}
+601: 			q_l[j] = suml;
+[...]
+610: 		#pragma omp for reduction(+:d)
+611: 		for (j = 0; j < ncol; j++) {
+612: 			d += p_l[j]*q_l[j];
+[...]
+620: 		alpha = rho0 / d;
+[...]
+629: 		#pragma omp for reduction(+:rho)
+630: 		for(j = 0; j < ncol; j++){
+631: 			z_l[j] += alpha*p_l[j];
+632: 			r_l[j] -= alpha*q_l[j];
+[...]
+640: 			rho += r_l[j]*r_l[j];
+[...]
+648: 		beta = rho / rho0;
+[...]
+655: 		#pragma omp for
+656: 		for(j = 0; j < ncol; j++){
+657: 			p_l[j] = r_l[j] + beta*p_l[j];
+[...]
+668: 	#pragma omp for nowait schedule(static)
+669: 	for(j = 0; j < nrow; j++){
+670: 		suml = 0.0;
+671: 			const int row_start = rowstr_l[j];
+672: 			const int row_end = rowstr_l[j+1];
+673: 			#pragma omp simd reduction(+:suml)
+674: 			for(k = row_start; k < row_end; k++){
+675: 				suml += a_l[k]*z_l[colidx_l[k]];
+676: 			}
+677: 			r_l[j] = suml;
+[...]
+685: 	#pragma omp for reduction(+:sum)
+686: 	for(j = 0; j < ncol; j++){
+687: 		suml   = x_l[j] - r_l[j];
+688: 		sum += suml*suml;
+689: 	}
+690: 	#pragma omp single
+691: 		*rnorm = sqrt(sum);
+692: }
