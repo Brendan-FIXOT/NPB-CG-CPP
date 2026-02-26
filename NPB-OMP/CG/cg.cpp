@@ -594,9 +594,10 @@ static void conj_grad(int colidx[],
 			suml = 0.0;
 			const int row_start = rowstr_l[j];
 			const int row_end = rowstr_l[j+1];
-			#pragma omp simd reduction(+:suml)
+			#pragma omp simd reduction(+:suml) simdlen(4)
 			for(k = row_start; k < row_end; k++){
-				suml += a_l[k]*p_l[colidx_l[k]];
+				const int idx = colidx_l[k];
+				suml += a_l[k]*p_l[idx];
 			}
 			q_l[j] = suml;
 		}
@@ -670,9 +671,10 @@ static void conj_grad(int colidx[],
 		suml = 0.0;
 			const int row_start = rowstr_l[j];
 			const int row_end = rowstr_l[j+1];
-			#pragma omp simd reduction(+:suml)
+			#pragma omp simd reduction(+:suml) simdlen(4)
 			for(k = row_start; k < row_end; k++){
-				suml += a_l[k]*z_l[colidx_l[k]];
+				const int idx = colidx_l[k];
+				suml += a_l[k]*z_l[idx];
 			}
 			r_l[j] = suml;
 		}
