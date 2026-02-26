@@ -1,0 +1,73 @@
+/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 515 - 670
+--------------------------------------------------------------------------------
+
+515: 		double* rnorm){
+[...]
+525: 		rho = 0.0;
+526: 		sum = 0.0;
+527: 	}
+528: 	/* initialize the CG algorithm */
+529: 	#pragma omp for
+530: 	for(j = 0; j < naa+1; j++){
+531: 		q[j] = 0.0;
+532: 		z[j] = 0.0;
+533: 		r[j] = x[j];
+534: 		p[j] = r[j];
+[...]
+543: 	#pragma omp for reduction(+:rho)
+544: 	for(j = 0; j < lastcol - firstcol + 1; j++){
+545: 		rho += r[j]*r[j];
+546: 	}
+547: 
+548: 	/* the conj grad iteration loop */
+549: 	for(cgit = 1; cgit <= cgitmax; cgit++){
+[...]
+564: 		#pragma omp single nowait
+565: 		{
+566: 			d = 0.0;
+[...]
+572: 			rho0 = rho;
+573: 			rho = 0.0;
+574: 		}
+575: 
+576: 		#pragma omp for nowait
+577: 		for(j = 0; j < lastrow - firstrow + 1; j++){
+578: 			suml = 0.0;
+579: 			for(k = rowstr[j]; k < rowstr[j+1]; k++){
+580: 				suml += a[k]*p[colidx[k]];
+581: 			}
+582: 			q[j] = suml;
+[...]
+591: 		#pragma omp for reduction(+:d)
+592: 		for (j = 0; j < lastcol - firstcol + 1; j++) {
+593: 			d += p[j]*q[j];
+[...]
+601: 		alpha = rho0 / d;
+[...]
+610: 		#pragma omp for reduction(+:rho)
+611: 		for(j = 0; j < lastcol - firstcol + 1; j++){
+612: 			z[j] += alpha*p[j];
+613: 			r[j] -= alpha*q[j];
+[...]
+621: 			rho += r[j]*r[j];
+[...]
+629: 		beta = rho / rho0;
+[...]
+637: 		for(j = 0; j < lastcol - firstcol + 1; j++){
+638: 			p[j] = r[j] + beta*p[j];
+[...]
+650: 	for(j = 0; j < lastrow - firstrow + 1; j++){
+651: 		suml = 0.0;
+652: 		for(k = rowstr[j]; k < rowstr[j+1]; k++){
+653: 			suml += a[k]*z[colidx[k]];
+654: 		}
+655: 		r[j] = suml;
+[...]
+663: 	#pragma omp for reduction(+:sum)
+664: 	for(j = 0; j < lastcol-firstcol+1; j++){
+665: 		suml   = x[j] - r[j];
+666: 		sum += suml*suml;
+667: 	}
+668: 	#pragma omp single
+669: 		*rnorm = sqrt(sum);
+670: }

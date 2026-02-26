@@ -1,0 +1,7 @@
+/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 893 - 896
+--------------------------------------------------------------------------------
+
+893: 						for(kk = rowstr[j+1]-2; kk >= k; kk--){
+894: 							if(colidx[kk] > -1){
+895: 								a[kk+1] = a[kk];
+896: 								colidx[kk+1] = colidx[kk];

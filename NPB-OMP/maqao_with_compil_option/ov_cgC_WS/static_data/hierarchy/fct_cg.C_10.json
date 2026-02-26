@@ -1,0 +1,230 @@
+{
+  "__fct":
+    {
+      "loops":
+        {
+          "_42":
+            {
+              "src_regions":
+                [
+                  {
+                    "path": "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp",
+                    "regions":
+                      [
+                        [
+                        335,
+                        335
+                        ]
+                      ]
+                  }
+                ],
+              "src": "cg.cpp:335-335"
+            },
+          "_47":
+            {
+              "src_regions":
+                [
+                  {
+                    "path": "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp",
+                    "regions":
+                      [
+                        [
+                        343,
+                        343
+                        ]
+                      ]
+                  }
+                ],
+              "src": "cg.cpp:343-343"
+            },
+          "_48":
+            {
+              "src_regions":
+                [
+                  {
+                    "path": "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp",
+                    "regions":
+                      [
+                        [
+                        335,
+                        335
+                        ]
+                      ]
+                  }
+                ],
+              "src": "cg.cpp:335-335"
+            },
+          "_50":
+            {
+              "src_regions":
+                [
+                  {
+                    "path": "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp",
+                    "regions":
+                      [
+                        [
+                        286,
+                        293
+                        ]
+                      ]
+                  }
+                ],
+              "src": "cg.cpp:286-293"
+            },
+          "_44":
+            {
+              "_43":
+                {
+                  "src_regions":
+                    [
+                      {
+                        "path": "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp",
+                        "regions":
+                          [
+                            [
+                            407,
+                            407
+                            ]
+                          ]
+                      }
+                    ],
+                  "src": "cg.cpp:407-407"
+                },
+              "src": "cg.cpp:274-407",
+              "_45":
+                {
+                  "src_regions":
+                    [
+                      {
+                        "path": "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp",
+                        "regions":
+                          [
+                            [
+                            407,
+                            407
+                            ]
+                          ]
+                      }
+                    ],
+                  "src": "cg.cpp:407-407"
+                },
+              "src_regions":
+                [
+                  {
+                    "path": "/usr/include/x86_64-linux-gnu/bits/stdio2.h",
+                    "regions":
+                      [
+                        [
+                        86,
+                        86
+                        ]
+                      ]
+                  },
+                  {
+                    "path": "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp",
+                    "regions":
+                      [
+                        [
+                        274,
+                        274
+                        ],
+                        [
+                        365,
+                        376
+                        ],
+                        [
+                        388,
+                        407
+                        ]
+                      ]
+                  }
+                ],
+              "_46":
+                {
+                  "src_regions":
+                    [
+                      {
+                        "path": "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp",
+                        "regions":
+                          [
+                            [
+                            390,
+                            391
+                            ]
+                          ]
+                      }
+                    ],
+                  "src": "cg.cpp:390-391"
+                }
+            },
+          "_51":
+            {
+              "src_regions":
+                [
+                  {
+                    "path": "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp",
+                    "regions":
+                      [
+                        [
+                        286,
+                        286
+                        ]
+                      ]
+                  }
+                ],
+              "src": "cg.cpp:286-286"
+            },
+          "_49":
+            {
+              "src_regions":
+                [
+                  {
+                    "path": "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp",
+                    "regions":
+                      [
+                        [
+                        325,
+                        326
+                        ]
+                      ]
+                  }
+                ],
+              "src": "cg.cpp:325-326"
+            },
+          "_52":
+            {
+              "_53":
+                {
+                  "src_regions":
+                    [
+                      {
+                        "path": "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp",
+                        "regions":
+                          [
+                            [
+                            278,
+                            279
+                            ]
+                          ]
+                      }
+                    ],
+                  "src": "cg.cpp:278-279"
+                },
+              "src_regions":
+                [
+                  {
+                    "path": "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp",
+                    "regions":
+                      [
+                        [
+                        278,
+                        279
+                        ]
+                      ]
+                  }
+                ],
+              "src": "cg.cpp:278-279"
+            }
+        }
+    }
+}

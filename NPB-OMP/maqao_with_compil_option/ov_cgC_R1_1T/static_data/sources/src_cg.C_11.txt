@@ -1,0 +1,41 @@
+/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 678 - 1025
+--------------------------------------------------------------------------------
+
+678: 	return (int)(ipwr2 * x);
+[...]
+742: 	for(iouter = 0; iouter < n; iouter++){
+743: 		nzv = NONZER;
+744: 		sprnvc(n, nzv, nn1, vc, ivc);
+745: 		vecset(n, vc, ivc, &nzv, iouter+1, 0.5);
+746: 		arow[iouter] = nzv;
+747: 		for(ivelt = 0; ivelt < nzv; ivelt++){
+748: 			acol[iouter][ivelt] = ivc[ivelt] - 1;
+749: 			aelt[iouter][ivelt] = vc[ivelt];
+[...]
+972: 	nzv = 0;
+973: 
+974: 	while(nzv < nz){
+975: 		vecelt = randlc(&tran, amult);
+[...]
+982: 		vecloc = randlc(&tran, amult);
+983: 		i = icnvrt(vecloc, nn1) + 1;
+984: 		if(i>n){continue;}
+[...]
+992: 		for(ii = 0; ii < nzv; ii++){
+993: 			if(iv[ii] == i){
+[...]
+999: 		v[nzv] = vecelt;
+1000: 		iv[nzv] = i;
+1001: 		nzv = nzv + 1;
+[...]
+1015: 	set = FALSE;
+1016: 	for(k = 0; k < *nzv; k++){
+1017: 		if(iv[k] == i){
+1018: 			v[k] = val;
+1019: 			set  = TRUE;
+1020: 		}
+1021: 	}
+1022: 	if(set == FALSE){
+1023: 		v[*nzv]  = val;
+1024: 		iv[*nzv] = i;
+1025: 		*nzv     = *nzv + 1;

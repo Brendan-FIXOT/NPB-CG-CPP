@@ -1,0 +1,26 @@
+address;source_location;insn;indent
+0x31b0;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:580;LEA	(%R13,%RDX,1),%RAX;
+0x31b5;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:580;MOVSXD	0x8(%RAX),%R9;
+0x31b9;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:580;MOVSXD	(%RAX),%RDI;
+0x31bc;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:580;MOVSXD	0xc(%RAX),%R8;
+0x31c0;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:580;MOVSXD	0x4(%RAX),%RCX;
+0x31c4;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:580;VMOVSD	(%R12,%R9,8),%XMM1;
+0x31ca;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:580;VMOVSD	(%R12,%RDI,8),%XMM0;
+0x31d0;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:580;MOVSXD	0x10(%RAX),%RDI;
+0x31d4;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:580;VMOVHPD	(%R12,%R8,8),%XMM1,%XMM1;
+0x31da;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:580;MOVSXD	0x18(%RAX),%R8;
+0x31de;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:580;VMOVHPD	(%R12,%RCX,8),%XMM0,%XMM0;
+0x31e4;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:580;MOVSXD	0x14(%RAX),%RCX;
+0x31e8;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:580;VINSERTF128	$0x1,%XMM1,%YMM0,%YMM0;
+0x31ee;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:580;VMOVSD	(%R12,%RDI,8),%XMM1;
+0x31f4;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:580;MOVSXD	0x1c(%RAX),%RAX;
+0x31f8;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:580;VMOVSD	(%R12,%R8,8),%XMM2;
+0x31fe;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:580;VMOVHPD	(%R12,%RCX,8),%XMM1,%XMM1;
+0x3204;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:580;VMOVHPD	(%R12,%RAX,8),%XMM2,%XMM2;
+0x320a;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:580;VINSERTF128	$0x1,%XMM2,%YMM1,%YMM1;
+0x3210;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:580;VMULPD	0x20(%RSI,%RDX,2),%YMM1,%YMM1;
+0x3216;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:580;VFMADD132PD	(%RSI,%RDX,2),%YMM1,%YMM0;
+0x321c;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:580;ADD	$0x20,%RDX;
+0x3220;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:580;VADDPD	%YMM0,%YMM3,%YMM3;
+0x3224;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:579;CMP	%RDX,%RBX;
+0x3227;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:579;JNE	31b0 <_ZL9conj_gradPiS_PdS0_S0_S0_S0_S0_S0_+0x5e0>;

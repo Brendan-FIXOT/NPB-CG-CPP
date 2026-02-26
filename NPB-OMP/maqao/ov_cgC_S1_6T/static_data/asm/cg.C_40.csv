@@ -1,0 +1,9 @@
+address;source_location;insn;indent
+0x2cee;:0;MOVUPS	%XMM1,(%R8,%RCX,1);
+0x2cf3;:0;MOVUPS	%XMM1,(%R11,%RCX,1);
+0x2cf8;:0;MOVUPD	(%R10,%RCX,1),%XMM0;
+0x2cfe;:0;MOVUPS	%XMM0,(%RSI,%RCX,1);
+0x2d02;:0;MOVUPS	%XMM0,(%RDX,%RCX,1);
+0x2d06;:0;ADD	$0x10,%RCX;
+0x2d0a;:0;CMP	%RDI,%RCX;
+0x2d0d;:0;JNE	2cee <_ZL9conj_gradPiS_PdS0_S0_S0_S0_S0_S0_+0x1ce>;

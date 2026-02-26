@@ -1,0 +1,34 @@
+/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 871 - 922
+--------------------------------------------------------------------------------
+
+871: 			for(nzrow = 0; nzrow < arow[i]; nzrow++){
+872: 				jcol = acol[i][nzrow];
+873: 				va = aelt[i][nzrow] * scale;
+[...]
+881: 				if(jcol == j && j == i){
+882: 					va = va + rcond - shift;
+883: 				}
+884: 
+885: 				goto_40 = FALSE;
+886: 				for(k = rowstr[j]; k < rowstr[j+1]; k++){
+887: 					if(colidx[k] > jcol){
+[...]
+893: 						for(kk = rowstr[j+1]-2; kk >= k; kk--){
+894: 							if(colidx[kk] > -1){
+895: 								a[kk+1] = a[kk];
+896: 								colidx[kk+1] = colidx[kk];
+897: 							}
+898: 						}
+899: 						colidx[k] = jcol;
+900: 						a[k]  = 0.0;
+901: 						goto_40 = TRUE;
+902: 						break;
+903: 					}else if(colidx[k] == -1){
+904: 						colidx[k] = jcol;
+905: 						goto_40 = TRUE;
+906: 						break;
+907: 					}else if(colidx[k] == jcol){
+[...]
+913: 						nzloc[j] = nzloc[j] + 1;
+[...]
+922: 				a[k] = a[k] + va;
