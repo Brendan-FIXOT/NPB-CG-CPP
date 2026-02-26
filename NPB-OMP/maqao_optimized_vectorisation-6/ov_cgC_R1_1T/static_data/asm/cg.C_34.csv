@@ -1,0 +1,7 @@
+address;source_location;insn;indent
+0x3c40;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:613;VMOVUPD	(%RDX,%RAX,1),%YMM7;
+0x3c45;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:613;VMULPD	(%RCX,%RAX,1),%YMM7,%YMM0;
+0x3c4a;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:613;ADD	$0x20,%RAX;
+0x3c4e;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:613;VADDPD	%YMM0,%YMM1,%YMM1;
+0x3c52;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:613;CMP	%RAX,%RSI;
+0x3c55;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:613;JNE	3c40 <_ZL9conj_gradPiS_PdS0_S0_S0_S0_S0_S0_+0x970>;

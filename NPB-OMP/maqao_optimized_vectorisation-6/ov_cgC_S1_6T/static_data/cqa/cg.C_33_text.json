@@ -1,0 +1,393 @@
+{
+  "_cqa_text_report":
+    {
+      "_objects":
+        {
+          "image_col_maj":
+            {
+              "type": "image",
+              "format": "url",
+              "data": "../images/cqa/col_maj.svg",
+              "size":
+                {
+                  "x": 500
+                }
+            },
+          "image_4x32_256":
+            {
+              "type": "image",
+              "format": "url",
+              "data": "../images/cqa/4x32_256.svg",
+              "size":
+                {
+                  "x": 500
+                }
+            },
+          "image_1x64_128":
+            {
+              "type": "image",
+              "format": "url",
+              "data": "../images/cqa/1x64_128.svg",
+              "size":
+                {
+                  "x": 500
+                }
+            },
+          "image_4x32_512":
+            {
+              "type": "image",
+              "format": "url",
+              "data": "../images/cqa/4x32_512.svg",
+              "size":
+                {
+                  "x": 500
+                }
+            },
+          "image_8x32_512":
+            {
+              "type": "image",
+              "format": "url",
+              "data": "../images/cqa/8x32_512.svg",
+              "size":
+                {
+                  "x": 500
+                }
+            },
+          "image_1x32_256":
+            {
+              "type": "image",
+              "format": "url",
+              "data": "../images/cqa/1x32_256.svg",
+              "size":
+                {
+                  "x": 500
+                }
+            },
+          "image_2x64_512":
+            {
+              "type": "image",
+              "format": "url",
+              "data": "../images/cqa/2x64_512.svg",
+              "size":
+                {
+                  "x": 500
+                }
+            },
+          "tt_insn_vec":
+            {
+              "type": "tooltip",
+              "help": "Portion of vector registers that is actually used. Available only for instructions belonging to a SIMD/vector instructions set (like x86 AVX)",
+              "text": "Vectorization"
+            },
+          "image_1x64_256":
+            {
+              "type": "image",
+              "format": "url",
+              "data": "../images/cqa/1x64_256.svg",
+              "size":
+                {
+                  "x": 500
+                }
+            },
+          "tt_Recip_throughput":
+            {
+              "type": "tooltip",
+              "help": "Average number of cycles to retire that instruction if repeated (assuming independent instructions, with no read-after-write dependency)",
+              "text": "Recip. throughput"
+            },
+          "tt_Nb_FU":
+            {
+              "type": "tooltip",
+              "help": "Number of Fused (Front-end) uops",
+              "text": "Nb FU"
+            },
+          "image_vec_align":
+            {
+              "type": "image",
+              "format": "url",
+              "data": "../images/cqa/vec_align.svg",
+              "size":
+                {
+                  "x": 500
+                }
+            },
+          "image_1x64_512":
+            {
+              "type": "image",
+              "format": "url",
+              "data": "../images/cqa/1x64_512.svg",
+              "size":
+                {
+                  "x": 500
+                }
+            },
+          "image_1x32_128":
+            {
+              "type": "image",
+              "format": "url",
+              "data": "../images/cqa/1x32_128.svg",
+              "size":
+                {
+                  "x": 500
+                }
+            },
+          "list_path_1_vec_align_1":
+            {
+              "dynamic": true,
+              "initial": "closed",
+              "type": "list",
+              "lines":
+                [
+                "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:632",
+                "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:632",
+                "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:633",
+                "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:633"
+                ],
+              "header": ""
+            },
+          "image_2x64_256":
+            {
+              "type": "image",
+              "format": "url",
+              "data": "../images/cqa/2x64_256.svg",
+              "size":
+                {
+                  "x": 500
+                }
+            },
+          "image_row_maj":
+            {
+              "type": "image",
+              "format": "url",
+              "data": "../images/cqa/row_maj.svg",
+              "size":
+                {
+                  "x": 500
+                }
+            },
+          "image_4x64_512":
+            {
+              "type": "image",
+              "format": "url",
+              "data": "../images/cqa/4x64_512.svg",
+              "size":
+                {
+                  "x": 500
+                }
+            },
+          "image_1x32_512":
+            {
+              "type": "image",
+              "format": "url",
+              "data": "../images/cqa/1x32_512.svg",
+              "size":
+                {
+                  "x": 500
+                }
+            }
+        },
+      "AVG":
+        {
+          "hint":
+            [
+              {
+                "workaround": "Use vector aligned instructions:\n 1) align your arrays on 32 bytes boundaries: replace { void *p = malloc (size); } with { void *p; posix_memalign (&p, 32, size); }.\n 2) inform your compiler that your arrays are vector aligned: if array 'foo' is 32 bytes-aligned, define a pointer 'p_foo' as __builtin_assume_aligned (foo, 32) and use it instead of 'foo' in the loop.\n<<image_vec_align>>",
+                "details": " - VMOVUPD: 4 occurrences<<list_path_1_vec_align_1>>\n",
+                "title": "Vector unaligned load/store instructions",
+                "txt": "Detected 4 optimal vector unaligned load/store instructions.\n"
+              },
+              {
+                "title": "Type of elements and instruction set",
+                "txt": "3 AVX instructions are processing arithmetic or math operations on double precision FP elements in vector mode (four at a time).\n"
+              },
+              {
+                "title": "Matching between your loop (in the source code) and the binary loop",
+                "txt": "The binary loop is composed of 24 FP arithmetical operations:\n - 12: addition or subtraction (all inside FMA instructions)\n - 12: multiply (all inside FMA instructions)\nThe binary loop is loading 128 bytes (16 double precision FP elements).\nThe binary loop is storing 64 bytes (8 double precision FP elements)."
+              },
+              {
+                "title": "Arithmetic intensity",
+                "txt": "Arithmetic intensity is 0.12 FP operations per loaded or stored byte."
+              }
+            ],
+          "expert":
+            [
+              {
+                "title": "General properties",
+                "txt": "nb instructions    : 10\nnb uops            : 9\nloop length        : 46\nused x86 registers : 6\nused mmx registers : 0\nused xmm registers : 0\nused ymm registers : 3\nused zmm registers : 0\nnb stack references: 0\n"
+              },
+              {
+                "help": "Front-end corresponds to instructions fetching and decoding into macro/micro operations",
+                "title": "Front-end",
+                "txt": "ASSUMED MACRO FUSION\nFIT IN UOP CACHE\nmicro-operation queue: 1.50 cycles\nfront end            : 1.50 cycles\n"
+              },
+              {
+                "help": "Back-end corresponds to macro/micro operations execution (includes allocating registers, fetching operands etc.)",
+                "title": "Back-end",
+                "txt": "       | ALU0/BRU0 | ALU1 | ALU2 | ALU3/BRU1 | AGU0 | AGU1 | AGU2 | FP0  | FP1  | FP2  | FP3\n---------------------------------------------------------------------------------------------\nuops   | 0.50      | 0.50 | 0.50 | 0.50      | 2.00 | 2.00 | 2.00 | 1.50 | 1.50 | 2.00 | 0.00\ncycles | 0.50      | 0.50 | 0.50 | 0.50      | 2.00 | 2.00 | 2.00 | 1.50 | 1.50 | 2.00 | 0.00\n\nExecution ports to units layout:\n - ALU0/BRU0: ALU, BRU\n - ALU1: ALU\n - ALU2: ALU\n - ALU3/BRU1: ALU, BRU\n - AGU0 (256 bits): store address, load\n - AGU1 (256 bits): store address, load\n - AGU2: store address\n - FP0 (256 bits): VPU\n - FP1 (256 bits): VPU\n - FP2 (256 bits): VPU, FP store data\n - FP3 (256 bits): VPU, DIV/SQRT\n\nCycles executing div or sqrt instructions: NA\nCycles loading/storing data              : 2.00\nLongest recurrence chain latency (RecMII): 5.00\n"
+              },
+              {
+                "title": "Cycles summary",
+                "txt": "Front-end : 1.50\nDispatch  : 2.00\nData deps.: 5.00\nOverall L1: 5.00\n"
+              },
+              {
+                "help": "Proportion of vectorizable instructions that are actually vectorized. Higher is better.",
+                "title": "Vectorization ratios",
+                "txt": "all     : 100%\nload    : 100%\nstore   : 100%\nmul     : NA (no mul vectorizable/vectorized instructions)\nadd-sub : NA (no add-sub vectorizable/vectorized instructions)\nfma     : 100%\ndiv/sqrt: NA (no div/sqrt vectorizable/vectorized instructions)\nother   : NA (no other vectorizable/vectorized instructions)\n"
+              },
+              {
+                "help": "Effective/average relative length/width used in vector/SIMD registers. Higher is better.",
+                "title": "Vector efficiency ratios",
+                "txt": "all     : 100%\nload    : 100%\nstore   : 100%\nmul     : NA (no mul vectorizable/vectorized instructions)\nadd-sub : NA (no add-sub vectorizable/vectorized instructions)\nfma     : 100%\ndiv/sqrt: NA (no div/sqrt vectorizable/vectorized instructions)\nother   : NA (no other vectorizable/vectorized instructions)\n"
+              },
+              {
+                "help": "Compare the CQA-computed load/store/compute metrics with the capacity of the core. For instance if CQA computes 24 bytes in the loop in 2 cycles (that is 12 cycles per cycle) and if the core can process up to 16 bytes per cycle, that metric is 75%.",
+                "title": "Cycles and memory resources usage",
+                "txt": "Assuming all data fit into the L1 cache, each iteration of the binary loop takes 5.00 cycles. At this rate:\n - 40% of peak load performance is reached (25.60 out of 64.00 bytes loaded per cycle (GB/s @ 1GHz))\n - 40% of peak store performance is reached (12.80 out of 32.00 bytes stored per cycle (GB/s @ 1GHz))\n"
+              },
+              {
+                "help": "List of bottlenecks detected by CQA. A bottleneck is an issue which reduces front-end throughput below the core capacity.",
+                "title": "Front-end bottlenecks",
+                "txt": "Found no such bottlenecks."
+              },
+              {
+                "title": "ASM code",
+                "txt": "In the binary file, the address of the loop is: 4190\n\nInstruction                                            | Nb FU | ALU0/BRU0 | ALU1 | ALU2 | ALU3/BRU1 | AGU0 | AGU1 | AGU2 | FP0  | FP1  | FP2 | FP3 | Latency | Recip. throughput | Vectorization\n-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\nVMOVUPD (%RSI,%RAX,1),%YMM1                            | 1     | 0         | 0    | 0    | 0         | 0.50 | 0.50 | 0    | 0    | 0    | 0   | 0   | 3       | 0.50              | vect (100.0%)\nVFMADD213PD (%RDX,%RAX,1),%YMM3,%YMM1                  | 1     | 0         | 0    | 0    | 0         | 0.50 | 0.50 | 0    | 0.50 | 0.50 | 0   | 0   | 5       | 0.50              | vect (100.0%)\nVMOVUPD %YMM1,(%RDX,%RAX,1)                            | 1     | 0         | 0    | 0    | 0         | 0.33 | 0.33 | 0.33 | 0    | 0    | 1   | 0   | 4       | 1                 | vect (100.0%)\nVMOVUPD (%RDI,%RAX,1),%YMM1                            | 1     | 0         | 0    | 0    | 0         | 0.50 | 0.50 | 0    | 0    | 0    | 0   | 0   | 3       | 0.50              | vect (100.0%)\nVFNMADD213PD (%RCX,%RAX,1),%YMM3,%YMM1                 | 1     | 0         | 0    | 0    | 0         | 0.50 | 0.50 | 0    | 0.50 | 0.50 | 0   | 0   | 5       | 0.50              | vect (100.0%)\nVMOVUPD %YMM1,(%RCX,%RAX,1)                            | 1     | 0         | 0    | 0    | 0         | 0.33 | 0.33 | 0.33 | 0    | 0    | 1   | 0   | 4       | 1                 | vect (100.0%)\nADD $0x20,%RAX                                         | 1     | 0.25      | 0.25 | 0.25 | 0.25      | 0    | 0    | 0    | 0    | 0    | 0   | 0   | 1       | 0.25              | N/A\nVFMADD231PD %YMM1,%YMM1,%YMM2                          | 1     | 0         | 0    | 0    | 0         | 0    | 0    | 0    | 0.50 | 0.50 | 0   | 0   | 5       | 0.50              | vect (100.0%)\nCMP %RAX,%R8                                           | 1     | 0.25      | 0.25 | 0.25 | 0.25      | 0    | 0    | 0    | 0    | 0    | 0   | 0   | 1       | 0.25              | N/A\nJNE 4190 <_ZL9conj_gradPiS_PdS0_S0_S0_S0_S0_S0_+0xec0> | 1     | 0.50      | 0    | 0    | 0.50      | 0    | 0    | 0    | 0    | 0    | 0   | 0   | 1       | 0.50              | N/A\n"
+              }
+            ],
+          "header":
+            [
+            "20% of peak computational performance is used (4.80 out of 24.00 FLOP per cycle (GFLOPS @ 1GHz))"
+            ],
+          "brief":
+            [
+
+            ],
+          "gain":
+            [
+              {
+                "details": "All SSE/AVX instructions are used in vector version (process two or more data elements in vector registers).\n",
+                "title": "Vectorization",
+                "txt": "Your loop is fully vectorized, using full register length.\n"
+              },
+              {
+                "title": "Execution units bottlenecks",
+                "txt": "Found no such bottlenecks but see expert reports for more complex bottlenecks."
+              }
+            ],
+          "potential":
+            [
+              {
+                "title": "FMA",
+                "txt": "Detected 12 FMA (fused multiply-add) operations."
+              }
+            ]
+        },
+      "paths":
+        [
+          {
+            "hint":
+              [
+                {
+                  "workaround": "Use vector aligned instructions:\n 1) align your arrays on 32 bytes boundaries: replace { void *p = malloc (size); } with { void *p; posix_memalign (&p, 32, size); }.\n 2) inform your compiler that your arrays are vector aligned: if array 'foo' is 32 bytes-aligned, define a pointer 'p_foo' as __builtin_assume_aligned (foo, 32) and use it instead of 'foo' in the loop.\n<<image_vec_align>>",
+                  "details": " - VMOVUPD: 4 occurrences<<list_path_1_vec_align_1>>\n",
+                  "title": "Vector unaligned load/store instructions",
+                  "txt": "Detected 4 optimal vector unaligned load/store instructions.\n"
+                },
+                {
+                  "title": "Type of elements and instruction set",
+                  "txt": "3 AVX instructions are processing arithmetic or math operations on double precision FP elements in vector mode (four at a time).\n"
+                },
+                {
+                  "title": "Matching between your loop (in the source code) and the binary loop",
+                  "txt": "The binary loop is composed of 24 FP arithmetical operations:\n - 12: addition or subtraction (all inside FMA instructions)\n - 12: multiply (all inside FMA instructions)\nThe binary loop is loading 128 bytes (16 double precision FP elements).\nThe binary loop is storing 64 bytes (8 double precision FP elements)."
+                },
+                {
+                  "title": "Arithmetic intensity",
+                  "txt": "Arithmetic intensity is 0.12 FP operations per loaded or stored byte."
+                }
+              ],
+            "expert":
+              [
+                {
+                  "title": "General properties",
+                  "txt": "nb instructions    : 10\nnb uops            : 9\nloop length        : 46\nused x86 registers : 6\nused mmx registers : 0\nused xmm registers : 0\nused ymm registers : 3\nused zmm registers : 0\nnb stack references: 0\n"
+                },
+                {
+                  "help": "Front-end corresponds to instructions fetching and decoding into macro/micro operations",
+                  "title": "Front-end",
+                  "txt": "ASSUMED MACRO FUSION\nFIT IN UOP CACHE\nmicro-operation queue: 1.50 cycles\nfront end            : 1.50 cycles\n"
+                },
+                {
+                  "help": "Back-end corresponds to macro/micro operations execution (includes allocating registers, fetching operands etc.)",
+                  "title": "Back-end",
+                  "txt": "       | ALU0/BRU0 | ALU1 | ALU2 | ALU3/BRU1 | AGU0 | AGU1 | AGU2 | FP0  | FP1  | FP2  | FP3\n---------------------------------------------------------------------------------------------\nuops   | 0.50      | 0.50 | 0.50 | 0.50      | 2.00 | 2.00 | 2.00 | 1.50 | 1.50 | 2.00 | 0.00\ncycles | 0.50      | 0.50 | 0.50 | 0.50      | 2.00 | 2.00 | 2.00 | 1.50 | 1.50 | 2.00 | 0.00\n\nExecution ports to units layout:\n - ALU0/BRU0: ALU, BRU\n - ALU1: ALU\n - ALU2: ALU\n - ALU3/BRU1: ALU, BRU\n - AGU0 (256 bits): store address, load\n - AGU1 (256 bits): store address, load\n - AGU2: store address\n - FP0 (256 bits): VPU\n - FP1 (256 bits): VPU\n - FP2 (256 bits): VPU, FP store data\n - FP3 (256 bits): VPU, DIV/SQRT\n\nCycles executing div or sqrt instructions: NA\nCycles loading/storing data              : 2.00\nLongest recurrence chain latency (RecMII): 5.00\n"
+                },
+                {
+                  "title": "Cycles summary",
+                  "txt": "Front-end : 1.50\nDispatch  : 2.00\nData deps.: 5.00\nOverall L1: 5.00\n"
+                },
+                {
+                  "help": "Proportion of vectorizable instructions that are actually vectorized. Higher is better.",
+                  "title": "Vectorization ratios",
+                  "txt": "all     : 100%\nload    : 100%\nstore   : 100%\nmul     : NA (no mul vectorizable/vectorized instructions)\nadd-sub : NA (no add-sub vectorizable/vectorized instructions)\nfma     : 100%\ndiv/sqrt: NA (no div/sqrt vectorizable/vectorized instructions)\nother   : NA (no other vectorizable/vectorized instructions)\n"
+                },
+                {
+                  "help": "Effective/average relative length/width used in vector/SIMD registers. Higher is better.",
+                  "title": "Vector efficiency ratios",
+                  "txt": "all     : 100%\nload    : 100%\nstore   : 100%\nmul     : NA (no mul vectorizable/vectorized instructions)\nadd-sub : NA (no add-sub vectorizable/vectorized instructions)\nfma     : 100%\ndiv/sqrt: NA (no div/sqrt vectorizable/vectorized instructions)\nother   : NA (no other vectorizable/vectorized instructions)\n"
+                },
+                {
+                  "help": "Compare the CQA-computed load/store/compute metrics with the capacity of the core. For instance if CQA computes 24 bytes in the loop in 2 cycles (that is 12 cycles per cycle) and if the core can process up to 16 bytes per cycle, that metric is 75%.",
+                  "title": "Cycles and memory resources usage",
+                  "txt": "Assuming all data fit into the L1 cache, each iteration of the binary loop takes 5.00 cycles. At this rate:\n - 40% of peak load performance is reached (25.60 out of 64.00 bytes loaded per cycle (GB/s @ 1GHz))\n - 40% of peak store performance is reached (12.80 out of 32.00 bytes stored per cycle (GB/s @ 1GHz))\n"
+                },
+                {
+                  "help": "List of bottlenecks detected by CQA. A bottleneck is an issue which reduces front-end throughput below the core capacity.",
+                  "title": "Front-end bottlenecks",
+                  "txt": "Found no such bottlenecks."
+                },
+                {
+                  "title": "ASM code",
+                  "txt": "In the binary file, the address of the loop is: 4190\n\nInstruction                                            | Nb FU | ALU0/BRU0 | ALU1 | ALU2 | ALU3/BRU1 | AGU0 | AGU1 | AGU2 | FP0  | FP1  | FP2 | FP3 | Latency | Recip. throughput | Vectorization\n-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\nVMOVUPD (%RSI,%RAX,1),%YMM1                            | 1     | 0         | 0    | 0    | 0         | 0.50 | 0.50 | 0    | 0    | 0    | 0   | 0   | 3       | 0.50              | vect (100.0%)\nVFMADD213PD (%RDX,%RAX,1),%YMM3,%YMM1                  | 1     | 0         | 0    | 0    | 0         | 0.50 | 0.50 | 0    | 0.50 | 0.50 | 0   | 0   | 5       | 0.50              | vect (100.0%)\nVMOVUPD %YMM1,(%RDX,%RAX,1)                            | 1     | 0         | 0    | 0    | 0         | 0.33 | 0.33 | 0.33 | 0    | 0    | 1   | 0   | 4       | 1                 | vect (100.0%)\nVMOVUPD (%RDI,%RAX,1),%YMM1                            | 1     | 0         | 0    | 0    | 0         | 0.50 | 0.50 | 0    | 0    | 0    | 0   | 0   | 3       | 0.50              | vect (100.0%)\nVFNMADD213PD (%RCX,%RAX,1),%YMM3,%YMM1                 | 1     | 0         | 0    | 0    | 0         | 0.50 | 0.50 | 0    | 0.50 | 0.50 | 0   | 0   | 5       | 0.50              | vect (100.0%)\nVMOVUPD %YMM1,(%RCX,%RAX,1)                            | 1     | 0         | 0    | 0    | 0         | 0.33 | 0.33 | 0.33 | 0    | 0    | 1   | 0   | 4       | 1                 | vect (100.0%)\nADD $0x20,%RAX                                         | 1     | 0.25      | 0.25 | 0.25 | 0.25      | 0    | 0    | 0    | 0    | 0    | 0   | 0   | 1       | 0.25              | N/A\nVFMADD231PD %YMM1,%YMM1,%YMM2                          | 1     | 0         | 0    | 0    | 0         | 0    | 0    | 0    | 0.50 | 0.50 | 0   | 0   | 5       | 0.50              | vect (100.0%)\nCMP %RAX,%R8                                           | 1     | 0.25      | 0.25 | 0.25 | 0.25      | 0    | 0    | 0    | 0    | 0    | 0   | 0   | 1       | 0.25              | N/A\nJNE 4190 <_ZL9conj_gradPiS_PdS0_S0_S0_S0_S0_S0_+0xec0> | 1     | 0.50      | 0    | 0    | 0.50      | 0    | 0    | 0    | 0    | 0    | 0   | 0   | 1       | 0.50              | N/A\n"
+                }
+              ],
+            "header":
+              [
+              "20% of peak computational performance is used (4.80 out of 24.00 FLOP per cycle (GFLOPS @ 1GHz))"
+              ],
+            "brief":
+              [
+
+              ],
+            "gain":
+              [
+                {
+                  "details": "All SSE/AVX instructions are used in vector version (process two or more data elements in vector registers).\n",
+                  "title": "Vectorization",
+                  "txt": "Your loop is fully vectorized, using full register length.\n"
+                },
+                {
+                  "title": "Execution units bottlenecks",
+                  "txt": "Found no such bottlenecks but see expert reports for more complex bottlenecks."
+                }
+              ],
+            "potential":
+              [
+                {
+                  "title": "FMA",
+                  "txt": "Detected 12 FMA (fused multiply-add) operations."
+                }
+              ]
+          }
+        ],
+      "common":
+        {
+          "header":
+            [
+            "The loop is defined in /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:632-633,641.\n",
+            "It is main loop of related source loop which is unrolled by 4 (including vectorization)."
+            ],
+          "nb_paths": 1
+        }
+    }
+}

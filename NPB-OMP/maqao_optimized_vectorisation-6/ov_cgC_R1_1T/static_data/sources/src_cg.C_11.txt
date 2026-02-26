@@ -1,0 +1,27 @@
+/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 907 - 911
+--------------------------------------------------------------------------------
+
+907: 	for(size_t idx = 0; idx < triplets.size(); idx++){
+908: 		if(!reduced.empty() &&
+909: 				reduced.back().row == triplets[idx].row &&
+910: 				reduced.back().col == triplets[idx].col){
+911: 			reduced.back().val += triplets[idx].val;
+/usr/include/c++/13/bits/new_allocator.h: 191 - 191
+--------------------------------------------------------------------------------
+
+191: 	{ ::new((void *)__p) _Up(std::forward<_Args>(__args)...); }
+/usr/include/c++/13/bits/stl_vector.h: 993 - 1292
+--------------------------------------------------------------------------------
+
+993:       { return size_type(this->_M_impl._M_finish - this->_M_impl._M_start); }
+[...]
+1283: 	if (this->_M_impl._M_finish != this->_M_impl._M_end_of_storage)
+1284: 	  {
+1285: 	    _GLIBCXX_ASAN_ANNOTATE_GROW(1);
+1286: 	    _Alloc_traits::construct(this->_M_impl, this->_M_impl._M_finish,
+1287: 				     __x);
+1288: 	    ++this->_M_impl._M_finish;
+1289: 	    _GLIBCXX_ASAN_ANNOTATE_GREW(1);
+1290: 	  }
+1291: 	else
+1292: 	  _M_realloc_insert(end(), __x);

@@ -63,9 +63,9 @@ maqao oneview --replace -S1 --create-report=one \
   -xp="${XP_PREFIX}_S1_6T"
 
 # MAQAO OneView - WS (strong scaling): base=1 thread + multiruns 2/3/6
-maqao oneview --replace -R1 -WS=strong --create-report=one \
-  --executable="${BIN}" --run-command="<executable>" \
-  --lprof-params="-exclude-kernel" \
-  --envv_OMP_NUM_THREADS=1 \
-  --multiruns-params='{{name="2T", environment_variables={{name="OMP_NUM_THREADS", value="2"}}}, {name="3T", environment_variables={{name="OMP_NUM_THREADS", value="3"}}}, {name="6T", environment_variables={{name="OMP_NUM_THREADS", value="6"}}}}' \
-  -xp="${XP_PREFIX}_WS"
+#maqao oneview --replace -R1 -WS=strong --create-report=one \
+#  --executable="${BIN}" --run-command="<executable>" \
+#  --lprof-params="-exclude-kernel" \
+#  --envv_OMP_NUM_THREADS=1 \
+#  --multiruns-params='{{name="2T", environment_variables={{name="OMP_NUM_THREADS", value="2"}}}, {name="3T", environment_variables={{name="OMP_NUM_THREADS", value="3"}}}, {name="6T", environment_variables={{name="OMP_NUM_THREADS", value="6"}}}}' \
+#  -xp="${XP_PREFIX}_WS"

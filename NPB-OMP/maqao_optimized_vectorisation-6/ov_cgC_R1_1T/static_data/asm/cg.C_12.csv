@@ -1,0 +1,23 @@
+address;source_location;insn;indent
+0x21d1;/usr/include/c++/13/bits/stl_algo.h:1796;VMOVQ	(%RDI),%XMM0;
+0x21d5;:0;VMOVSD	0x8(%RDI),%XMM1;
+0x21da;/usr/include/c++/13/bits/stl_iterator.h:1126;MOV	%RDI,%RAX;
+0x21dd;:0;VPEXTRD	$0x1,%XMM0,%R8D;
+0x21e3;:0;VMOVD	%XMM0,%ESI;
+0x21e7;/usr/include/c++/13/bits/stl_iterator.h:1126;JMP	21fd <main+0xdcd>;
+0x21f0;/usr/include/c++/13/bits/stl_algo.h:1799;CMP	%ESI,%EDX;  (13) 
+0x21f2;:0;JLE	2211 <main+0xde1>;  (13) 
+0x21f4;/usr/include/c++/13/bits/stl_algo.h:1801;VMOVDQU	(%RAX),%XMM4;  (13) 
+0x21f8;:0;VMOVDQU	%XMM4,0x10(%RAX);  (13) 
+0x21fd;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:837;MOV	-0x10(%RAX),%EDX;  (13) 
+0x2200;:0;MOV	%RAX,%RCX;  (13) 
+0x2203;/usr/include/c++/13/bits/stl_algo.h:1799;SUB	$0x10,%RAX;  (13) 
+0x2207;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:837;CMP	%ESI,%EDX;  (13) 
+0x2209;:0;JNE	21f0 <main+0xdc0>;  (13) 
+0x220b;/usr/include/c++/13/bits/stl_algo.h:1799;CMP	%R8D,-0xc(%RCX);  (13) 
+0x220f;:0;JG	21f4 <main+0xdc4>;  (13) 
+0x2211;/usr/include/c++/13/bits/stl_algo.h:1839;ADD	$0x10,%RDI;
+0x2215;/usr/include/c++/13/bits/stl_algo.h:1805;VMOVQ	%XMM0,(%RCX);
+0x2219;:0;VMOVSD	%XMM1,0x8(%RCX);
+0x221e;/usr/include/c++/13/bits/stl_algo.h:1839;CMP	%RDI,%R15;
+0x2221;:0;JNE	21d1 <main+0xda1>;
