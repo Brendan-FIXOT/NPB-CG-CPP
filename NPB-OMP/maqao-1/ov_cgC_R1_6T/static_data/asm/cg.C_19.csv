@@ -1,0 +1,63 @@
+address;source_location;insn;indent
+0x1c98;:0;MOVSD	(%R14,%RDI,8),%XMM7;
+0x1c9e;:0;MOV	(%R15,%RDI,4),%R8D;
+0x1ca2;:0;MULSD	%XMM2,%XMM7;
+0x1ca6;:0;CMP	%R8D,%EBP;
+0x1ca9;:0;JNE	1cc2 <main+0xa02>;
+0x1cab;:0;CMPB	$0,0x8(%RSP);
+0x1cb0;:0;JE	1cc2 <main+0xa02>;
+0x1cb2;:0;MOVAPD	%XMM7,%XMM1;
+0x1cb6;:0;ADDSD	%XMM3,%XMM1;
+0x1cba;:0;SUBSD	%XMM4,%XMM1;
+0x1cbe;:0;MOVAPD	%XMM1,%XMM7;
+0x1cc2;:0;MOVSXD	(%RBX),%RDX;
+0x1cc5;:0;MOV	(%R13),%ECX;
+0x1cc9;:0;CMP	%EDX,%ECX;
+0x1ccb;:0;JLE	2028 <main+0xd68>;
+0x1cd1;:0;LEA	(%RSI,%RDX,4),%R10;
+0x1cd5;:0;JMP	1d02 <main+0xa42>;
+0x1ce0;:0;CMP	$-0x1,%EAX;  (21) 
+0x1ce3;:0;JE	1d90 <main+0xad0>;  (21) 
+0x1ce9;:0;CMP	%EAX,%R8D;  (21) 
+0x1cec;:0;JE	1da0 <main+0xae0>;  (21) 
+0x1cf2;:0;ADD	$0x1,%RDX;  (21) 
+0x1cf6;:0;ADD	$0x4,%R10;  (21) 
+0x1cfa;:0;CMP	%EDX,%ECX;  (21) 
+0x1cfc;:0;JLE	2028 <main+0xd68>;  (21) 
+0x1d02;:0;MOV	(%R10),%EAX;  (21) 
+0x1d05;:0;CMP	%EAX,%R8D;  (21) 
+0x1d08;:0;JGE	1ce0 <main+0xa20>;  (21) 
+0x1d0a;:0;SUB	$0x2,%ECX;
+0x1d0d;:0;MOV	%EDX,%R11D;
+0x1d10;:0;MOVSXD	%ECX,%RAX;
+0x1d13;:0;CMP	%EDX,%ECX;
+0x1d15;:0;JL	1d41 <main+0xa81>;
+0x1d17;:0;NOPW	(%RAX,%RAX,1);
+0x1d20;:0;MOV	(%RSI,%RAX,4),%ECX;  (22) 
+0x1d23;:0;TEST	%ECX,%ECX;  (22) 
+0x1d25;:0;JS	1d38 <main+0xa78>;  (22) 
+0x1d27;:0;MOVSD	(%R9,%RAX,8),%XMM1;  (22) 
+0x1d2d;:0;MOVSD	%XMM1,0x8(%R9,%RAX,8);  (22) 
+0x1d34;:0;MOV	%ECX,0x4(%RSI,%RAX,4);  (22) 
+0x1d38;:0;SUB	$0x1,%RAX;  (22) 
+0x1d3c;:0;CMP	%EAX,%R11D;  (22) 
+0x1d3f;:0;JLE	1d20 <main+0xa60>;  (22) 
+0x1d41;:0;LEA	(%R9,%RDX,8),%RAX;
+0x1d45;:0;MOV	%R8D,(%R10);
+0x1d48;:0;PXOR	%XMM1,%XMM1;
+0x1d4c;:0;MOVQ	$0,(%RAX);
+0x1d53;:0;ADDSD	%XMM7,%XMM1;
+0x1d57;:0;MOV	(%R12),%R8D;
+0x1d5b;:0;ADD	$0x1,%RDI;
+0x1d5f;:0;MOVSD	%XMM1,(%RAX);
+0x1d63;:0;CMP	%EDI,%R8D;
+0x1d66;:0;JG	1c98 <main+0x9d8>;
+0x1d90;:0;LEA	(%R9,%RDX,8),%RAX;
+0x1d94;:0;MOV	%R8D,(%R10);
+0x1d97;:0;MOVSD	(%RAX),%XMM1;
+0x1d9b;:0;JMP	1d53 <main+0xa93>;
+0x1da0;:0;MOV	0x10(%RSP),%RAX;
+0x1da5;:0;ADDL	$0x1,(%RAX);
+0x1da8;:0;LEA	(%R9,%RDX,8),%RAX;
+0x1dac;:0;MOVSD	(%RAX),%XMM1;
+0x1db0;:0;JMP	1d53 <main+0xa93>;

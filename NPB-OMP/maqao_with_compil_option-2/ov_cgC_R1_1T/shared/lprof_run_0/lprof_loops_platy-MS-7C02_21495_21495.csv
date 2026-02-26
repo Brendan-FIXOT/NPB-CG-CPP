@@ -1,0 +1,17 @@
+loop_id;module;function_name;function_id;source_info;level;inc_time_p;inc_time_s;inc_time_s_min;inc_time_s_avg;inc_time_s_max;inc_cov_deviation;inc_time_deviation;exc_time_p;exc_time_s;exc_time_s_min;exc_time_s_avg;exc_time_s_max;exc_cov_deviation;exc_time_deviation;nb_threads;flops;flops_sca;flops_vec;flops_sp;flops_dp;flops_sca_sp;flops_sca_dp;flops_vec_sp;flops_vec_dp;
+38;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);9;cg.cpp:579-580;Innermost;87.40013885498;118.06000518799;;;;;;87.40013885498;118.06000518799;;;;;;;;;;;;;;;;
+23;cg.C;main;1;cg.cpp:893-896;Innermost;3.7459316253662;5.0599999427795;;;;;;3.7459316253662;5.0599999427795;;;;;;;;;;;;;;;;
+33;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);9;cg.cpp:652-653;Innermost;3.4461095333099;4.6550006866455;;;;;;3.4461095333099;4.6550006866455;;;;;;;;;;;;;;;;
+37;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);9;cg.cpp:578-582;InBetween;89.850540161133;121.37000274658;;;;;;2.4504015445709;3.3099994659424;;;;;;;;;;;;;;;;
+22;cg.C;main;1;cg.cpp:886-887,cg.cpp:903-907;Innermost;1.8063385486603;2.4399998188019;;;;;;1.8063385486603;2.4399998188019;;;;;;;;;;;;;;;;
+20;cg.C;main;1;cg.cpp:871-873,cg.cpp:881-882,cg.cpp:886-886,cg.cpp:893-893,cg.cpp:899-900,cg.cpp:904-904,cg.cpp:913-913,cg.cpp:922-922;InBetween;6.0667805671692;8.1949996948242;;;;;;0.5145103931427;0.69500005245209;;;;;;;;;;;;;;;;
+35;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);9;cg.cpp:612-613,cg.cpp:621-621;Innermost;0.17397113144398;0.23499998450279;;;;;;0.17397113144398;0.23499998450279;;;;;;;;;;;;;;;;
+32;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);9;cg.cpp:651-655;Outermost;3.5830655097961;4.840000629425;;;;;;0.13695600628853;0.18500000238419;;;;;;;;;;;;;;;;
+36;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);9;cg.cpp:593-593;Innermost;0.066627241671085;0.089999996125698;;;;;;0.066627241671085;0.089999996125698;;;;;;;;;;;;;;;;
+11;cg.C;main;1;cg.cpp:678-678,cg.cpp:742-749,cg.cpp:972-975,cg.cpp:982-984,cg.cpp:992-993,cg.cpp:999-1001,cg.cpp:1015-1025;Innermost;0.033313620835543;0.044999998062849;;;;;;0.033313620835543;0.044999998062849;;;;;;;;;;;;;;;;
+8;cg.C;main;1;cg.cpp:945-947;Innermost;0.033313620835543;0.044999998062849;;;;;;0.033313620835543;0.044999998062849;;;;;;;;;;;;;;;;
+34;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);9;cg.cpp:638-638;Innermost;0.029612109065056;0.03999999910593;;;;;;0.029612109065056;0.03999999910593;;;;;;;;;;;;;;;;
+18;cg.C;main;1;cg.cpp:852-854;Innermost;0.025910595431924;0.035000000149012;;;;;;0.025910595431924;0.035000000149012;;;;;;;;;;;;;;;;
+21;cg.C;main;1;cg.cpp:867-871,cg.cpp:881-881,cg.cpp:886-886,cg.cpp:913-913;InBetween;6.0852880477905;8.2200002670288;;;;;;0.01850756816566;0.025000000372529;;;;;;;;;;;;;;;;
+53;cg.C;main._omp_fn.0;10;cg.cpp:278-279;Innermost;0.014806054532528;0.019999999552965;;;;;;0.014806054532528;0.019999999552965;;;;;;;;;;;;;;;;
+31;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);9;cg.cpp:665-666;Single;0.011104540899396;0.015000000596046;;;;;;0.011104540899396;0.015000000596046;;;;;;;;;;;;;;;;

@@ -1,0 +1,5 @@
+/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 652 - 653
+--------------------------------------------------------------------------------
+
+652: 		for(k = rowstr[j]; k < rowstr[j+1]; k++){
+653: 			suml += a[k]*z[colidx[k]];

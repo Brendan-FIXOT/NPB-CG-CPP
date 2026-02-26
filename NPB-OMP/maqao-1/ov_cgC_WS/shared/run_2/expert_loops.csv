@@ -1,0 +1,19 @@
+ID;Module;Source Location;Source Function;Level;Max Time Over Threads (s);Time w.r.t. Wall Time (s);Coverage (% app. time);Speedup if no scalar integer;Speedup if FP arith vectorized;Speedup if fully vectorized;Speedup if FP only;Number of paths;Vectorization Ratio (%);Vectorization Efficiency (%);CQA cycles;CQA cycles if no scalar integer;CQA cycles if FP arith vectorized;CQA cycles if fully vectorized;CQA cycles if FP only
+Loop 37;cg.C;;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);Innermost;41.529998779297;46.445755004883;87.898857116699;1.00;2.43;4.00;1.00;1;0.00;25.00;3.00;3.00;1.23;0.75;3.00
+Loop 22;cg.C;;main;Innermost;6.4199995994568;2.4161880016327;4.5726494789124;1.50;1.29;7.58;1.50;2;0.00;15.00;1.50;1.00;1.17;0.20;1.00
+Loop 32;cg.C;;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);Innermost;1.6449998617172;1.8441308736801;3.4900281429291;1.00;2.43;4.00;1.00;1;0.00;25.00;3.00;3.00;1.23;0.75;3.00
+Loop 21;cg.C;;main;Innermost;1.7649998664856;0.66426354646683;1.2571225166321;1.00;1.00;7.20;1.13;1;0.00;15.63;2.25;2.25;2.25;0.31;2.00
+Loop 19;cg.C;;main;InBetween;0.78000003099442;0.29355552792549;0.55555552244186;3.24;1.87;10.26;3.67;18;12.50;20.96;9.17;2.83;4.91;0.89;2.50
+Loop 34;cg.C;;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);Innermost;0.20499999821186;0.18817664682865;0.35612535476685;1.00;1.58;2.43;1.00;1;78.57;44.64;6.00;6.00;3.79;2.47;6.00
+Loop 36;cg.C;;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);InBetween;0.10000000149012;0.084679484367371;0.16025640070438;1.42;1.00;5.67;1.42;2;20.00;22.50;1.42;1.00;1.42;0.25;1.00
+Loop 35;cg.C;;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);Innermost;0.090000003576279;0.077152423560619;0.14601139724255;1.00;1.89;3.00;1.00;1;50.00;37.50;6.00;6.00;3.17;2.00;6.00
+Loop 33;cg.C;;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);Innermost;0.030000001192093;0.028226496651769;0.053418803960085;1.00;1.17;2.00;1.17;1;100.00;50.00;1.17;1.17;1.00;0.58;1.00
+Loop 52;cg.C;;main._omp_fn.0;Innermost;0.015000000596046;0.016935896128416;0.032051280140877;1.00;1.00;8.00;1.00;1;0.00;12.50;1.00;1.00;1.00;0.13;1.00
+Loop 8;cg.C;;main;Innermost;0.044999998062849;0.016935896128416;0.032051280140877;1.00;1.00;2.00;3.00;1;100.00;50.00;3.00;3.00;3.00;1.50;1.00
+Loop 17;cg.C;;main;Innermost;0.035000000149012;0.013172364793718;0.024928774684668;1.00;1.71;13.71;2.00;1;0.00;12.50;2.00;2.00;1.17;0.15;1.00
+Loop 10;cg.C;;main;Innermost;0.025000000372529;0.0094088315963745;0.017806267365813;2.04;1.68;6.67;4.15;1;11.62;21.99;110.00;54.00;65.67;16.50;26.50
+Loop 31;cg.C;;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);Outermost;0.014999999664724;0.0094088315963745;0.017806267365813;1.42;1.00;5.67;1.42;2;22.50;23.75;1.42;1.00;1.42;0.25;1.00
+Loop 20;cg.C;;main;InBetween;0.0099999997764826;0.0037635327316821;0.007122506853193;2.67;2.23;6.86;4.00;3;0.00;22.92;4.00;1.50;1.79;0.58;1.00
+Loop 38;cg.C;;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);Single;0.0099999997764826;0.0037635327316821;0.007122506853193;1.00;2.13;3.20;1.00;1;40.00;35.00;6.00;6.00;2.81;1.88;6.00
+Loop 45;cg.C;;main._omp_fn.0;Innermost;0.0049999998882413;0.0037635327316821;0.007122506853193;1.00;1.50;2.67;1.00;1;77.78;44.44;6.00;6.00;4.00;2.25;6.00
+Loop 30;cg.C;;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);Single;0.0049999998882413;0.001881766365841;0.0035612534265965;1.00;1.90;2.86;1.00;1;57.14;39.29;6.00;6.00;3.15;2.10;6.00

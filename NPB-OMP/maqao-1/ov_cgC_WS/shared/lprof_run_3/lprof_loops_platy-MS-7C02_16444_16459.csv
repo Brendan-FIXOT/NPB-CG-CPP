@@ -1,0 +1,10 @@
+loop_id;module;function_name;function_id;source_info;level;inc_time_p;inc_time_s;inc_time_s_min;inc_time_s_avg;inc_time_s_max;inc_cov_deviation;inc_time_deviation;exc_time_p;exc_time_s;exc_time_s_min;exc_time_s_avg;exc_time_s_max;exc_cov_deviation;exc_time_deviation;nb_threads;flops;flops_sca;flops_vec;flops_sp;flops_dp;flops_sca_sp;flops_sca_dp;flops_vec_sp;flops_vec_dp;
+37;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);8;;Innermost;91.184074401855;28.184999465942;;;;;;91.184074401855;28.184999465942;;;;;;;;;;;;;;;;
+32;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);8;;Innermost;3.6072471141815;1.115000128746;;;;;;3.6072471141815;1.115000128746;;;;;;;;;;;;;;;;
+33;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);8;;Innermost;0.37204787135124;0.11500000208616;;;;;;0.37204787135124;0.11500000208616;;;;;;;;;;;;;;;;
+34;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);8;;Innermost;0.33969587087631;0.10500000417233;;;;;;0.33969587087631;0.10500000417233;;;;;;;;;;;;;;;;
+35;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);8;;Innermost;0.16175994277;0.050000000745058;;;;;;0.16175994277;0.050000000745058;;;;;;;;;;;;;;;;
+36;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);8;;InBetween;91.313484191895;28.224998474121;;;;;;0.12940795719624;0.040000002831221;;;;;;;;;;;;;;;;
+40;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);8;;Single;0.064703978598118;0.02000000141561;;;;;;0.064703978598118;0.02000000141561;;;;;;;;;;;;;;;;
+52;cg.C;main._omp_fn.0;9;;Innermost;0.032351989299059;0.010000000707805;;;;;;0.032351989299059;0.010000000707805;;;;;;;;;;;;;;;;
+31;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);8;;Outermost;3.6234226226807;1.1200000047684;;;;;;0.016175994649529;0.0050000003539026;;;;;;;;;;;;;;;;

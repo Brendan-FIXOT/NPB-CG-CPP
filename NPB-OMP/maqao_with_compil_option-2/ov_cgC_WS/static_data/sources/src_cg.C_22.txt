@@ -1,0 +1,11 @@
+/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 886 - 907
+--------------------------------------------------------------------------------
+
+886: 				for(k = rowstr[j]; k < rowstr[j+1]; k++){
+887: 					if(colidx[k] > jcol){
+[...]
+903: 					}else if(colidx[k] == -1){
+904: 						colidx[k] = jcol;
+905: 						goto_40 = TRUE;
+906: 						break;
+907: 					}else if(colidx[k] == jcol){

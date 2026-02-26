@@ -1,0 +1,12 @@
+loop_id;module;function_name;function_id;source_info;level;inc_time_p;inc_time_s;inc_time_s_min;inc_time_s_avg;inc_time_s_max;inc_cov_deviation;inc_time_deviation;exc_time_p;exc_time_s;exc_time_s_min;exc_time_s_avg;exc_time_s_max;exc_cov_deviation;exc_time_deviation;nb_threads;flops;flops_sca;flops_vec;flops_sp;flops_dp;flops_sca_sp;flops_sca_dp;flops_vec_sp;flops_vec_dp;
+37;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);8;;Innermost;93.404052734375;58.555004119873;;;;;;93.404052734375;58.555004119873;;;;;;;;;;;;;;;;
+32;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);8;;Innermost;3.7805075645447;2.3700003623962;;;;;;3.7805075645447;2.3700003623962;;;;;;;;;;;;;;;;
+34;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);8;;Innermost;0.25522410869598;0.15999999642372;;;;;;0.25522410869598;0.15999999642372;;;;;;;;;;;;;;;;
+36;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);8;;InBetween;93.627372741699;58.695003509521;;;;;;0.22332109510899;0.14000000059605;;;;;;;;;;;;;;;;
+35;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);8;;Innermost;0.16749082505703;0.10499999672174;;;;;;0.16749082505703;0.10499999672174;;;;;;;;;;;;;;;;
+33;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);8;;Innermost;0.063806027173996;0.03999999910593;;;;;;0.063806027173996;0.03999999910593;;;;;;;;;;;;;;;;
+52;cg.C;main._omp_fn.0;9;;Innermost;0.023927260190248;0.014999999664724;;;;;;0.023927260190248;0.014999999664724;;;;;;;;;;;;;;;;
+40;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);8;;Single;0.015951506793499;0.0099999997764826;;;;;;0.015951506793499;0.0099999997764826;;;;;;;;;;;;;;;;
+38;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);8;;Single;0.015951506793499;0.0099999997764826;;;;;;0.015951506793499;0.0099999997764826;;;;;;;;;;;;;;;;
+31;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);8;;Outermost;3.796459197998;2.3800003528595;;;;;;0.015951506793499;0.0099999997764826;;;;;;;;;;;;;;;;
+30;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);8;;Single;0.015951506793499;0.0099999997764826;;;;;;0.015951506793499;0.0099999997764826;;;;;;;;;;;;;;;;

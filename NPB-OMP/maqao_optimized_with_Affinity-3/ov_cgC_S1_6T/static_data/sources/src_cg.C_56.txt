@@ -1,0 +1,8 @@
+/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 848 - 848
+--------------------------------------------------------------------------------
+
+848: 			if(lhs.row != rhs.row){return lhs.row < rhs.row;}
+/usr/include/c++/13/bits/stl_algo.h: 1877 - 1877
+--------------------------------------------------------------------------------
+
+1877: 	  while (__comp(__first, __pivot))

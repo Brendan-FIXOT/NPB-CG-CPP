@@ -1,0 +1,100 @@
+/usr/include/x86_64-linux-gnu/bits/stdio2.h: 86 - 86
+--------------------------------------------------------------------------------
+
+86:   return __printf_chk (__USE_FORTIFY_LEVEL - 1, __fmt, __va_arg_pack ());
+/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 274 - 407
+--------------------------------------------------------------------------------
+
+274: 	#pragma omp parallel private(it,i,j,k)	
+275: 	{
+276: 		#pragma omp for nowait
+277: 		for(j = 0; j < lastrow - firstrow + 1; j++){
+278: 			for(k = rowstr[j]; k < rowstr[j+1]; k++){
+279: 				colidx[k] = colidx[k] - firstcol;
+280: 			}
+281: 		}
+282: 
+283: 		/* set starting vector to (1, 1, .... 1) */
+284: 		#pragma omp for nowait
+285: 		for(i = 0; i < NA+1; i++){
+286: 			x[i] = 1.0;
+287: 		}
+288: 		#pragma omp for nowait
+289: 		for(j = 0; j<lastcol-firstcol+1; j++){
+290: 			q[j] = 0.0;
+291: 			z[j] = 0.0;
+292: 			r[j] = 0.0;
+293: 			p[j] = 0.0;
+294: 		}
+295: 		
+296: 		#pragma omp single
+297: 			zeta = 0.0;
+[...]
+308: 			conj_grad(colidx, rowstr, x, z, a, p, q, r, &rnorm);
+309: 			#pragma omp single
+310: 			{
+311: 				norm_temp1 = 0.0;
+[...]
+323: 			#pragma omp for reduction(+:norm_temp1,norm_temp2)
+324: 			for(j = 0; j < lastcol - firstcol + 1; j++){
+325: 				norm_temp1 += x[j] * z[j];
+326: 				norm_temp2 += + z[j] * z[j];
+327: 			}
+328: 
+329: 			#pragma omp single
+330: 				norm_temp2 = 1.0 / sqrt(norm_temp2);
+331: 
+332: 			/* normalize z to obtain x */
+333: 			#pragma omp for
+334: 			for(j = 0; j < lastcol - firstcol + 1; j++){     
+335: 				x[j] = norm_temp2 * z[j];
+[...]
+341: 		#pragma omp for
+342: 		for(i = 0; i < NA+1; i++){
+343: 			x[i] = 1.0;
+344: 		}
+345: 
+346: 		#pragma omp single
+347: 			zeta = 0.0;
+348: 
+349: 		#pragma omp master
+350: 		{
+351: 			timer_stop(T_INIT);
+352: 
+353: 			printf(" Initialization time = %15.3f seconds\n", timer_read(T_INIT));
+354: 			
+355: 			timer_start(T_BENCH);
+[...]
+365: 		for(it = 1; it <= NITER; it++){
+366: 			
+367: 			/* the call to the conjugate gradient routine */
+368: 			#pragma omp master
+369: 			if(timeron){timer_start(T_CONJ_GRAD);}
+370: 			conj_grad(colidx, rowstr, x, z, a, p, q, r, &rnorm);
+371: 			#pragma omp master
+372: 			if(timeron){timer_stop(T_CONJ_GRAD);}
+373: 
+374: 			#pragma omp single
+375: 			{
+376: 				norm_temp1 = 0.0;
+[...]
+388: 			#pragma omp for reduction(+:norm_temp1,norm_temp2)
+389: 			for(j = 0; j < lastcol - firstcol + 1; j++){
+390: 				norm_temp1 += x[j]*z[j];
+391: 				norm_temp2 += z[j]*z[j];
+392: 			}
+393: 			#pragma omp single
+394: 			{
+395: 				norm_temp2 = 1.0 / sqrt(norm_temp2);
+396: 				zeta = SHIFT + 1.0 / norm_temp1;
+397: 			}
+398: 
+399: 			#pragma omp master
+400: 			{
+401: 				if(it==1){printf("\n   iteration           ||r||                 zeta\n");}
+402: 				printf("    %5d       %20.14e%20.13e\n", it, rnorm, zeta);
+403: 			}
+404: 			/* normalize z to obtain x */
+405: 			#pragma omp for 
+406: 			for(j = 0; j < lastcol - firstcol + 1; j++){
+407: 				x[j] = norm_temp2 * z[j];
