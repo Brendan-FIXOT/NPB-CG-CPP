@@ -1,0 +1,108 @@
+/usr/include/x86_64-linux-gnu/bits/stdio2.h: 86 - 86
+--------------------------------------------------------------------------------
+
+86:   return __printf_chk (__USE_FORTIFY_LEVEL - 1, __fmt, __va_arg_pack ());
+/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 276 - 409
+--------------------------------------------------------------------------------
+
+276: 	#pragma omp parallel private(it,i,j,k)	
+277: 	{
+278: 		#pragma omp for nowait
+279: 		for(j = 0; j < lastrow - firstrow + 1; j++){
+280: 			for(k = rowstr[j]; k < rowstr[j+1]; k++){
+281: 				colidx[k] = colidx[k] - firstcol;
+282: 			}
+283: 		}
+284: 
+285: 		/* set starting vector to (1, 1, .... 1) */
+286: 		#pragma omp for nowait
+287: 		for(i = 0; i < NA+1; i++){
+288: 			x[i] = 1.0;
+289: 		}
+290: 		#pragma omp for nowait
+291: 		for(j = 0; j<lastcol-firstcol+1; j++){
+292: 			q[j] = 0.0;
+293: 			z[j] = 0.0;
+294: 			r[j] = 0.0;
+295: 			p[j] = 0.0;
+296: 		}
+297: 		
+298: 		#pragma omp single
+299: 			zeta = 0.0;
+[...]
+310: 			conj_grad(colidx, rowstr, x, z, a, p, q, r, &rnorm);
+311: 			#pragma omp single
+312: 			{
+313: 				norm_temp1 = 0.0;
+[...]
+325: 			#pragma omp for reduction(+:norm_temp1,norm_temp2)
+326: 			for(j = 0; j < lastcol - firstcol + 1; j++){
+327: 				norm_temp1 += x[j] * z[j];
+328: 				norm_temp2 += + z[j] * z[j];
+329: 			}
+330: 
+331: 			#pragma omp single
+332: 				norm_temp2 = 1.0 / sqrt(norm_temp2);
+333: 
+334: 			/* normalize z to obtain x */
+335: 			#pragma omp for
+336: 			for(j = 0; j < lastcol - firstcol + 1; j++){     
+337: 				x[j] = norm_temp2 * z[j];
+[...]
+343: 		#pragma omp for
+344: 		for(i = 0; i < NA+1; i++){
+345: 			x[i] = 1.0;
+346: 		}
+347: 
+348: 		#pragma omp single
+349: 			zeta = 0.0;
+350: 
+351: 		#pragma omp master
+[...]
+367: 		for(it = 1; it <= NITER; it++){
+368: 			
+369: 			/* the call to the conjugate gradient routine */
+370: 			#pragma omp master
+371: 			if(timeron){timer_start(T_CONJ_GRAD);}
+372: 			conj_grad(colidx, rowstr, x, z, a, p, q, r, &rnorm);
+373: 			#pragma omp master
+374: 			if(timeron){timer_stop(T_CONJ_GRAD);}
+375: 
+376: 			#pragma omp single
+377: 			{
+378: 				norm_temp1 = 0.0;
+[...]
+390: 			#pragma omp for reduction(+:norm_temp1,norm_temp2)
+391: 			for(j = 0; j < lastcol - firstcol + 1; j++){
+392: 				norm_temp1 += x[j]*z[j];
+393: 				norm_temp2 += z[j]*z[j];
+394: 			}
+395: 			#pragma omp single
+396: 			{
+397: 				norm_temp2 = 1.0 / sqrt(norm_temp2);
+398: 				zeta = SHIFT + 1.0 / norm_temp1;
+399: 			}
+400: 
+401: 			#pragma omp master
+402: 			{
+403: 				if(it==1){printf("\n   iteration           ||r||                 zeta\n");}
+404: 				printf("    %5d       %20.14e%20.13e\n", it, rnorm, zeta);
+405: 			}
+406: 			/* normalize z to obtain x */
+407: 			#pragma omp for 
+408: 			for(j = 0; j < lastcol - firstcol + 1; j++){
+409: 				x[j] = norm_temp2 * z[j];
+/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/../common/../common/wtime.cpp: 50 - 52
+--------------------------------------------------------------------------------
+
+50: 	gettimeofday(&tv, 0);
+51: 	if (sec < 0) sec = tv.tv_sec;
+52: 	*t = (tv.tv_sec - sec) + 1.0e-6*tv.tv_usec;
+/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/../common/c_timers.cpp: 72 - 84
+--------------------------------------------------------------------------------
+
+72: 	start[n] = elapsed_time();
+[...]
+82: 	elapsed[n] += t;
+83: 
+84: }

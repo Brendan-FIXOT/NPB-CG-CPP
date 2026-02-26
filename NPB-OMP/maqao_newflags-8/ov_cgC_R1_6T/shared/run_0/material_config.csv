@@ -1,0 +1,2 @@
+node;proc_name;architecture_code;uarchitecture_code;architecture;uarchitecture;cpui_model_name;cpui_cache_size;cpui_cpu_cores;max_frequency;cur_frequency;driver_frequency;scaling_governor;huge_pages;os_version;pids;
+platy-MS-7C02;AMD_fam17h_mod71h;2;37;x86_64;ZEN_V2;AMD Ryzen 5 3500X 6-Core Processor;512 KB;6;4121380;4098875;amd-pstate-epp;performance;madvise;Linux 6.17.0-14-generic #14~24.04.1-Ubuntu SMP PREEMPT_DYNAMIC Thu Jan 15 15:52:10 UTC 2;;

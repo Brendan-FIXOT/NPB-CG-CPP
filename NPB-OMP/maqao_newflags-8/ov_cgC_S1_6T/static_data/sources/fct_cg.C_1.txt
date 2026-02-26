@@ -1,0 +1,321 @@
+/usr/include/c++/13/bits/vector.tcc: 755 - 836
+--------------------------------------------------------------------------------
+
+755: 	if (__first != __last)
+756: 	  {
+757: 	    const size_type __n = std::distance(__first, __last);
+758: 	    if (size_type(this->_M_impl._M_end_of_storage
+759: 			  - this->_M_impl._M_finish) >= __n)
+[...]
+784: 		    this->_M_impl._M_finish += __n - __elems_after;
+[...]
+800: 		pointer __old_start = this->_M_impl._M_start;
+[...]
+833: 			      this->_M_impl._M_end_of_storage - __old_start);
+834: 		this->_M_impl._M_start = __new_start;
+835: 		this->_M_impl._M_finish = __new_finish;
+836: 		this->_M_impl._M_end_of_storage = __new_start + __len;
+/usr/include/x86_64-linux-gnu/bits/stdio2.h: 54 - 86
+--------------------------------------------------------------------------------
+
+54:   return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
+[...]
+86:   return __printf_chk (__USE_FORTIFY_LEVEL - 1, __fmt, __va_arg_pack ());
+/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 178 - 1022
+--------------------------------------------------------------------------------
+
+178: int main(int argc, char **argv){
+[...]
+198: 	if((fp = fopen("timer.flag", "r")) != NULL){
+199: 		timeron = TRUE;
+200: 		t_names[T_INIT] = (char*)"init";
+201: 		t_names[T_BENCH] = (char*)"benchmk";
+202: 		t_names[T_CONJ_GRAD] = (char*)"conjgd";
+203: 		fclose(fp);
+204: 	}else{
+205: 		timeron = FALSE;
+206: 	}
+207: 
+208: 	timer_start(T_INIT);
+209: 
+210: 	firstrow = 0;
+211: 	lastrow  = NA-1;
+212: 	firstcol = 0;
+213: 	lastcol  = NA-1;
+[...]
+244: 	naa = NA;
+245: 	nzz = NZ;
+246: 
+247: 	/* initialize random number generator */
+248: 	tran    = 314159265.0;
+249: 	amult   = 1220703125.0;
+250: 	zeta    = randlc( &tran, amult );
+251: 
+252: 	makea(naa, 
+[...]
+276: 	#pragma omp parallel private(it,i,j,k)	
+[...]
+427: 		err = fabs(zeta - zeta_verify_value) / zeta_verify_value;
+428: 		if(err <= epsilon){
+[...]
+444: 	if(t != 0.0){
+445: 		mflops = (double)(2.0*NITER*NA)
+[...]
+454: 	snprintf(omp_threads_str, sizeof(omp_threads_str), "%d", omp_get_max_threads());
+455: 	setenv("OMP_NUM_THREADS", omp_threads_str, 1);
+456: 	c_print_results((char*)"CG",
+[...]
+484: 	if(timeron){
+485: 		tmax = timer_read(T_BENCH);
+486: 		if(tmax == 0.0){tmax = 1.0;}
+487: 		printf("  SECTION   Time (secs)\n");
+488: 		for(i = 0; i < T_LAST; i++){
+489: 			t = timer_read(i);
+490: 			if(i == T_INIT){
+491: 				printf("  %8s:%9.3f\n", t_names[i], t);
+492: 			}else{
+493: 				printf("  %8s:%9.3f  (%6.2f%%)\n", t_names[i], t, t*100.0/tmax);
+494: 				if(i == T_CONJ_GRAD){
+495: 					t = tmax - t;
+496: 					printf("    --> %8s:%9.3f  (%6.2f%%)\n", "rest", t, t*100.0/tmax);
+[...]
+503: }
+[...]
+708: 	return (int)(ipwr2 * x);
+[...]
+738: static void makea(int n,
+[...]
+772: 	for(iouter = 0; iouter < n; iouter++){
+773: 		nzv = NONZER;
+774: 		sprnvc(n, nzv, nn1, vc, ivc);
+775: 		vecset(n, vc, ivc, &nzv, iouter+1, 0.5);
+776: 		arow[iouter] = nzv;
+777: 		for(ivelt = 0; ivelt < nzv; ivelt++){
+778: 			acol[iouter][ivelt] = ivc[ivelt] - 1;
+779: 			aelt[iouter][ivelt] = vc[ivelt];
+[...]
+811: static void sparse(double a[],
+[...]
+843: 			if(lhs.row != rhs.row){return lhs.row < rhs.row;}
+[...]
+853: 	nrows = lastrow - firstrow + 1;
+854: 	ratio = pow(rcond, (1.0 / (double)(n)));
+855: 
+856: 	int nthreads = 1;
+857: 	#pragma omp parallel
+[...]
+865: 	#pragma omp parallel
+[...]
+897: 	size_t total_triplets = 0;
+898: 	for(i = 0; i < nthreads; i++){
+899: 		total_triplets += thread_triplets[(size_t)i].size();
+900: 	}
+901: 
+902: 	std::vector<Triplet> triplets;
+903: 	triplets.reserve(total_triplets);
+904: 	for(i = 0; i < nthreads; i++){
+[...]
+912: 	reduced.reserve(triplets.size());
+913: 	for(size_t idx = 0; idx < triplets.size(); idx++){
+914: 		if(!reduced.empty() &&
+915: 				reduced.back().row == triplets[idx].row &&
+916: 				reduced.back().col == triplets[idx].col){
+917: 			reduced.back().val += triplets[idx].val;
+[...]
+923: 	for(j = 0; j < nrows + 1; j++){
+924: 		rowstr[j] = 0;
+925: 	}
+926: 	for(size_t idx = 0; idx < reduced.size(); idx++){
+927: 		rowstr[reduced[idx].row + 1]++;
+928: 	}
+929: 	for(j = 1; j < nrows + 1; j++){
+930: 		rowstr[j] += rowstr[j-1];
+931: 	}
+932: 
+933: 	nza = rowstr[nrows] - 1;
+934: 	if(nza > nz){
+935: 		printf("Space for matrix elements exceeded in sparse\n");
+936: 		printf("nza, nzmax = %d, %d\n", nza, nz);
+937: 		exit(EXIT_FAILURE);
+938: 	}
+939: 
+940: 	std::vector<int> write_pos((size_t)nrows);
+941: 	for(j = 0; j < nrows; j++){
+942: 		write_pos[(size_t)j] = rowstr[j];
+943: 		nzloc[j] = 0;
+944: 	}
+945: 
+946: 	for(size_t idx = 0; idx < reduced.size(); idx++){
+947: 		const int r = reduced[idx].row;
+948: 		const int p = write_pos[(size_t)r]++;
+949: 		colidx[p] = reduced[idx].col;
+950: 		a[p] = reduced[idx].val;
+951: 	}
+952: }
+[...]
+969: 	nzv = 0;
+970: 
+971: 	while(nzv < nz){
+[...]
+980: 		i = icnvrt(vecloc, nn1) + 1;
+981: 		if(i>n){continue;}
+[...]
+989: 		for(ii = 0; ii < nzv; ii++){
+990: 			if(iv[ii] == i){
+[...]
+996: 		v[nzv] = vecelt;
+997: 		iv[nzv] = i;
+998: 		nzv = nzv + 1;
+[...]
+1012: 	set = FALSE;
+1013: 	for(k = 0; k < *nzv; k++){
+1014: 		if(iv[k] == i){
+1015: 			v[k] = val;
+1016: 			set  = TRUE;
+1017: 		}
+1018: 	}
+1019: 	if(set == FALSE){
+1020: 		v[*nzv]  = val;
+1021: 		iv[*nzv] = i;
+1022: 		*nzv     = *nzv + 1;
+/usr/include/c++/13/bits/new_allocator.h: 151 - 191
+--------------------------------------------------------------------------------
+
+151: 	return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+[...]
+172: 	_GLIBCXX_OPERATOR_DELETE(_GLIBCXX_SIZED_DEALLOC(__p, __n));
+[...]
+191: 	{ ::new((void *)__p) _Up(std::forward<_Args>(__args)...); }
+/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/../common/c_randdp.cpp: 99 - 109
+--------------------------------------------------------------------------------
+
+99: 	t1 = r23 * (*x);
+100: 	x1 = (int)t1;
+101: 	x2 = (*x) - t23 * x1;
+102: 	t1 = a1 * x2 + a2 * x1;
+103: 	t2 = (int)(r23 * t1);
+104: 	z = t1 - t23 * t2;
+105: 	t3 = t23 * z + a2 * x2;
+106: 	t4 = (int)(r46 * t3);
+107: 	(*x) = t3 - t46 * t4;
+108: 
+109: 	return (r46 * (*x));
+/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/../common/c_timers.cpp: 55 - 90
+--------------------------------------------------------------------------------
+
+55: 	wtime(&t);
+56: 	return(t);
+[...]
+65: 	elapsed[n] = 0.0;
+[...]
+72: 	start[n] = elapsed_time();
+[...]
+82: 	elapsed[n] += t;
+[...]
+90: 	return(elapsed[n]);
+/usr/include/c++/13/bits/stl_algobase.h: 262 - 1518
+--------------------------------------------------------------------------------
+
+262:       if (__a < __b)
+[...]
+398: 	{ *__to = *__from; }
+[...]
+423: 	{ *__to = std::move(*__from); }
+[...]
+436: 	  if (__builtin_expect(_Num > 1, true))
+437: 	    __builtin_memmove(__result, __first, sizeof(_Tp) * _Num);
+438: 	  else if (_Num == 1)
+439: 	    std::__copy_move<_IsMove, false, random_access_iterator_tag>::
+440: 	      __assign_one(__result, __first);
+441: 	  return __result + _Num;
+[...]
+930:       for (; __first != __last; ++__first)
+931: 	*__first = __tmp;
+[...]
+1123:       if (__n <= 0)
+[...]
+1518:       return std::__bit_width(make_unsigned_t<_Tp>(__n)) - 1;
+/usr/include/c++/13/bits/stl_iterator.h: 1077 - 1337
+--------------------------------------------------------------------------------
+
+1077:       : _M_current(__i) { }
+[...]
+1126: 	return *this;
+[...]
+1148:       { return __normal_iterator(_M_current + __n); }
+[...]
+1337:     { return __lhs.base() - __rhs.base(); }
+/usr/include/c++/13/bits/stl_construct.h: 119 - 119
+--------------------------------------------------------------------------------
+
+119:       ::new((void*)__p) _Tp(std::forward<_Args>(__args)...);
+/usr/include/c++/13/bits/stl_vector.h: 100 - 1910
+--------------------------------------------------------------------------------
+
+100: 	: _M_start(), _M_finish(), _M_end_of_storage()
+[...]
+381: 	return __n != 0 ? _Tr::allocate(_M_impl, __n) : pointer();
+[...]
+389: 	if (__p)
+[...]
+398: 	this->_M_impl._M_start = this->_M_allocate(__n);
+399: 	this->_M_impl._M_finish = this->_M_impl._M_start;
+400: 	this->_M_impl._M_end_of_storage = this->_M_impl._M_start + __n;
+[...]
+993:       { return size_type(this->_M_impl._M_finish - this->_M_impl._M_start); }
+[...]
+1129: 	return *(this->_M_impl._M_start + __n);
+[...]
+1283: 	if (this->_M_impl._M_finish != this->_M_impl._M_end_of_storage)
+1284: 	  {
+1285: 	    _GLIBCXX_ASAN_ANNOTATE_GROW(1);
+1286: 	    _Alloc_traits::construct(this->_M_impl, this->_M_impl._M_finish,
+1287: 				     __x);
+1288: 	    ++this->_M_impl._M_finish;
+1289: 	    _GLIBCXX_ASAN_ANNOTATE_GREW(1);
+1290: 	  }
+1291: 	else
+1292: 	  _M_realloc_insert(end(), __x);
+[...]
+1717: 	this->_M_impl._M_finish =
+[...]
+1898: 	if (max_size() - size() < __n)
+1899: 	  __throw_length_error(__N(__s));
+1900: 
+1901: 	const size_type __len = size() + (std::max)(size(), __n);
+1902: 	return (__len < size() || __len > max_size()) ? max_size() : __len;
+[...]
+1909: 	if (__n > _S_max_size(_Tp_alloc_type(__a)))
+1910: 	  __throw_length_error(
+/usr/include/c++/13/bits/stl_uninitialized.h: 667 - 667
+--------------------------------------------------------------------------------
+
+667: 	      ++__first;
+/usr/include/c++/13/bits/stl_algo.h: 1796 - 1947
+--------------------------------------------------------------------------------
+
+1796: 	__val = _GLIBCXX_MOVE(*__last);
+1797:       _RandomAccessIterator __next = __last;
+1798:       --__next;
+1799:       while (__comp(__val, __next))
+1800: 	{
+1801: 	  *__last = _GLIBCXX_MOVE(*__next);
+1802: 	  __last = __next;
+1803: 	  --__next;
+1804: 	}
+1805:       *__last = _GLIBCXX_MOVE(__val);
+[...]
+1839:       for (_RandomAccessIterator __i = __first; __i != __last; ++__i)
+[...]
+1857:       if (__last - __first > int(_S_threshold))
+1858: 	{
+1859: 	  std::__insertion_sort(__first, __first + int(_S_threshold), __comp);
+1860: 	  std::__unguarded_insertion_sort(__first + int(_S_threshold), __last,
+1861: 					  __comp);
+1862: 	}
+1863:       else
+1864: 	std::__insertion_sort(__first, __last, __comp);
+[...]
+1945:       if (__first != __last)
+1946: 	{
+1947: 	  std::__introsort_loop(__first, __last,

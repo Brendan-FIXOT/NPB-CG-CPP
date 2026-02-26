@@ -1,0 +1,30 @@
+/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 708 - 998
+--------------------------------------------------------------------------------
+
+708: 	return (int)(ipwr2 * x);
+[...]
+971: 	while(nzv < nz){
+[...]
+980: 		i = icnvrt(vecloc, nn1) + 1;
+981: 		if(i>n){continue;}
+[...]
+989: 		for(ii = 0; ii < nzv; ii++){
+990: 			if(iv[ii] == i){
+[...]
+996: 		v[nzv] = vecelt;
+997: 		iv[nzv] = i;
+998: 		nzv = nzv + 1;
+/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/../common/c_randdp.cpp: 99 - 109
+--------------------------------------------------------------------------------
+
+99: 	t1 = r23 * (*x);
+100: 	x1 = (int)t1;
+101: 	x2 = (*x) - t23 * x1;
+102: 	t1 = a1 * x2 + a2 * x1;
+103: 	t2 = (int)(r23 * t1);
+104: 	z = t1 - t23 * t2;
+105: 	t3 = t23 * z + a2 * x2;
+106: 	t4 = (int)(r46 * t3);
+107: 	(*x) = t3 - t46 * t4;
+108: 
+109: 	return (r46 * (*x));
