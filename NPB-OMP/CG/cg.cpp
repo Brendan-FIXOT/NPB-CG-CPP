@@ -523,7 +523,6 @@ static void conj_grad(int colidx[],
 	static double d, sum, rho, rho0;
 	const int nrow = lastrow - firstrow + 1;
 	const int ncol = lastcol - firstcol + 1;
-	const int prefetch_dist = 8;
 
 	/* Local aliases help compilers reason about access patterns in hot loops. */
 	const int* __restrict rowstr_l = rowstr;
@@ -597,12 +596,6 @@ static void conj_grad(int colidx[],
 			const int row_end = rowstr_l[j+1];
 			#pragma omp simd reduction(+:suml)
 			for(k = row_start; k < row_end; k++){
-				const int pf = k + prefetch_dist;
-				if(pf < row_end){
-					__builtin_prefetch(&a_l[pf], 0, 1);
-					__builtin_prefetch(&colidx_l[pf], 0, 1);
-					__builtin_prefetch(&p_l[colidx_l[pf]], 0, 1);
-				}
 				suml += a_l[k]*p_l[colidx_l[k]];
 			}
 			q_l[j] = suml;
@@ -675,20 +668,14 @@ static void conj_grad(int colidx[],
 	#pragma omp for nowait schedule(static)
 	for(j = 0; j < nrow; j++){
 		suml = 0.0;
-		const int row_start = rowstr_l[j];
-		const int row_end = rowstr_l[j+1];
-		#pragma omp simd reduction(+:suml)
-		for(k = row_start; k < row_end; k++){
-			const int pf = k + prefetch_dist;
-			if(pf < row_end){
-				__builtin_prefetch(&a_l[pf], 0, 1);
-				__builtin_prefetch(&colidx_l[pf], 0, 1);
-				__builtin_prefetch(&z_l[colidx_l[pf]], 0, 1);
+			const int row_start = rowstr_l[j];
+			const int row_end = rowstr_l[j+1];
+			#pragma omp simd reduction(+:suml)
+			for(k = row_start; k < row_end; k++){
+				suml += a_l[k]*z_l[colidx_l[k]];
 			}
-			suml += a_l[k]*z_l[colidx_l[k]];
+			r_l[j] = suml;
 		}
-		r_l[j] = suml;
-	}
 
 	/*
 	 * ---------------------------------------------------------------------
