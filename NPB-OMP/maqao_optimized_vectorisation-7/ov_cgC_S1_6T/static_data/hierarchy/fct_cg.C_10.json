@@ -1,0 +1,362 @@
+{
+  "__fct":
+    {
+      "loops":
+        {
+          "_39":
+            {
+              "src_regions":
+                [
+                  {
+                    "path": "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp",
+                    "regions":
+                      [
+                        [
+                        547,
+                        550
+                        ]
+                      ]
+                  }
+                ],
+              "src": "cg.cpp:547-550"
+            },
+          "_22":
+            {
+              "src_regions":
+                [
+                  {
+                    "path": "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp",
+                    "regions":
+                      [
+                        [
+                        559,
+                        559
+                        ]
+                      ]
+                  }
+                ],
+              "src": "cg.cpp:559-559"
+            },
+          "_38":
+            {
+              "src_regions":
+                [
+                  {
+                    "path": "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp",
+                    "regions":
+                      [
+                        [
+                        547,
+                        550
+                        ]
+                      ]
+                  }
+                ],
+              "src": "cg.cpp:547-550"
+            },
+          "_27":
+            {
+              "_24":
+                {
+                  "src_regions":
+                    [
+                      {
+                        "path": "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp",
+                        "regions":
+                          [
+                            [
+                            635,
+                            636
+                            ],
+                            [
+                            644,
+                            644
+                            ]
+                          ]
+                      }
+                    ],
+                  "src": "cg.cpp:635-644"
+                },
+              "_23":
+                {
+                  "src_regions":
+                    [
+                      {
+                        "path": "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp",
+                        "regions":
+                          [
+                            [
+                            614,
+                            614
+                            ]
+                          ]
+                      }
+                    ],
+                  "src": "cg.cpp:614-614"
+                },
+              "_34":
+                {
+                  "src_regions":
+                    [
+                      {
+                        "path": "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp",
+                        "regions":
+                          [
+                            [
+                            616,
+                            616
+                            ]
+                          ]
+                      }
+                    ],
+                  "src": "cg.cpp:616-616"
+                },
+              "_33":
+                {
+                  "src_regions":
+                    [
+                      {
+                        "path": "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp",
+                        "regions":
+                          [
+                            [
+                            635,
+                            636
+                            ],
+                            [
+                            644,
+                            644
+                            ]
+                          ]
+                      }
+                    ],
+                  "src": "cg.cpp:635-644"
+                },
+              "src": "cg.cpp:559-700",
+              "_32":
+                {
+                  "src_regions":
+                    [
+                      {
+                        "path": "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp",
+                        "regions":
+                          [
+                            [
+                            661,
+                            661
+                            ]
+                          ]
+                      }
+                    ],
+                  "src": "cg.cpp:661-661"
+                },
+              "_26":
+                {
+                  "src_regions":
+                    [
+                      {
+                        "path": "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp",
+                        "regions":
+                          [
+                            [
+                            661,
+                            661
+                            ]
+                          ]
+                      }
+                    ],
+                  "src": "cg.cpp:661-661"
+                },
+              "_35":
+                {
+                  "_36":
+                    {
+                      "src_regions":
+                        [
+                          {
+                            "path": "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp",
+                            "regions":
+                              [
+                                [
+                                602,
+                                603
+                                ]
+                              ]
+                          }
+                        ],
+                      "src": "cg.cpp:602-603"
+                    },
+                  "src_regions":
+                    [
+                      {
+                        "path": "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp",
+                        "regions":
+                          [
+                            [
+                            595,
+                            605
+                            ]
+                          ]
+                      }
+                    ],
+                  "src": "cg.cpp:595-605"
+                },
+              "src_regions":
+                [
+                  {
+                    "path": "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp",
+                    "regions":
+                      [
+                        [
+                        559,
+                        559
+                        ],
+                        [
+                        565,
+                        565
+                        ],
+                        [
+                        580,
+                        582
+                        ],
+                        [
+                        588,
+                        605
+                        ],
+                        [
+                        614,
+                        616
+                        ],
+                        [
+                        624,
+                        624
+                        ],
+                        [
+                        633,
+                        636
+                        ],
+                        [
+                        644,
+                        644
+                        ],
+                        [
+                        652,
+                        652
+                        ],
+                        [
+                        659,
+                        661
+                        ],
+                        [
+                        700,
+                        700
+                        ]
+                      ]
+                  }
+                ],
+              "_25":
+                {
+                  "src_regions":
+                    [
+                      {
+                        "path": "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp",
+                        "regions":
+                          [
+                            [
+                            633,
+                            633
+                            ]
+                          ]
+                      }
+                    ],
+                  "src": "cg.cpp:633-633"
+                }
+            },
+          "_30":
+            {
+              "_31":
+                {
+                  "src_regions":
+                    [
+                      {
+                        "path": "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp",
+                        "regions":
+                          [
+                            [
+                            682,
+                            683
+                            ]
+                          ]
+                      }
+                    ],
+                  "src": "cg.cpp:682-683"
+                },
+              "src_regions":
+                [
+                  {
+                    "path": "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp",
+                    "regions":
+                      [
+                        [
+                        675,
+                        685
+                        ]
+                      ]
+                  }
+                ],
+              "src": "cg.cpp:675-685"
+            },
+          "_28":
+            {
+              "src_regions":
+                [
+                  {
+                    "path": "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp",
+                    "regions":
+                      [
+                        [
+                        693,
+                        700
+                        ]
+                      ]
+                  }
+                ],
+              "src": "cg.cpp:693-700"
+            },
+          "_37":
+            {
+              "src_regions":
+                [
+                  {
+                    "path": "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp",
+                    "regions":
+                      [
+                        [
+                        561,
+                        561
+                        ]
+                      ]
+                  }
+                ],
+              "src": "cg.cpp:561-561"
+            },
+          "_29":
+            {
+              "src_regions":
+                [
+                  {
+                    "path": "/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp",
+                    "regions":
+                      [
+                        [
+                        695,
+                        696
+                        ]
+                      ]
+                  }
+                ],
+              "src": "cg.cpp:695-696"
+            }
+        }
+    }
+}

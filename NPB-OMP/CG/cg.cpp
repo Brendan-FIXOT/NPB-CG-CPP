@@ -594,10 +594,13 @@ static void conj_grad(int colidx[],
 			suml = 0.0;
 			const int row_start = rowstr_l[j];
 			const int row_end = rowstr_l[j+1];
-			#pragma omp simd reduction(+:suml) simdlen(4)
-			for(k = row_start; k < row_end; k++){
-				const int idx = colidx_l[k];
-				suml += a_l[k]*p_l[idx];
+			const int len = row_end - row_start;
+			const int* __restrict ci = colidx_l + row_start;
+			const double* __restrict av = a_l + row_start;
+			#pragma omp simd reduction(+:suml)
+			for(k = 0; k < len; k++){
+				const int idx = ci[k];
+				suml += av[k] * p_l[idx];
 			}
 			q_l[j] = suml;
 		}
@@ -669,15 +672,18 @@ static void conj_grad(int colidx[],
 	#pragma omp for nowait schedule(static)
 	for(j = 0; j < nrow; j++){
 		suml = 0.0;
-			const int row_start = rowstr_l[j];
-			const int row_end = rowstr_l[j+1];
-			#pragma omp simd reduction(+:suml) simdlen(4)
-			for(k = row_start; k < row_end; k++){
-				const int idx = colidx_l[k];
-				suml += a_l[k]*z_l[idx];
-			}
-			r_l[j] = suml;
+		const int row_start = rowstr_l[j];
+		const int row_end = rowstr_l[j+1];
+		const int len = row_end - row_start;
+		const int* __restrict ci = colidx_l + row_start;
+		const double* __restrict av = a_l + row_start;
+		#pragma omp simd reduction(+:suml)
+		for(k = 0; k < len; k++){
+			const int idx = ci[k];
+			suml += av[k] * z_l[idx];
 		}
+		r_l[j] = suml;
+	}
 
 	/*
 	 * ---------------------------------------------------------------------
