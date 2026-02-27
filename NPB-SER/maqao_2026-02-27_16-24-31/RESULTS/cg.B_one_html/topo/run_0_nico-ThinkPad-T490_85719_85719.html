@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html translate="no" lang="en-US"><head><title>OV - cg.B - Profiling node nico-ThinkPad-T490 - process 85719 - thread 85719</title>
+<meta charset="utf-8" />
+<meta name="google" content="notranslate" />
+<link rel="stylesheet" type="text/css" media="screen" href="../css/ui.jqgrid.css" />
+<link rel="stylesheet" type="text/css" href="../css/themes/redmond_custom/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="../css/themes/redmond_custom/jquery.jqplot.min.css" />
+<link rel="stylesheet" type="text/css" href="../css/MAQAO_theme.css" />
+<link rel="stylesheet" type="text/css" href="../css/maqao_modal.css" />
+<link rel="stylesheet" type="text/css" href="../css/global.css" />
+<link rel="stylesheet" type="text/css" href="../css/maqao_menu.css" />
+<script src="../js/jquery-1.9.0.min.js" ></script>
+<script src="../js/jquery-ui-1.10.3.custom.min.js" ></script>
+<script src="../js/grid.locale-en.js" ></script>
+<script src="../js/jquery.jqGrid.min.js" ></script>
+<script src="../js/d3.min.js" ></script>
+<script class="include" src="../js/jquery.jqplot.min.js"></script>
+<script class="include" src="../js/jqplot.pieRenderer.min.js"></script>
+<script class="include" src="../js/jqplot.barRenderer.min.js"></script>
+<script class="include" src="../js/jqplot.categoryAxisRenderer.min.js"></script>
+<script class="include" src="../js/jqplot.pointLabels.min.js"></script>
+<script class="include" src="../js/jqplot.cursor.min.js"></script>
+<script class="include" src="../js/jqplot.canvasTextRenderer.min.js"></script>
+<script class="include" src="../js/jqplot.canvasAxisTickRenderer.min.js"></script>
+<script class="include" src="../js/jqplot.canvasAxisLabelRenderer.min.js"></script>
+<script class="include" src="../js/jqplot.enhancedLegendRenderer.min.js"></script>
+<script class="include" src="../js/jqplot.highlighter.min.js"></script>
+<script class="include" src="../js/jqplot.logAxisRenderer.min.js"></script>
+<script class="include" src="../js/maqao_menu.js"></script>
+<script>
+$( function() {
+  $( document ).tooltip({
+    content: function() {
+      if (this.classList.contains ("tooltip-maqao")
+      ||  this.classList.contains ("tooltip-maqao-button")) {
+        return tooltips_texts[$(this).attr('tooltip_id')];
+      }
+    },
+    position: {
+      my: "center bottom-20",
+        at: "center top",
+        using: function( position, feedback ) {
+          $( this ).css( position );
+          $( "<div>" )
+            .addClass( "arrow-tt" )
+            .addClass( feedback.vertical )
+            .addClass( feedback.horizontal )
+            .appendTo( this );
+        }
+      }
+  });
+} );
+
+// Code from https://www.htmlgoodies.com/beyond/javascript/article.php/3724571/Using-Multiple-JavaScript-Onload-Functions.htm
+function addLoadEvent(func) {
+  var oldonload = window.onload;
+  if (typeof window.onload != 'function') {
+    window.onload = func;
+  } else {
+    window.onload = function() {
+      if (oldonload) {
+        oldonload();
+      }
+      func();
+    }
+  }
+}
+function loadCSS(filename){ 
+  var file = document.createElement("link");
+  file.setAttribute("rel", "stylesheet");
+  file.setAttribute("type", "text/css");
+  file.setAttribute("href", filename);
+  document.head.appendChild(file);
+}
+addLoadEvent(function(){
+  var theme = localStorage.getItem("__MAQAO_OV_theme__");
+  if (theme) {
+    loadCSS("../css/"+theme+".css");
+  }
+  else {
+    localStorage.setItem("__MAQAO_OV_theme__", "MAQAO_theme");
+    loadCSS("../css/MAQAO_theme.css");
+  }
+});
+</script>
+</head><body>
+<div id="page_title"><img alt="MAQAO" id="maqao_logo" src="../images/MAQAO_small_logo.png"/><ul id="maqao_menu"><li ><a  href="../index.html">Global</a><ul><li ><a  href="../config.html">Configurations</a></li><li ><a  href="../env.html">Environment Variables</a></li><li ><a  href="../outputs.html">Outputs</a></li><li ><a  href="../log.html">Logs</a></li><li ><a  href="../tools_status.html">Tools Status</a></li></ul></li><li ><a  href="../summary.html">Summary</a></li><li ><a  href="../application.html">Application</a></li><li ><a  href="../fcts_and_loops.html">Functions</a></li><li ><a  href="../loops_index.html">Loops</a></li><li ><a  href="../topology.html">Topology</a><ul><li ><a  href="../lstopo.html">lstopo</a></li><li ><a  href="../lstopo_PU.html">lstopo_PU</a></li><li ><a  href="../lstopo_threads.html">lstopo_threads</a></li></ul></li></ul>
+<span><img alt="options" id="menu_options_icon" src="../images/gear_20.png"  onclick="__open_options ()"/></span>
+</div>
+<script>
+function __change_theme () {
+  var new_theme = document.getElementById("select_theme").value;
+  localStorage.setItem("__MAQAO_OV_theme__", new_theme);
+    loadCSS("../css/"+new_theme+".css");
+}
+function __open_options () {
+  var elem = document.getElementById ("options_configuration");
+  if (elem.dataset.open == "false") {
+    elem.dataset.open = "true";
+    elem.style.display = "block";
+  }
+  else {
+    elem.dataset.open = "false";
+    elem.style.display = "none";
+  }
+}
+</script>
+<div id="anchor_file_start"></div>
+<div id="maqao_content">
+<div>
+  <div id="spacer_page_title" ></div>
+  <div id="options_configuration" data-open="false" style="display:none;">
+    <h3 id="options_configuration_header">Report Configuration</h3>
+    <span style="margin-left:10px;"><label for="select_theme">Theme: </label>    <select name="theme" id="select_theme" onchange="__change_theme ()">  <option value="MAQAO_theme">MAQAO_theme</option>  <option value="darkgrey">darkgrey</option>  <option value="cyan">cyan</option></select></span>    <span style="margin-left:10px;"><label for="select_chart_theme">Chart Theme: </label>    <select name="theme" id="select_chart_theme" onchange="__change_chart_theme ()">  <option value="Default_Chart_Theme">Default_Chart_Theme</option>  <option value="grey">grey</option></select></span></div>
+</div>
+<script>
+  let theme = localStorage.getItem("__MAQAO_OV_theme__");
+  if (theme) {
+    document.getElementById("select_theme").value = theme;
+  }
+  theme = localStorage.getItem("__MAQAO_OV_chart_theme__");
+  if (theme) {
+    document.getElementById("select_chart_theme").value = theme;
+  }
+document.getElementById("spacer_page_title").style.height = (document.getElementById("page_title").clientHeight + 25)+"px";
+var obj = document.getElementById("page_title");
+if (obj) {
+  var elems = document.getElementsByClassName ("_first_menu_level")
+  if (obj.clientHeight < 90) {
+    for (var i = 0; i < elems.length; i++) {
+      elems.item(i).style.borderBottomLeftRadius = "";
+      elems.item(i).style.borderBottomRightRadius = "";
+    }
+  }
+  else {
+    for (var i = 0; i < elems.length; i++) {
+      elems.item(i).style.borderBottomLeftRadius = "10px";
+      elems.item(i).style.borderBottomRightRadius = "10px";
+    }
+  }
+}
+</script>
+<div class="_fixed_box"  id="warning_other_thread_box" style="display: none;" ><h3 class="_header">Warning</h3>
+<div class="_content"><div id="warning_other_thread" style="margin-top:15px; margin-bottom:15px;"></div></div></div><div class="_accordion_box collapsed" ><h3 id="_accordion_header_1" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>Environment Variables<span class="tooltip-maqao-button help-maqao" title="" tooltip_id="0" ></span></h3><div id="_accordion_content_1" class="_content collapsed"><pre style="margin: 0px">LESSOPEN=| /usr/bin/lesspipe %s</pre>
+<pre style="margin: 0px">CONDA_PROMPT_MODIFIER=(base) </pre>
+<pre style="margin: 0px">LANGUAGE=en_US</pre>
+<pre style="margin: 0px">USER=nico</pre>
+<pre style="margin: 0px">XDG_SEAT=seat0</pre>
+<pre style="margin: 0px">SSH_AGENT_PID=2311</pre>
+<pre style="margin: 0px">XDG_SESSION_TYPE=x11</pre>
+<pre style="margin: 0px">COMPIZ_CONFIG_PROFILE=mint</pre>
+<pre style="margin: 0px">SHLVL=1</pre>
+<pre style="margin: 0px">CONDA_BACKUP_QT_XCB_GL_INTEGRATION=</pre>
+<pre style="margin: 0px">HOME=/home/nico</pre>
+<pre style="margin: 0px">CONDA_SHLVL=1</pre>
+<pre style="margin: 0px">OLDPWD=/home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER</pre>
+<pre style="margin: 0px">DESKTOP_SESSION=xfce</pre>
+<pre style="margin: 0px">NVM_BIN=/home/nico/.nvm/versions/node/v24.1.0/bin</pre>
+<pre style="margin: 0px">NVM_INC=/home/nico/.nvm/versions/node/v24.1.0/include/node</pre>
+<pre style="margin: 0px">GTK_MODULES=gail:atk-bridge</pre>
+<pre style="margin: 0px">XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0</pre>
+<pre style="margin: 0px">LC_MONETARY=ar_DZ.UTF-8</pre>
+<pre style="margin: 0px">DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus</pre>
+<pre style="margin: 0px">COLORTERM=truecolor</pre>
+<pre style="margin: 0px">NVM_DIR=/home/nico/.nvm</pre>
+<pre style="margin: 0px">GTK_IM_MODULE=ibus</pre>
+<pre style="margin: 0px">LOGNAME=nico</pre>
+<pre style="margin: 0px">WINDOWID=46137347</pre>
+<pre style="margin: 0px">_=/home/nico/Downloads/maqao.x86_64.2026.0.0/bin/maqao</pre>
+<pre style="margin: 0px">XDG_SESSION_CLASS=user</pre>
+<pre style="margin: 0px">CLUTTER_BACKEND=x11</pre>
+<pre style="margin: 0px">TERM=xterm-256color</pre>
+<pre style="margin: 0px">XDG_SESSION_ID=c2</pre>
+<pre style="margin: 0px">PATH=/home/nico/Downloads/maqao.x86_64.2026.0.0/bin:/snap/bin:/home/nico/anaconda3/bin:/home/nico/anaconda3/condabin:/home/nico/Applications:/home/nico/.nvm/versions/node/v24.1.0/bin:/home/nico/.local/share/solana/install/active_release/bin:/home/nico/.cabal/bin:/home/nico/.ghcup/bin:/home/nico/.local/share/solana/install/active_release/bin:/home/nico/.cargo/bin:/home/nico/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin</pre>
+<pre style="margin: 0px">SESSION_MANAGER=local/nico-ThinkPad-T490:@/tmp/.ICE-unix/2126,unix/nico-ThinkPad-T490:/tmp/.ICE-unix/2126</pre>
+<pre style="margin: 0px">GDM_LANG=en_US</pre>
+<pre style="margin: 0px">GTK3_MODULES=xapp-gtk3-module</pre>
+<pre style="margin: 0px">XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session0</pre>
+<pre style="margin: 0px">XDG_MENU_PREFIX=xfce-</pre>
+<pre style="margin: 0px">LC_ADDRESS=ar_DZ.UTF-8</pre>
+<pre style="margin: 0px">XDG_RUNTIME_DIR=/run/user/1000</pre>
+<pre style="margin: 0px">DISPLAY=:0.0</pre>
+<pre style="margin: 0px">LANG=en_US.UTF-8</pre>
+<pre style="margin: 0px">XDG_CURRENT_DESKTOP=XFCE</pre>
+<pre style="margin: 0px">LC_TELEPHONE=ar_DZ.UTF-8</pre>
+<pre style="margin: 0px">XMODIFIERS=@im=ibus</pre>
+<pre style="margin: 0px">XDG_SESSION_DESKTOP=xfce</pre>
+<pre style="margin: 0px">XAUTHORITY=/home/nico/.Xauthority</pre>
+<pre style="margin: 0px">LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:</pre>
+<pre style="margin: 0px">QT_XCB_GL_INTEGRATION=none</pre>
+<pre style="margin: 0px">SSH_AUTH_SOCK=/tmp/ssh-FIaHIp8TtXHK/agent.2310</pre>
+<pre style="margin: 0px">GSETTINGS_SCHEMA_DIR=/home/nico/anaconda3/share/glib-2.0/schemas</pre>
+<pre style="margin: 0px">XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/nico</pre>
+<pre style="margin: 0px">CONDA_PYTHON_EXE=/home/nico/anaconda3/bin/python</pre>
+<pre style="margin: 0px">SHELL=/bin/bash</pre>
+<pre style="margin: 0px">LC_NAME=ar_DZ.UTF-8</pre>
+<pre style="margin: 0px">QT_ACCESSIBILITY=1</pre>
+<pre style="margin: 0px">GDMSESSION=xfce</pre>
+<pre style="margin: 0px">LESSCLOSE=/usr/bin/lesspipe %s %s</pre>
+<pre style="margin: 0px">CONDA_DEFAULT_ENV=base</pre>
+<pre style="margin: 0px">LC_MEASUREMENT=ar_DZ.UTF-8</pre>
+<pre style="margin: 0px">LC_IDENTIFICATION=ar_DZ.UTF-8</pre>
+<pre style="margin: 0px">QT_IM_MODULE=ibus</pre>
+<pre style="margin: 0px">XDG_VTNR=7</pre>
+<pre style="margin: 0px">PWD=/home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER</pre>
+<pre style="margin: 0px">XDG_CONFIG_DIRS=/etc/xdg/xdg-xfce:/etc/xdg</pre>
+<pre style="margin: 0px">CONDA_EXE=/home/nico/anaconda3/bin/conda</pre>
+<pre style="margin: 0px">CLUTTER_IM_MODULE=ibus</pre>
+<pre style="margin: 0px">NVM_CD_FLAGS=</pre>
+<pre style="margin: 0px">XDG_DATA_DIRS=/usr/share/xfce4:/home/nico/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop:/usr/share</pre>
+<pre style="margin: 0px">LC_NUMERIC=ar_DZ.UTF-8</pre>
+<pre style="margin: 0px">CONDA_PREFIX=/home/nico/anaconda3</pre>
+<pre style="margin: 0px">GSETTINGS_SCHEMA_DIR_CONDA_BACKUP=</pre>
+<pre style="margin: 0px">LC_PAPER=ar_DZ.UTF-8</pre>
+<pre style="margin: 0px">VTE_VERSION=7600</pre>
+</div></div><div class="_accordion_box collapsed" ><h3 id="_accordion_header_2" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>Path Number Loops Profile for node nico-ThinkPad-T490 - process 85719 - thread 85719</h3><div id="_accordion_content_2" class="_content collapsed"><div style="margin-top: 10px; margin-bottom: 10px; background-color: var(--chart_background); overflow-x:auto; overflow-y:hidden; "><div id="chart_cat_1430" style="height:500px;margin-top:20px;" ></div>
+</div>
+<script class="code" >
+  function __generate_chart_1430(){
+    document.getElementById('chart_cat_1430').innerHTML = '';
+  var plot1430_data = [[34,10,3,0,2,3,0,0,6,],[93.22797507327,3.8334603486582,0.088855037465691,0,1.3328255787492,0.44427521526813,0,0,0.54582382459193,],[93.22797507327,97.061435421929,97.150290459394,97.150290459394,98.483116038143,98.927391253412,98.927391253412,98.927391253412,99.473215078003,],];
+  var plot1430_ticks = ['1','2','3 to 4','5 to 8','9 to 16','17 to 32','33 to 64','> 64','unknown',];
+  var plot1430 = jQuery.jqplot ('chart_cat_1430', plot1430_data, {
+    seriesDefaults: {
+      renderer: jQuery.jqplot.BarRenderer,
+      rendererOptions: {},
+      pointLabels: {show: true      },
+    },
+    axes: {
+      xaxis: {
+        renderer: $.jqplot.CategoryAxisRenderer,ticks: plot1430_ticks,label: 'Coverage Range',labelRenderer: $.jqplot.CanvasAxisLabelRenderer,},
+      yaxis: {label: 'Number of Loops',labelRenderer: $.jqplot.CanvasAxisLabelRenderer,autoscale:true,min:0,},
+      y2axis: {label: 'Coverage (%)',labelRenderer: $.jqplot.CanvasAxisLabelRenderer,autoscale:true,min:0,}
+    },
+    highlighter: {tooltipContentEditor: function (str, seriesIndex, pointIndex) {return plot1430_ticks[pointIndex]+' - '+plot1430_data[seriesIndex][pointIndex];},show: true,showTooltip: true,sizeAdjust: 10,formatString: '%s',tooltipLocation: 'n',useAxesFormatters: false,},
+    legend: {renderer: $.jqplot.EnhancedLegendRenderer, show: true,location: 's',placement: 'outsideGrid',rendererOptions: {numberRows: '1',},},
+    series: [{label:'Number of Loops', yaxis:'yaxis', },{label:'Coverage over Range', yaxis:'y2axis', },{label:'Cumulated Coverage', renderer: $.jqplot.LineRenderer, yaxis:'y2axis', },],
+  });
+  }
+</script><script>  $(document).ready(function(){
+     __generate_chart_1430()
+  });
+</script></div></div><div class="_fixed_box" ><h3 class="_header">Profiling node nico-ThinkPad-T490 - process 85719 - thread 85719<span class="tooltip-maqao-button help-maqao" title="" tooltip_id="1" ></span></h3>
+<div class="_content"><div class="_div_table" ><div style="overflow:auto;">
+<table id="_tree_table_90" class="_tree_table"><tr><th class="_freezed_row  _left " style="width:60%;"><span></span>Name</th><th class="_freezed_row " style="width:20%;"><span></span>Module</th><th class="_freezed_row " style="width:10%;"><span></span>Coverage (%)</th><th class="_freezed_row " style="width:10%;"><span></span>Time (s)</th></tr>
+<tr class=" _outer_row"  id="_tr_90_1"  ondblclick="_action_4(this,1,-1, '../functions/cg.B_4.html');"  style="cursor:pointer;"><td id="_tr_90_1-1"  data-_i="1" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:0px;cursor:pointer;" >&#x25BA;</span>main<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_1-2"  data-_i="1" data-_j="2"  class=" _centered"  style="word-break:break-all;" >cg.B</td><td id="_tr_90_1-3"  data-_i="1" data-_j="3"  class=" _centered"  style="font-style: italic;" >97.44</td><td id="_tr_90_1-4"  data-_i="1" data-_j="4"  class=" _centered"  style="font-style: italic;" >76.76</td></tr>
+<tr class="_tree_hidden _tr_90_1"  id="_tr_90_1_1"  ondblclick="_action_2(this,2,-1, 'Loop 26 -  - cg.B');"  style="cursor:pointer;"><td id="_tr_90_1_1-1"  data-_i="2" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:15px;cursor:pointer;" >&#x25BA;</span>Loop 26 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_1_1-2"  data-_i="2" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_1-3"  data-_i="2" data-_j="3"  class=" _centered"  style="font-style: italic;" >91.03</td><td id="_tr_90_1_1-4"  data-_i="2" data-_j="4"  class=" _centered"  style="font-style: italic;" >71.71</td></tr>
+<tr class="_tree_hidden _tr_90_1_1"  id="_tr_90_1_1_1"  ondblclick="_action_2(this,3,-1, 'Loop 25 -  - cg.B');"  style="cursor:pointer;"><td id="_tr_90_1_1_1-1"  data-_i="3" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:30px;cursor:pointer;" >&#x25BA;</span>Loop 25 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_1_1_1-2"  data-_i="3" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_1_1-3"  data-_i="3" data-_j="3"  class=" _centered"  style="font-style: italic;" >90.74</td><td id="_tr_90_1_1_1-4"  data-_i="3" data-_j="4"  class=" _centered"  style="font-style: italic;" >71.48</td></tr>
+<tr class="_tree_hidden _tr_90_1_1_1"  id="_tr_90_1_1_1_1"  ondblclick="_action_2(this,4,-1, 'Loop 23 -  - cg.B');"  style="cursor:pointer;"><td id="_tr_90_1_1_1_1-1"  data-_i="4" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:45px;cursor:pointer;" >&#x25BA;</span>Loop 23 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_1_1_1_1-2"  data-_i="4" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_1_1_1-3"  data-_i="4" data-_j="3"  class=" _centered"  style="font-style: italic;" >87.17</td><td id="_tr_90_1_1_1_1-4"  data-_i="4" data-_j="4"  class=" _centered"  style="font-style: italic;" >68.67</td></tr>
+<tr class="_tree_hidden _tr_90_1_1_1_1"  id="_tr_90_1_1_1_1_1"  ondblclick="_action_4(this,5,-1, '../loops/cg.B_36.html');"  style="cursor:pointer;"><td id="_tr_90_1_1_1_1_1-1"  data-_i="5" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:60px;cursor:pointer;" >&#x25BA;</span>Loop 36 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_1_1_1_1_1-2"  data-_i="5" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_1_1_1_1-3"  data-_i="5" data-_j="3"  class=" _centered"  style="font-style: italic;" >86.32</td><td id="_tr_90_1_1_1_1_1-4"  data-_i="5" data-_j="4"  class=" _centered"  style="font-style: italic;" >68.00</td></tr>
+<tr class="_tree_hidden _tr_90_1_1_1_1_1"  id="_tr_90_1_1_1_1_1_1"  ondblclick="_action_4(this,6,-1, '../loops/cg.B_37.html');"  style="cursor:pointer;"><td id="_tr_90_1_1_1_1_1_1-1"  data-_i="6" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:78px;" >&#x25CB;</span>Loop 37 -  - cg.B</td><td id="_tr_90_1_1_1_1_1_1-2"  data-_i="6" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_1_1_1_1_1-3"  data-_i="6" data-_j="3"  class=" _centered"  style="font-style: italic;" >86.32</td><td id="_tr_90_1_1_1_1_1_1-4"  data-_i="6" data-_j="4"  class=" _centered"  style="font-style: italic;" >68.00</td></tr>
+<tr class="_tree_hidden _tr_90_1_1_1_1"  id="_tr_90_1_1_1_1_2"  ondblclick="_action_4(this,7,-1, '../loops/cg.B_35.html');"  style="cursor:pointer;"><td id="_tr_90_1_1_1_1_2-1"  data-_i="7" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:63px;" >&#x25CB;</span>Loop 35 -  - cg.B</td><td id="_tr_90_1_1_1_1_2-2"  data-_i="7" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_1_1_1_2-3"  data-_i="7" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.38</td><td id="_tr_90_1_1_1_1_2-4"  data-_i="7" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.30</td></tr>
+<tr class="_tree_hidden _tr_90_1_1_1_1"  id="_tr_90_1_1_1_1_3"  ondblclick="_action_4(this,8,-1, '../loops/cg.B_34.html');"  style="cursor:pointer;"><td id="_tr_90_1_1_1_1_3-1"  data-_i="8" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:63px;" >&#x25CB;</span>Loop 34 -  - cg.B</td><td id="_tr_90_1_1_1_1_3-2"  data-_i="8" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_1_1_1_3-3"  data-_i="8" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.34</td><td id="_tr_90_1_1_1_1_3-4"  data-_i="8" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.27</td></tr>
+<tr class="_tree_hidden _tr_90_1_1_1_1"  id="_tr_90_1_1_1_1_4"  ondblclick="_action_4(this,9,-1, '../loops/cg.B_33.html');"  style="cursor:pointer;"><td id="_tr_90_1_1_1_1_4-1"  data-_i="9" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:63px;" >&#x25CB;</span>Loop 33 -  - cg.B</td><td id="_tr_90_1_1_1_1_4-2"  data-_i="9" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_1_1_1_4-3"  data-_i="9" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.13</td><td id="_tr_90_1_1_1_1_4-4"  data-_i="9" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.10</td></tr>
+<tr class="_tree_hidden _tr_90_1_1_1"  id="_tr_90_1_1_1_2"  ondblclick="_action_4(this,10,-1, '../loops/cg.B_31.html');"  style="cursor:pointer;"><td id="_tr_90_1_1_1_2-1"  data-_i="10" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:45px;cursor:pointer;" >&#x25BA;</span>Loop 31 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_1_1_1_2-2"  data-_i="10" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_1_1_2-3"  data-_i="10" data-_j="3"  class=" _centered"  style="font-style: italic;" >3.52</td><td id="_tr_90_1_1_1_2-4"  data-_i="10" data-_j="4"  class=" _centered"  style="font-style: italic;" >2.77</td></tr>
+<tr class="_tree_hidden _tr_90_1_1_1_2"  id="_tr_90_1_1_1_2_1"  ondblclick="_action_4(this,11,-1, '../loops/cg.B_32.html');"  style="cursor:pointer;"><td id="_tr_90_1_1_1_2_1-1"  data-_i="11" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:63px;" >&#x25CB;</span>Loop 32 -  - cg.B</td><td id="_tr_90_1_1_1_2_1-2"  data-_i="11" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_1_1_2_1-3"  data-_i="11" data-_j="3"  class=" _centered"  style="font-style: italic;" >3.52</td><td id="_tr_90_1_1_1_2_1-4"  data-_i="11" data-_j="4"  class=" _centered"  style="font-style: italic;" >2.77</td></tr>
+<tr class="_tree_hidden _tr_90_1_1_1"  id="_tr_90_1_1_1_3"  ondblclick="_action_4(this,12,-1, '../loops/cg.B_29.html');"  style="cursor:pointer;"><td id="_tr_90_1_1_1_3-1"  data-_i="12" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:48px;" >&#x25CB;</span>Loop 29 -  - cg.B</td><td id="_tr_90_1_1_1_3-2"  data-_i="12" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_1_1_3-3"  data-_i="12" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.02</td><td id="_tr_90_1_1_1_3-4"  data-_i="12" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.01</td></tr>
+<tr class="_tree_hidden _tr_90_1_1_1"  id="_tr_90_1_1_1_4"  ondblclick="_action_4(this,13,-1, '../loops/cg.B_38.html');"  style="cursor:pointer;"><td id="_tr_90_1_1_1_4-1"  data-_i="13" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:48px;" >&#x25CB;</span>Loop 38 -  - cg.B</td><td id="_tr_90_1_1_1_4-2"  data-_i="13" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_1_1_4-3"  data-_i="13" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.02</td><td id="_tr_90_1_1_1_4-4"  data-_i="13" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.01</td></tr>
+<tr class="_tree_hidden _tr_90_1_1_1"  id="_tr_90_1_1_1_5"  ondblclick="_action_4(this,14,-1, '../loops/cg.B_30.html');"  style="cursor:pointer;"><td id="_tr_90_1_1_1_5-1"  data-_i="14" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:48px;" >&#x25CB;</span>Loop 30 -  - cg.B</td><td id="_tr_90_1_1_1_5-2"  data-_i="14" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_1_1_5-3"  data-_i="14" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.01</td><td id="_tr_90_1_1_1_5-4"  data-_i="14" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.01</td></tr>
+<tr class="_tree_hidden _tr_90_1_1"  id="_tr_90_1_1_2"  ondblclick="_action_4(this,15,-1, '../loops/cg.B_62.html');"  style="cursor:pointer;"><td id="_tr_90_1_1_2-1"  data-_i="15" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:30px;cursor:pointer;" >&#x25BA;</span>Loop 62 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_1_1_2-2"  data-_i="15" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_1_2-3"  data-_i="15" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.10</td><td id="_tr_90_1_1_2-4"  data-_i="15" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.07</td></tr>
+<tr class="_tree_hidden _tr_90_1_1_2"  id="_tr_90_1_1_2_1"  ondblclick="_action_4(this,16,-1, '../loops/cg.B_63.html');"  style="cursor:pointer;"><td id="_tr_90_1_1_2_1-1"  data-_i="16" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:48px;" >&#x25CB;</span>Loop 63 -  - cg.B</td><td id="_tr_90_1_1_2_1-2"  data-_i="16" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_1_2_1-3"  data-_i="16" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.10</td><td id="_tr_90_1_1_2_1-4"  data-_i="16" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.07</td></tr>
+<tr class="_tree_hidden _tr_90_1_1"  id="_tr_90_1_1_3"  ondblclick="_action_2(this,17,-1, 'Loop 43 -  - cg.B');"  style="cursor:pointer;"><td id="_tr_90_1_1_3-1"  data-_i="17" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:30px;cursor:pointer;" >&#x25BA;</span>Loop 43 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_1_1_3-2"  data-_i="17" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_1_3-3"  data-_i="17" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.05</td><td id="_tr_90_1_1_3-4"  data-_i="17" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.04</td></tr>
+<tr class="_tree_hidden _tr_90_1_1_3"  id="_tr_90_1_1_3_1"  ondblclick="_action_2(this,18,-1, 'Loop 44 -  - cg.B');"  style="cursor:pointer;"><td id="_tr_90_1_1_3_1-1"  data-_i="18" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:45px;cursor:pointer;" >&#x25BA;</span>Loop 44 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_1_1_3_1-2"  data-_i="18" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_1_3_1-3"  data-_i="18" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.05</td><td id="_tr_90_1_1_3_1-4"  data-_i="18" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.04</td></tr>
+<tr class="_tree_hidden _tr_90_1_1_3_1"  id="_tr_90_1_1_3_1_1"  ondblclick="_action_4(this,19,-1, '../loops/cg.B_46.html');"  style="cursor:pointer;"><td id="_tr_90_1_1_3_1_1-1"  data-_i="19" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:63px;" >&#x25CB;</span>Loop 46 -  - cg.B</td><td id="_tr_90_1_1_3_1_1-2"  data-_i="19" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_1_3_1_1-3"  data-_i="19" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.05</td><td id="_tr_90_1_1_3_1_1-4"  data-_i="19" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.04</td></tr>
+<tr class="_tree_hidden _tr_90_1_1"  id="_tr_90_1_1_4"  ondblclick="_action_2(this,20,-1, 'Loop 50 -  - cg.B');"  style="cursor:pointer;"><td id="_tr_90_1_1_4-1"  data-_i="20" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:30px;cursor:pointer;" >&#x25BA;</span>Loop 50 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_1_1_4-2"  data-_i="20" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_1_4-3"  data-_i="20" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.04</td><td id="_tr_90_1_1_4-4"  data-_i="20" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.03</td></tr>
+<tr class="_tree_hidden _tr_90_1_1_4"  id="_tr_90_1_1_4_1"  ondblclick="_action_4(this,21,-1, '../loops/cg.B_52.html');"  style="cursor:pointer;"><td id="_tr_90_1_1_4_1-1"  data-_i="21" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:45px;cursor:pointer;" >&#x25BA;</span>Loop 52 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_1_1_4_1-2"  data-_i="21" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_1_4_1-3"  data-_i="21" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.03</td><td id="_tr_90_1_1_4_1-4"  data-_i="21" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.02</td></tr>
+<tr class="_tree_hidden _tr_90_1_1_4_1"  id="_tr_90_1_1_4_1_1"  ondblclick="_action_4(this,22,-1, '../loops/cg.B_53.html');"  style="cursor:pointer;"><td id="_tr_90_1_1_4_1_1-1"  data-_i="22" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:63px;" >&#x25CB;</span>Loop 53 -  - cg.B</td><td id="_tr_90_1_1_4_1_1-2"  data-_i="22" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_1_4_1_1-3"  data-_i="22" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.03</td><td id="_tr_90_1_1_4_1_1-4"  data-_i="22" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.02</td></tr>
+<tr class="_tree_hidden _tr_90_1_1_4"  id="_tr_90_1_1_4_2"  ondblclick="_action_4(this,23,-1, '../loops/cg.B_54.html');"  style="cursor:pointer;"><td id="_tr_90_1_1_4_2-1"  data-_i="23" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:48px;" >&#x25CB;</span>Loop 54 -  - cg.B</td><td id="_tr_90_1_1_4_2-2"  data-_i="23" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_1_4_2-3"  data-_i="23" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.01</td><td id="_tr_90_1_1_4_2-4"  data-_i="23" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.01</td></tr>
+<tr class="_tree_hidden _tr_90_1_1"  id="_tr_90_1_1_5"  ondblclick="_action_4(this,24,-1, '../loops/cg.B_5.html');"  style="cursor:pointer;"><td id="_tr_90_1_1_5-1"  data-_i="24" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:33px;" >&#x25CB;</span>Loop 5 -  - cg.B</td><td id="_tr_90_1_1_5-2"  data-_i="24" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_1_5-3"  data-_i="24" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.04</td><td id="_tr_90_1_1_5-4"  data-_i="24" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.03</td></tr>
+<tr class="_tree_hidden _tr_90_1_1"  id="_tr_90_1_1_6"  ondblclick="_action_2(this,25,-1, 'Loop 57 -  - cg.B');"  style="cursor:pointer;"><td id="_tr_90_1_1_6-1"  data-_i="25" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:30px;cursor:pointer;" >&#x25BA;</span>Loop 57 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_1_1_6-2"  data-_i="25" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_1_6-3"  data-_i="25" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.04</td><td id="_tr_90_1_1_6-4"  data-_i="25" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.03</td></tr>
+<tr class="_tree_hidden _tr_90_1_1_6"  id="_tr_90_1_1_6_1"  ondblclick="_action_2(this,26,-1, 'Loop 59 -  - cg.B');"  style="cursor:pointer;"><td id="_tr_90_1_1_6_1-1"  data-_i="26" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:45px;cursor:pointer;" >&#x25BA;</span>Loop 59 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_1_1_6_1-2"  data-_i="26" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_1_6_1-3"  data-_i="26" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.04</td><td id="_tr_90_1_1_6_1-4"  data-_i="26" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.03</td></tr>
+<tr class="_tree_hidden _tr_90_1_1_6_1"  id="_tr_90_1_1_6_1_1"  ondblclick="_action_4(this,27,-1, '../loops/cg.B_58.html');"  style="cursor:pointer;"><td id="_tr_90_1_1_6_1_1-1"  data-_i="27" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:63px;" >&#x25CB;</span>Loop 58 -  - cg.B</td><td id="_tr_90_1_1_6_1_1-2"  data-_i="27" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_1_6_1_1-3"  data-_i="27" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.02</td><td id="_tr_90_1_1_6_1_1-4"  data-_i="27" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.01</td></tr>
+<tr class="_tree_hidden _tr_90_1_1_6_1"  id="_tr_90_1_1_6_1_2"  ondblclick="_action_4(this,28,-1, '../loops/cg.B_56.html');"  style="cursor:pointer;"><td id="_tr_90_1_1_6_1_2-1"  data-_i="28" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:63px;" >&#x25CB;</span>Loop 56 -  - cg.B</td><td id="_tr_90_1_1_6_1_2-2"  data-_i="28" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_1_6_1_2-3"  data-_i="28" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.02</td><td id="_tr_90_1_1_6_1_2-4"  data-_i="28" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.01</td></tr>
+<tr class="_tree_hidden _tr_90_1_1"  id="_tr_90_1_1_7"  ondblclick="_action_4(this,29,-1, '../loops/cg.B_61.html');"  style="cursor:pointer;"><td id="_tr_90_1_1_7-1"  data-_i="29" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:33px;" >&#x25CB;</span>Loop 61 -  - cg.B</td><td id="_tr_90_1_1_7-2"  data-_i="29" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_1_7-3"  data-_i="29" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.03</td><td id="_tr_90_1_1_7-4"  data-_i="29" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.02</td></tr>
+<tr class="_tree_hidden _tr_90_1"  id="_tr_90_1_2"  ondblclick="_action_2(this,30,-1, 'Loop 81 -  - cg.B');"  style="cursor:pointer;"><td id="_tr_90_1_2-1"  data-_i="30" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:15px;cursor:pointer;" >&#x25BA;</span>Loop 81 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_1_2-2"  data-_i="30" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_2-3"  data-_i="30" data-_j="3"  class=" _centered"  style="font-style: italic;" >3.62</td><td id="_tr_90_1_2-4"  data-_i="30" data-_j="4"  class=" _centered"  style="font-style: italic;" >2.85</td></tr>
+<tr class="_tree_hidden _tr_90_1_2"  id="_tr_90_1_2_1"  ondblclick="_action_4(this,31,-1, '../loops/cg.B_126.html');"  style="cursor:pointer;"><td id="_tr_90_1_2_1-1"  data-_i="31" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:30px;cursor:pointer;" >&#x25BA;</span>Loop 126 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_1_2_1-2"  data-_i="31" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_2_1-3"  data-_i="31" data-_j="3"  class=" _centered"  style="font-style: italic;" >3.62</td><td id="_tr_90_1_2_1-4"  data-_i="31" data-_j="4"  class=" _centered"  style="font-style: italic;" >2.85</td></tr>
+<tr class="_tree_hidden _tr_90_1_2_1"  id="_tr_90_1_2_1_1"  ondblclick="_action_4(this,32,-1, '../loops/cg.B_125.html');"  style="cursor:pointer;"><td id="_tr_90_1_2_1_1-1"  data-_i="32" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:45px;cursor:pointer;" >&#x25BA;</span>Loop 125 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_1_2_1_1-2"  data-_i="32" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_2_1_1-3"  data-_i="32" data-_j="3"  class=" _centered"  style="font-style: italic;" >3.62</td><td id="_tr_90_1_2_1_1-4"  data-_i="32" data-_j="4"  class=" _centered"  style="font-style: italic;" >2.85</td></tr>
+<tr class="_tree_hidden _tr_90_1_2_1_1"  id="_tr_90_1_2_1_1_1"  ondblclick="_action_4(this,33,-1, '../loops/cg.B_128.html');"  style="cursor:pointer;"><td id="_tr_90_1_2_1_1_1-1"  data-_i="33" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:63px;" >&#x25CB;</span>Loop 128 -  - cg.B</td><td id="_tr_90_1_2_1_1_1-2"  data-_i="33" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_2_1_1_1-3"  data-_i="33" data-_j="3"  class=" _centered"  style="font-style: italic;" >2.35</td><td id="_tr_90_1_2_1_1_1-4"  data-_i="33" data-_j="4"  class=" _centered"  style="font-style: italic;" >1.86</td></tr>
+<tr class="_tree_hidden _tr_90_1_2_1_1"  id="_tr_90_1_2_1_1_2"  ondblclick="_action_4(this,34,-1, '../loops/cg.B_127.html');"  style="cursor:pointer;"><td id="_tr_90_1_2_1_1_2-1"  data-_i="34" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:63px;" >&#x25CB;</span>Loop 127 -  - cg.B</td><td id="_tr_90_1_2_1_1_2-2"  data-_i="34" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_2_1_1_2-3"  data-_i="34" data-_j="3"  class=" _centered"  style="font-style: italic;" >1.27</td><td id="_tr_90_1_2_1_1_2-4"  data-_i="34" data-_j="4"  class=" _centered"  style="font-style: italic;" >1.00</td></tr>
+<tr class="_tree_hidden _tr_90_1"  id="_tr_90_1_3"  ondblclick="_action_2(this,35,-1, 'Loop 105 -  - cg.B');"  style="cursor:pointer;"><td id="_tr_90_1_3-1"  data-_i="35" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:15px;cursor:pointer;" >&#x25BA;</span>Loop 105 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_1_3-2"  data-_i="35" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_3-3"  data-_i="35" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.17</td><td id="_tr_90_1_3-4"  data-_i="35" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.13</td></tr>
+<tr class="_tree_hidden _tr_90_1_3"  id="_tr_90_1_3_1"  ondblclick="_action_4(this,36,-1, '../loops/cg.B_106.html');"  style="cursor:pointer;"><td id="_tr_90_1_3_1-1"  data-_i="36" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:33px;" >&#x25CB;</span>Loop 106 -  - cg.B</td><td id="_tr_90_1_3_1-2"  data-_i="36" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_3_1-3"  data-_i="36" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.17</td><td id="_tr_90_1_3_1-4"  data-_i="36" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.13</td></tr>
+<tr class="_tree_hidden _tr_90_1"  id="_tr_90_1_4"  ondblclick="_action_2(this,37,-1, 'Loop 94 -  - cg.B');"  style="cursor:pointer;"><td id="_tr_90_1_4-1"  data-_i="37" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:15px;cursor:pointer;" >&#x25BA;</span>Loop 94 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_1_4-2"  data-_i="37" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_4-3"  data-_i="37" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.14</td><td id="_tr_90_1_4-4"  data-_i="37" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.11</td></tr>
+<tr class="_tree_hidden _tr_90_1_4"  id="_tr_90_1_4_1"  ondblclick="_action_4(this,38,-1, '../loops/cg.B_101.html');"  style="cursor:pointer;"><td id="_tr_90_1_4_1-1"  data-_i="38" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:30px;cursor:pointer;" >&#x25BA;</span>Loop 101 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_1_4_1-2"  data-_i="38" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_4_1-3"  data-_i="38" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.10</td><td id="_tr_90_1_4_1-4"  data-_i="38" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.07</td></tr>
+<tr class="_tree_hidden _tr_90_1_4_1"  id="_tr_90_1_4_1_1"  ondblclick="_action_4(this,39,-1, '../loops/cg.B_100.html');"  style="cursor:pointer;"><td id="_tr_90_1_4_1_1-1"  data-_i="39" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:48px;" >&#x25CB;</span>Loop 100 -  - cg.B</td><td id="_tr_90_1_4_1_1-2"  data-_i="39" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_4_1_1-3"  data-_i="39" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.10</td><td id="_tr_90_1_4_1_1-4"  data-_i="39" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.07</td></tr>
+<tr class="_tree_hidden _tr_90_1_4"  id="_tr_90_1_4_2"  ondblclick="_action_4(this,40,-1, '../loops/cg.B_102.html');"  style="cursor:pointer;"><td id="_tr_90_1_4_2-1"  data-_i="40" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:33px;" >&#x25CB;</span>Loop 102 -  - cg.B</td><td id="_tr_90_1_4_2-2"  data-_i="40" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_4_2-3"  data-_i="40" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.03</td><td id="_tr_90_1_4_2-4"  data-_i="40" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.02</td></tr>
+<tr class="_tree_hidden _tr_90_1_4"  id="_tr_90_1_4_3"  ondblclick="_action_4(this,41,-1, '../loops/cg.B_95.html');"  style="cursor:pointer;"><td id="_tr_90_1_4_3-1"  data-_i="41" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:33px;" >&#x25CB;</span>Loop 95 -  - cg.B</td><td id="_tr_90_1_4_3-2"  data-_i="41" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_4_3-3"  data-_i="41" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.01</td><td id="_tr_90_1_4_3-4"  data-_i="41" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.01</td></tr>
+<tr class="_tree_hidden _tr_90_1"  id="_tr_90_1_5"  ondblclick="_action_2(this,42,-1, 'Loop 84 -  - cg.B');"  style="cursor:pointer;"><td id="_tr_90_1_5-1"  data-_i="42" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:15px;cursor:pointer;" >&#x25BA;</span>Loop 84 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_1_5-2"  data-_i="42" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_5-3"  data-_i="42" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.11</td><td id="_tr_90_1_5-4"  data-_i="42" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.09</td></tr>
+<tr class="_tree_hidden _tr_90_1_5"  id="_tr_90_1_5_1"  ondblclick="_action_4(this,43,-1, '../loops/cg.B_90.html');"  style="cursor:pointer;"><td id="_tr_90_1_5_1-1"  data-_i="43" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:30px;cursor:pointer;" >&#x25BA;</span>Loop 90 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_1_5_1-2"  data-_i="43" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_5_1-3"  data-_i="43" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.08</td><td id="_tr_90_1_5_1-4"  data-_i="43" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.06</td></tr>
+<tr class="_tree_hidden _tr_90_1_5_1"  id="_tr_90_1_5_1_1"  ondblclick="_action_4(this,44,-1, '../loops/cg.B_89.html');"  style="cursor:pointer;"><td id="_tr_90_1_5_1_1-1"  data-_i="44" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:48px;" >&#x25CB;</span>Loop 89 -  - cg.B</td><td id="_tr_90_1_5_1_1-2"  data-_i="44" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_5_1_1-3"  data-_i="44" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.08</td><td id="_tr_90_1_5_1_1-4"  data-_i="44" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.06</td></tr>
+<tr class="_tree_hidden _tr_90_1_5"  id="_tr_90_1_5_2"  ondblclick="_action_4(this,45,-1, '../loops/cg.B_85.html');"  style="cursor:pointer;"><td id="_tr_90_1_5_2-1"  data-_i="45" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:33px;" >&#x25CB;</span>Loop 85 -  - cg.B</td><td id="_tr_90_1_5_2-2"  data-_i="45" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_5_2-3"  data-_i="45" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.04</td><td id="_tr_90_1_5_2-4"  data-_i="45" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.03</td></tr>
+<tr class="_tree_hidden _tr_90_1"  id="_tr_90_1_6"  ondblclick="_action_2(this,46,-1, 'Loop 119 -  - cg.B');"  style="cursor:pointer;"><td id="_tr_90_1_6-1"  data-_i="46" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:15px;cursor:pointer;" >&#x25BA;</span>Loop 119 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_1_6-2"  data-_i="46" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_6-3"  data-_i="46" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.08</td><td id="_tr_90_1_6-4"  data-_i="46" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.06</td></tr>
+<tr class="_tree_hidden _tr_90_1_6"  id="_tr_90_1_6_1"  ondblclick="_action_2(this,47,-1, 'Loop 122 -  - cg.B');"  style="cursor:pointer;"><td id="_tr_90_1_6_1-1"  data-_i="47" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:30px;cursor:pointer;" >&#x25BA;</span>Loop 122 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_1_6_1-2"  data-_i="47" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_6_1-3"  data-_i="47" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.08</td><td id="_tr_90_1_6_1-4"  data-_i="47" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.06</td></tr>
+<tr class="_tree_hidden _tr_90_1_6_1"  id="_tr_90_1_6_1_1"  ondblclick="_action_2(this,48,-1, 'Loop 121 -  - cg.B');"  style="cursor:pointer;"><td id="_tr_90_1_6_1_1-1"  data-_i="48" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:45px;cursor:pointer;" >&#x25BA;</span>Loop 121 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_1_6_1_1-2"  data-_i="48" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_6_1_1-3"  data-_i="48" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.08</td><td id="_tr_90_1_6_1_1-4"  data-_i="48" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.06</td></tr>
+<tr class="_tree_hidden _tr_90_1_6_1_1"  id="_tr_90_1_6_1_1_1"  ondblclick="_action_4(this,49,-1, '../loops/cg.B_123.html');"  style="cursor:pointer;"><td id="_tr_90_1_6_1_1_1-1"  data-_i="49" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:63px;" >&#x25CB;</span>Loop 123 -  - cg.B</td><td id="_tr_90_1_6_1_1_1-2"  data-_i="49" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_6_1_1_1-3"  data-_i="49" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.08</td><td id="_tr_90_1_6_1_1_1-4"  data-_i="49" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.06</td></tr>
+<tr class="_tree_hidden _tr_90_1"  id="_tr_90_1_7"  ondblclick="_action_2(this,50,-1, 'Loop 69 -  - cg.B');"  style="cursor:pointer;"><td id="_tr_90_1_7-1"  data-_i="50" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:15px;cursor:pointer;" >&#x25BA;</span>Loop 69 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_1_7-2"  data-_i="50" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_7-3"  data-_i="50" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.07</td><td id="_tr_90_1_7-4"  data-_i="50" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.06</td></tr>
+<tr class="_tree_hidden _tr_90_1_7"  id="_tr_90_1_7_1"  ondblclick="_action_4(this,51,-1, '../loops/cg.B_77.html');"  style="cursor:pointer;"><td id="_tr_90_1_7_1-1"  data-_i="51" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:30px;cursor:pointer;" >&#x25BA;</span>Loop 77 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_1_7_1-2"  data-_i="51" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_7_1-3"  data-_i="51" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.06</td><td id="_tr_90_1_7_1-4"  data-_i="51" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.05</td></tr>
+<tr class="_tree_hidden _tr_90_1_7_1"  id="_tr_90_1_7_1_1"  ondblclick="_action_4(this,52,-1, '../loops/cg.B_78.html');"  style="cursor:pointer;"><td id="_tr_90_1_7_1_1-1"  data-_i="52" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:48px;" >&#x25CB;</span>Loop 78 -  - cg.B</td><td id="_tr_90_1_7_1_1-2"  data-_i="52" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_7_1_1-3"  data-_i="52" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.06</td><td id="_tr_90_1_7_1_1-4"  data-_i="52" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.05</td></tr>
+<tr class="_tree_hidden _tr_90_1_7"  id="_tr_90_1_7_2"  ondblclick="_action_4(this,53,-1, '../loops/cg.B_74.html');"  style="cursor:pointer;"><td id="_tr_90_1_7_2-1"  data-_i="53" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:33px;" >&#x25CB;</span>Loop 74 -  - cg.B</td><td id="_tr_90_1_7_2-2"  data-_i="53" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_7_2-3"  data-_i="53" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.01</td><td id="_tr_90_1_7_2-4"  data-_i="53" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.01</td></tr>
+<tr class="_tree_hidden _tr_90_1"  id="_tr_90_1_8"  ondblclick="_action_2(this,54,-1, 'Loop 64 -  - cg.B');"  style="cursor:pointer;"><td id="_tr_90_1_8-1"  data-_i="54" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:15px;cursor:pointer;" >&#x25BA;</span>Loop 64 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_1_8-2"  data-_i="54" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_8-3"  data-_i="54" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.06</td><td id="_tr_90_1_8-4"  data-_i="54" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.05</td></tr>
+<tr class="_tree_hidden _tr_90_1_8"  id="_tr_90_1_8_1"  ondblclick="_action_4(this,55,-1, '../loops/cg.B_65.html');"  style="cursor:pointer;"><td id="_tr_90_1_8_1-1"  data-_i="55" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:33px;" >&#x25CB;</span>Loop 65 -  - cg.B</td><td id="_tr_90_1_8_1-2"  data-_i="55" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_8_1-3"  data-_i="55" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.06</td><td id="_tr_90_1_8_1-4"  data-_i="55" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.05</td></tr>
+<tr class="_tree_hidden _tr_90_1"  id="_tr_90_1_9"  ondblclick="_action_2(this,56,-1, 'Loop 108 -  - cg.B');"  style="cursor:pointer;"><td id="_tr_90_1_9-1"  data-_i="56" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:15px;cursor:pointer;" >&#x25BA;</span>Loop 108 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_1_9-2"  data-_i="56" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_9-3"  data-_i="56" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.03</td><td id="_tr_90_1_9-4"  data-_i="56" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.02</td></tr>
+<tr class="_tree_hidden _tr_90_1_9"  id="_tr_90_1_9_1"  ondblclick="_action_4(this,57,-1, '../loops/cg.B_109.html');"  style="cursor:pointer;"><td id="_tr_90_1_9_1-1"  data-_i="57" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:33px;" >&#x25CB;</span>Loop 109 -  - cg.B</td><td id="_tr_90_1_9_1-2"  data-_i="57" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_9_1-3"  data-_i="57" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.03</td><td id="_tr_90_1_9_1-4"  data-_i="57" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.02</td></tr>
+<tr class="_tree_hidden _tr_90_1"  id="_tr_90_1_10"  ondblclick="_action_2(this,58,-1, 'Loop 113 -  - cg.B');"  style="cursor:pointer;"><td id="_tr_90_1_10-1"  data-_i="58" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:15px;cursor:pointer;" >&#x25BA;</span>Loop 113 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_1_10-2"  data-_i="58" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_10-3"  data-_i="58" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.03</td><td id="_tr_90_1_10-4"  data-_i="58" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.02</td></tr>
+<tr class="_tree_hidden _tr_90_1_10"  id="_tr_90_1_10_1"  ondblclick="_action_4(this,59,-1, '../loops/cg.B_115.html');"  style="cursor:pointer;"><td id="_tr_90_1_10_1-1"  data-_i="59" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:33px;" >&#x25CB;</span>Loop 115 -  - cg.B</td><td id="_tr_90_1_10_1-2"  data-_i="59" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_10_1-3"  data-_i="59" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.03</td><td id="_tr_90_1_10_1-4"  data-_i="59" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.02</td></tr>
+<tr class="_tree_hidden _tr_90_1"  id="_tr_90_1_11"  ondblclick="_action_2(this,60,-1, 'Loop 110 -  - cg.B');"  style="cursor:pointer;"><td id="_tr_90_1_11-1"  data-_i="60" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:15px;cursor:pointer;" >&#x25BA;</span>Loop 110 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_1_11-2"  data-_i="60" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_11-3"  data-_i="60" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.02</td><td id="_tr_90_1_11-4"  data-_i="60" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.01</td></tr>
+<tr class="_tree_hidden _tr_90_1_11"  id="_tr_90_1_11_1"  ondblclick="_action_4(this,61,-1, '../loops/cg.B_111.html');"  style="cursor:pointer;"><td id="_tr_90_1_11_1-1"  data-_i="61" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:33px;" >&#x25CB;</span>Loop 111 -  - cg.B</td><td id="_tr_90_1_11_1-2"  data-_i="61" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_11_1-3"  data-_i="61" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.02</td><td id="_tr_90_1_11_1-4"  data-_i="61" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.01</td></tr>
+<tr class="_tree_hidden _tr_90_1"  id="_tr_90_1_12"  ondblclick="_action_2(this,62,-1, 'Loop 117 -  - cg.B');"  style="cursor:pointer;"><td id="_tr_90_1_12-1"  data-_i="62" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:15px;cursor:pointer;" >&#x25BA;</span>Loop 117 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_1_12-2"  data-_i="62" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_12-3"  data-_i="62" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.02</td><td id="_tr_90_1_12-4"  data-_i="62" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.01</td></tr>
+<tr class="_tree_hidden _tr_90_1_12"  id="_tr_90_1_12_1"  ondblclick="_action_4(this,63,-1, '../loops/cg.B_116.html');"  style="cursor:pointer;"><td id="_tr_90_1_12_1-1"  data-_i="63" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:33px;" >&#x25CB;</span>Loop 116 -  - cg.B</td><td id="_tr_90_1_12_1-2"  data-_i="63" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_1_12_1-3"  data-_i="63" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.02</td><td id="_tr_90_1_12_1-4"  data-_i="63" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.01</td></tr>
+<tr class=" _outer_row"  id="_tr_90_2"  ondblclick="_action_4(this,64,-1, '../functions/cg.B_11.html');"  style="cursor:pointer;"><td id="_tr_90_2-1"  data-_i="64" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:0px;cursor:pointer;" >&#x25BA;</span>sell_spmv_new_order(SellCSigma const&, double const*, double*)<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_2-2"  data-_i="64" data-_j="2"  class=" _centered"  style="word-break:break-all;" >cg.B</td><td id="_tr_90_2-3"  data-_i="64" data-_j="3"  class=" _centered"  style="font-style: italic;" >1.05</td><td id="_tr_90_2-4"  data-_i="64" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.83</td></tr>
+<tr class="_tree_hidden _tr_90_2"  id="_tr_90_2_1"  ondblclick="_action_2(this,65,-1, 'Loop 129 -  - cg.B');"  style="cursor:pointer;"><td id="_tr_90_2_1-1"  data-_i="65" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:15px;cursor:pointer;" >&#x25BA;</span>Loop 129 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_2_1-2"  data-_i="65" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_2_1-3"  data-_i="65" data-_j="3"  class=" _centered"  style="font-style: italic;" >1.03</td><td id="_tr_90_2_1-4"  data-_i="65" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.81</td></tr>
+<tr class="_tree_hidden _tr_90_2_1"  id="_tr_90_2_1_1"  ondblclick="_action_4(this,66,-1, '../loops/cg.B_130.html');"  style="cursor:pointer;"><td id="_tr_90_2_1_1-1"  data-_i="66" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:30px;cursor:pointer;" >&#x25BA;</span>Loop 130 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_2_1_1-2"  data-_i="66" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_2_1_1-3"  data-_i="66" data-_j="3"  class=" _centered"  style="font-style: italic;" >1.03</td><td id="_tr_90_2_1_1-4"  data-_i="66" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.81</td></tr>
+<tr class="_tree_hidden _tr_90_2_1_1"  id="_tr_90_2_1_1_1"  ondblclick="_action_4(this,67,-1, '../loops/cg.B_131.html');"  style="cursor:pointer;"><td id="_tr_90_2_1_1_1-1"  data-_i="67" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:48px;" >&#x25CB;</span>Loop 131 -  - cg.B</td><td id="_tr_90_2_1_1_1-2"  data-_i="67" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_2_1_1_1-3"  data-_i="67" data-_j="3"  class=" _centered"  style="font-style: italic;" >1.03</td><td id="_tr_90_2_1_1_1-4"  data-_i="67" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.81</td></tr>
+<tr class=" _outer_row"  id="_tr_90_3"  ondblclick="_action_4(this,68,-1, '../functions/cg.B_19.html');"  style="cursor:pointer;"><td id="_tr_90_3-1"  data-_i="68" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:0px;cursor:pointer;" >&#x25BA;</span><span class="tooltip-maqao" title="" tooltip_id="2" >void std::__introsort_loop<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, long, __gnu_cxx::__ops::_Iter_less_iter>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*,...</span><span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_3-2"  data-_i="68" data-_j="2"  class=" _centered"  style="word-break:break-all;" >cg.B</td><td id="_tr_90_3-3"  data-_i="68" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.79</td><td id="_tr_90_3-4"  data-_i="68" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.62</td></tr>
+<tr class="_tree_hidden _tr_90_3"  id="_tr_90_3_1"  ondblclick="_action_4(this,69,-1, '../loops/cg.B_156.html');"  style="cursor:pointer;"><td id="_tr_90_3_1-1"  data-_i="69" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:15px;cursor:pointer;" >&#x25BA;</span>Loop 156 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_3_1-2"  data-_i="69" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_3_1-3"  data-_i="69" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.34</td><td id="_tr_90_3_1-4"  data-_i="69" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.27</td></tr>
+<tr class="_tree_hidden _tr_90_3_1"  id="_tr_90_3_1_1"  ondblclick="_action_4(this,70,-1, '../loops/cg.B_158.html');"  style="cursor:pointer;"><td id="_tr_90_3_1_1-1"  data-_i="70" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:30px;cursor:pointer;" >&#x25BA;</span>Loop 158 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_3_1_1-2"  data-_i="70" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_3_1_1-3"  data-_i="70" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.33</td><td id="_tr_90_3_1_1-4"  data-_i="70" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.26</td></tr>
+<tr class="_tree_hidden _tr_90_3_1_1"  id="_tr_90_3_1_1_1"  ondblclick="_action_4(this,71,-1, '../loops/cg.B_157.html');"  style="cursor:pointer;"><td id="_tr_90_3_1_1_1-1"  data-_i="71" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:48px;" >&#x25CB;</span>Loop 157 -  - cg.B</td><td id="_tr_90_3_1_1_1-2"  data-_i="71" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_3_1_1_1-3"  data-_i="71" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.18</td><td id="_tr_90_3_1_1_1-4"  data-_i="71" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.14</td></tr>
+<tr class="_tree_hidden _tr_90_3_1_1"  id="_tr_90_3_1_1_2"  ondblclick="_action_4(this,72,-1, '../loops/cg.B_160.html');"  style="cursor:pointer;"><td id="_tr_90_3_1_1_2-1"  data-_i="72" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:48px;" >&#x25CB;</span>Loop 160 -  - cg.B</td><td id="_tr_90_3_1_1_2-2"  data-_i="72" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_3_1_1_2-3"  data-_i="72" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.15</td><td id="_tr_90_3_1_1_2-4"  data-_i="72" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.12</td></tr>
+<tr class="_tree_hidden _tr_90_3_1"  id="_tr_90_3_1_2"  ondblclick="_action_4(this,73,-1, '../loops/cg.B_159.html');"  style="cursor:pointer;"><td id="_tr_90_3_1_2-1"  data-_i="73" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:33px;" >&#x25CB;</span>Loop 159 -  - cg.B</td><td id="_tr_90_3_1_2-2"  data-_i="73" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_3_1_2-3"  data-_i="73" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.01</td><td id="_tr_90_3_1_2-4"  data-_i="73" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.01</td></tr>
+<tr class=" _outer_row"  id="_tr_90_4"  ondblclick="_action_4(this,74,-1, '../functions/cg.B_21.html');"  style="cursor:pointer;"><td id="_tr_90_4-1"  data-_i="74" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:0px;cursor:pointer;" >&#x25BA;</span><span class="tooltip-maqao" title="" tooltip_id="3" >void std::__introsort_loop<__gnu_cxx::__normal_iterator<std::pair<int, double>*, std::vector<std::pair<int, double>, std::allocator<std::pair<int, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<csr_apply_symmetric_permutation(int, int const*, int c...</span><span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_4-2"  data-_i="74" data-_j="2"  class=" _centered"  style="word-break:break-all;" >cg.B</td><td id="_tr_90_4-3"  data-_i="74" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.21</td><td id="_tr_90_4-4"  data-_i="74" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.16</td></tr>
+<tr class="_tree_hidden _tr_90_4"  id="_tr_90_4_1"  ondblclick="_action_4(this,75,-1, '../loops/cg.B_172.html');"  style="cursor:pointer;"><td id="_tr_90_4_1-1"  data-_i="75" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:15px;cursor:pointer;" >&#x25BA;</span>Loop 172 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_4_1-2"  data-_i="75" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_4_1-3"  data-_i="75" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.06</td><td id="_tr_90_4_1-4"  data-_i="75" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.04</td></tr>
+<tr class="_tree_hidden _tr_90_4_1"  id="_tr_90_4_1_1"  ondblclick="_action_4(this,76,-1, '../loops/cg.B_171.html');"  style="cursor:pointer;"><td id="_tr_90_4_1_1-1"  data-_i="76" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:33px;" >&#x25CB;</span>Loop 171 -  - cg.B</td><td id="_tr_90_4_1_1-2"  data-_i="76" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_4_1_1-3"  data-_i="76" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.03</td><td id="_tr_90_4_1_1-4"  data-_i="76" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.02</td></tr>
+<tr class="_tree_hidden _tr_90_4_1"  id="_tr_90_4_1_2"  ondblclick="_action_4(this,77,-1, '../loops/cg.B_174.html');"  style="cursor:pointer;"><td id="_tr_90_4_1_2-1"  data-_i="77" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:30px;cursor:pointer;" >&#x25BA;</span>Loop 174 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_4_1_2-2"  data-_i="77" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_4_1_2-3"  data-_i="77" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.03</td><td id="_tr_90_4_1_2-4"  data-_i="77" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.02</td></tr>
+<tr class="_tree_hidden _tr_90_4_1_2"  id="_tr_90_4_1_2_1"  ondblclick="_action_4(this,78,-1, '../loops/cg.B_173.html');"  style="cursor:pointer;"><td id="_tr_90_4_1_2_1-1"  data-_i="78" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:48px;" >&#x25CB;</span>Loop 173 -  - cg.B</td><td id="_tr_90_4_1_2_1-2"  data-_i="78" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_4_1_2_1-3"  data-_i="78" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.03</td><td id="_tr_90_4_1_2_1-4"  data-_i="78" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.02</td></tr>
+<tr class=" _outer_row"  id="_tr_90_5"  ondblclick="_action_4(this,79,-1, '../functions/libc.so.6_3611.html');"  style="cursor:pointer;"><td id="_tr_90_5-1"  data-_i="79" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:3px;" >&#x25CB;</span>__memset_avx2_unaligned_erms</td><td id="_tr_90_5-2"  data-_i="79" data-_j="2"  class=" _centered"  style="word-break:break-all;" >libc.so.6</td><td id="_tr_90_5-3"  data-_i="79" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.17</td><td id="_tr_90_5-4"  data-_i="79" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.13</td></tr>
+<tr class=" _outer_row"  id="_tr_90_6"  ondblclick="_action_4(this,80,-1, '../functions/cg.B_42.html');"  style="cursor:pointer;"><td id="_tr_90_6-1"  data-_i="80" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:3px;" >&#x25CB;</span>randlc(double*, double)</td><td id="_tr_90_6-2"  data-_i="80" data-_j="2"  class=" _centered"  style="word-break:break-all;" >cg.B</td><td id="_tr_90_6-3"  data-_i="80" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.10</td><td id="_tr_90_6-4"  data-_i="80" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.07</td></tr>
+<tr class=" _outer_row"  id="_tr_90_7"  ondblclick="_action_4(this,81,-1, '../functions/cg.B_40.html');"  style="cursor:pointer;"><td id="_tr_90_7-1"  data-_i="81" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:0px;cursor:pointer;" >&#x25BA;</span>std::vector<double, std::allocator<double> >::_M_fill_assign(unsigned long, double const&)<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_7-2"  data-_i="81" data-_j="2"  class=" _centered"  style="word-break:break-all;" >cg.B</td><td id="_tr_90_7-3"  data-_i="81" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.04</td><td id="_tr_90_7-4"  data-_i="81" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.04</td></tr>
+<tr class="_tree_hidden _tr_90_7"  id="_tr_90_7_1"  ondblclick="_action_4(this,82,-1, '../loops/cg.B_210.html');"  style="cursor:pointer;"><td id="_tr_90_7_1-1"  data-_i="82" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:18px;" >&#x25CB;</span>Loop 210 -  - cg.B</td><td id="_tr_90_7_1-2"  data-_i="82" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_7_1-3"  data-_i="82" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.04</td><td id="_tr_90_7_1-4"  data-_i="82" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.04</td></tr>
+<tr class=" _outer_row"  id="_tr_90_8"  ondblclick="_action_4(this,83,-1, '../functions/cg.B_15.html');"  style="cursor:pointer;"><td id="_tr_90_8-1"  data-_i="83" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:0px;cursor:pointer;" >&#x25BA;</span><span class="tooltip-maqao" title="" tooltip_id="4" >void std::__adjust_heap<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, long, int, __gnu_cxx::__ops::_Iter_less_iter>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, long, long, int, __gnu_cxx::__op...</span><span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_8-2"  data-_i="83" data-_j="2"  class=" _centered"  style="word-break:break-all;" >cg.B</td><td id="_tr_90_8-3"  data-_i="83" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.04</td><td id="_tr_90_8-4"  data-_i="83" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.04</td></tr>
+<tr class="_tree_hidden _tr_90_8"  id="_tr_90_8_1"  ondblclick="_action_4(this,84,-1, '../loops/cg.B_142.html');"  style="cursor:pointer;"><td id="_tr_90_8_1-1"  data-_i="84" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:18px;" >&#x25CB;</span>Loop 142 -  - cg.B</td><td id="_tr_90_8_1-2"  data-_i="84" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_8_1-3"  data-_i="84" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.03</td><td id="_tr_90_8_1-4"  data-_i="84" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.02</td></tr>
+<tr class=" _outer_row"  id="_tr_90_9"  ondblclick="_action_4(this,85,-1, '../functions/cg.B_20.html');"  style="cursor:pointer;"><td id="_tr_90_9-1"  data-_i="85" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:0px;cursor:pointer;" >&#x25BA;</span><span class="tooltip-maqao" title="" tooltip_id="5" >void std::__introsort_loop<__gnu_cxx::__normal_iterator<std::pair<int, double>*, std::vector<std::pair<int, double>, std::allocator<std::pair<int, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<csr_sort_rows_by_col(int, int const*, int*, double*)::...</span><span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_9-2"  data-_i="85" data-_j="2"  class=" _centered"  style="word-break:break-all;" >cg.B</td><td id="_tr_90_9-3"  data-_i="85" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.04</td><td id="_tr_90_9-4"  data-_i="85" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.03</td></tr>
+<tr class="_tree_hidden _tr_90_9"  id="_tr_90_9_1"  ondblclick="_action_2(this,86,-1, 'Loop 164 -  - cg.B');"  style="cursor:pointer;"><td id="_tr_90_9_1-1"  data-_i="86" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:15px;cursor:pointer;" >&#x25BA;</span>Loop 164 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_9_1-2"  data-_i="86" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_9_1-3"  data-_i="86" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.01</td><td id="_tr_90_9_1-4"  data-_i="86" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.01</td></tr>
+<tr class="_tree_hidden _tr_90_9_1"  id="_tr_90_9_1_1"  ondblclick="_action_2(this,87,-1, 'Loop 166 -  - cg.B');"  style="cursor:pointer;"><td id="_tr_90_9_1_1-1"  data-_i="87" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:30px;cursor:pointer;" >&#x25BA;</span>Loop 166 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_9_1_1-2"  data-_i="87" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_9_1_1-3"  data-_i="87" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.01</td><td id="_tr_90_9_1_1-4"  data-_i="87" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.01</td></tr>
+<tr class="_tree_hidden _tr_90_9_1_1"  id="_tr_90_9_1_1_1"  ondblclick="_action_4(this,88,-1, '../loops/cg.B_165.html');"  style="cursor:pointer;"><td id="_tr_90_9_1_1_1-1"  data-_i="88" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:48px;" >&#x25CB;</span>Loop 165 -  - cg.B</td><td id="_tr_90_9_1_1_1-2"  data-_i="88" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_9_1_1_1-3"  data-_i="88" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.01</td><td id="_tr_90_9_1_1_1-4"  data-_i="88" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.01</td></tr>
+<tr class=" _outer_row"  id="_tr_90_10"  ondblclick="_action_4(this,89,-1, '../functions/libc.so.6_2316.html');"  style="cursor:pointer;"><td id="_tr_90_10-1"  data-_i="89" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:3px;" >&#x25CB;</span>__munmap</td><td id="_tr_90_10-2"  data-_i="89" data-_j="2"  class=" _centered"  style="word-break:break-all;" >libc.so.6</td><td id="_tr_90_10-3"  data-_i="89" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.03</td><td id="_tr_90_10-4"  data-_i="89" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.02</td></tr>
+<tr class=" _outer_row"  id="_tr_90_11"  ondblclick="_action_4(this,90,-1, '../functions/cg.B_26.html');"  style="cursor:pointer;"><td id="_tr_90_11-1"  data-_i="90" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:0px;cursor:pointer;" >&#x25BA;</span>rcm_ordering_from_adjacency(int, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&)<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_11-2"  data-_i="90" data-_j="2"  class=" _centered"  style="word-break:break-all;" >cg.B</td><td id="_tr_90_11-3"  data-_i="90" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.03</td><td id="_tr_90_11-4"  data-_i="90" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.02</td></tr>
+<tr class="_tree_hidden _tr_90_11"  id="_tr_90_11_1"  ondblclick="_action_2(this,91,-1, 'Loop 194 -  - cg.B');"  style="cursor:pointer;"><td id="_tr_90_11_1-1"  data-_i="91" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:15px;cursor:pointer;" >&#x25BA;</span>Loop 194 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_11_1-2"  data-_i="91" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_11_1-3"  data-_i="91" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.03</td><td id="_tr_90_11_1-4"  data-_i="91" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.02</td></tr>
+<tr class="_tree_hidden _tr_90_11_1"  id="_tr_90_11_1_1"  ondblclick="_action_2(this,92,-1, 'Loop 195 -  - cg.B');"  style="cursor:pointer;"><td id="_tr_90_11_1_1-1"  data-_i="92" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:30px;cursor:pointer;" >&#x25BA;</span>Loop 195 -  - cg.B<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_11_1_1-2"  data-_i="92" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_11_1_1-3"  data-_i="92" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.03</td><td id="_tr_90_11_1_1-4"  data-_i="92" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.02</td></tr>
+<tr class="_tree_hidden _tr_90_11_1_1"  id="_tr_90_11_1_1_1"  ondblclick="_action_4(this,93,-1, '../loops/cg.B_199.html');"  style="cursor:pointer;"><td id="_tr_90_11_1_1_1-1"  data-_i="93" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:48px;" >&#x25CB;</span>Loop 199 -  - cg.B</td><td id="_tr_90_11_1_1_1-2"  data-_i="93" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_11_1_1_1-3"  data-_i="93" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.03</td><td id="_tr_90_11_1_1_1-4"  data-_i="93" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.02</td></tr>
+<tr class=" _outer_row"  id="_tr_90_12"  ondblclick="_action_4(this,94,-1, '../functions/cg.B_38.html');"  style="cursor:pointer;"><td id="_tr_90_12-1"  data-_i="94" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span onclick="_click_tree(this)" style="margin-right:5px;margin-left:0px;cursor:pointer;" >&#x25BA;</span>std::vector<int, std::allocator<int> >::_M_fill_assign(unsigned long, int const&)<span onclick="_click_expand(this)" class="span_expand">&#43;</span></td><td id="_tr_90_12-2"  data-_i="94" data-_j="2"  class=" _centered"  style="word-break:break-all;" >cg.B</td><td id="_tr_90_12-3"  data-_i="94" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.02</td><td id="_tr_90_12-4"  data-_i="94" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.01</td></tr>
+<tr class="_tree_hidden _tr_90_12"  id="_tr_90_12_1"  ondblclick="_action_4(this,95,-1, '../loops/cg.B_206.html');"  style="cursor:pointer;"><td id="_tr_90_12_1-1"  data-_i="95" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:18px;" >&#x25CB;</span>Loop 206 -  - cg.B</td><td id="_tr_90_12_1-2"  data-_i="95" data-_j="2"  class=" _centered"  style="word-break:break-all;" ></td><td id="_tr_90_12_1-3"  data-_i="95" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.02</td><td id="_tr_90_12_1-4"  data-_i="95" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.01</td></tr>
+<tr class=" _outer_row"  id="_tr_90_13"  ondblclick="_action_4(this,96,-1, '../functions/cg.B_17.html');"  style="cursor:pointer;"><td id="_tr_90_13-1"  data-_i="96" data-_j="1"  class=" _left"  style="word-break:break-all;" ><span style="margin-right:10px;margin-left:3px;" >&#x25CB;</span><span class="tooltip-maqao" title="" tooltip_id="6" >void std::__insertion_sort<__gnu_cxx::__normal_iterator<std::pair<int, double>*, std::vector<std::pair<int, double>, std::allocator<std::pair<int, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<csr_apply_symmetric_permutation(int, int const*, int const*,...</span></td><td id="_tr_90_13-2"  data-_i="96" data-_j="2"  class=" _centered"  style="word-break:break-all;" >cg.B</td><td id="_tr_90_13-3"  data-_i="96" data-_j="3"  class=" _centered"  style="font-style: italic;" >0.01</td><td id="_tr_90_13-4"  data-_i="96" data-_j="4"  class=" _centered"  style="font-style: italic;" >0.01</td></tr>
+</table></div>
+</div>
+<script>
+function _action_2 (obj, i, j, p){open("../loops/empty_loop.html?loop="+p+"");}
+function _action_4 (obj, i, j, p){open(""+p+"");}
+</script>
+<script>
+function getPos(el) {
+  for (var lx=0, ly=0;
+      el != null;
+      lx += el.offsetLeft, ly += el.offsetTop, el = el.offsetParent);
+  return {x: lx,y: ly};
+}
+function _onresize () {
+  __maqao_legacy_onresize ();
+  var d = document.getElementById ("_tree_table_90").parentNode;
+  d.style.maxHeight = (window.innerHeight - getPos (d).y - 20)+"px";
+}
+window.onresize = _onresize;
+addLoadEvent(function(){
+  const queryString = window.location.search;
+  const params = new URLSearchParams(queryString);
+  let origin_thread = params.get("origin");
+  if (origin_thread
+  &&  origin_thread !== "nico-ThinkPad-T490_85719_85719") {
+    let e = document.getElementById ("warning_other_thread");
+    if (e) {
+       let elems = origin_thread.split ("_");
+       let tid   = elems[elems.length - 1];
+       let pid   = elems[elems.length - 2];
+       let node  = "";
+       for (let i = 0; i < elems.length - 2; i++) {
+          node += elems[i];
+       }
+       e.innerHTML = "<p>Warning ! Current profile is not the requested thread {node = "+node+"; PID = "+pid+"; TID = "+tid+"} but corresponds to one with a similar structure.</p>"+                     "<p>In order to reduce disk usage, similar threads profiles have not been generated. To generate one profile for each thread, refresh the report adding the option --reduce-threads-files=off</p>";       e = document.getElementById ("warning_other_thread_box");
+       e.style.display = "";    }
+  }
+  _onresize ();
+});
+</script>
+
+  <div id="MaqaoModal" class="maqao_modal">
+    <div class="maqao_modal-content">
+      <div class="maqao_modal-header">
+        <span class="maqao_close">&times;</span>
+      </div>
+      <div id="maqao_modal-body" class="maqao_modal-body">
+      </div>
+    </div>
+  </div>
+</div><script>
+var tooltips_texts = ['Environment variables defined for for the thread.<br/>A value is colored in <span style="background:#e5ccb3; width:20px;">orange</span> when it changes<br/>across threads in a single run.',
+'Coverage and Time are inclusive metrics.',
+'void std::__introsort_loop<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, long, __gnu_cxx::__ops::_Iter_less_iter>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, long, __gnu_cxx::__ops::_Iter_less_iter) [clone .isra.0]',
+'void std::__introsort_loop<__gnu_cxx::__normal_iterator<std::pair<int, double>*, std::vector<std::pair<int, double>, std::allocator<std::pair<int, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<csr_apply_symmetric_permutation(int, int const*, int const*, double const*, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<double, std::allocator<double> >&)::{lambda(auto:1&, auto:2&)#1}> >(__gnu_cxx::__normal_iterator<std::pair<int, double>*, std::vector<std::pair<int, double>, std::allocator<std::pair<int, double> > > >, __gnu_cxx::__normal_iterator<std::pair<int, double>*, std::vector<std::pair<int, double>, std::allocator<std::pair<int, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<csr_apply_symmetric_permutation(int, int const*, int const*, double const*, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<double, std::allocator<double> >&)::{lambda(auto:1&, auto:2&)#1}>)',
+'void std::__adjust_heap<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, long, int, __gnu_cxx::__ops::_Iter_less_iter>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, long, long, int, __gnu_cxx::__ops::_Iter_less_iter) [clone .isra.0]',
+'void std::__introsort_loop<__gnu_cxx::__normal_iterator<std::pair<int, double>*, std::vector<std::pair<int, double>, std::allocator<std::pair<int, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<csr_sort_rows_by_col(int, int const*, int*, double*)::{lambda(auto:1 const&, auto:2 const&)#1}> >(__gnu_cxx::__normal_iterator<std::pair<int, double>*, std::vector<std::pair<int, double>, std::allocator<std::pair<int, double> > > >, __gnu_cxx::__normal_iterator<std::pair<int, double>*, std::vector<std::pair<int, double>, std::allocator<std::pair<int, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<csr_sort_rows_by_col(int, int const*, int*, double*)::{lambda(auto:1 const&, auto:2 const&)#1}>)',
+'void std::__insertion_sort<__gnu_cxx::__normal_iterator<std::pair<int, double>*, std::vector<std::pair<int, double>, std::allocator<std::pair<int, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<csr_apply_symmetric_permutation(int, int const*, int const*, double const*, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<double, std::allocator<double> >&)::{lambda(auto:1&, auto:2&)#1}> >(__gnu_cxx::__normal_iterator<std::pair<int, double>*, std::vector<std::pair<int, double>, std::allocator<std::pair<int, double> > > >, __gnu_cxx::__normal_iterator<std::pair<int, double>*, std::vector<std::pair<int, double>, std::allocator<std::pair<int, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<csr_apply_symmetric_permutation(int, int const*, int const*, double const*, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<double, std::allocator<double> >&)::{lambda(auto:1&, auto:2&)#1}>) [clone .isra.0]'];
+var modal = document.getElementById('MaqaoModal');
+var span = document.getElementsByClassName("maqao_close")[0];
+span.onclick = function() {
+    modal.style.display = "none";
+}
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
+const comparer = (idx, asc) => (a, b) => ((v1, v2) => 
+    v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v2 - v1 : v1.toString().localeCompare(v2)
+    )(getCellValue(asc ? a : b, idx) === '' ? -1: (getCellValue(asc ? a : b, idx).replace(/\s/g,'')), 
+      getCellValue(asc ? b : a, idx) === '' ? -1: (getCellValue(asc ? b : a, idx).replace(/\s/g,'')));
+addLoadEvent(function(){
+  document.querySelectorAll('._fixed_table:not(._no_auto_sorting) th').forEach(th => th.addEventListener('click', (() => {
+    const table = th.closest('table');
+    // Remove all symbols in header
+    table.querySelectorAll('th').forEach(function (e) {
+      e.firstChild.textContent = "";
+    });
+    // Change the symbol on the clicked header
+    if (this.asc != true) {
+      th.firstChild.textContent = "\u25BC";
+    }
+    else {
+      th.firstChild.textContent = "\u25B2";
+    }
+    Array.from(table.querySelectorAll('tr:nth-child(n+2)'))
+        .sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
+        .forEach(tr => table.appendChild(tr) );
+  })));
+});
+addLoadEvent(function(){
+  document.querySelectorAll('._tree_table:not(._no_auto_sorting) th').forEach(th => th.addEventListener('click', (() => {
+    const table = th.closest('table');
+    // Remove all symbols in header
+    table.querySelectorAll('th').forEach(function (e) {
+      e.firstChild.textContent = "";
+    });
+    // Change the symbol on the clicked header
+    if (this.asc != true) {
+      th.firstChild.textContent = "\u25BC";
+    }
+    else {
+      th.firstChild.textContent = "\u25B2";
+    }
+    let last_id = "";
+    const t_outermost = new Array ();
+    const t_children  = new Map ();
+    for (let i = 1, row; row = table.rows[i]; i++) {
+      if (row.classList.contains ("_outer_row")) {
+        t_outermost.push (row);
+        last_id = row.id;
+        t_children [last_id] = new Array ();
+      }
+      else {
+        t_children [last_id].push (row);
+      }
+    }
+    t_outermost.sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc));
+    for (let i = 0, row; row = t_outermost[i]; i++) {
+      table.appendChild(row)
+      for (let j = 0, child; child = t_children[row.id][j]; j++) {
+        table.appendChild(child)
+      }
+    }
+  })));
+});
+function _check_all_checkbox_ (obj_id, opts_ids) {
+  var obj   = document.getElementById (obj_id);
+  var opts  = window[opts_ids];
+  var count = 0
+  for (i = 0; i < opts.length; i++) {
+    var obj_s = document.getElementById(opts[i]);
+    if (obj_s && obj_s.checked) {
+      count ++;
+    }
+  }
+  if (count == 0) {
+    obj.value = "Select all";
+  }
+  else if (count == opts.length) {
+    obj.value = "Select none";
+  }
+}
+// Fonction for table selector
+function click_table_menu (c, obj_id, opt_ids) {
+  var is_checked = document.getElementById (c).checked;
+  localStorage.setItem(c, is_checked);
+  $("."+c).each(function(index, element) {
+    if (is_checked) {
+      element.classList.remove("_tcol_hidden");
+    }
+    else {
+      element.classList.add("_tcol_hidden");
+    }
+  });
+  if (obj_id != undefined) {
+    _check_all_checkbox_ (obj_id, opt_ids)
+  }
+}
+function set_all_table_menu (obj, var_opt_ids) {
+  var opt_ids = window[var_opt_ids];
+  var is_selected = true
+  if (obj.value == "Select all") {
+    is_selected = false;
+  }
+  for (i = 0; i < opt_ids.length; i++) {
+    var obj_s = document.getElementById(opt_ids[i]);
+    if (obj_s && is_selected == obj_s.checked) {
+      obj_s.checked = !obj_s.checked;
+      click_table_menu (opt_ids[i]);
+    }
+  }
+  if (is_selected == false) {
+    obj.value = "Select none";
+  } else {
+    obj.value = "Select all";
+  }
+  localStorage.setItem(obj.id, obj.value);
+}
+// Script for accordion box
+function _click_accordion_header(obj) {
+  var content = obj.nextSibling;
+  content.classList.toggle('collapsed');
+  obj.classList.toggle('collapsed');
+  obj.parentNode.classList.toggle('collapsed');
+  // Check if the box must be openned ...
+  if (obj.classList.contains ('collapsed'))
+  {
+    obj.firstChild.textContent = "\u25B6";
+  }
+  // or closed.
+  else 
+  {
+    obj.firstChild.textContent = "\u25BC";
+  }
+  if (typeof _onresize === "function") {
+    _onresize ();
+  }
+}
+  // Script for paged table
+function _click_paged_prev(obj) {
+  var pages_content_id = '_paged_tables_page_' + obj.parentNode.parentNode.id.substr (obj.parentNode.parentNode.id.lastIndexOf('_') + 1);
+  var pages_content = document.getElementById(pages_content_id).innerHTML;
+  var max_pages = pages_content.substr (pages_content.lastIndexOf('/') + 1);
+  var cur_page  = pages_content.substring (pages_content.lastIndexOf(' ') + 1, pages_content.lastIndexOf('/'));
+  max_pages = Number (max_pages);
+  cur_page  = Number (cur_page);
+  if (cur_page > 1) {
+    var div_paged = obj.parentNode.parentNode.id;
+    var i;
+    var x = document.getElementsByClassName(div_paged + '_' + (cur_page - 1));
+    for (i = 0; i < x.length; i++) {
+      x[i].classList.toggle('_paged_hidden');
+    }
+    x = document.getElementsByClassName(div_paged + '_' + (cur_page - 2));
+    for (i = 0; i < x.length; i++) {
+      x[i].classList.toggle('_paged_hidden');
+    }
+  document.getElementById(pages_content_id).textContent = "Page " + (cur_page - 1) + "/" + max_pages;
+  }
+}
+function _click_paged_next(obj) {
+  var pages_content_id = '_paged_tables_page_' + obj.parentNode.parentNode.id.substr (obj.parentNode.parentNode.id.lastIndexOf('_') + 1);
+  var pages_content = document.getElementById(pages_content_id).innerHTML;
+  var max_pages = pages_content.substr (pages_content.lastIndexOf('/') + 1);
+  var cur_page  = pages_content.substring (pages_content.lastIndexOf(' ') + 1, pages_content.lastIndexOf('/'));
+  max_pages = Number (max_pages);
+  cur_page  = Number (cur_page);
+  if (cur_page < max_pages) {
+    var div_paged = obj.parentNode.parentNode.id;
+    var i;
+    var x = document.getElementsByClassName(div_paged + '_' + (cur_page - 1));
+    for (i = 0; i < x.length; i++) {
+      x[i].classList.toggle('_paged_hidden');
+    }
+    x = document.getElementsByClassName(div_paged + '_' + cur_page);
+    for (i = 0; i < x.length; i++) {
+      x[i].classList.toggle('_paged_hidden');
+    }
+    document.getElementById(pages_content_id).textContent = "Page " + (cur_page + 1) + "/" + max_pages;
+  }
+}
+// Function for tree table
+function _click_tree(obj) {
+  if (obj.innerHTML == "\u25BA") {
+    obj.textContent = "\u25BC";
+    // Open childs
+    var x = document.getElementsByClassName(obj.parentNode.parentNode.id);
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.toggle('_tree_hidden');
+    }
+  }
+  else if (obj.innerHTML == "\u25BC") {
+    obj.textContent = "\u25BA";
+    // Close all childs
+    var trs = document.getElementsByTagName('tr');
+    var r   = obj.parentNode.parentNode.id+'_';
+    var re  = new RegExp (r, "g");
+    for (var i = 0; i < trs.length; i++) {
+      var s = trs[i].id+""
+      if (s.match(re)) {
+        var o = document.getElementById(s);
+        if (! o.classList.contains('_tree_hidden')) {
+          o.classList.toggle('_tree_hidden');
+        }
+        if (o.firstChild.firstChild.textContent == "\u25BC") {
+          o.firstChild.firstChild.textContent = "\u25BA";
+        }
+        if (o.firstChild.childNodes.length == 3) {
+          o.firstChild.childNodes[2].textContent = '+';
+        }
+      }
+    }
+    if (obj.parentNode.childNodes.length == 3) {
+      obj.parentNode.childNodes[2].textContent = '+';
+    }
+  }
+}
+function _click_expand (obj) {
+  var trs = document.getElementsByTagName('tr');
+  var r   = obj.parentNode.parentNode.id+'_';
+  var re  = new RegExp (r, "g");
+  // Symbole + => expand all
+  if (obj.textContent == "+") {
+    for (var i = 0; i < trs.length; i++) {
+      var s = trs[i].id+"";
+      if (s.match(re)) {
+        var o = document.getElementById(s);
+        if (o.classList.contains('_tree_hidden')) {
+           o.classList.toggle('_tree_hidden');
+        }
+        if (o.firstChild.firstChild.textContent == "\u25BA") {
+          o.firstChild.firstChild.textContent = "\u25BC";
+        }
+        if (o.firstChild.childNodes.length == 3) {
+          o.firstChild.childNodes[2].textContent = '\u2010';
+        }
+      }
+    }
+    var o = obj.parentNode.parentNode;
+    if (o.firstChild.firstChild.textContent == "\u25BA") {
+      o.firstChild.firstChild.textContent = "\u25BC";
+    }
+    obj.textContent = "\u2010";
+  }
+  // Symbole - => collapse all
+  else {
+    for (var i = 0; i < trs.length; i++) {
+      var s = trs[i].id+"";
+      if (s.match(re)) {
+        var o = document.getElementById(s);
+        if (! o.classList.contains('_tree_hidden')) {
+           o.classList.toggle('_tree_hidden');
+        }
+        if (o.firstChild.firstChild.textContent == "\u25BC") {
+          o.firstChild.firstChild.textContent = "\u25BA";
+        }
+        if (o.firstChild.childNodes.length == 3) {
+          o.firstChild.childNodes[2].textContent = '+';
+        }
+      }
+    }
+    var o = obj.parentNode.parentNode;
+    if (o.firstChild.firstChild.textContent == "\u25BC") {
+      o.firstChild.firstChild.textContent = "\u25BA";
+    }
+    obj.textContent = "+";
+  }
+}
+// Hide unselected tabs
+addLoadEvent(function(){
+  var x = document.getElementsByClassName("_tab_header_li");
+  for (var i = 0; i < x.length; i++) {
+    if (x[i].classList.contains("selected_tab") == false) {
+      var e = document.getElementById (x[i].dataset.tab);
+      e.style.display = "none";
+    }
+  }
+});
+// Change tab
+function change_tab (e, baseId) {
+  // Handle tabs
+  var i = 1;
+  while (true) {
+    var id = baseId + i;
+    var t = document.getElementById (id);
+    if (t == null) {
+      break;
+    }
+    if (id == e.dataset.tab) {
+      t.style.removeProperty("display");
+    }
+    else {
+      t.style.display = "none";
+    }
+    i = i + 1;
+  }
+  // Handle headers
+  $(e).siblings().each( function () {
+    this.classList.remove("selected_tab");
+  });
+  e.classList.add("selected_tab");
+}
+function __maqao_legacy_onresize () {
+  var obj = document.getElementById("spacer_page_title");
+  if (obj) {
+    obj.style.height = (document.getElementById("page_title").clientHeight + 20)+"px";
+  }
+  var obj = document.getElementById("page_title");
+  if (obj) {
+    var elems = document.getElementsByClassName ("_first_menu_level")
+    if (obj.clientHeight < 90) {
+      for (var i = 0; i < elems.length; i++) {
+        elems.item(i).style.borderBottomLeftRadius = "";
+        elems.item(i).style.borderBottomRightRadius = "";
+      }
+    }
+    else {
+      for (var i = 0; i < elems.length; i++) {
+        elems.item(i).style.borderBottomLeftRadius = "10px";
+        elems.item(i).style.borderBottomRightRadius = "10px";
+      }
+    }
+  }
+}
+</script>
+</body>
+</html>

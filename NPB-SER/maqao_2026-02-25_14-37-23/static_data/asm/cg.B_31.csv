@@ -1,0 +1,64 @@
+address;source_location;insn;indent
+0x1bc8;:0;MOVSD	(%RBP,%R9,8),%XMM6;
+0x1bcf;:0;MOV	(%R14,%R9,4),%ECX;
+0x1bd3;:0;MULSD	%XMM2,%XMM6;
+0x1bd7;:0;MOVAPD	%XMM6,%XMM7;
+0x1bdb;:0;CMP	%ECX,0x8(%RSP);
+0x1bdf;:0;JNE	1bf8 <main+0x988>;
+0x1be1;:0;CMPB	$0,0x10(%RSP);
+0x1be6;:0;JE	1bf8 <main+0x988>;
+0x1be8;:0;MOVAPD	%XMM6,%XMM1;
+0x1bec;:0;ADDSD	%XMM3,%XMM1;
+0x1bf0;:0;SUBSD	%XMM4,%XMM1;
+0x1bf4;:0;MOVAPD	%XMM1,%XMM7;
+0x1bf8;:0;MOVSXD	(%R13),%RAX;
+0x1bfc;:0;MOV	(%R12),%EDI;
+0x1c00;:0;CMP	%EDI,%EAX;
+0x1c02;:0;JGE	207e <main+0xe0e>;
+0x1c08;:0;LEA	(%R8,%RAX,4),%RDX;
+0x1c0c;:0;JMP	1c31 <main+0x9c1>;
+0x1c10;:0;CMP	$-0x1,%ESI;  (33) 
+0x1c13;:0;JE	1cb0 <main+0xa40>;  (33) 
+0x1c19;:0;CMP	%ESI,%ECX;  (33) 
+0x1c1b;:0;JE	1cc0 <main+0xa50>;  (33) 
+0x1c21;:0;ADD	$0x1,%RAX;  (33) 
+0x1c25;:0;ADD	$0x4,%RDX;  (33) 
+0x1c29;:0;CMP	%EAX,%EDI;  (33) 
+0x1c2b;:0;JLE	207e <main+0xe0e>;  (33) 
+0x1c31;:0;MOV	(%RDX),%ESI;  (33) 
+0x1c33;:0;CMP	%ESI,%ECX;  (33) 
+0x1c35;:0;JGE	1c10 <main+0x9a0>;  (33) 
+0x1c37;:0;SUB	$0x2,%EDI;
+0x1c3a;:0;MOV	%EAX,%EBX;
+0x1c3c;:0;MOVSXD	%EDI,%RSI;
+0x1c3f;:0;CMP	%EAX,%EDI;
+0x1c41;:0;JL	1c6a <main+0x9fa>;
+0x1c43;:0;NOPL	(%RAX,%RAX,1);
+0x1c48;:0;MOV	(%R8,%RSI,4),%EDI;  (34) 
+0x1c4c;:0;TEST	%EDI,%EDI;  (34) 
+0x1c4e;:0;JS	1c62 <main+0x9f2>;  (34) 
+0x1c50;:0;MOVSD	(%R11,%RSI,8),%XMM1;  (34) 
+0x1c56;:0;MOVSD	%XMM1,0x8(%R11,%RSI,8);  (34) 
+0x1c5d;:0;MOV	%EDI,0x4(%R8,%RSI,4);  (34) 
+0x1c62;:0;SUB	$0x1,%RSI;  (34) 
+0x1c66;:0;CMP	%ESI,%EBX;  (34) 
+0x1c68;:0;JLE	1c48 <main+0x9d8>;  (34) 
+0x1c6a;:0;LEA	(%R11,%RAX,8),%RAX;
+0x1c6e;:0;MOV	%ECX,(%RDX);
+0x1c70;:0;PXOR	%XMM1,%XMM1;
+0x1c74;:0;MOVQ	$0,(%RAX);
+0x1c7b;:0;ADDSD	%XMM7,%XMM1;
+0x1c7f;:0;MOV	(%R15,%R10,4),%ECX;
+0x1c83;:0;ADD	$0x1,%R9;
+0x1c87;:0;MOVSD	%XMM1,(%RAX);
+0x1c8b;:0;CMP	%R9D,%ECX;
+0x1c8e;:0;JG	1bc8 <main+0x958>;
+0x1cb0;:0;LEA	(%R11,%RAX,8),%RAX;
+0x1cb4;:0;MOV	%ECX,(%RDX);
+0x1cb6;:0;MOVSD	(%RAX),%XMM1;
+0x1cba;:0;JMP	1c7b <main+0xa0b>;
+0x1cc0;:0;MOV	0x18(%RSP),%RBX;
+0x1cc5;:0;LEA	(%R11,%RAX,8),%RAX;
+0x1cc9;:0;MOVSD	(%RAX),%XMM1;
+0x1ccd;:0;ADDL	$0x1,(%RBX);
+0x1cd0;:0;JMP	1c7b <main+0xa0b>;

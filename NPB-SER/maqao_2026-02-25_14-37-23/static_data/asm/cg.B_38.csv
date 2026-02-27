@@ -1,0 +1,8 @@
+address;source_location;insn;indent
+0x3350;:0;MOVSXD	(%RBP,%RAX,4),%R9;
+0x3355;:0;MOVSD	(%R15,%R9,8),%XMM0;
+0x335b;:0;MULSD	(%R12,%RAX,8),%XMM0;
+0x3361;:0;ADD	$0x1,%RAX;
+0x3365;:0;ADDSD	%XMM0,%XMM1;
+0x3369;:0;CMP	%EAX,%R10D;
+0x336c;:0;JG	3350 <_ZL9conj_gradPKiS0_PKdPdS2_S3_S3_S3_S3_+0x370>;

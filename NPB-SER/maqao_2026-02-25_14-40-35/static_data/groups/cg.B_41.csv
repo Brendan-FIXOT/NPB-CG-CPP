@@ -1,0 +1,5 @@
+group_size;pattern;opcodes;offsets;addresses;stride_status;stride;memory_status;accessed_memory;accessed_memory_nooverlap;accessed_memory_overlap;span;head;unroll_factor;
+2;LS;VFNMADD213PD,VMOVAPD,;0,0,;0x36b7,0x36bd,;Success;32;Success;64;32;32;32;32;1;
+2;LS;VFMADD213PD,VMOVAPD,;0,0,;0x36a5,0x36ab,;Success;32;Success;64;32;32;32;32;1;
+1;L;VMOVAPD,;0,;0x36b1,;Success;32;Success;32;32;0;32;32;1;
+1;L;VMOVAPD,;0,;0x36a0,;Success;32;Success;32;32;0;32;32;1;

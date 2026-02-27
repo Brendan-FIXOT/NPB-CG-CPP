@@ -1,0 +1,21 @@
+{
+  "content": {
+    "proc_name"          : "Core_7x_V1",
+    "hostname"           : "nico-ThinkPad-T490",
+    "architecture_code"  : "2",
+    "uarchitecture_code" : "33",
+    "architecture"       : "x86_64",
+    "uarchitecture"      : "KABY_LAKE",
+    "cpui_model_name"    : "Intel(R) Core(TM) i5-8365U CPU @ 1.60GHz",
+    "cpui_cache_size"    : "6144 KB",
+    "cpui_cpu_cores"     : "4",
+    "max_frequency"          : "4100000",
+    "cur_frequency"      : "400000",
+    "driver_frequency"   : "intel_pstate",
+    "scaling_governor"   : "powersave",
+    "huge_pages"         : "madvise",
+    "os_version"         : "Linux 6.8.0-90-generic #91-Ubuntu SMP PREEMPT_DYNAMIC Tue Nov 18 14:14:30 UTC 2025",
+    "perf_event_paranoid"      : "4",
+    "is_lstopo"          : true,
+  }
+}

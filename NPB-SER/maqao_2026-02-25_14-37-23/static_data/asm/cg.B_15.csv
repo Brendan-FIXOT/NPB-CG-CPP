@@ -1,0 +1,5 @@
+address;source_location;insn;indent
+0x2256;:0;SUB	%EAX,(%R10,%RDX,4);
+0x225a;:0;ADD	$0x1,%RDX;
+0x225e;:0;CMP	%EDX,(%RCX);
+0x2260;:0;JG	2256 <main+0xfe6>;

@@ -1,0 +1,70 @@
+
+
+ NAS Parallel Benchmarks 4.1 Serial C++ version - CG Benchmark
+
+ Size:       75000
+ Iterations:    75
+ Initialization time =           6.318 seconds
+
+   iteration           ||r||                 zeta
+ Benchmark completed
+ VERIFICATION SUCCESSFUL
+ Zeta is     2.2712745482632e+01
+ Error is    4.7864331793103e-14
+
+
+ CG Benchmark Completed
+ class_npb       =                        B
+ Size            =                    75000
+ Iterations      =                       75
+ Time in seconds =                    73.67
+ Mop/s total     =                   742.64
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                      4.1
+ Compiler ver    =                   13.3.0
+ Compile date    =              26 Feb 2026
+
+ Compile options:
+    CC           = g++ -std=c++14
+    CLINK        = $(CC)
+    C_LIB        = -lm 
+    C_INC        = -I../common 
+    CFLAGS       = -O3 -mcmodel=medium -mavx -mfma
+    CLINKFLAGS   = -O3 -mcmodel=medium -mavx -mfma
+    RAND         = randdp
+
+
+----------------------------------------------------------------------
+    NPB-CPP is developed by: 
+        Dalvan Griebler
+        Gabriell Araujo (Sequential Porting)
+        Júnior Löff (Parallel Implementation)
+
+    In case of questions or problems, please send an e-mail to us:
+        dalvan.griebler; gabriell.araujo; junior.loff@edu.pucrs.br
+----------------------------------------------------------------------
+
+
+* [MAQAO] Info: Dumping samples (host nico-ThinkPad-T490, process 85719)
+* [MAQAO] Info: Dumping source info for callchain nodes (host nico-ThinkPad-T490, process 85719)
+* [MAQAO] Info: Building/writing metadata (host nico-ThinkPad-T490)
+* [MAQAO] Info: Finished collect step (host nico-ThinkPad-T490, process 85719)
+
+
+Your experiment path is /home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-27_16-24-31/tools/lprof_run_0
+
+To display your profiling results:
+########################################################################################################################################################################
+#    LEVEL    |     REPORT     |                                                                COMMAND                                                                #
+########################################################################################################################################################################
+#  Functions  |  Cluster-wide  |  maqao lprof -df xp=/home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-27_16-24-31/tools/lprof_run_0      #
+#  Functions  |  Per-node      |  maqao lprof -df -dn xp=/home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-27_16-24-31/tools/lprof_run_0  #
+#  Functions  |  Per-process   |  maqao lprof -df -dp xp=/home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-27_16-24-31/tools/lprof_run_0  #
+#  Functions  |  Per-thread    |  maqao lprof -df -dt xp=/home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-27_16-24-31/tools/lprof_run_0  #
+#  Loops      |  Cluster-wide  |  maqao lprof -dl xp=/home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-27_16-24-31/tools/lprof_run_0      #
+#  Loops      |  Per-node      |  maqao lprof -dl -dn xp=/home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-27_16-24-31/tools/lprof_run_0  #
+#  Loops      |  Per-process   |  maqao lprof -dl -dp xp=/home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-27_16-24-31/tools/lprof_run_0  #
+#  Loops      |  Per-thread    |  maqao lprof -dl -dt xp=/home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-27_16-24-31/tools/lprof_run_0  #
+########################################################################################################################################################################
+

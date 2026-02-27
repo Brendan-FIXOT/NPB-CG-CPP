@@ -1,0 +1,145 @@
+
+
+ NAS Parallel Benchmarks 4.1 Serial C++ version - CG Benchmark
+
+ Size:       75000
+ Iterations:    75
+ Initialization time =           3.700 seconds
+
+   iteration           ||r||                 zeta
+        1       2.27623230253657e-13 5.9999475157875e+01
+        2       8.44559392893216e-16 2.1762784614254e+01
+        3       8.64511022632338e-16 2.2287661704322e+01
+        4       8.61697722482409e-16 2.2523073818835e+01
+        5       8.71222095709208e-16 2.2627539065389e+01
+        6       8.71977185255567e-16 2.2674025918953e+01
+        7       8.73832261918524e-16 2.2694905682625e+01
+        8       8.87870239801501e-16 2.2704402316687e+01
+        9       8.83216527363961e-16 2.2708783434562e+01
+       10       8.80909464617773e-16 2.2710835139718e+01
+       11       8.80803816383157e-16 2.2711810712134e+01
+       12       8.84631507363274e-16 2.2712281624097e+01
+       13       8.84386307708107e-16 2.2712512266324e+01
+       14       8.85738245256241e-16 2.2712626800759e+01
+       15       8.69465189590021e-16 2.2712684416182e+01
+       16       8.80464475795608e-16 2.2712713746175e+01
+       17       8.79208229388488e-16 2.2712728840200e+01
+       18       8.84495944057552e-16 2.2712736684830e+01
+       19       8.87459020956502e-16 2.2712740798122e+01
+       20       8.78738608788050e-16 2.2712742972136e+01
+       21       8.79063996233035e-16 2.2712744129403e+01
+       22       8.77561970738108e-16 2.2712744749390e+01
+       23       8.73438042797631e-16 2.2712745083453e+01
+       24       8.78562496292348e-16 2.2712745264388e+01
+       25       8.75015123991464e-16 2.2712745362845e+01
+       26       8.81271487788102e-16 2.2712745416652e+01
+       27       8.72205152729482e-16 2.2712745446170e+01
+       28       8.78141674395662e-16 2.2712745462421e+01
+       29       8.88528576053352e-16 2.2712745471397e+01
+       30       8.79144959398065e-16 2.2712745476370e+01
+       31       8.78591890267517e-16 2.2712745479134e+01
+       32       8.85325894647993e-16 2.2712745480674e+01
+       33       8.70066182336828e-16 2.2712745481532e+01
+       34       8.71454650086712e-16 2.2712745482013e+01
+       35       8.73438751458077e-16 2.2712745482284e+01
+       36       8.73176084610621e-16 2.2712745482435e+01
+       37       8.74014063008852e-16 2.2712745482520e+01
+       38       8.70732107664715e-16 2.2712745482568e+01
+       39       8.75913366163154e-16 2.2712745482597e+01
+       40       8.72533505015524e-16 2.2712745482612e+01
+       41       8.74242759896121e-16 2.2712745482620e+01
+       42       8.72798302131147e-16 2.2712745482625e+01
+       43       8.69544222399476e-16 2.2712745482628e+01
+       44       8.72412853147203e-16 2.2712745482630e+01
+       45       8.70832361421081e-16 2.2712745482631e+01
+       46       8.65100411049732e-16 2.2712745482631e+01
+       47       8.71121215477551e-16 2.2712745482631e+01
+       48       8.68659902454702e-16 2.2712745482632e+01
+       49       8.71050899841891e-16 2.2712745482631e+01
+       50       8.68033381747093e-16 2.2712745482632e+01
+       51       8.70509439009337e-16 2.2712745482632e+01
+       52       8.69970107944567e-16 2.2712745482631e+01
+       53       8.70427229060342e-16 2.2712745482631e+01
+       54       8.72820552427826e-16 2.2712745482631e+01
+       55       8.67261407909339e-16 2.2712745482632e+01
+       56       8.64712529017114e-16 2.2712745482632e+01
+       57       8.70593212517842e-16 2.2712745482632e+01
+       58       8.63832172567102e-16 2.2712745482631e+01
+       59       8.63173241813457e-16 2.2712745482631e+01
+       60       8.57938279425341e-16 2.2712745482632e+01
+       61       8.58579909609132e-16 2.2712745482631e+01
+       62       8.74404056648904e-16 2.2712745482632e+01
+       63       8.67301065013901e-16 2.2712745482631e+01
+       64       8.63384836444720e-16 2.2712745482632e+01
+       65       8.63971438217499e-16 2.2712745482631e+01
+       66       8.62447462291034e-16 2.2712745482632e+01
+       67       8.63535715652259e-16 2.2712745482632e+01
+       68       8.61325733558301e-16 2.2712745482632e+01
+       69       8.55897709043410e-16 2.2712745482632e+01
+       70       8.60213440084578e-16 2.2712745482633e+01
+       71       8.66523049409848e-16 2.2712745482631e+01
+       72       8.58560541980115e-16 2.2712745482632e+01
+       73       8.67648121676997e-16 2.2712745482632e+01
+       74       8.60096097573596e-16 2.2712745482632e+01
+       75       8.59195042974869e-16 2.2712745482631e+01
+ Benchmark completed
+ VERIFICATION SUCCESSFUL
+ Zeta is     2.2712745482631e+01
+ Error is    6.2567753977913e-16
+
+
+ CG Benchmark Completed
+ class_npb       =                        B
+ Size            =                    75000
+ Iterations      =                       75
+ Time in seconds =                    55.94
+ Mop/s total     =                   978.05
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                      4.1
+ Compiler ver    =                   13.3.0
+ Compile date    =              25 Feb 2026
+
+ Compile options:
+    CC           = g++ -std=c++14
+    CLINK        = $(CC)
+    C_LIB        = -lm 
+    C_INC        = -I../common 
+    CFLAGS       = -O3 -mcmodel=medium
+    CLINKFLAGS   = -O3 -mcmodel=medium
+    RAND         = randdp
+
+
+----------------------------------------------------------------------
+    NPB-CPP is developed by: 
+        Dalvan Griebler
+        Gabriell Araujo (Sequential Porting)
+        Júnior Löff (Parallel Implementation)
+
+    In case of questions or problems, please send an e-mail to us:
+        dalvan.griebler; gabriell.araujo; junior.loff@edu.pucrs.br
+----------------------------------------------------------------------
+
+
+* [MAQAO] Info: Dumping samples (host nico-ThinkPad-T490, process 2463246)
+* [MAQAO] Info: Dumping source info for callchain nodes (host nico-ThinkPad-T490, process 2463246)
+* [MAQAO] Info: Building/writing metadata (host nico-ThinkPad-T490)
+* [MAQAO] Info: Finished collect step (host nico-ThinkPad-T490, process 2463246)
+
+
+Your experiment path is /home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-25_14-37-23/tools/lprof_run_0
+
+To display your profiling results:
+########################################################################################################################################################################
+#    LEVEL    |     REPORT     |                                                                COMMAND                                                                #
+########################################################################################################################################################################
+#  Functions  |  Cluster-wide  |  maqao lprof -df xp=/home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-25_14-37-23/tools/lprof_run_0      #
+#  Functions  |  Per-node      |  maqao lprof -df -dn xp=/home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-25_14-37-23/tools/lprof_run_0  #
+#  Functions  |  Per-process   |  maqao lprof -df -dp xp=/home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-25_14-37-23/tools/lprof_run_0  #
+#  Functions  |  Per-thread    |  maqao lprof -df -dt xp=/home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-25_14-37-23/tools/lprof_run_0  #
+#  Loops      |  Cluster-wide  |  maqao lprof -dl xp=/home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-25_14-37-23/tools/lprof_run_0      #
+#  Loops      |  Per-node      |  maqao lprof -dl -dn xp=/home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-25_14-37-23/tools/lprof_run_0  #
+#  Loops      |  Per-process   |  maqao lprof -dl -dp xp=/home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-25_14-37-23/tools/lprof_run_0  #
+#  Loops      |  Per-thread    |  maqao lprof -dl -dt xp=/home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-25_14-37-23/tools/lprof_run_0  #
+########################################################################################################################################################################
+

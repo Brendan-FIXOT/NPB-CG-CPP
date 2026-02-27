@@ -1,0 +1,11 @@
+address;source_location;insn;indent
+0x1faa;:0;MOVUPD	0x10(%RBX,%RSI,2),%XMM0;
+0x1fb0;:0;MOVUPD	(%RBX,%RSI,2),%XMM7;
+0x1fb5;:0;MOVDQU	(%RBP,%RSI,1),%XMM3;
+0x1fbb;:0;MOV	0x10(%RSP),%R15;
+0x1fc0;:0;MOVUPS	%XMM7,(%R14,%RSI,2);
+0x1fc5;:0;MOVUPS	%XMM0,0x10(%R14,%RSI,2);
+0x1fcb;:0;MOVUPS	%XMM3,(%R15,%RSI,1);
+0x1fd0;:0;ADD	$0x10,%RSI;
+0x1fd4;:0;CMP	%R11,%RSI;
+0x1fd7;:0;JNE	1faa <main+0xd3a>;

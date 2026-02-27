@@ -1,0 +1,10 @@
+********************************************************************************
+MAQAO 2026.0.0 - 7e198a7ec9fb425c75ec6c6a36a98893b37a86d6::20260204-112052 || 2026/02/04
+maqao oneview -R1 -- ./bin/cg.B 
+CPY:  [true] ./bin/cg.B --> /home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-25_14-44-50/binaries/cg.B
+CMD:   /home/nico/Downloads/maqao.x86_64.2026.0.0/bin/maqao lprof _caller=oneview  --xp="/home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-25_14-44-50/tools/lprof_run_0" --mpi-command="" --collect-CPU-time-intervals --collect-topology tpp=1   -- /home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-25_14-44-50/binaries/cg.B 
+Run run_0: At cluster level, discarded 0 functions cumulating 0.0% of application profiled time
+
+Run run_0: At cluster level, discarded 1 loops cumulating 0.0% of application profiled time
+
+CMD:  /home/nico/Downloads/maqao.x86_64.2026.0.0/bin/maqao otter  -input=/home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-25_14-44-50/OTTER/input_manifest.csv -output=/home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-25_14-44-50/OTTER/output_manifest.csv --reduce-threads-files=on

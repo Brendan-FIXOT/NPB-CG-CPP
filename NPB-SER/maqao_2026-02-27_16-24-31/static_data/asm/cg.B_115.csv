@@ -1,0 +1,13 @@
+address;source_location;insn;indent
+0x217d;:0;VMOVUPD	0x20(%R12,%RDI,2),%YMM0;
+0x2184;:0;VMOVUPD	(%R12,%RDI,2),%YMM5;
+0x218a;:0;MOV	-0x2e8(%RBP),%RAX;
+0x2191;:0;VMOVDQU	(%R14,%RDI,1),%YMM6;
+0x2197;:0;VMOVUPD	%YMM5,(%RAX,%RDI,2);
+0x219c;:0;VMOVUPD	%YMM0,0x20(%RAX,%RDI,2);
+0x21a2;:0;MOV	-0x310(%RBP),%RAX;
+0x21a9;:0;VMOVDQU	%YMM6,(%RAX,%RDI,1);
+0x21ae;:0;MOV	-0x2d8(%RBP),%RAX;
+0x21b5;:0;ADD	$0x20,%RDI;
+0x21b9;:0;CMP	%RAX,%RDI;
+0x21bc;:0;JNE	217d <main+0xcad>;

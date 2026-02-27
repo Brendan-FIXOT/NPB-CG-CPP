@@ -1,0 +1,6 @@
+address;source_location;insn;indent
+0x2507;:0;MOV	-0x2e8(%RBP),%RSI;
+0x250e;:0;SUB	%ECX,(%RSI,%RAX,4);
+0x2511;:0;ADD	$0x1,%RAX;
+0x2515;:0;CMP	%EAX,(%RDX);
+0x2517;:0;JG	2507 <main+0x1037>;

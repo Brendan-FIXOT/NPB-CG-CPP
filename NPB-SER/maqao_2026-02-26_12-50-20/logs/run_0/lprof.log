@@ -1,0 +1,70 @@
+
+
+ NAS Parallel Benchmarks 4.1 Serial C++ version - CG Benchmark
+
+ Size:       75000
+ Iterations:    75
+ Initialization time =           3.596 seconds
+
+   iteration           ||r||                 zeta
+ Benchmark completed
+ VERIFICATION SUCCESSFUL
+ Zeta is     2.2712745482631e+01
+ Error is    6.2567753977913e-16
+
+
+ CG Benchmark Completed
+ class_npb       =                        B
+ Size            =                    75000
+ Iterations      =                       75
+ Time in seconds =                    58.79
+ Mop/s total     =                   930.55
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                      4.1
+ Compiler ver    =                   13.3.0
+ Compile date    =              26 Feb 2026
+
+ Compile options:
+    CC           = g++ -std=c++14
+    CLINK        = $(CC)
+    C_LIB        = -lm 
+    C_INC        = -I../common 
+    CFLAGS       = -O3 -march=native -mtune=native -flto -fno-...
+    CLINKFLAGS   = -O3 -march=native -mtune=native -flto
+    RAND         = randdp
+
+
+----------------------------------------------------------------------
+    NPB-CPP is developed by: 
+        Dalvan Griebler
+        Gabriell Araujo (Sequential Porting)
+        Júnior Löff (Parallel Implementation)
+
+    In case of questions or problems, please send an e-mail to us:
+        dalvan.griebler; gabriell.araujo; junior.loff@edu.pucrs.br
+----------------------------------------------------------------------
+
+
+* [MAQAO] Info: Dumping samples (host nico-ThinkPad-T490, process 2503341)
+* [MAQAO] Info: Dumping source info for callchain nodes (host nico-ThinkPad-T490, process 2503341)
+* [MAQAO] Info: Building/writing metadata (host nico-ThinkPad-T490)
+* [MAQAO] Info: Finished collect step (host nico-ThinkPad-T490, process 2503341)
+
+
+Your experiment path is /home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-26_12-50-20/tools/lprof_run_0
+
+To display your profiling results:
+########################################################################################################################################################################
+#    LEVEL    |     REPORT     |                                                                COMMAND                                                                #
+########################################################################################################################################################################
+#  Functions  |  Cluster-wide  |  maqao lprof -df xp=/home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-26_12-50-20/tools/lprof_run_0      #
+#  Functions  |  Per-node      |  maqao lprof -df -dn xp=/home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-26_12-50-20/tools/lprof_run_0  #
+#  Functions  |  Per-process   |  maqao lprof -df -dp xp=/home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-26_12-50-20/tools/lprof_run_0  #
+#  Functions  |  Per-thread    |  maqao lprof -df -dt xp=/home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-26_12-50-20/tools/lprof_run_0  #
+#  Loops      |  Cluster-wide  |  maqao lprof -dl xp=/home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-26_12-50-20/tools/lprof_run_0      #
+#  Loops      |  Per-node      |  maqao lprof -dl -dn xp=/home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-26_12-50-20/tools/lprof_run_0  #
+#  Loops      |  Per-process   |  maqao lprof -dl -dp xp=/home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-26_12-50-20/tools/lprof_run_0  #
+#  Loops      |  Per-thread    |  maqao lprof -dl -dt xp=/home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-26_12-50-20/tools/lprof_run_0  #
+########################################################################################################################################################################
+

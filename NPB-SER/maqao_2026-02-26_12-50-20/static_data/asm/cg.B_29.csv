@@ -1,0 +1,10 @@
+address;source_location;insn;indent
+0x1bf0;:0;MOV	(%R8,%RSI,4),%R9D;
+0x1bf4;:0;TEST	%R9D,%R9D;
+0x1bf7;:0;JS	1c0b <main+0x9fb>;
+0x1bf9;:0;VMOVSD	(%R10,%RSI,8),%XMM1;
+0x1bff;:0;VMOVSD	%XMM1,0x8(%R10,%RSI,8);
+0x1c06;:0;MOV	%R9D,0x4(%R8,%RSI,4);
+0x1c0b;:0;DEC	%RSI;
+0x1c0e;:0;CMP	%ESI,%EBX;
+0x1c10;:0;JLE	1bf0 <main+0x9e0>;

@@ -1,0 +1,15 @@
+ID;Module;Source Location;Source Function;Level;Max Time Over Threads (s);Time w.r.t. Wall Time (s);Coverage (% app. time);Speedup if no scalar integer;Speedup if FP arith vectorized;Speedup if fully vectorized;Speedup if FP only;Number of paths;Vectorization Ratio (%);Vectorization Efficiency (%);CQA cycles;CQA cycles if no scalar integer;CQA cycles if FP arith vectorized;CQA cycles if fully vectorized;CQA cycles if FP only
+Loop 43;cg.B;;conj_grad(int const*, int const*, double const*, double*, double const*, double*, double*, double*, double*);Innermost;53.014999389648;53.014999389648;90.330551147461;1.00;2.43;4.00;1.00;1;0.00;25.00;4.00;4.00;1.64;1.00;4.00
+Loop 38;cg.B;;conj_grad(int const*, int const*, double const*, double*, double const*, double*, double*, double*, double*);Innermost;2.0849997997284;2.0849997997284;3.5525643825531;1.00;2.43;4.00;1.00;1;0.00;25.00;4.00;4.00;1.64;1.00;4.00
+Loop 34;cg.B;;main;Innermost;1.5599999427795;1.5600000619888;2.6580338478088;1.44;1.00;6.12;1.63;2;0.00;15.00;1.63;1.13;1.63;0.27;1.00
+Loop 33;cg.B;;main;Innermost;0.90000003576279;0.89999997615814;1.5334810018539;1.00;1.00;7.33;1.25;1;0.00;15.63;2.50;2.50;2.50;0.34;2.00
+Loop 31;cg.B;;main;InBetween;0.24499998986721;0.24499998986721;0.41744759678841;2.10;1.89;10.42;3.14;18;16.00;22.13;11.00;5.25;5.82;1.06;3.50
+Loop 42;cg.B;;conj_grad(int const*, int const*, double const*, double*, double const*, double*, double*, double*, double*);InBetween;0.23000000417233;0.23000000417233;0.39188960194588;1.42;1.00;7.24;2.13;2;22.50;23.75;2.13;1.50;2.13;0.29;1.00
+Loop 40;cg.B;;conj_grad(int const*, int const*, double const*, double*, double const*, double*, double*, double*, double*);Innermost;0.21999998390675;0.21999999880791;0.37485089898109;1.00;1.60;2.46;1.00;1;76.92;44.23;8.00;8.00;5.00;3.25;8.00
+Loop 41;cg.B;;conj_grad(int const*, int const*, double const*, double*, double const*, double*, double*, double*, double*);Innermost;0.1499999910593;0.1499999910593;0.25558015704155;1.00;2.00;3.20;1.00;1;40.00;35.00;8.00;8.00;4.00;2.50;8.00
+Loop 39;cg.B;;conj_grad(int const*, int const*, double const*, double*, double const*, double*, double*, double*, double*);Innermost;0.064999997615814;0.064999997615814;0.11075140535831;1.00;1.47;2.00;1.50;1;100.00;50.00;1.50;1.50;1.02;0.75;1.00
+Loop 29;cg.B;;main;Innermost;0.054999995976686;0.054999999701977;0.093712724745274;1.00;1.00;8.00;2.00;1;0.00;12.50;2.00;2.00;2.00;0.25;1.00
+Loop 22;cg.B;;main;Innermost;0.029999999329448;0.030000001192093;0.051116034388542;2.12;1.02;4.52;3.87;1;10.40;21.60;91.00;43.00;89.50;20.13;23.50
+Loop 20;cg.B;;main;Innermost;0.019999999552965;0.019999999552965;0.034077353775501;1.00;1.00;2.00;3.00;1;100.00;50.00;3.00;3.00;3.00;1.50;1.00
+Loop 15;cg.B;;main;Innermost;0.0099999997764826;0.0099999997764826;0.017038676887751;1.00;1.00;8.00;1.00;1;0.00;12.50;1.00;1.00;1.00;0.13;1.00
+Loop 37;cg.B;;conj_grad(int const*, int const*, double const*, double*, double const*, double*, double*, double*, double*);Outermost;0.0099999997764826;0.0099999997764826;0.017038676887751;1.42;1.00;7.24;2.13;2;22.50;23.75;2.13;1.50;2.13;0.29;1.00

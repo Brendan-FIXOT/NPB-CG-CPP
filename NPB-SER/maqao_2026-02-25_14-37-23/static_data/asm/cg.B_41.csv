@@ -1,0 +1,9 @@
+address;source_location;insn;indent
+0x31c8;:0;MOVAPD	(%R13,%RAX,1),%XMM3;
+0x31cf;:0;MULPD	(%RBX,%RAX,1),%XMM3;
+0x31d4;:0;ADD	$0x10,%RAX;
+0x31d8;:0;ADDSD	%XMM3,%XMM0;
+0x31dc;:0;UNPCKHPD	%XMM3,%XMM3;
+0x31e0;:0;ADDSD	%XMM3,%XMM0;
+0x31e4;:0;CMP	%RDX,%RAX;
+0x31e7;:0;JNE	31c8 <_ZL9conj_gradPKiS0_PKdPdS2_S3_S3_S3_S3_+0x1e8>;

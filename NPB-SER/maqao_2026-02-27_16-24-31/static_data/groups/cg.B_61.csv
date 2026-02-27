@@ -1,0 +1,4 @@
+group_size;pattern;opcodes;offsets;addresses;stride_status;stride;memory_status;accessed_memory;accessed_memory_nooverlap;accessed_memory_overlap;span;head;unroll_factor;
+2;SS;VMOVUPD,VMOVUPD,;32,0,;0x3efe,0x3f08,;Success;64;Success;64;64;0;64;64;2;
+10;LLLLLLLLLL;VMOVUPS,VSHUFPS,VMOVUPS,VSHUFPS,VMOVUPD,VMOVUPD,VINSERTF128,VPERM2F128,VINSERTF128,VPERM2F128,;0,32,64,96,72,8,104,104,40,40,;0x3e68,0x3e6d,0x3e7a,0x3e90,0x3e9d,0x3ea3,0x3ed4,0x3ee2,0x3eea,0x3ef6,;Success;128;Success;288;136;152;136;136;1;
+1;S;VMOVDQU,;0,;0x3edc,;Success;32;Success;32;32;0;32;32;1;

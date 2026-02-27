@@ -1,0 +1,2 @@
+node;proc_name;architecture_code;uarchitecture_code;architecture;uarchitecture;cpui_model_name;cpui_cache_size;cpui_cpu_cores;max_frequency;cur_frequency;driver_frequency;scaling_governor;huge_pages;os_version;pids;
+nico-ThinkPad-T490;Core_7x_V1;2;33;x86_64;KABY_LAKE;Intel(R) Core(TM) i5-8365U CPU @ 1.60GHz;6144 KB;4;4100000;3914333;intel_pstate;powersave;madvise;Linux 6.8.0-90-generic #91-Ubuntu SMP PREEMPT_DYNAMIC Tue Nov 18 14:14:30 UTC 2025;;
