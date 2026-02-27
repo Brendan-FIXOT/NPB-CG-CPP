@@ -1,0 +1,3 @@
+group_size;pattern;opcodes;offsets;addresses;stride_status;stride;memory_status;accessed_memory;accessed_memory_nooverlap;accessed_memory_overlap;span;head;unroll_factor;
+1;L;VMOVAPD,;0,;0x6085,;Success;32;Success;32;32;0;32;32;1;
+1;L;VSUBPD,;0,;0x608a,;Success;32;Success;32;32;0;32;32;1;

@@ -1,0 +1,17 @@
+address;source_location;insn;indent
+0x35d0;:0;MOVSXD	(%R10,%R8,1),%RAX;
+0x35d4;:0;MOV	0x4(%R10,%R8,1),%ESI;
+0x35d9;:0;VXORPD	%XMM0,%XMM0,%XMM0;
+0x35dd;:0;CMP	%ESI,%EAX;
+0x35df;:0;JGE	3600 <_ZL9conj_gradPKiS0_PKdPdS2_S3_S3_S3_S3_+0x250>;
+0x35e1;:0;NOPL	(%RAX);
+0x35e8;:0;MOVSXD	(%R12,%RAX,4),%RDI;  (42) 
+0x35ec;:0;VMOVSD	(%R13,%RAX,8),%XMM7;  (42) 
+0x35f3;:0;INC	%RAX;  (42) 
+0x35f6;:0;VFMADD231SD	(%RBX,%RDI,8),%XMM7,%XMM0;  (42) 
+0x35fc;:0;CMP	%EAX,%ESI;  (42) 
+0x35fe;:0;JG	35e8 <_ZL9conj_gradPKiS0_PKdPdS2_S3_S3_S3_S3_+0x238>;  (42) 
+0x3600;:0;VMOVSD	%XMM0,(%R14,%R8,2);
+0x3606;:0;ADD	$0x4,%R8;
+0x360a;:0;CMP	%R9,%R8;
+0x360d;:0;JNE	35d0 <_ZL9conj_gradPKiS0_PKdPdS2_S3_S3_S3_S3_+0x220>;

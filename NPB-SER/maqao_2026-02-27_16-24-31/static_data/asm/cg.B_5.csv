@@ -1,0 +1,10 @@
+address;source_location;insn;indent
+0x36a0;:0;MOV	(%RCX,%RAX,4),%EDI;
+0x36a3;:0;MOV	-0x2e8(%RBP),%RBX;
+0x36aa;:0;VMOVSD	(%RDX,%RAX,8),%XMM0;
+0x36af;:0;MOV	%EDI,(%RBX,%RAX,4);
+0x36b2;:0;MOV	-0x388(%RBP),%RDI;
+0x36b9;:0;VMOVSD	%XMM0,(%RDI,%RAX,8);
+0x36be;:0;ADD	$0x1,%RAX;
+0x36c2;:0;CMP	%EAX,%ESI;
+0x36c4;:0;JG	36a0 <main+0x21d0>;

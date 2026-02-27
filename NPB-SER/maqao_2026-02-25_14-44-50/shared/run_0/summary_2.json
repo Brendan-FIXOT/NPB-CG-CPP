@@ -1,0 +1,461 @@
+{
+  "report": [
+    {
+      "id_str": "Loop 43 - cg.B",
+      "module": "cg.B",
+      "id": 43,
+      "analysis": "Execution Time: 88 % - Vectorization Ratio: 66.67 % - Vector Length Use: 41.67 %",
+      "coverage": 88.802192687988,
+      "issues": [
+        {
+          "id_str": "Loop Computation Issues",
+          "score": 4,
+          "issues": [
+            {
+              "code": "L2_LC_4",
+              "analysis": "[SA] Less than 10% of the FP ADD/SUB/MUL arithmetic operations are performed using FMA - Reorganize arithmetic expressions to exhibit potential for FMA. This issue costs 4 points.",
+              "score": 4,
+            }
+          ]
+        },
+        {
+          "id_str": "Data Access Issues",
+          "score": 6,
+          "issues": [
+            {
+              "code": "L2_DA_2",
+              "analysis": "[SA] Presence of indirect accesses - Use array restructuring or gather instructions to lower the cost. There are 1 issues ( = indirect data accesses) costing 4 point each.",
+              "score": 4,
+            },
+            {
+              "code": "L2_DA_3",
+              "analysis": "[SA] Inefficient vectorization: more than 10% of the vector loads instructions are unaligned - When allocating arrays, don’t forget to align them. There are 0 issues ( = arrays) costing 2 points each",
+              "score": 0,
+            },
+            {
+              "code": "L2_DA_5",
+              "analysis": "[SA] Presence of special instructions executing on a single port (INSERT/EXTRACT) - Simplify data access and try to get stride 1 access. There are 2 issues (= instructions) costing 1 point each.",
+              "score": 2,
+            }
+          ]
+        },
+        {
+          "id_str": "Vectorization Roadblocks",
+          "score": 4,
+          "issues": [
+            {
+              "code": "L2_DA_2",
+              "analysis": "[SA] Presence of indirect accesses - Use array restructuring or gather instructions to lower the cost. There are 1 issues ( = indirect data accesses) costing 4 point each.",
+              "score": 4,
+            }
+          ]
+        },
+        {
+          "id_str": "Inefficient Vectorization",
+          "score": 2,
+          "issues": [
+            {
+              "code": "L2_DA_5",
+              "analysis": "[SA] Presence of special instructions executing on a single port (INSERT/EXTRACT) - Simplify data access and try to get stride 1 access. There are 2 issues (= instructions) costing 1 point each.",
+              "score": 2,
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id_str": "Loop 38 - cg.B",
+      "module": "cg.B",
+      "id": 38,
+      "analysis": "Execution Time: 3 % - Vectorization Ratio: 60.00 % - Vector Length Use: 40.00 %",
+      "coverage": 3.4531419277191,
+      "issues": [
+        {
+          "id_str": "Loop Computation Issues",
+          "score": 4,
+          "issues": [
+            {
+              "code": "L2_LC_4",
+              "analysis": "[SA] Less than 10% of the FP ADD/SUB/MUL arithmetic operations are performed using FMA - Reorganize arithmetic expressions to exhibit potential for FMA. This issue costs 4 points.",
+              "score": 4,
+            }
+          ]
+        },
+        {
+          "id_str": "Data Access Issues",
+          "score": 6,
+          "issues": [
+            {
+              "code": "L2_DA_2",
+              "analysis": "[SA] Presence of indirect accesses - Use array restructuring or gather instructions to lower the cost. There are 1 issues ( = indirect data accesses) costing 4 point each.",
+              "score": 4,
+            },
+            {
+              "code": "L2_DA_3",
+              "analysis": "[SA] Inefficient vectorization: more than 10% of the vector loads instructions are unaligned - When allocating arrays, don’t forget to align them. There are 0 issues ( = arrays) costing 2 points each",
+              "score": 0,
+            },
+            {
+              "code": "L2_DA_5",
+              "analysis": "[SA] Presence of special instructions executing on a single port (INSERT/EXTRACT) - Simplify data access and try to get stride 1 access. There are 2 issues (= instructions) costing 1 point each.",
+              "score": 2,
+            }
+          ]
+        },
+        {
+          "id_str": "Vectorization Roadblocks",
+          "score": 4,
+          "issues": [
+            {
+              "code": "L2_DA_2",
+              "analysis": "[SA] Presence of indirect accesses - Use array restructuring or gather instructions to lower the cost. There are 1 issues ( = indirect data accesses) costing 4 point each.",
+              "score": 4,
+            }
+          ]
+        },
+        {
+          "id_str": "Inefficient Vectorization",
+          "score": 2,
+          "issues": [
+            {
+              "code": "L2_DA_5",
+              "analysis": "[SA] Presence of special instructions executing on a single port (INSERT/EXTRACT) - Simplify data access and try to get stride 1 access. There are 2 issues (= instructions) costing 1 point each.",
+              "score": 2,
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id_str": "Loop 34 - cg.B",
+      "module": "cg.B",
+      "id": 34,
+      "analysis": "Execution Time: 2 % - Vectorization Ratio: 0.00 % - Vector Length Use: 15.00 %",
+      "coverage": 2.6811654567719,
+      "issues": [
+        {
+          "id_str": "Loop Computation Issues",
+          "score": 2,
+          "issues": [
+            {
+              "code": "L2_LC_6",
+              "analysis": "[SA] Presence of a large number of scalar integer instructions - Simplify loop structure, perform loop splitting or perform unroll and jam. This issue costs 2 points.",
+              "score": 2,
+            }
+          ]
+        },
+        {
+          "id_str": "Control Flow Issues",
+          "score": 2,
+          "issues": [
+            {
+              "code": "L2_CF_2",
+              "analysis": "[SA] Several paths (2 paths) - Simplify control structure or force the compiler to use masked instructions. There are 2 issues ( = paths) costing 1 point each.",
+              "score": 2,
+            }
+          ]
+        },
+        {
+          "id_str": "Vectorization Roadblocks",
+          "score": 2,
+          "issues": [
+            {
+              "code": "L2_CF_2",
+              "analysis": "[SA] Several paths (2 paths) - Simplify control structure or force the compiler to use masked instructions. There are 2 issues ( = paths) costing 1 point each.",
+              "score": 2,
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id_str": "Loop 42 - cg.B",
+      "module": "cg.B",
+      "id": 42,
+      "analysis": "Execution Time: 2 % - Vectorization Ratio: 19.23 % - Vector Length Use: 25.96 %",
+      "coverage": 2.0918071269989,
+      "issues": [
+        {
+          "id_str": "Loop Computation Issues",
+          "score": 6,
+          "issues": [
+            {
+              "code": "L2_LC_4",
+              "analysis": "[SA] Less than 10% of the FP ADD/SUB/MUL arithmetic operations are performed using FMA - Reorganize arithmetic expressions to exhibit potential for FMA. This issue costs 4 points.",
+              "score": 4,
+            },
+            {
+              "code": "L2_LC_6",
+              "analysis": "[SA] Presence of a large number of scalar integer instructions - Simplify loop structure, perform loop splitting or perform unroll and jam. This issue costs 2 points.",
+              "score": 2,
+            }
+          ]
+        },
+        {
+          "id_str": "Control Flow Issues",
+          "score": 14,
+          "issues": [
+            {
+              "code": "L2_CF_3",
+              "analysis": "[SA] Too many paths (8 paths) - Simplify control structure. There are 8 issues ( = paths) costing 1 point each with a malus of 4 points.",
+              "score": 12,
+            },
+            {
+              "code": "L2_CF_4",
+              "analysis": "[SA] Non innermost loop (InBetween) - Collapse loop with innermost ones. This issue costs 2 points.",
+              "score": 2,
+            }
+          ]
+        },
+        {
+          "id_str": "Data Access Issues",
+          "score": 1,
+          "issues": [
+            {
+              "code": "L2_DA_5",
+              "analysis": "[SA] Presence of special instructions executing on a single port (BLEND/MERGE) - Simplify data access and try to get stride 1 access. There are 1 issues (= instructions) costing 1 point each.",
+              "score": 1,
+            }
+          ]
+        },
+        {
+          "id_str": "Vectorization Roadblocks",
+          "score": 14,
+          "issues": [
+            {
+              "code": "L2_CF_3",
+              "analysis": "[SA] Too many paths (8 paths) - Simplify control structure. There are 8 issues ( = paths) costing 1 point each with a malus of 4 points.",
+              "score": 12,
+            },
+            {
+              "code": "L2_CF_4",
+              "analysis": "[SA] Non innermost loop (InBetween) - Collapse loop with innermost ones. This issue costs 2 points.",
+              "score": 2,
+            }
+          ]
+        },
+        {
+          "id_str": "Inefficient Vectorization",
+          "score": 1,
+          "issues": [
+            {
+              "code": "L2_DA_5",
+              "analysis": "[SA] Presence of special instructions executing on a single port (BLEND/MERGE) - Simplify data access and try to get stride 1 access. There are 1 issues (= instructions) costing 1 point each.",
+              "score": 1,
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id_str": "Loop 33 - cg.B",
+      "module": "cg.B",
+      "id": 33,
+      "analysis": "Execution Time: 1 % - Vectorization Ratio: 0.00 % - Vector Length Use: 15.63 %",
+      "coverage": 1.4443429708481,
+      "issues": [
+      ]
+    },
+    {
+      "id_str": "Loop 31 - cg.B",
+      "module": "cg.B",
+      "id": 31,
+      "analysis": "Execution Time: 0 % - Vectorization Ratio: 0.00 % - Vector Length Use: 16.15 %",
+      "coverage": 0.39843943715096,
+      "issues": [
+        {
+          "id_str": "Loop Computation Issues",
+          "score": 6,
+          "issues": [
+            {
+              "code": "L2_LC_4",
+              "analysis": "[SA] Less than 10% of the FP ADD/SUB/MUL arithmetic operations are performed using FMA - Reorganize arithmetic expressions to exhibit potential for FMA. This issue costs 4 points.",
+              "score": 4,
+            },
+            {
+              "code": "L2_LC_6",
+              "analysis": "[SA] Presence of a large number of scalar integer instructions - Simplify loop structure, perform loop splitting or perform unroll and jam. This issue costs 2 points.",
+              "score": 2,
+            }
+          ]
+        },
+        {
+          "id_str": "Control Flow Issues",
+          "score": 24,
+          "issues": [
+            {
+              "code": "L2_CF_3",
+              "analysis": "[SA] Too many paths (18 paths) - Simplify control structure. There are 18 issues ( = paths) costing 1 point each with a malus of 4 points.",
+              "score": 22,
+            },
+            {
+              "code": "L2_CF_4",
+              "analysis": "[SA] Non innermost loop (InBetween) - Collapse loop with innermost ones. This issue costs 2 points.",
+              "score": 2,
+            }
+          ]
+        },
+        {
+          "id_str": "Data Access Issues",
+          "score": 2,
+          "issues": [
+            {
+              "code": "L2_DA_6",
+              "analysis": "[SA] More than 20% of the loads are accessing the stack - Perform loop splitting to decrease pressure on registers. This issue costs 2 points.",
+              "score": 2,
+            }
+          ]
+        },
+        {
+          "id_str": "Vectorization Roadblocks",
+          "score": 24,
+          "issues": [
+            {
+              "code": "L2_CF_3",
+              "analysis": "[SA] Too many paths (18 paths) - Simplify control structure. There are 18 issues ( = paths) costing 1 point each with a malus of 4 points.",
+              "score": 22,
+            },
+            {
+              "code": "L2_CF_4",
+              "analysis": "[SA] Non innermost loop (InBetween) - Collapse loop with innermost ones. This issue costs 2 points.",
+              "score": 2,
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id_str": "Loop 40 - cg.B",
+      "module": "cg.B",
+      "id": 40,
+      "analysis": "Execution Time: 0 % - Vectorization Ratio: 100.00 % - Vector Length Use: 50.00 %",
+      "coverage": 0.37353697419167,
+      "issues": [
+        {
+          "id_str": "Loop Computation Issues",
+          "score": 4,
+          "issues": [
+            {
+              "code": "L2_LC_4",
+              "analysis": "[SA] Less than 10% of the FP ADD/SUB/MUL arithmetic operations are performed using FMA - Reorganize arithmetic expressions to exhibit potential for FMA. This issue costs 4 points.",
+              "score": 4,
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id_str": "Loop 41 - cg.B",
+      "module": "cg.B",
+      "id": 41,
+      "analysis": "Execution Time: 0 % - Vectorization Ratio: 100.00 % - Vector Length Use: 50.00 %",
+      "coverage": 0.22412218153477,
+      "issues": [
+        {
+          "id_str": "Loop Computation Issues",
+          "score": 4,
+          "issues": [
+            {
+              "code": "L2_LC_4",
+              "analysis": "[SA] Less than 10% of the FP ADD/SUB/MUL arithmetic operations are performed using FMA - Reorganize arithmetic expressions to exhibit potential for FMA. This issue costs 4 points.",
+              "score": 4,
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id_str": "Loop 37 - cg.B",
+      "module": "cg.B",
+      "id": 37,
+      "analysis": "Execution Time: 0 % - Vectorization Ratio: 18.52 % - Vector Length Use: 25.46 %",
+      "coverage": 0.10791068524122,
+      "issues": [
+        {
+          "id_str": "Loop Computation Issues",
+          "score": 6,
+          "issues": [
+            {
+              "code": "L2_LC_4",
+              "analysis": "[SA] Less than 10% of the FP ADD/SUB/MUL arithmetic operations are performed using FMA - Reorganize arithmetic expressions to exhibit potential for FMA. This issue costs 4 points.",
+              "score": 4,
+            },
+            {
+              "code": "L2_LC_6",
+              "analysis": "[SA] Presence of a large number of scalar integer instructions - Simplify loop structure, perform loop splitting or perform unroll and jam. This issue costs 2 points.",
+              "score": 2,
+            }
+          ]
+        },
+        {
+          "id_str": "Control Flow Issues",
+          "score": 14,
+          "issues": [
+            {
+              "code": "L2_CF_3",
+              "analysis": "[SA] Too many paths (8 paths) - Simplify control structure. There are 8 issues ( = paths) costing 1 point each with a malus of 4 points.",
+              "score": 12,
+            },
+            {
+              "code": "L2_CF_4",
+              "analysis": "[SA] Non innermost loop (Outermost) - Collapse loop with innermost ones. This issue costs 2 points.",
+              "score": 2,
+            }
+          ]
+        },
+        {
+          "id_str": "Data Access Issues",
+          "score": 3,
+          "issues": [
+            {
+              "code": "L2_DA_5",
+              "analysis": "[SA] Presence of special instructions executing on a single port (BLEND/MERGE) - Simplify data access and try to get stride 1 access. There are 1 issues (= instructions) costing 1 point each.",
+              "score": 1,
+            },
+            {
+              "code": "L2_DA_6",
+              "analysis": "[SA] More than 20% of the loads are accessing the stack - Perform loop splitting to decrease pressure on registers. This issue costs 2 points.",
+              "score": 2,
+            }
+          ]
+        },
+        {
+          "id_str": "Vectorization Roadblocks",
+          "score": 14,
+          "issues": [
+            {
+              "code": "L2_CF_3",
+              "analysis": "[SA] Too many paths (8 paths) - Simplify control structure. There are 8 issues ( = paths) costing 1 point each with a malus of 4 points.",
+              "score": 12,
+            },
+            {
+              "code": "L2_CF_4",
+              "analysis": "[SA] Non innermost loop (Outermost) - Collapse loop with innermost ones. This issue costs 2 points.",
+              "score": 2,
+            }
+          ]
+        },
+        {
+          "id_str": "Inefficient Vectorization",
+          "score": 1,
+          "issues": [
+            {
+              "code": "L2_DA_5",
+              "analysis": "[SA] Presence of special instructions executing on a single port (BLEND/MERGE) - Simplify data access and try to get stride 1 access. There are 1 issues (= instructions) costing 1 point each.",
+              "score": 1,
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id_str": "Loop 29 - cg.B",
+      "module": "cg.B",
+      "id": 29,
+      "analysis": "Execution Time: 0 % - Vectorization Ratio: 0.00 % - Vector Length Use: 12.50 %",
+      "coverage": 0.091309040784836,
+      "issues": [
+      ]
+    }
+  ]
+}

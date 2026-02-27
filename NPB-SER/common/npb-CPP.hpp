@@ -43,7 +43,10 @@ Authors of the C++ code:
 
 #include <cstdio>
 #include <cstdlib>
+#include <algorithm>
+#include <vector>
 #include <cmath>
+#include <cstring>
 
 typedef int boolean;
 typedef struct { double real; double imag; } dcomplex;
@@ -52,7 +55,7 @@ typedef struct { double real; double imag; } dcomplex;
 #define FALSE	0
 
 #define max(a,b) (((a) > (b)) ? (a) : (b))
-#define min(a,b) (((a) < (b)) ? (a) : (b))
+// #define min(a,b) (((a) < (b)) ? (a) : (b))
 #define	pow2(a) ((a)*(a))
 
 /* old version of the complex number operations */

@@ -1,0 +1,4 @@
+function_id;module;function_name;source_info;inc_time_p;inc_time_s;inc_time_s_min;inc_time_s_avg;inc_time_s_max;inc_cov_deviation;inc_time_deviation;exc_time_p;exc_time_s;exc_time_s_min;exc_time_s_avg;exc_time_s_max;exc_cov_deviation;exc_time_deviation;nb_threads;cats;label_name;flops;flops_sca_sp;flops_sca_dp;flops_vec_sp;flops_vec_dp;flops_sca;flops_vec;flops_sp;flops_dp;
+9;cg.B;conj_grad(int const*, int const*, double const*, double*, double const*, double*, double*, double*, double*);;95.033226013184;55.775001525879;0;0;0;0;0;0;0;0;0;0;0;0;;"100,0,0,0,0,0,0,0,0,0,0";_ZL9conj_gradPKiS0_PKdPdS2_S3_S3_S3_S3_;;;;;;;;;;
+2;cg.B;main;;4.8389844894409;2.8399999141693;0;0;0;0;0;0.034077353775501;0.019999999552965;0;0;0;0;0;;"100,0,0,0,0,0,0,0,0,0,0";main;;;;;;;;;;
+11;cg.B;randlc(double*, double);;0.11927074193954;0.070000000298023;0;0;0;0;0;0.11927074193954;0.070000000298023;0;0;0;0;0;;"100,0,0,0,0,0,0,0,0,0,0";_Z6randlcPdd;;;;;;;;;;

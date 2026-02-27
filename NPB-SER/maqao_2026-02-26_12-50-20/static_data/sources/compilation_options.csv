@@ -1,0 +1,4 @@
+module;src_file;score;issue;opts;
+cg.B;;0;"-g is missing for some functions (possibly ones added by the compiler), it is needed to have more accurate reports. Other recommended flags are: -O2/-O3, -march=(target)";"";
+cg.B;;;"-O2, -O3 or -Ofast is missing. ";"";
+cg.B;;;"-march=(target) is missing. ";"";

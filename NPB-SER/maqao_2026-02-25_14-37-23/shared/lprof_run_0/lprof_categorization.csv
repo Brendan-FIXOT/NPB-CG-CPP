@@ -1,0 +1,5 @@
+Metric;Node;Process;Thread;#max_time_on_cpu_s;IO;Time (s);#start_time_us;Exe;System;Others;#start_time_s;TBB;Pthread;#max_context_switch_time_s;#stop_time_us;#total;#stop_time_s;#event_count;OMP;#elapsed_time;MPI;String;Memory;Math;
+cycles;_ALL;_ALL;_ALL;0;0;58.689998626709;517703;11737;0;0;246625;0;0;0;167453;11738;246685;11738;0;59.649749755859;0;0;1;0;
+cycles;nico-ThinkPad-T490;_ALL;_ALL;0;0;58.689998626709;517703;11737;0;0;246625;0;0;0;167453;11738;246685;11738;0;59.649749755859;0;0;1;0;
+cycles;nico-ThinkPad-T490;2463246;_ALL;0;0;58.689998626709;517703;11737;0;0;246625;0;0;0;167453;11738;246685;11738;0;59.649749755859;0;0;1;0;
+cycles;nico-ThinkPad-T490;2463246;2463246;0;0;58.689998626709;517703;11737;0;0;246625;0;0;0;167453;11738;246685;11738;0;59.649749755859;0;0;1;0;

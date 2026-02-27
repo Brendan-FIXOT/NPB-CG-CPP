@@ -1,0 +1,21 @@
+address;source_location;insn;indent
+0x3aec;:0;MOV	(%RDX),%R10D;
+0x3aef;:0;MOV	-0x10(%RDX),%ESI;
+0x3af2;:0;MOV	%RDX,%RDI;
+0x3af5;:0;LEA	-0x10(%RDX),%RCX;
+0x3af9;:0;VMOVSD	0x8(%RDX),%XMM0;
+0x3afe;:0;CMP	%R10D,%ESI;
+0x3b01;:0;JLE	3b1e <main+0x264e>;
+0x3b03;:0;VMOVSD	0x8(%RCX),%XMM1;  (53) 
+0x3b08;:0;MOV	%ESI,0x10(%RCX);  (53) 
+0x3b0b;:0;MOV	%RCX,%RDI;  (53) 
+0x3b0e;:0;SUB	$0x10,%RCX;  (53) 
+0x3b12;:0;VMOVSD	%XMM1,0x28(%RCX);  (53) 
+0x3b17;:0;MOV	(%RCX),%ESI;  (53) 
+0x3b19;:0;CMP	%ESI,%R10D;  (53) 
+0x3b1c;:0;JL	3b03 <main+0x2633>;  (53) 
+0x3b1e;:0;ADD	$0x10,%RDX;
+0x3b22;:0;MOV	%R10D,(%RDI);
+0x3b25;:0;VMOVSD	%XMM0,0x8(%RDI);
+0x3b2a;:0;CMP	%RDX,%R9;
+0x3b2d;:0;JNE	3aec <main+0x261c>;

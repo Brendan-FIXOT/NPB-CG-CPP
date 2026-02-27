@@ -1,0 +1,9 @@
+address;source_location;insn;indent
+0x3b03;:0;VMOVSD	0x8(%RCX),%XMM1;
+0x3b08;:0;MOV	%ESI,0x10(%RCX);
+0x3b0b;:0;MOV	%RCX,%RDI;
+0x3b0e;:0;SUB	$0x10,%RCX;
+0x3b12;:0;VMOVSD	%XMM1,0x28(%RCX);
+0x3b17;:0;MOV	(%RCX),%ESI;
+0x3b19;:0;CMP	%ESI,%R10D;
+0x3b1c;:0;JL	3b03 <main+0x2633>;

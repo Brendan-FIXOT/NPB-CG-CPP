@@ -1,0 +1,107 @@
+address;source_location;insn;indent
+0x6bb0;:0;PUSH	%R15;
+0x6bb2;:0;MOV	%RDX,%R8;
+0x6bb5;:0;PUSH	%R14;
+0x6bb7;:0;PUSH	%R13;
+0x6bb9;:0;PUSH	%R12;
+0x6bbb;:0;PUSH	%RBP;
+0x6bbc;:0;MOV	%RSI,%RBP;
+0x6bbf;:0;PUSH	%RBX;
+0x6bc0;:0;MOV	%RDI,%RBX;
+0x6bc3;:0;SUB	$0x48,%RSP;
+0x6bc7;:0;MOV	(%RDI),%EAX;
+0x6bc9;:0;MOV	0x4(%RDI),%ECX;
+0x6bcc;:0;MOV	%EAX,0x3c(%RSP);
+0x6bd0;:0;TEST	%EAX,%EAX;
+0x6bd2;:0;JLE	6bef <_ZL19sell_spmv_new_orderRK10SellCSigmaPKdPd+0x3f>;
+0x6bd4;:0;MOV	%EAX,%EDX;
+0x6bd6;:0;MOV	%R8,%RDI;
+0x6bd9;:0;XOR	%ESI,%ESI;
+0x6bdb;:0;MOV	%ECX,0x8(%RSP);
+0x6bdf;:0;SAL	$0x3,%RDX;
+0x6be3;:0;CALL	11d0 <.plt.sec@start+0x30>;
+0x6be8;:0;MOV	0x8(%RSP),%ECX;
+0x6bec;:0;MOV	%RAX,%R8;
+0x6bef;:0;MOVSXD	0xc(%RBX),%RDX;
+0x6bf3;:0;TEST	%EDX,%EDX;
+0x6bf5;:0;JLE	6d22 <_ZL19sell_spmv_new_orderRK10SellCSigmaPKdPd+0x172>;
+0x6bfb;:0;MOV	0x58(%RBX),%RAX;
+0x6bff;:0;MOV	0x3c(%RSP),%R15D;
+0x6c04;:0;MOVSXD	%ECX,%R9;
+0x6c07;:0;MOV	%R8,%RSI;
+0x6c0a;:0;MOV	0x40(%RBX),%RDI;
+0x6c0e;:0;LEA	(,%R9,8),%R14;
+0x6c16;:0;LEA	-0x1(%RCX),%R8D;
+0x6c1a;:0;LEA	(%RAX,%RDX,4),%RDX;
+0x6c1e;:0;MOV	%R15D,0x18(%RSP);
+0x6c23;:0;MOV	%RDX,0x30(%RSP);
+0x6c28;:0;LEA	(,%R9,4),%RDX;
+0x6c30;:0;MOV	%RDX,0x10(%RSP);
+0x6c35;:0;XOR	%EDX,%EDX;
+0x6c37;:0;NOPW	(%RAX,%RAX,1);
+0x6c40;:0;MOV	(%RAX),%R13D;(129) 
+0x6c43;:0;TEST	%R13D,%R13D;(129) 
+0x6c46;:0;JLE	6d03 <_ZL19sell_spmv_new_orderRK10SellCSigmaPKdPd+0x153>;(129) 
+0x6c4c;:0;TEST	%ECX,%ECX;(129) 
+0x6c4e;:0;JLE	6d03 <_ZL19sell_spmv_new_orderRK10SellCSigmaPKdPd+0x153>;(129) 
+0x6c54;:0;CMP	%EDX,0x3c(%RSP);(129) 
+0x6c58;:0;JLE	6d03 <_ZL19sell_spmv_new_orderRK10SellCSigmaPKdPd+0x153>;(129) 
+0x6c5e;:0;MOVSXD	(%RDI),%R10;(129) 
+0x6c61;:0;MOV	%EDX,0x1c(%RSP);(129) 
+0x6c65;:0;XOR	%R11D,%R11D;(129) 
+0x6c68;:0;MOV	0x70(%RBX),%R15;(129) 
+0x6c6c;:0;MOV	0x18(%RSP),%R9D;(129) 
+0x6c71;:0;MOV	%RDI,0x20(%RSP);(129) 
+0x6c76;:0;MOV	%RAX,0x28(%RSP);(129) 
+0x6c7b;:0;LEA	(,%R10,8),%R12;(129) 
+0x6c83;:0;SAL	$0x2,%R10;(129) 
+0x6c87;:0;MOV	%ECX,0x38(%RSP);(129) 
+0x6c8b;:0;NOPL	(%RAX,%RAX,1);(129) 
+0x6c90;:0;MOV	%R10,0x8(%RSP);  (130) 
+0x6c95;:0;MOV	%R12,%RCX;  (130) 
+0x6c98;:0;XOR	%EAX,%EAX;  (130) 
+0x6c9a;:0;LEA	(%R15,%R10,1),%RDI;  (130) 
+0x6c9e;:0;JMP	6cad <_ZL19sell_spmv_new_orderRK10SellCSigmaPKdPd+0xfd>;  (130) 
+0x6ca0;:0;ADD	$0x1,%RAX;    (131) 
+0x6ca4;:0;ADD	$0x8,%RCX;    (131) 
+0x6ca8;:0;CMP	%R9,%RAX;    (131) 
+0x6cab;:0;JE	6cd8 <_ZL19sell_spmv_new_orderRK10SellCSigmaPKdPd+0x128>;    (131) 
+0x6cad;:0;MOVSXD	(%RDI,%RAX,4),%RDX;    (131) 
+0x6cb1;:0;TEST	%EDX,%EDX;    (131) 
+0x6cb3;:0;JS	6cd3 <_ZL19sell_spmv_new_orderRK10SellCSigmaPKdPd+0x123>;    (131) 
+0x6cb5;:0;MOV	0x88(%RBX),%R10;    (131) 
+0x6cbc;:0;VMOVSD	(%RSI,%RAX,8),%XMM1;    (131) 
+0x6cc1;:0;VMOVSD	(%R10,%RCX,1),%XMM0;    (131) 
+0x6cc7;:0;VFMADD132SD	(%RBP,%RDX,8),%XMM1,%XMM0;    (131) 
+0x6cce;:0;VMOVSD	%XMM0,(%RSI,%RAX,8);    (131) 
+0x6cd3;:0;CMP	%R8,%RAX;    (131) 
+0x6cd6;:0;JNE	6ca0 <_ZL19sell_spmv_new_orderRK10SellCSigmaPKdPd+0xf0>;    (131) 
+0x6cd8;:0;MOV	0x8(%RSP),%R10;  (130) 
+0x6cdd;:0;MOV	0x10(%RSP),%RAX;  (130) 
+0x6ce2;:0;ADD	$0x1,%R11D;  (130) 
+0x6ce6;:0;ADD	%R14,%R12;  (130) 
+0x6ce9;:0;ADD	%RAX,%R10;  (130) 
+0x6cec;:0;CMP	%R11D,%R13D;  (130) 
+0x6cef;:0;JNE	6c90 <_ZL19sell_spmv_new_orderRK10SellCSigmaPKdPd+0xe0>;  (130) 
+0x6cf1;:0;MOV	0x1c(%RSP),%EDX;(129) 
+0x6cf5;:0;MOV	0x20(%RSP),%RDI;(129) 
+0x6cfa;:0;MOV	0x28(%RSP),%RAX;(129) 
+0x6cff;:0;MOV	0x38(%RSP),%ECX;(129) 
+0x6d03;:0;MOV	0x30(%RSP),%R15;(129) 
+0x6d08;:0;ADD	$0x4,%RAX;(129) 
+0x6d0c;:0;SUB	%ECX,0x18(%RSP);(129) 
+0x6d10;:0;ADD	%ECX,%EDX;(129) 
+0x6d12;:0;ADD	$0x4,%RDI;(129) 
+0x6d16;:0;ADD	%R14,%RSI;(129) 
+0x6d19;:0;CMP	%R15,%RAX;(129) 
+0x6d1c;:0;JNE	6c40 <_ZL19sell_spmv_new_orderRK10SellCSigmaPKdPd+0x90>;(129) 
+0x6d22;:0;ADD	$0x48,%RSP;
+0x6d26;:0;POP	%RBX;
+0x6d27;:0;POP	%RBP;
+0x6d28;:0;POP	%R12;
+0x6d2a;:0;POP	%R13;
+0x6d2c;:0;POP	%R14;
+0x6d2e;:0;POP	%R15;
+0x6d30;:0;RET;
+0x6d31;:0;NOPW	%CS:(%RAX,%RAX,1);
+0x6d3c;:0;NOPL	(%RAX);

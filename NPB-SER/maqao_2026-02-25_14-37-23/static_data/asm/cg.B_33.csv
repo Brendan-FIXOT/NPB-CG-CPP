@@ -1,0 +1,12 @@
+address;source_location;insn;indent
+0x1c10;:0;CMP	$-0x1,%ESI;
+0x1c13;:0;JE	1cb0 <main+0xa40>;
+0x1c19;:0;CMP	%ESI,%ECX;
+0x1c1b;:0;JE	1cc0 <main+0xa50>;
+0x1c21;:0;ADD	$0x1,%RAX;
+0x1c25;:0;ADD	$0x4,%RDX;
+0x1c29;:0;CMP	%EAX,%EDI;
+0x1c2b;:0;JLE	207e <main+0xe0e>;
+0x1c31;:0;MOV	(%RDX),%ESI;
+0x1c33;:0;CMP	%ESI,%ECX;
+0x1c35;:0;JGE	1c10 <main+0x9a0>;
