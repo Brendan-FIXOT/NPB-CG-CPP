@@ -1,0 +1,28 @@
+{
+  "content":
+    {
+      "logs_subdir": "logs/run_2",
+      "ratelprof_html": "shared/run_2/ratelprof_2.html",
+      "decan_csv": "shared/run_2/decan.csv",
+      "env_dir": "shared/run_2/",
+      "vprof_dir": "tools/vprof/run_2",
+      "lprof_tool": "tools/lprof_run_2",
+      "lprof_results": "shared/lprof_run_2",
+      "rep_spd_prompt": "shared/run_2/prompt_speedups.csv",
+      "prompt": "shared/run_2/prompt",
+      "summary_0": "shared/run_2/summary_0.json",
+      "shared": "shared/run_2",
+      "expert_loops_csv": "shared/run_2/expert_loops.csv",
+      "status": "shared/run_2/status.csv",
+      "rep_categorization": "shared/run_2/lprof_categorization.csv",
+      "ratelprof_json": "shared/run_2/ratelprof.json",
+      "vprof_csv": "shared/run_2/vprof.csv",
+      "summary_1": "shared/run_2/summary_1.json",
+      "material_config": "shared/run_2/material_config.csv",
+      "expert_run_csv": "shared/run_2/expert_run.csv",
+      "summary_2": "shared/run_2/summary_2.json",
+      "localvars_csv": "shared/run_2/local_vars.csv",
+      "global_metrics": "shared/run_2/global_metrics.csv",
+      "config": "shared/run_2/config.json"
+    }
+}

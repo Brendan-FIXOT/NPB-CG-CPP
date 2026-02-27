@@ -1,0 +1,1 @@
+maqao oneview -CR --inputs=/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao-1/ov_cgC_WS,/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_with_compil_option-2/ov_cgC_WS,/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_optimized_vectorisation-7/ov_cgC_WS -xp /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/ov_compare_WS_3runs 

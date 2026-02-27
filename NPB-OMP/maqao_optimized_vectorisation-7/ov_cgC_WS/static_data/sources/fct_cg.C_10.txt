@@ -1,0 +1,98 @@
+/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 519 - 700
+--------------------------------------------------------------------------------
+
+519: 		double* rnorm){
+520: 	int j, k;
+521: 	int cgit, cgitmax;
+522: 	double alpha, beta, suml;
+523: 	static double d, sum, rho, rho0;
+524: 	const int nrow = lastrow - firstrow + 1;
+525: 	const int ncol = lastcol - firstcol + 1;
+[...]
+538: 	#pragma omp single nowait
+539: 	{
+540: 
+541: 		rho = 0.0;
+542: 		sum = 0.0;
+543: 	}
+544: 	/* initialize the CG algorithm */
+545: 	#pragma omp for
+546: 	for(j = 0; j < naa+1; j++){
+547: 		q_l[j] = 0.0;
+548: 		z_l[j] = 0.0;
+549: 		r_l[j] = x_l[j];
+550: 		p_l[j] = r_l[j];
+[...]
+559: 	#pragma omp for reduction(+:rho)
+560: 	for(j = 0; j < ncol; j++){
+561: 		rho += r_l[j]*r_l[j];
+562: 	}
+563: 
+564: 	/* the conj grad iteration loop */
+565: 	for(cgit = 1; cgit <= cgitmax; cgit++){
+[...]
+580: 		#pragma omp single nowait
+581: 		{
+582: 			d = 0.0;
+[...]
+588: 			rho0 = rho;
+589: 			rho = 0.0;
+590: 		}
+591: 
+592: 		#pragma omp for nowait schedule(static)
+593: 		for(j = 0; j < nrow; j++){
+594: 			suml = 0.0;
+595: 			const int row_start = rowstr_l[j];
+596: 			const int row_end = rowstr_l[j+1];
+597: 			const int len = row_end - row_start;
+598: 			const int* __restrict ci = colidx_l + row_start;
+599: 			const double* __restrict av = a_l + row_start;
+600: 			#pragma omp simd reduction(+:suml)
+601: 			for(k = 0; k < len; k++){
+602: 				const int idx = ci[k];
+603: 				suml += av[k] * p_l[idx];
+604: 			}
+605: 			q_l[j] = suml;
+[...]
+614: 		#pragma omp for reduction(+:d)
+615: 		for (j = 0; j < ncol; j++) {
+616: 			d += p_l[j]*q_l[j];
+[...]
+624: 		alpha = rho0 / d;
+[...]
+633: 		#pragma omp for reduction(+:rho)
+634: 		for(j = 0; j < ncol; j++){
+635: 			z_l[j] += alpha*p_l[j];
+636: 			r_l[j] -= alpha*q_l[j];
+[...]
+644: 			rho += r_l[j]*r_l[j];
+[...]
+652: 		beta = rho / rho0;
+[...]
+659: 		#pragma omp for
+660: 		for(j = 0; j < ncol; j++){
+661: 			p_l[j] = r_l[j] + beta*p_l[j];
+[...]
+672: 	#pragma omp for nowait schedule(static)
+673: 	for(j = 0; j < nrow; j++){
+674: 		suml = 0.0;
+675: 		const int row_start = rowstr_l[j];
+676: 		const int row_end = rowstr_l[j+1];
+677: 		const int len = row_end - row_start;
+678: 		const int* __restrict ci = colidx_l + row_start;
+679: 		const double* __restrict av = a_l + row_start;
+680: 		#pragma omp simd reduction(+:suml)
+681: 		for(k = 0; k < len; k++){
+682: 			const int idx = ci[k];
+683: 			suml += av[k] * z_l[idx];
+684: 		}
+685: 		r_l[j] = suml;
+[...]
+693: 	#pragma omp for reduction(+:sum)
+694: 	for(j = 0; j < ncol; j++){
+695: 		suml   = x_l[j] - r_l[j];
+696: 		sum += suml*suml;
+697: 	}
+698: 	#pragma omp single
+699: 		*rnorm = sqrt(sum);
+700: }

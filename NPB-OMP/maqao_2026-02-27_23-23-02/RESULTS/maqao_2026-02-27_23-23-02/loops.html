@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html translate="no" lang="en-US"><head><title>OV - Compare Loops</title>
+<meta charset="utf-8" />
+<meta name="google" content="notranslate" />
+<link rel="stylesheet" type="text/css" media="screen" href="css/ui.jqgrid.css" />
+<link rel="stylesheet" type="text/css" href="css/themes/redmond_custom/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="css/themes/redmond_custom/jquery.jqplot.min.css" />
+<link rel="stylesheet" type="text/css" href="css/MAQAO_theme.css" />
+<link rel="stylesheet" type="text/css" href="css/maqao_modal.css" />
+<link rel="stylesheet" type="text/css" href="css/global.css" />
+<link rel="stylesheet" type="text/css" href="css/maqao_menu.css" />
+<script src="js/jquery-1.9.0.min.js" ></script>
+<script src="js/jquery-ui-1.10.3.custom.min.js" ></script>
+<script src="js/grid.locale-en.js" ></script>
+<script src="js/jquery.jqGrid.min.js" ></script>
+<script src="js/d3.min.js" ></script>
+<script class="include" src="js/jquery.jqplot.min.js"></script>
+<script class="include" src="js/jqplot.pieRenderer.min.js"></script>
+<script class="include" src="js/jqplot.barRenderer.min.js"></script>
+<script class="include" src="js/jqplot.categoryAxisRenderer.min.js"></script>
+<script class="include" src="js/jqplot.pointLabels.min.js"></script>
+<script class="include" src="js/jqplot.cursor.min.js"></script>
+<script class="include" src="js/jqplot.canvasTextRenderer.min.js"></script>
+<script class="include" src="js/jqplot.canvasAxisTickRenderer.min.js"></script>
+<script class="include" src="js/jqplot.canvasAxisLabelRenderer.min.js"></script>
+<script class="include" src="js/jqplot.enhancedLegendRenderer.min.js"></script>
+<script class="include" src="js/jqplot.highlighter.min.js"></script>
+<script class="include" src="js/jqplot.logAxisRenderer.min.js"></script>
+<script class="include" src="js/maqao_menu.js"></script>
+<script>
+$( function() {
+  $( document ).tooltip({
+    content: function() {
+      if (this.classList.contains ("tooltip-maqao")
+      ||  this.classList.contains ("tooltip-maqao-button")) {
+        return tooltips_texts[$(this).attr('tooltip_id')];
+      }
+    },
+    position: {
+      my: "center bottom-20",
+        at: "center top",
+        using: function( position, feedback ) {
+          $( this ).css( position );
+          $( "<div>" )
+            .addClass( "arrow-tt" )
+            .addClass( feedback.vertical )
+            .addClass( feedback.horizontal )
+            .appendTo( this );
+        }
+      }
+  });
+} );
+
+// Code from https://www.htmlgoodies.com/beyond/javascript/article.php/3724571/Using-Multiple-JavaScript-Onload-Functions.htm
+function addLoadEvent(func) {
+  var oldonload = window.onload;
+  if (typeof window.onload != 'function') {
+    window.onload = func;
+  } else {
+    window.onload = function() {
+      if (oldonload) {
+        oldonload();
+      }
+      func();
+    }
+  }
+}
+function loadCSS(filename){ 
+  var file = document.createElement("link");
+  file.setAttribute("rel", "stylesheet");
+  file.setAttribute("type", "text/css");
+  file.setAttribute("href", filename);
+  document.head.appendChild(file);
+}
+addLoadEvent(function(){
+  var theme = localStorage.getItem("__MAQAO_OV_theme__");
+  if (theme) {
+    loadCSS("css/"+theme+".css");
+  }
+  else {
+    localStorage.setItem("__MAQAO_OV_theme__", "MAQAO_theme");
+    loadCSS("css/MAQAO_theme.css");
+  }
+});
+</script>
+</head><body>
+<div id="page_title"><img alt="MAQAO" id="maqao_logo" src="images/MAQAO_small_logo.png"/><ul id="maqao_menu"><li ><a  href="index.html">Global</a><ul><li ><a  href="config.html">Configurations</a></li></ul></li><li ><a  href="summary.html">Summary</a></li><li ><a  href="functions.html">Functions</a></li><li ><a class="_current_page _first_menu_level" href="loops.html">Loops</a></li></ul>
+<span><img alt="options" id="menu_options_icon" src="images/gear_20.png" onclick="__open_options ()"/></span>
+</div>
+<script>
+function __change_theme () {
+  var new_theme = document.getElementById("select_theme").value;
+  localStorage.setItem("__MAQAO_OV_theme__", new_theme);
+    loadCSS("css/"+new_theme+".css");
+}
+function __open_options () {
+  var elem = document.getElementById ("options_configuration");
+  if (elem.dataset.open == "false") {
+    elem.dataset.open = "true";
+    elem.style.display = "block";
+  }
+  else {
+    elem.dataset.open = "false";
+    elem.style.display = "none";
+  }
+}
+</script>
+<div id="anchor_file_start"></div>
+<div id="maqao_content">
+<div>
+  <div id="spacer_page_title" ></div>
+  <div id="options_configuration" data-open="false" style="display:none;">
+    <h3 id="options_configuration_header">Report Configuration</h3>
+    <span style="margin-left:10px;"><label for="select_theme">Theme: </label>    <select name="theme" id="select_theme" onchange="__change_theme ()">  <option value="MAQAO_theme">MAQAO_theme</option>  <option value="darkgrey">darkgrey</option>  <option value="cyan">cyan</option></select></span>    <span style="margin-left:10px;"><label for="select_chart_theme">Chart Theme: </label>    <select name="theme" id="select_chart_theme" onchange="__change_chart_theme ()">  <option value="Default_Chart_Theme">Default_Chart_Theme</option>  <option value="grey">grey</option></select></span></div>
+</div>
+<script>
+  let theme = localStorage.getItem("__MAQAO_OV_theme__");
+  if (theme) {
+    document.getElementById("select_theme").value = theme;
+  }
+  theme = localStorage.getItem("__MAQAO_OV_chart_theme__");
+  if (theme) {
+    document.getElementById("select_chart_theme").value = theme;
+  }
+document.getElementById("spacer_page_title").style.height = (document.getElementById("page_title").clientHeight + 25)+"px";
+var obj = document.getElementById("page_title");
+if (obj) {
+  var elems = document.getElementsByClassName ("_first_menu_level")
+  if (obj.clientHeight < 90) {
+    for (var i = 0; i < elems.length; i++) {
+      elems.item(i).style.borderBottomLeftRadius = "";
+      elems.item(i).style.borderBottomRightRadius = "";
+    }
+  }
+  else {
+    for (var i = 0; i < elems.length; i++) {
+      elems.item(i).style.borderBottomLeftRadius = "10px";
+      elems.item(i).style.borderBottomRightRadius = "10px";
+    }
+  }
+}
+</script>
+<button id='button_toggle_full_loops' style='margin: 0px 0px 15px 15px;' onclick='toggle_full_loops();'>Show All Loops</button><button id='button_order_coverage' style='margin: 0px 0px 15px 15px;' onclick='order_loops("coverage");'>Order by Coverages</button><button id='button_order_src' style='margin: 0px 0px 15px 15px;' onclick='order_loops("src");'>Order by Locations</button><div class="_fixed_box"  id="main_container" ><h3 class="_header">Loops<span class="tooltip-maqao-button help-maqao" title="" tooltip_id="0" ></span></h3>
+<div class="_content"><div class="_accordion_box collapsed not_full hidden"  data-cov="99.118203369901" data-start="0" data-file="<unknown>"><h3 id="_accordion_header_1" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>&lt;unknown&gt;: 0  -  99.12 %</h3><div id="_accordion_content_1" class="_content collapsed"><table id='loop_cmp_table'><tr><td colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao-1/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_with_compil_option-2/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_optimized_vectorisation-7/ov_cgC_WS</td></tr>
+<tr><td>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul></ul></td></tr>
+<tr><th><span class="tooltip-maqao" title="" tooltip_id="1" >ASM Loop ID</span></th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="2" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="3" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="4" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="5" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="6" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="7" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th></tr>
+<tr><td >34</td><td>0.38</td><td>0.38</td><td>0.30</td><td>78.57</td><td>44.64</td><td class='first' colspan='6'><td class='first' colspan='6'></tr>
+<tr><td >32</td><td>4.49</td><td>4.49</td><td>3.54</td><td>0</td><td>25</td><td class='first' colspan='6'><td class='first' colspan='6'></tr>
+<tr><td >30</td><td>0.01</td><td>0.01</td><td>0.01</td><td>57.14</td><td>39.29</td><td class='first' colspan='6'><td class='first' colspan='6'></tr>
+<tr><td >45</td><td>0.01</td><td>0.01</td><td>0.01</td><td>77.78</td><td>44.44</td><td class='first' colspan='6'><td class='first' colspan='6'></tr>
+<tr><td >10</td><td>0.03</td><td>0.04</td><td>0.03</td><td>11.62</td><td>21.99</td><td class='first' colspan='6'><td class='first' colspan='6'></tr>
+<tr><td >37</td><td>112.18</td><td>112.18</td><td>88.32</td><td>0</td><td>25</td><td class='first' colspan='6'><td class='first' colspan='6'></tr>
+<tr><td >22</td><td>6.57</td><td>6.57</td><td>5.17</td><td>0</td><td>15</td><td class='first' colspan='6'><td class='first' colspan='6'></tr>
+<tr><td >8</td><td>0.05</td><td>0.06</td><td>0.04</td><td>100</td><td>50</td><td class='first' colspan='6'><td class='first' colspan='6'></tr>
+<tr><td >52</td><td>0.02</td><td>0.02</td><td>0.02</td><td>0</td><td>12.5</td><td class='first' colspan='6'><td class='first' colspan='6'></tr>
+<tr><td >17</td><td>0.02</td><td>0.02</td><td>0.02</td><td>0</td><td>12.5</td><td class='first' colspan='6'><td class='first' colspan='6'></tr>
+<tr><td >21</td><td>1.74</td><td>1.74</td><td>1.37</td><td>0</td><td>15.63</td><td class='first' colspan='6'><td class='first' colspan='6'></tr>
+<tr><td >35</td><td>0.26</td><td>0.27</td><td>0.21</td><td>50</td><td>37.5</td><td class='first' colspan='6'><td class='first' colspan='6'></tr>
+<tr><td >33</td><td>0.10</td><td>0.10</td><td>0.08</td><td>100</td><td>50</td><td class='first' colspan='6'><td class='first' colspan='6'></tr>
+<tr style="height: 40px;">
+<td colspan='6'></td><td class='first' colspan='6'></td><td class='first' colspan='6'></td></tr>
+<tr><td colspan='6'>Sum on 8 analyzed binary loops (cg.C - 34, cg.C - 32, cg.C - 37, cg.C - 22, cg.C - 8, cg.C - 21, cg.C - 35, cg.C - 33)</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td></tr>
+<tr><th colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th></tr>
+<tr style="font-weight: bold;"><td colspan='5'>Loop Computation Issues</td><td></td><td class='first' colspan='5'></td><td></td><td class='first' colspan='5'></td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'>Less than 10% of the FP ADD/SUB/MUL arithmetic operations are performed using FMA</td><td>1</td><td class='first s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'></td><td></td></tr>
+<tr style="font-weight: bold;"><td colspan='5'>Data Access Issues</td><td></td><td class='first' colspan='5'></td><td></td><td class='first' colspan='5'></td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'>More than 10% of the vector loads instructions are unaligned</td><td>1</td><td class='first s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'></td><td></td></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="88.767158508301" data-start="602" data-file="cg.cpp"><h3 id="_accordion_header_2" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>cg.cpp: 602  -  88.77 %</h3><div id="_accordion_content_2" class="_content collapsed"><table id='loop_cmp_table'><tr><td colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao-1/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_with_compil_option-2/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_optimized_vectorisation-7/ov_cgC_WS</td></tr>
+<tr><td>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 602-603</li></ul></td></tr>
+<tr><th><span class="tooltip-maqao" title="" tooltip_id="8" >ASM Loop ID</span></th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="9" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="10" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="11" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="12" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="13" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="14" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th></tr>
+<tr><td colspan='6'><td class='first' colspan='6'><td class='first' >36</td><td>108.11</td><td>108.11</td><td>88.77</td><td>42.86</td><td>50</td></tr>
+<tr style="height: 40px;">
+<td colspan='6'></td><td class='first' colspan='6'></td><td class='first' colspan='6'></td></tr>
+<tr><td colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>Sum on 1 analyzed binary loop (cg.C - 36)</td></tr>
+<tr><th colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th></tr>
+<tr style="font-weight: bold;"><td colspan='5'></td><td></td><td class='first' colspan='5'></td><td></td><td class='first' colspan='5'>Data Access Issues</td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of constant non-unit stride data access</td><td>1</td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of indirect access</td><td>1</td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of special instructions executing on a single port</td><td>1</td></tr>
+<tr style="font-weight: bold;"><td colspan='5'></td><td></td><td class='first' colspan='5'></td><td></td><td class='first' colspan='5'>Vectorization Roadblocks</td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of constant non-unit stride data access</td><td>1</td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of indirect access</td><td>1</td></tr>
+<tr style="font-weight: bold;"><td colspan='5'></td><td></td><td class='first' colspan='5'></td><td></td><td class='first' colspan='5'>Inefficient Vectorization</td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of special instructions executing on a single port</td><td>1</td></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="87.661666870117" data-start="579" data-file="cg.cpp"><h3 id="_accordion_header_3" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>cg.cpp: 579  -  87.66 %</h3><div id="_accordion_content_3" class="_content collapsed"><table id='loop_cmp_table'><tr><td colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao-1/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_with_compil_option-2/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_optimized_vectorisation-7/ov_cgC_WS</td></tr>
+<tr><td>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 579-580</li></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul></ul></td></tr>
+<tr><th><span class="tooltip-maqao" title="" tooltip_id="15" >ASM Loop ID</span></th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="16" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="17" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="18" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="19" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="20" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="21" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th></tr>
+<tr><td colspan='6'><td class='first' >38</td><td>117.65</td><td>117.65</td><td>87.66</td><td>38.46</td><td>46.15</td><td class='first' colspan='6'></tr>
+<tr style="height: 40px;">
+<td colspan='6'></td><td class='first' colspan='6'></td><td class='first' colspan='6'></td></tr>
+<tr><td colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>Sum on 1 analyzed binary loop (cg.C - 38)</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td></tr>
+<tr><th colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th></tr>
+<tr style="font-weight: bold;"><td colspan='5'></td><td></td><td class='first' colspan='5'>Data Access Issues</td><td></td><td class='first' colspan='5'></td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of indirect access</td><td>1</td><td class='first s2_issue' colspan='5'></td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of special instructions executing on a single port</td><td>1</td><td class='first s2_issue' colspan='5'></td><td></td></tr>
+<tr style="font-weight: bold;"><td colspan='5'></td><td></td><td class='first' colspan='5'>Vectorization Roadblocks</td><td></td><td class='first' colspan='5'></td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of indirect access</td><td>1</td><td class='first s2_issue' colspan='5'></td><td></td></tr>
+<tr style="font-weight: bold;"><td colspan='5'></td><td></td><td class='first' colspan='5'>Inefficient Vectorization</td><td></td><td class='first' colspan='5'></td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of special instructions executing on a single port</td><td>1</td><td class='first s2_issue' colspan='5'></td><td></td></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="3.5949819087982" data-start="893" data-file="cg.cpp"><h3 id="_accordion_header_4" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>cg.cpp: 893  -  3.59 %</h3><div id="_accordion_content_4" class="_content collapsed"><table id='loop_cmp_table'><tr><td colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao-1/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_with_compil_option-2/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_optimized_vectorisation-7/ov_cgC_WS</td></tr>
+<tr><td>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 893-896</li></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul></ul></td></tr>
+<tr><th><span class="tooltip-maqao" title="" tooltip_id="22" >ASM Loop ID</span></th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="23" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="24" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="25" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="26" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="27" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="28" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th></tr>
+<tr><td colspan='6'><td class='first' >23</td><td>4.83</td><td>4.83</td><td>3.59</td><td>0</td><td>15</td><td class='first' colspan='6'></tr>
+<tr style="height: 40px;">
+<td colspan='6'></td><td class='first' colspan='6'></td><td class='first' colspan='6'></td></tr>
+<tr><td colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>Sum on 1 analyzed binary loop (cg.C - 23)</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td></tr>
+<tr><th colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th></tr>
+<tr style="font-weight: bold;"><td colspan='5'></td><td></td><td class='first' colspan='5'>Loop Computation Issues</td><td></td><td class='first' colspan='5'></td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of a large number of scalar integer instructions</td><td>1</td><td class='first s2_issue' colspan='5'></td><td></td></tr>
+<tr style="font-weight: bold;"><td colspan='5'></td><td></td><td class='first' colspan='5'>Control Flow Issues</td><td></td><td class='first' colspan='5'></td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of 2 to 4 paths</td><td>1</td><td class='first s2_issue' colspan='5'></td><td></td></tr>
+<tr style="font-weight: bold;"><td colspan='5'></td><td></td><td class='first' colspan='5'>Data Access Issues</td><td></td><td class='first' colspan='5'></td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of indirect access</td><td>1</td><td class='first s2_issue' colspan='5'></td><td></td></tr>
+<tr style="font-weight: bold;"><td colspan='5'></td><td></td><td class='first' colspan='5'>Vectorization Roadblocks</td><td></td><td class='first' colspan='5'></td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of 2 to 4 paths</td><td>1</td><td class='first s2_issue' colspan='5'></td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of indirect access</td><td>1</td><td class='first s2_issue' colspan='5'></td><td></td></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="3.5308151245117" data-start="682" data-file="cg.cpp"><h3 id="_accordion_header_5" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>cg.cpp: 682  -  3.53 %</h3><div id="_accordion_content_5" class="_content collapsed"><table id='loop_cmp_table'><tr><td colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao-1/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_with_compil_option-2/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_optimized_vectorisation-7/ov_cgC_WS</td></tr>
+<tr><td>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 682-683</li></ul></td></tr>
+<tr><th><span class="tooltip-maqao" title="" tooltip_id="29" >ASM Loop ID</span></th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="30" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="31" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="32" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="33" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="34" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="35" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th></tr>
+<tr><td colspan='6'><td class='first' colspan='6'><td class='first' >31</td><td>4.30</td><td>4.30</td><td>3.53</td><td>42.86</td><td>50</td></tr>
+<tr style="height: 40px;">
+<td colspan='6'></td><td class='first' colspan='6'></td><td class='first' colspan='6'></td></tr>
+<tr><td colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>Sum on 1 analyzed binary loop (cg.C - 31)</td></tr>
+<tr><th colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th></tr>
+<tr style="font-weight: bold;"><td colspan='5'></td><td></td><td class='first' colspan='5'></td><td></td><td class='first' colspan='5'>Data Access Issues</td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of constant non-unit stride data access</td><td>1</td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of indirect access</td><td>1</td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of special instructions executing on a single port</td><td>1</td></tr>
+<tr style="font-weight: bold;"><td colspan='5'></td><td></td><td class='first' colspan='5'></td><td></td><td class='first' colspan='5'>Vectorization Roadblocks</td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of constant non-unit stride data access</td><td>1</td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of indirect access</td><td>1</td></tr>
+<tr style="font-weight: bold;"><td colspan='5'></td><td></td><td class='first' colspan='5'></td><td></td><td class='first' colspan='5'>Inefficient Vectorization</td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of special instructions executing on a single port</td><td>1</td></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="3.5055725574493" data-start="652" data-file="cg.cpp"><h3 id="_accordion_header_6" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>cg.cpp: 652  -  3.51 %</h3><div id="_accordion_content_6" class="_content collapsed"><table id='loop_cmp_table'><tr><td colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao-1/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_with_compil_option-2/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_optimized_vectorisation-7/ov_cgC_WS</td></tr>
+<tr><td>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 652-653</li></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul></ul></td></tr>
+<tr><th><span class="tooltip-maqao" title="" tooltip_id="36" >ASM Loop ID</span></th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="37" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="38" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="39" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="40" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="41" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="42" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th></tr>
+<tr><td colspan='6'><td class='first' >33</td><td>4.70</td><td>4.70</td><td>3.51</td><td>38.46</td><td>46.15</td><td class='first' colspan='6'></tr>
+<tr style="height: 40px;">
+<td colspan='6'></td><td class='first' colspan='6'></td><td class='first' colspan='6'></td></tr>
+<tr><td colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>Sum on 1 analyzed binary loop (cg.C - 33)</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td></tr>
+<tr><th colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th></tr>
+<tr style="font-weight: bold;"><td colspan='5'></td><td></td><td class='first' colspan='5'>Data Access Issues</td><td></td><td class='first' colspan='5'></td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of indirect access</td><td>1</td><td class='first s2_issue' colspan='5'></td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of special instructions executing on a single port</td><td>1</td><td class='first s2_issue' colspan='5'></td><td></td></tr>
+<tr style="font-weight: bold;"><td colspan='5'></td><td></td><td class='first' colspan='5'>Vectorization Roadblocks</td><td></td><td class='first' colspan='5'></td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of indirect access</td><td>1</td><td class='first s2_issue' colspan='5'></td><td></td></tr>
+<tr style="font-weight: bold;"><td colspan='5'></td><td></td><td class='first' colspan='5'>Inefficient Vectorization</td><td></td><td class='first' colspan='5'></td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of special instructions executing on a single port</td><td>1</td><td class='first s2_issue' colspan='5'></td><td></td></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="1.7509236335754" data-start="886" data-file="cg.cpp"><h3 id="_accordion_header_7" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>cg.cpp: 886  -  1.75 %</h3><div id="_accordion_content_7" class="_content collapsed"><table id='loop_cmp_table'><tr><td colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao-1/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_with_compil_option-2/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_optimized_vectorisation-7/ov_cgC_WS</td></tr>
+<tr><td>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 886-887</li><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 903-907</li></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul></ul></td></tr>
+<tr><th><span class="tooltip-maqao" title="" tooltip_id="43" >ASM Loop ID</span></th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="44" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="45" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="46" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="47" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="48" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="49" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th></tr>
+<tr><td colspan='6'><td class='first' >22</td><td>2.35</td><td>2.35</td><td>1.75</td><td>0</td><td>15.63</td><td class='first' colspan='6'></tr>
+<tr style="height: 40px;">
+<td colspan='6'></td><td class='first' colspan='6'></td><td class='first' colspan='6'></td></tr>
+<tr><td colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>Sum on 1 analyzed binary loop (cg.C - 22)</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td></tr>
+<tr><th colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="0.70205742120743" data-start="1880" data-file="stl_algo.h"><h3 id="_accordion_header_8" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>stl_algo.h: 1880  -  0.70 %</h3><div id="_accordion_content_8" class="_content collapsed"><table id='loop_cmp_table'><tr><td colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao-1/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_with_compil_option-2/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_optimized_vectorisation-7/ov_cgC_WS</td></tr>
+<tr><td>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 843-843</li><li>/usr/include/c++/13/bits/stl_algo.h: 1880-1880</li></ul></td></tr>
+<tr><th><span class="tooltip-maqao" title="" tooltip_id="50" >ASM Loop ID</span></th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="51" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="52" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="53" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="54" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="55" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="56" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th></tr>
+<tr><td colspan='6'><td class='first' colspan='6'><td class='first' >57</td><td>0.86</td><td>0.86</td><td>0.70</td><td>0</td><td>15.63</td></tr>
+<tr style="height: 40px;">
+<td colspan='6'></td><td class='first' colspan='6'></td><td class='first' colspan='6'></td></tr>
+<tr><td colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>Sum on 1 analyzed binary loop (cg.C - 57)</td></tr>
+<tr><th colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th></tr>
+<tr style="font-weight: bold;"><td colspan='5'></td><td></td><td class='first' colspan='5'></td><td></td><td class='first' colspan='5'>Control Flow Issues</td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of 2 to 4 paths</td><td>1</td></tr>
+<tr style="font-weight: bold;"><td colspan='5'></td><td></td><td class='first' colspan='5'></td><td></td><td class='first' colspan='5'>Vectorization Roadblocks</td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of 2 to 4 paths</td><td>1</td></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="0.45161586999893" data-start="1877" data-file="stl_algo.h"><h3 id="_accordion_header_9" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>stl_algo.h: 1877  -  0.45 %</h3><div id="_accordion_content_9" class="_content collapsed"><table id='loop_cmp_table'><tr><td colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao-1/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_with_compil_option-2/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_optimized_vectorisation-7/ov_cgC_WS</td></tr>
+<tr><td>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 843-843</li><li>/usr/include/c++/13/bits/stl_algo.h: 1877-1877</li></ul></td></tr>
+<tr><th><span class="tooltip-maqao" title="" tooltip_id="57" >ASM Loop ID</span></th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="58" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="59" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="60" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="61" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="62" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="63" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th></tr>
+<tr><td colspan='6'><td class='first' colspan='6'><td class='first' >56</td><td>0.55</td><td>0.55</td><td>0.45</td><td>0</td><td>15.63</td></tr>
+<tr style="height: 40px;">
+<td colspan='6'></td><td class='first' colspan='6'></td><td class='first' colspan='6'></td></tr>
+<tr><td colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>Sum on 1 analyzed binary loop (cg.C - 56)</td></tr>
+<tr><th colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th></tr>
+<tr style="font-weight: bold;"><td colspan='5'></td><td></td><td class='first' colspan='5'></td><td></td><td class='first' colspan='5'>Control Flow Issues</td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of 2 to 4 paths</td><td>1</td></tr>
+<tr style="font-weight: bold;"><td colspan='5'></td><td></td><td class='first' colspan='5'></td><td></td><td class='first' colspan='5'>Data Access Issues</td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of constant non-unit stride data access</td><td>1</td></tr>
+<tr style="font-weight: bold;"><td colspan='5'></td><td></td><td class='first' colspan='5'></td><td></td><td class='first' colspan='5'>Vectorization Roadblocks</td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of 2 to 4 paths</td><td>1</td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of constant non-unit stride data access</td><td>1</td></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="0.24633595347404" data-start="880" data-file="cg.cpp"><h3 id="_accordion_header_10" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>cg.cpp: 880  -  0.25 %</h3><div id="_accordion_content_10" class="_content collapsed"><table id='loop_cmp_table'><tr><td colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao-1/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_with_compil_option-2/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_optimized_vectorisation-7/ov_cgC_WS</td></tr>
+<tr><td>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 880-890</li><li>/usr/include/c++/13/bits/new_allocator.h: 191-191</li><li>/usr/include/c++/13/bits/stl_vector.h: 1283-1292</li></ul></td></tr>
+<tr><th><span class="tooltip-maqao" title="" tooltip_id="64" >ASM Loop ID</span></th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="65" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="66" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="67" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="68" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="69" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="70" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th></tr>
+<tr><td colspan='6'><td class='first' colspan='6'><td class='first' >61</td><td>0.30</td><td>0.30</td><td>0.25</td><td>10</td><td>23.28</td></tr>
+<tr style="height: 40px;">
+<td colspan='6'></td><td class='first' colspan='6'></td><td class='first' colspan='6'></td></tr>
+<tr><td colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>Sum on 1 analyzed binary loop (cg.C - 61)</td></tr>
+<tr><th colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th></tr>
+<tr style="font-weight: bold;"><td colspan='5'></td><td></td><td class='first' colspan='5'></td><td></td><td class='first' colspan='5'>Loop Computation Issues</td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Less than 10% of the FP ADD/SUB/MUL arithmetic operations are performed using FMA</td><td>1</td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of a large number of scalar integer instructions</td><td>1</td></tr>
+<tr style="font-weight: bold;"><td colspan='5'></td><td></td><td class='first' colspan='5'></td><td></td><td class='first' colspan='5'>Control Flow Issues</td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of calls</td><td>1</td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of more than 4 paths</td><td>1</td></tr>
+<tr style="font-weight: bold;"><td colspan='5'></td><td></td><td class='first' colspan='5'></td><td></td><td class='first' colspan='5'>Data Access Issues</td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of special instructions executing on a single port</td><td>1</td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>More than 20% of the loads are accessing the stack</td><td>1</td></tr>
+<tr style="font-weight: bold;"><td colspan='5'></td><td></td><td class='first' colspan='5'></td><td></td><td class='first' colspan='5'>Vectorization Roadblocks</td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of calls</td><td>1</td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of more than 4 paths</td><td>1</td></tr>
+<tr style="font-weight: bold;"><td colspan='5'></td><td></td><td class='first' colspan='5'></td><td></td><td class='first' colspan='5'>Inefficient Vectorization</td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Presence of special instructions executing on a single port</td><td>1</td></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="0.19706875085831" data-start="635" data-file="cg.cpp"><h3 id="_accordion_header_11" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>cg.cpp: 635  -  0.20 %</h3><div id="_accordion_content_11" class="_content collapsed"><table id='loop_cmp_table'><tr><td colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao-1/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_with_compil_option-2/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_optimized_vectorisation-7/ov_cgC_WS</td></tr>
+<tr><td>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 635-636</li><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 644-644</li></ul></td></tr>
+<tr><th><span class="tooltip-maqao" title="" tooltip_id="71" >ASM Loop ID</span></th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="72" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="73" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="74" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="75" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="76" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="77" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th></tr>
+<tr><td colspan='6'><td class='first' colspan='6'><td class='first' >33</td><td>0.24</td><td>0.24</td><td>0.20</td><td>100</td><td>100</td></tr>
+<tr style="height: 40px;">
+<td colspan='6'></td><td class='first' colspan='6'></td><td class='first' colspan='6'></td></tr>
+<tr><td colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>Sum on 1 analyzed binary loop (cg.C - 33)</td></tr>
+<tr><th colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th></tr>
+<tr style="font-weight: bold;"><td colspan='5'></td><td></td><td class='first' colspan='5'></td><td></td><td class='first' colspan='5'>Data Access Issues</td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>More than 10% of the vector loads instructions are unaligned</td><td>1</td></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="0.15274015069008" data-start="612" data-file="cg.cpp"><h3 id="_accordion_header_12" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>cg.cpp: 612  -  0.15 %</h3><div id="_accordion_content_12" class="_content collapsed"><table id='loop_cmp_table'><tr><td colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao-1/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_with_compil_option-2/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_optimized_vectorisation-7/ov_cgC_WS</td></tr>
+<tr><td>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 612-613</li><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 621-621</li></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul></ul></td></tr>
+<tr><th><span class="tooltip-maqao" title="" tooltip_id="78" >ASM Loop ID</span></th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="79" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="80" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="81" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="82" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="83" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="84" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th></tr>
+<tr><td colspan='6'><td class='first' >35</td><td>0.20</td><td>0.20</td><td>0.15</td><td>100</td><td>100</td><td class='first' colspan='6'></tr>
+<tr style="height: 40px;">
+<td colspan='6'></td><td class='first' colspan='6'></td><td class='first' colspan='6'></td></tr>
+<tr><td colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>Sum on 1 analyzed binary loop (cg.C - 35)</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td></tr>
+<tr><th colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th></tr>
+<tr style="font-weight: bold;"><td colspan='5'></td><td></td><td class='first' colspan='5'>Data Access Issues</td><td></td><td class='first' colspan='5'></td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>More than 10% of the vector loads instructions are unaligned</td><td>1</td><td class='first s2_issue' colspan='5'></td><td></td></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="0.13959036767483" data-start="1799" data-file="stl_algo.h"><h3 id="_accordion_header_13" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>stl_algo.h: 1799  -  0.14 %</h3><div id="_accordion_content_13" class="_content collapsed"><table id='loop_cmp_table'><tr><td colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao-1/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_with_compil_option-2/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_optimized_vectorisation-7/ov_cgC_WS</td></tr>
+<tr><td>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 843-843</li><li>/usr/include/c++/13/bits/stl_algo.h: 1799-1801</li></ul></td></tr>
+<tr><th><span class="tooltip-maqao" title="" tooltip_id="85" >ASM Loop ID</span></th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="86" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="87" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="88" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="89" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="90" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="91" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th></tr>
+<tr><td colspan='6'><td class='first' colspan='6'><td class='first' >13</td><td>0.17</td><td>0.17</td><td>0.14</td><td>50</td><td>32.81</td></tr>
+<tr style="height: 40px;">
+<td colspan='6'></td><td class='first' colspan='6'></td><td class='first' colspan='6'></td></tr>
+<tr><td colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td></tr>
+<tr><th colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="0.12385150417685" data-start="945" data-file="cg.cpp"><h3 id="_accordion_header_14" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>cg.cpp: 945  -  0.12 %</h3><div id="_accordion_content_14" class="_content collapsed"><table id='loop_cmp_table'><tr><td colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao-1/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_with_compil_option-2/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_optimized_vectorisation-7/ov_cgC_WS</td></tr>
+<tr><td>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 945-947</li></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 946-950</li><li>/usr/include/c++/13/bits/stl_vector.h: 1129-1129</li></ul></td></tr>
+<tr><th><span class="tooltip-maqao" title="" tooltip_id="92" >ASM Loop ID</span></th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="93" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="94" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="95" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="96" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="97" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="98" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th></tr>
+<tr><td colspan='6'><td class='first' >8</td><td>0.04</td><td>0.04</td><td>0.03</td><td>100</td><td>100</td><td class='first' >6</td><td>0.11</td><td>0.11</td><td>0.09</td><td>0</td><td>18.75</td></tr>
+<tr style="height: 40px;">
+<td colspan='6'></td><td class='first' colspan='6'></td><td class='first' colspan='6'></td></tr>
+<tr><td colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td></tr>
+<tr><th colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="0.086217574775219" data-start="616" data-file="cg.cpp"><h3 id="_accordion_header_15" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>cg.cpp: 616  -  0.09 %</h3><div id="_accordion_content_15" class="_content collapsed"><table id='loop_cmp_table'><tr><td colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao-1/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_with_compil_option-2/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_optimized_vectorisation-7/ov_cgC_WS</td></tr>
+<tr><td>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 616-616</li></ul></td></tr>
+<tr><th><span class="tooltip-maqao" title="" tooltip_id="99" >ASM Loop ID</span></th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="100" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="101" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="102" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="103" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="104" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="105" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th></tr>
+<tr><td colspan='6'><td class='first' colspan='6'><td class='first' >34</td><td>0.11</td><td>0.11</td><td>0.09</td><td>100</td><td>100</td></tr>
+<tr style="height: 40px;">
+<td colspan='6'></td><td class='first' colspan='6'></td><td class='first' colspan='6'></td></tr>
+<tr><td colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td></tr>
+<tr><th colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="0.078232757747173" data-start="593" data-file="cg.cpp"><h3 id="_accordion_header_16" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>cg.cpp: 593  -  0.08 %</h3><div id="_accordion_content_16" class="_content collapsed"><table id='loop_cmp_table'><tr><td colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao-1/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_with_compil_option-2/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_optimized_vectorisation-7/ov_cgC_WS</td></tr>
+<tr><td>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 593-593</li></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul></ul></td></tr>
+<tr><th><span class="tooltip-maqao" title="" tooltip_id="106" >ASM Loop ID</span></th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="107" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="108" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="109" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="110" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="111" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="112" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th></tr>
+<tr><td colspan='6'><td class='first' >36</td><td>0.10</td><td>0.10</td><td>0.08</td><td>100</td><td>100</td><td class='first' colspan='6'></tr>
+<tr style="height: 40px;">
+<td colspan='6'></td><td class='first' colspan='6'></td><td class='first' colspan='6'></td></tr>
+<tr><td colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>Sum on 1 analyzed binary loop (cg.C - 36)</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td></tr>
+<tr><th colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th></tr>
+<tr style="font-weight: bold;"><td colspan='5'></td><td></td><td class='first' colspan='5'>Loop Computation Issues</td><td></td><td class='first' colspan='5'></td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>Less than 10% of the FP ADD/SUB/MUL arithmetic operations are performed using FMA</td><td>1</td><td class='first s2_issue' colspan='5'></td><td></td></tr>
+<tr style="font-weight: bold;"><td colspan='5'></td><td></td><td class='first' colspan='5'>Data Access Issues</td><td></td><td class='first' colspan='5'></td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>More than 10% of the vector loads instructions are unaligned</td><td>1</td><td class='first s2_issue' colspan='5'></td><td></td></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="0.078006379306316" data-start="913" data-file="cg.cpp"><h3 id="_accordion_header_17" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>cg.cpp: 913  -  0.08 %</h3><div id="_accordion_content_17" class="_content collapsed"><table id='loop_cmp_table'><tr><td colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao-1/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_with_compil_option-2/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_optimized_vectorisation-7/ov_cgC_WS</td></tr>
+<tr><td>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 913-917</li><li>/usr/include/c++/13/bits/new_allocator.h: 191-191</li><li>/usr/include/c++/13/bits/stl_vector.h: 993-993</li><li>/usr/include/c++/13/bits/stl_vector.h: 1283-1292</li></ul></td></tr>
+<tr><th><span class="tooltip-maqao" title="" tooltip_id="113" >ASM Loop ID</span></th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="114" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="115" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="116" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="117" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="118" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="119" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th></tr>
+<tr><td colspan='6'><td class='first' colspan='6'><td class='first' >11</td><td>0.09</td><td>0.09</td><td>0.08</td><td>11.76</td><td>25</td></tr>
+<tr style="height: 40px;">
+<td colspan='6'></td><td class='first' colspan='6'></td><td class='first' colspan='6'></td></tr>
+<tr><td colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td></tr>
+<tr><th colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="0.049267187714577" data-start="926" data-file="cg.cpp"><h3 id="_accordion_header_18" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>cg.cpp: 926  -  0.05 %</h3><div id="_accordion_content_18" class="_content collapsed"><table id='loop_cmp_table'><tr><td colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao-1/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_with_compil_option-2/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_optimized_vectorisation-7/ov_cgC_WS</td></tr>
+<tr><td>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 926-927</li></ul></td></tr>
+<tr><th><span class="tooltip-maqao" title="" tooltip_id="120" >ASM Loop ID</span></th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="121" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="122" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="123" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="124" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="125" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="126" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th></tr>
+<tr><td colspan='6'><td class='first' colspan='6'><td class='first' >2</td><td>0.06</td><td>0.06</td><td>0.05</td><td>0</td><td>12.5</td></tr>
+<tr style="height: 40px;">
+<td colspan='6'></td><td class='first' colspan='6'></td><td class='first' colspan='6'></td></tr>
+<tr><td colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td></tr>
+<tr><th colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="0.044704433530569" data-start="638" data-file="cg.cpp"><h3 id="_accordion_header_19" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>cg.cpp: 638  -  0.04 %</h3><div id="_accordion_content_19" class="_content collapsed"><table id='loop_cmp_table'><tr><td colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao-1/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_with_compil_option-2/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_optimized_vectorisation-7/ov_cgC_WS</td></tr>
+<tr><td>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 638-638</li></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul></ul></td></tr>
+<tr><th><span class="tooltip-maqao" title="" tooltip_id="127" >ASM Loop ID</span></th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="128" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="129" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="130" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="131" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="132" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="133" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th></tr>
+<tr><td colspan='6'><td class='first' >34</td><td>0.06</td><td>0.06</td><td>0.04</td><td>100</td><td>100</td><td class='first' colspan='6'></tr>
+<tr style="height: 40px;">
+<td colspan='6'></td><td class='first' colspan='6'></td><td class='first' colspan='6'></td></tr>
+<tr><td colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>Sum on 1 analyzed binary loop (cg.C - 34)</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td></tr>
+<tr><th colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th></tr>
+<tr style="font-weight: bold;"><td colspan='5'></td><td></td><td class='first' colspan='5'>Data Access Issues</td><td></td><td class='first' colspan='5'></td><td></td></tr>
+<tr><td class='s2_issue' colspan='5'></td><td></td><td class='first s2_issue' colspan='5'>More than 10% of the vector loads instructions are unaligned</td><td>1</td><td class='first s2_issue' colspan='5'></td><td></td></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="0.041055988520384" data-start="661" data-file="cg.cpp"><h3 id="_accordion_header_20" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>cg.cpp: 661  -  0.04 %</h3><div id="_accordion_content_20" class="_content collapsed"><table id='loop_cmp_table'><tr><td colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao-1/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_with_compil_option-2/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_optimized_vectorisation-7/ov_cgC_WS</td></tr>
+<tr><td>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 661-661</li></ul></td></tr>
+<tr><th><span class="tooltip-maqao" title="" tooltip_id="134" >ASM Loop ID</span></th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="135" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="136" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="137" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="138" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="139" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="140" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th></tr>
+<tr><td colspan='6'><td class='first' colspan='6'><td class='first' >32</td><td>0.05</td><td>0.05</td><td>0.04</td><td>100</td><td>100</td></tr>
+<tr style="height: 40px;">
+<td colspan='6'></td><td class='first' colspan='6'></td><td class='first' colspan='6'></td></tr>
+<tr><td colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td></tr>
+<tr><th colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="0.026077585294843" data-start="852" data-file="cg.cpp"><h3 id="_accordion_header_21" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>cg.cpp: 852  -  0.03 %</h3><div id="_accordion_content_21" class="_content collapsed"><table id='loop_cmp_table'><tr><td colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao-1/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_with_compil_option-2/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_optimized_vectorisation-7/ov_cgC_WS</td></tr>
+<tr><td>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 852-854</li></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul></ul></td></tr>
+<tr><th><span class="tooltip-maqao" title="" tooltip_id="141" >ASM Loop ID</span></th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="142" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="143" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="144" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="145" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="146" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="147" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th></tr>
+<tr><td colspan='6'><td class='first' >18</td><td>0.04</td><td>0.03</td><td>0.03</td><td>0</td><td>12.5</td><td class='first' colspan='6'></tr>
+<tr style="height: 40px;">
+<td colspan='6'></td><td class='first' colspan='6'></td><td class='first' colspan='6'></td></tr>
+<tr><td colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td></tr>
+<tr><th colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="0.020527994260192" data-start="708" data-file="cg.cpp"><h3 id="_accordion_header_22" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>cg.cpp: 708  -  0.02 %</h3><div id="_accordion_content_22" class="_content collapsed"><table id='loop_cmp_table'><tr><td colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao-1/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_with_compil_option-2/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_optimized_vectorisation-7/ov_cgC_WS</td></tr>
+<tr><td>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 708-708</li><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 971-972</li><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 979-981</li><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 989-990</li><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 996-998</li></ul></td></tr>
+<tr><th><span class="tooltip-maqao" title="" tooltip_id="148" >ASM Loop ID</span></th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="149" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="150" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="151" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="152" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="153" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="154" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th></tr>
+<tr><td colspan='6'><td class='first' colspan='6'><td class='first' >20</td><td>0.03</td><td>0.02</td><td>0.02</td><td>0</td><td>18.04</td></tr>
+<tr style="height: 40px;">
+<td colspan='6'></td><td class='first' colspan='6'></td><td class='first' colspan='6'></td></tr>
+<tr><td colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td></tr>
+<tr><th colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="0.020527994260192" data-start="547" data-file="cg.cpp"><h3 id="_accordion_header_23" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>cg.cpp: 547  -  0.02 %</h3><div id="_accordion_content_23" class="_content collapsed"><table id='loop_cmp_table'><tr><td colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao-1/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_with_compil_option-2/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_optimized_vectorisation-7/ov_cgC_WS</td></tr>
+<tr><td>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 547-550</li></ul></td></tr>
+<tr><th><span class="tooltip-maqao" title="" tooltip_id="155" >ASM Loop ID</span></th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="156" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="157" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="158" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="159" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="160" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="161" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th></tr>
+<tr><td colspan='6'><td class='first' colspan='6'><td class='first' >39</td><td>0.03</td><td>0.02</td><td>0.02</td><td>100</td><td>100</td></tr>
+<tr style="height: 40px;">
+<td colspan='6'></td><td class='first' colspan='6'></td><td class='first' colspan='6'></td></tr>
+<tr><td colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td></tr>
+<tr><th colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="0.018626846373081" data-start="678" data-file="cg.cpp"><h3 id="_accordion_header_24" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>cg.cpp: 678  -  0.02 %</h3><div id="_accordion_content_24" class="_content collapsed"><table id='loop_cmp_table'><tr><td colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao-1/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_with_compil_option-2/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_optimized_vectorisation-7/ov_cgC_WS</td></tr>
+<tr><td>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 678-678</li><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 742-749</li><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 972-975</li><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 982-984</li><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 992-993</li><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 999-1001</li><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 1015-1025</li></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul></ul></td></tr>
+<tr><th><span class="tooltip-maqao" title="" tooltip_id="162" >ASM Loop ID</span></th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="163" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="164" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="165" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="166" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="167" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="168" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th></tr>
+<tr><td colspan='6'><td class='first' >11</td><td>0.02</td><td>0.02</td><td>0.02</td><td>9.48</td><td>24.19</td><td class='first' colspan='6'></tr>
+<tr style="height: 40px;">
+<td colspan='6'></td><td class='first' colspan='6'></td><td class='first' colspan='6'></td></tr>
+<tr><td colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td></tr>
+<tr><th colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="0.016422396525741" data-start="280" data-file="cg.cpp"><h3 id="_accordion_header_25" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>cg.cpp: 280  -  0.02 %</h3><div id="_accordion_content_25" class="_content collapsed"><table id='loop_cmp_table'><tr><td colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao-1/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_with_compil_option-2/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_optimized_vectorisation-7/ov_cgC_WS</td></tr>
+<tr><td>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 280-281</li></ul></td></tr>
+<tr><th><span class="tooltip-maqao" title="" tooltip_id="169" >ASM Loop ID</span></th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="170" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="171" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="172" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="173" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="174" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="175" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th></tr>
+<tr><td colspan='6'><td class='first' colspan='6'><td class='first' >51</td><td>0.02</td><td>0.02</td><td>0.02</td><td>0</td><td>12.5</td></tr>
+<tr style="height: 40px;">
+<td colspan='6'></td><td class='first' colspan='6'></td><td class='first' colspan='6'></td></tr>
+<tr><td colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td></tr>
+<tr><th colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="0.014901477843523" data-start="278" data-file="cg.cpp"><h3 id="_accordion_header_26" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>cg.cpp: 278  -  0.01 %</h3><div id="_accordion_content_26" class="_content collapsed"><table id='loop_cmp_table'><tr><td colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao-1/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_with_compil_option-2/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_optimized_vectorisation-7/ov_cgC_WS</td></tr>
+<tr><td>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 278-279</li></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul></ul></td></tr>
+<tr><th><span class="tooltip-maqao" title="" tooltip_id="176" >ASM Loop ID</span></th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="177" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="178" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="179" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="180" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="181" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="182" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th></tr>
+<tr><td colspan='6'><td class='first' >53</td><td>0.02</td><td>0.02</td><td>0.01</td><td>0</td><td>12.5</td><td class='first' colspan='6'></tr>
+<tr style="height: 40px;">
+<td colspan='6'></td><td class='first' colspan='6'></td><td class='first' colspan='6'></td></tr>
+<tr><td colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td></tr>
+<tr><th colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th></tr>
+</table></div></div><div class="_accordion_box collapsed not_full hidden"  data-cov="0.011176108382642" data-start="531" data-file="cg.cpp"><h3 id="_accordion_header_27" class="_header collapsed" onclick="_click_accordion_header(this)" ><span class="_accordion_box_button">&#x25B6;</span>cg.cpp: 531  -  0.01 %</h3><div id="_accordion_content_27" class="_content collapsed"><table id='loop_cmp_table'><tr><td colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao-1/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_with_compil_option-2/ov_cgC_WS</td><td class='first' colspan='6'>Run /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/maqao_optimized_vectorisation-7/ov_cgC_WS</td></tr>
+<tr><td>Loop Source Regions</td><td colspan='5'><ul></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul><li>/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 531-534</li></ul></td><td class='first'>Loop Source Regions</td><td colspan='5'><ul></ul></td></tr>
+<tr><th><span class="tooltip-maqao" title="" tooltip_id="183" >ASM Loop ID</span></th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="184" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="185" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="186" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="187" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th><th class='first'>ASM Loop ID</th><th>Max Time Over Threads (s)</th><th>Time w.r.t. Wall Time (s)</th><th><span class="tooltip-maqao" title="" tooltip_id="188" >Cov (%)</span></th><th><span class="tooltip-maqao" title="" tooltip_id="189" >Vect. Ratio (%)</span></th><th>Vector Length Use (%)</th></tr>
+<tr><td colspan='6'><td class='first' >41</td><td>0.01</td><td>0.01</td><td>0.01</td><td>100</td><td>100</td><td class='first' colspan='6'></tr>
+<tr style="height: 40px;">
+<td colspan='6'></td><td class='first' colspan='6'></td><td class='first' colspan='6'></td></tr>
+<tr><td colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td><td class='first' colspan='6'>No Optimizer analysis found for any assembly loop. More loops can be analyzed using option --optimizer-loop-count.</td></tr>
+<tr><th colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th><th class='first' colspan='5'>Analysis</th><th>Count</th></tr>
+</table></div></div></div></div><script>
+function order_loops (cmp_mode) {
+  var main_container = document.getElementById ("main_container");
+  var content = main_container.children[1];
+  var divs = [].slice.call (content.children);
+  if (cmp_mode === "coverage") {
+    divs.sort((a, b) => {return Number(a.dataset.cov) < Number(b.dataset.cov)} )
+  }
+  else if (cmp_mode === "src") {
+    divs.sort((a, b) => {if (a.dataset.file != b.dataset.file) {return a.dataset.file > b.dataset.file} else {return Number(a.dataset.start) > Number(b.dataset.start)} })
+  }
+  for (const d of divs) {
+    content.appendChild (d);
+  }
+}
+function toggle_full_loops () {
+  var button = document.getElementById("button_toggle_full_loops");
+  if (button.innerHTML.localeCompare ("Show All Loops") == 0) {
+    button.innerHTML = "Show Only Full Loops";
+  }
+  else {
+    button.innerHTML = "Show All Loops";
+  }
+  var data = document.getElementsByClassName("not_full");
+  for (let i = 0; i < data.length; i++) {
+    data[i].classList.toggle("hidden");
+  }
+}
+function redirect_loop (__url__) {
+  open(__url__);
+}
+function _onresize () {
+  __maqao_legacy_onresize ();
+}
+window.onresize = _onresize;
+</script>
+<style>
+.hidden {display: none;}#loop_cmp_table {border-collapse: collapse;}#loop_cmp_table .link {cursor:pointer;}#loop_cmp_table .link:hover {background-color: var(--table_row_background_hover);}#loop_cmp_table th {border-style: solid; border-color: var(--table_border); padding: 0px 3px 0px 3px; border-width: 1px 1px 3px 1px; background-color: var(--table_header_background); color: var(--table_header_font);}#loop_cmp_table td {border-style: solid; border-color: var(--table_border); padding: 0px 3px 0px 3px; border-width: 0px 1px 0px 1px;}#loop_cmp_table .first {border-left-width: 3px;}#loop_cmp_table td.s2_issue {padding-left: 15px;}</style>
+
+  <div id="MaqaoModal" class="maqao_modal">
+    <div class="maqao_modal-content">
+      <div class="maqao_modal-header">
+        <span class="maqao_close">&times;</span>
+      </div>
+      <div id="maqao_modal-body" class="maqao_modal-body">
+      </div>
+    </div>
+  </div>
+</div><script>
+var tooltips_texts = ['Source loop level comparison reports: For each run, assembly loops are gathered into source loops using debug data.<br/>      For better results, the application source code must be the same for each run.<br/>      If detailed reports are included, assembly loop identifiers can be clicked to open the corresponding loop report.<br/>      Default view shows only source loops with at least one assembly loop in each run. All detected source loops can be displayed using the "Show All Loops" button.',
+'Assembly Loop ID',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Assembly Loop ID',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Assembly Loop ID',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Assembly Loop ID',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Assembly Loop ID',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Assembly Loop ID',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Assembly Loop ID',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Assembly Loop ID',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Assembly Loop ID',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Assembly Loop ID',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Assembly Loop ID',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Assembly Loop ID',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Assembly Loop ID',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Assembly Loop ID',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Assembly Loop ID',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Assembly Loop ID',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Assembly Loop ID',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Assembly Loop ID',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Assembly Loop ID',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Assembly Loop ID',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Assembly Loop ID',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Assembly Loop ID',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Assembly Loop ID',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Assembly Loop ID',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Assembly Loop ID',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Assembly Loop ID',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Assembly Loop ID',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)',
+'Coverage (%)',
+'Vectorization Ratio (%)'];
+var modal = document.getElementById('MaqaoModal');
+var span = document.getElementsByClassName("maqao_close")[0];
+span.onclick = function() {
+    modal.style.display = "none";
+}
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
+const comparer = (idx, asc) => (a, b) => ((v1, v2) => 
+    v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v2 - v1 : v1.toString().localeCompare(v2)
+    )(getCellValue(asc ? a : b, idx) === '' ? -1: (getCellValue(asc ? a : b, idx).replace(/\s/g,'')), 
+      getCellValue(asc ? b : a, idx) === '' ? -1: (getCellValue(asc ? b : a, idx).replace(/\s/g,'')));
+addLoadEvent(function(){
+  document.querySelectorAll('._fixed_table:not(._no_auto_sorting) th').forEach(th => th.addEventListener('click', (() => {
+    const table = th.closest('table');
+    // Remove all symbols in header
+    table.querySelectorAll('th').forEach(function (e) {
+      e.firstChild.textContent = "";
+    });
+    // Change the symbol on the clicked header
+    if (this.asc != true) {
+      th.firstChild.textContent = "\u25BC";
+    }
+    else {
+      th.firstChild.textContent = "\u25B2";
+    }
+    Array.from(table.querySelectorAll('tr:nth-child(n+2)'))
+        .sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
+        .forEach(tr => table.appendChild(tr) );
+  })));
+});
+addLoadEvent(function(){
+  document.querySelectorAll('._tree_table:not(._no_auto_sorting) th').forEach(th => th.addEventListener('click', (() => {
+    const table = th.closest('table');
+    // Remove all symbols in header
+    table.querySelectorAll('th').forEach(function (e) {
+      e.firstChild.textContent = "";
+    });
+    // Change the symbol on the clicked header
+    if (this.asc != true) {
+      th.firstChild.textContent = "\u25BC";
+    }
+    else {
+      th.firstChild.textContent = "\u25B2";
+    }
+    let last_id = "";
+    const t_outermost = new Array ();
+    const t_children  = new Map ();
+    for (let i = 1, row; row = table.rows[i]; i++) {
+      if (row.classList.contains ("_outer_row")) {
+        t_outermost.push (row);
+        last_id = row.id;
+        t_children [last_id] = new Array ();
+      }
+      else {
+        t_children [last_id].push (row);
+      }
+    }
+    t_outermost.sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc));
+    for (let i = 0, row; row = t_outermost[i]; i++) {
+      table.appendChild(row)
+      for (let j = 0, child; child = t_children[row.id][j]; j++) {
+        table.appendChild(child)
+      }
+    }
+  })));
+});
+function _check_all_checkbox_ (obj_id, opts_ids) {
+  var obj   = document.getElementById (obj_id);
+  var opts  = window[opts_ids];
+  var count = 0
+  for (i = 0; i < opts.length; i++) {
+    var obj_s = document.getElementById(opts[i]);
+    if (obj_s && obj_s.checked) {
+      count ++;
+    }
+  }
+  if (count == 0) {
+    obj.value = "Select all";
+  }
+  else if (count == opts.length) {
+    obj.value = "Select none";
+  }
+}
+// Fonction for table selector
+function click_table_menu (c, obj_id, opt_ids) {
+  var is_checked = document.getElementById (c).checked;
+  localStorage.setItem(c, is_checked);
+  $("."+c).each(function(index, element) {
+    if (is_checked) {
+      element.classList.remove("_tcol_hidden");
+    }
+    else {
+      element.classList.add("_tcol_hidden");
+    }
+  });
+  if (obj_id != undefined) {
+    _check_all_checkbox_ (obj_id, opt_ids)
+  }
+}
+function set_all_table_menu (obj, var_opt_ids) {
+  var opt_ids = window[var_opt_ids];
+  var is_selected = true
+  if (obj.value == "Select all") {
+    is_selected = false;
+  }
+  for (i = 0; i < opt_ids.length; i++) {
+    var obj_s = document.getElementById(opt_ids[i]);
+    if (obj_s && is_selected == obj_s.checked) {
+      obj_s.checked = !obj_s.checked;
+      click_table_menu (opt_ids[i]);
+    }
+  }
+  if (is_selected == false) {
+    obj.value = "Select none";
+  } else {
+    obj.value = "Select all";
+  }
+  localStorage.setItem(obj.id, obj.value);
+}
+// Script for accordion box
+function _click_accordion_header(obj) {
+  var content = obj.nextSibling;
+  content.classList.toggle('collapsed');
+  obj.classList.toggle('collapsed');
+  obj.parentNode.classList.toggle('collapsed');
+  // Check if the box must be openned ...
+  if (obj.classList.contains ('collapsed'))
+  {
+    obj.firstChild.textContent = "\u25B6";
+  }
+  // or closed.
+  else 
+  {
+    obj.firstChild.textContent = "\u25BC";
+  }
+  if (typeof _onresize === "function") {
+    _onresize ();
+  }
+}
+  // Script for paged table
+function _click_paged_prev(obj) {
+  var pages_content_id = '_paged_tables_page_' + obj.parentNode.parentNode.id.substr (obj.parentNode.parentNode.id.lastIndexOf('_') + 1);
+  var pages_content = document.getElementById(pages_content_id).innerHTML;
+  var max_pages = pages_content.substr (pages_content.lastIndexOf('/') + 1);
+  var cur_page  = pages_content.substring (pages_content.lastIndexOf(' ') + 1, pages_content.lastIndexOf('/'));
+  max_pages = Number (max_pages);
+  cur_page  = Number (cur_page);
+  if (cur_page > 1) {
+    var div_paged = obj.parentNode.parentNode.id;
+    var i;
+    var x = document.getElementsByClassName(div_paged + '_' + (cur_page - 1));
+    for (i = 0; i < x.length; i++) {
+      x[i].classList.toggle('_paged_hidden');
+    }
+    x = document.getElementsByClassName(div_paged + '_' + (cur_page - 2));
+    for (i = 0; i < x.length; i++) {
+      x[i].classList.toggle('_paged_hidden');
+    }
+  document.getElementById(pages_content_id).textContent = "Page " + (cur_page - 1) + "/" + max_pages;
+  }
+}
+function _click_paged_next(obj) {
+  var pages_content_id = '_paged_tables_page_' + obj.parentNode.parentNode.id.substr (obj.parentNode.parentNode.id.lastIndexOf('_') + 1);
+  var pages_content = document.getElementById(pages_content_id).innerHTML;
+  var max_pages = pages_content.substr (pages_content.lastIndexOf('/') + 1);
+  var cur_page  = pages_content.substring (pages_content.lastIndexOf(' ') + 1, pages_content.lastIndexOf('/'));
+  max_pages = Number (max_pages);
+  cur_page  = Number (cur_page);
+  if (cur_page < max_pages) {
+    var div_paged = obj.parentNode.parentNode.id;
+    var i;
+    var x = document.getElementsByClassName(div_paged + '_' + (cur_page - 1));
+    for (i = 0; i < x.length; i++) {
+      x[i].classList.toggle('_paged_hidden');
+    }
+    x = document.getElementsByClassName(div_paged + '_' + cur_page);
+    for (i = 0; i < x.length; i++) {
+      x[i].classList.toggle('_paged_hidden');
+    }
+    document.getElementById(pages_content_id).textContent = "Page " + (cur_page + 1) + "/" + max_pages;
+  }
+}
+// Function for tree table
+function _click_tree(obj) {
+  if (obj.innerHTML == "\u25BA") {
+    obj.textContent = "\u25BC";
+    // Open childs
+    var x = document.getElementsByClassName(obj.parentNode.parentNode.id);
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.toggle('_tree_hidden');
+    }
+  }
+  else if (obj.innerHTML == "\u25BC") {
+    obj.textContent = "\u25BA";
+    // Close all childs
+    var trs = document.getElementsByTagName('tr');
+    var r   = obj.parentNode.parentNode.id+'_';
+    var re  = new RegExp (r, "g");
+    for (var i = 0; i < trs.length; i++) {
+      var s = trs[i].id+""
+      if (s.match(re)) {
+        var o = document.getElementById(s);
+        if (! o.classList.contains('_tree_hidden')) {
+          o.classList.toggle('_tree_hidden');
+        }
+        if (o.firstChild.firstChild.textContent == "\u25BC") {
+          o.firstChild.firstChild.textContent = "\u25BA";
+        }
+        if (o.firstChild.childNodes.length == 3) {
+          o.firstChild.childNodes[2].textContent = '+';
+        }
+      }
+    }
+    if (obj.parentNode.childNodes.length == 3) {
+      obj.parentNode.childNodes[2].textContent = '+';
+    }
+  }
+}
+function _click_expand (obj) {
+  var trs = document.getElementsByTagName('tr');
+  var r   = obj.parentNode.parentNode.id+'_';
+  var re  = new RegExp (r, "g");
+  // Symbole + => expand all
+  if (obj.textContent == "+") {
+    for (var i = 0; i < trs.length; i++) {
+      var s = trs[i].id+"";
+      if (s.match(re)) {
+        var o = document.getElementById(s);
+        if (o.classList.contains('_tree_hidden')) {
+           o.classList.toggle('_tree_hidden');
+        }
+        if (o.firstChild.firstChild.textContent == "\u25BA") {
+          o.firstChild.firstChild.textContent = "\u25BC";
+        }
+        if (o.firstChild.childNodes.length == 3) {
+          o.firstChild.childNodes[2].textContent = '\u2010';
+        }
+      }
+    }
+    var o = obj.parentNode.parentNode;
+    if (o.firstChild.firstChild.textContent == "\u25BA") {
+      o.firstChild.firstChild.textContent = "\u25BC";
+    }
+    obj.textContent = "\u2010";
+  }
+  // Symbole - => collapse all
+  else {
+    for (var i = 0; i < trs.length; i++) {
+      var s = trs[i].id+"";
+      if (s.match(re)) {
+        var o = document.getElementById(s);
+        if (! o.classList.contains('_tree_hidden')) {
+           o.classList.toggle('_tree_hidden');
+        }
+        if (o.firstChild.firstChild.textContent == "\u25BC") {
+          o.firstChild.firstChild.textContent = "\u25BA";
+        }
+        if (o.firstChild.childNodes.length == 3) {
+          o.firstChild.childNodes[2].textContent = '+';
+        }
+      }
+    }
+    var o = obj.parentNode.parentNode;
+    if (o.firstChild.firstChild.textContent == "\u25BC") {
+      o.firstChild.firstChild.textContent = "\u25BA";
+    }
+    obj.textContent = "+";
+  }
+}
+// Hide unselected tabs
+addLoadEvent(function(){
+  var x = document.getElementsByClassName("_tab_header_li");
+  for (var i = 0; i < x.length; i++) {
+    if (x[i].classList.contains("selected_tab") == false) {
+      var e = document.getElementById (x[i].dataset.tab);
+      e.style.display = "none";
+    }
+  }
+});
+// Change tab
+function change_tab (e, baseId) {
+  // Handle tabs
+  var i = 1;
+  while (true) {
+    var id = baseId + i;
+    var t = document.getElementById (id);
+    if (t == null) {
+      break;
+    }
+    if (id == e.dataset.tab) {
+      t.style.removeProperty("display");
+    }
+    else {
+      t.style.display = "none";
+    }
+    i = i + 1;
+  }
+  // Handle headers
+  $(e).siblings().each( function () {
+    this.classList.remove("selected_tab");
+  });
+  e.classList.add("selected_tab");
+}
+function __maqao_legacy_onresize () {
+  var obj = document.getElementById("spacer_page_title");
+  if (obj) {
+    obj.style.height = (document.getElementById("page_title").clientHeight + 20)+"px";
+  }
+  var obj = document.getElementById("page_title");
+  if (obj) {
+    var elems = document.getElementsByClassName ("_first_menu_level")
+    if (obj.clientHeight < 90) {
+      for (var i = 0; i < elems.length; i++) {
+        elems.item(i).style.borderBottomLeftRadius = "";
+        elems.item(i).style.borderBottomRightRadius = "";
+      }
+    }
+    else {
+      for (var i = 0; i < elems.length; i++) {
+        elems.item(i).style.borderBottomLeftRadius = "10px";
+        elems.item(i).style.borderBottomRightRadius = "10px";
+      }
+    }
+  }
+}
+</script>
+</body>
+</html>
