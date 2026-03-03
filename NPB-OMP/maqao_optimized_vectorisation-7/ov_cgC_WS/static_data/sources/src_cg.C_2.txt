@@ -1,0 +1,5 @@
+/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 926 - 927
+--------------------------------------------------------------------------------
+
+926: 	for(size_t idx = 0; idx < reduced.size(); idx++){
+927: 		rowstr[reduced[idx].row + 1]++;

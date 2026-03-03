@@ -1,0 +1,40 @@
+address;source_location;insn;indent
+0x4640;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:843;MOV	(%RBX),%R11D;
+0x4643;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:843;NOPW	%CS:(%RAX,%RAX,1);
+0x464e;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:843;XCHG	%AX,%AX;
+0x4650;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:843;MOV	(%R9),%R15D;  (21) 
+0x4653;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:843;MOV	%R9,%R13;  (21) 
+0x4656;/usr/include/c++/13/bits/stl_algo.h:1877;ADD	$0x10,%R9;  (21) 
+0x465a;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:843;CMP	%R11D,%R15D;  (21) 
+0x465d;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:843;JE	4760 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPZL6sparsePdPiS3_iiiS3_PA16_iPA16_diiS3_ddE7TripletSt6vectorIS8_SaIS8_EEEElNS0_5__ops15_Iter_comp_iterIZL6sparseS2_S3_S3_iiiS3_S5_S7_iiS3_ddE11TripletLessEEEvT_SI_T0_T1_.isra.0+0x1c0>;  (21) 
+0x4663;/usr/include/c++/13/bits/stl_algo.h:1877;CMP	%R11D,%R15D;  (21) 
+0x4666;/usr/include/c++/13/bits/stl_algo.h:1877;JL	4650 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPZL6sparsePdPiS3_iiiS3_PA16_iPA16_diiS3_ddE7TripletSt6vectorIS8_SaIS8_EEEElNS0_5__ops15_Iter_comp_iterIZL6sparseS2_S3_S3_iiiS3_S5_S7_iiS3_ddE11TripletLessEEEvT_SI_T0_T1_.isra.0+0xb0>;  (21) 
+0x4668;/usr/include/c++/13/bits/stl_iterator.h:1125;LEA	-0x10(%RDI),%RAX;
+0x466c;/usr/include/c++/13/bits/stl_iterator.h:1125;NOPL	(%RAX);
+0x4670;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:843;MOV	(%RAX),%ESI;  (22) 
+0x4672;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:843;MOV	%RAX,%RDI;  (22) 
+0x4675;/usr/include/c++/13/bits/stl_algo.h:1880;SUB	$0x10,%RAX;  (22) 
+0x4679;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:843;CMP	%ESI,%R11D;  (22) 
+0x467c;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:843;JE	4710 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPZL6sparsePdPiS3_iiiS3_PA16_iPA16_diiS3_ddE7TripletSt6vectorIS8_SaIS8_EEEElNS0_5__ops15_Iter_comp_iterIZL6sparseS2_S3_S3_iiiS3_S5_S7_iiS3_ddE11TripletLessEEEvT_SI_T0_T1_.isra.0+0x170>;  (22) 
+0x4682;/usr/include/c++/13/bits/stl_algo.h:1880;CMP	%ESI,%R11D;  (22) 
+0x4685;/usr/include/c++/13/bits/stl_algo.h:1880;JL	4670 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPZL6sparsePdPiS3_iiiS3_PA16_iPA16_diiS3_ddE7TripletSt6vectorIS8_SaIS8_EEEElNS0_5__ops15_Iter_comp_iterIZL6sparseS2_S3_S3_iiiS3_S5_S7_iiS3_ddE11TripletLessEEEvT_SI_T0_T1_.isra.0+0xd0>;  (22) 
+0x4687;/usr/include/c++/13/bits/stl_algo.h:1882;CMP	%RDI,%R13;
+0x468a;/usr/include/c++/13/bits/stl_algo.h:1882;JAE	4725 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPZL6sparsePdPiS3_iiiS3_PA16_iPA16_diiS3_ddE7TripletSt6vectorIS8_SaIS8_EEEElNS0_5__ops15_Iter_comp_iterIZL6sparseS2_S3_S3_iiiS3_S5_S7_iiS3_ddE11TripletLessEEEvT_SI_T0_T1_.isra.0+0x185>;
+0x4690;/usr/include/c++/13/bits/move.h:197;VMOVSD	0x8(%R13),%XMM11;
+0x4696;/usr/include/c++/13/bits/move.h:198;VMOVDQU	(%RDI),%XMM12;
+0x469a;/usr/include/c++/13/bits/move.h:198;VMOVD	%R15D,%XMM9;
+0x469f;/usr/include/c++/13/bits/stl_iterator.h:1111;LEA	0x10(%R13),%R9;
+0x46a3;/usr/include/c++/13/bits/stl_iterator.h:1111;VPINSRD	$0x1,0x4(%R13),%XMM9,%XMM10;
+0x46aa;/usr/include/c++/13/bits/move.h:198;VMOVDQU	%XMM12,(%R13);
+0x46b0;/usr/include/c++/13/bits/move.h:199;VMOVSD	%XMM11,0x8(%RDI);
+0x46b5;/usr/include/c++/13/bits/move.h:199;VMOVQ	%XMM10,(%RDI);
+0x46b9;/usr/include/c++/13/bits/stl_iterator.h:1112;JMP	4640 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPZL6sparsePdPiS3_iiiS3_PA16_iPA16_diiS3_ddE7TripletSt6vectorIS8_SaIS8_EEEElNS0_5__ops15_Iter_comp_iterIZL6sparseS2_S3_S3_iiiS3_S5_S7_iiS3_ddE11TripletLessEEEvT_SI_T0_T1_.isra.0+0xa0>;
+0x4710;/usr/include/c++/13/bits/stl_algo.h:1880;MOV	0x4(%RDI),%EDX;  (22) 
+0x4713;/usr/include/c++/13/bits/stl_algo.h:1880;CMP	%EDX,0x4(%RBX);  (22) 
+0x4716;/usr/include/c++/13/bits/stl_algo.h:1880;JL	4670 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPZL6sparsePdPiS3_iiiS3_PA16_iPA16_diiS3_ddE7TripletSt6vectorIS8_SaIS8_EEEElNS0_5__ops15_Iter_comp_iterIZL6sparseS2_S3_S3_iiiS3_S5_S7_iiS3_ddE11TripletLessEEEvT_SI_T0_T1_.isra.0+0xd0>;  (22) 
+0x471c;/usr/include/c++/13/bits/stl_algo.h:1882;CMP	%RDI,%R13;
+0x471f;/usr/include/c++/13/bits/stl_algo.h:1882;JB	4690 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPZL6sparsePdPiS3_iiiS3_PA16_iPA16_diiS3_ddE7TripletSt6vectorIS8_SaIS8_EEEElNS0_5__ops15_Iter_comp_iterIZL6sparseS2_S3_S3_iiiS3_S5_S7_iiS3_ddE11TripletLessEEEvT_SI_T0_T1_.isra.0+0xf0>;
+0x4760;/usr/include/c++/13/bits/stl_algo.h:1877;MOV	0x4(%RBX),%ECX;  (21) 
+0x4763;/usr/include/c++/13/bits/stl_algo.h:1877;CMP	%ECX,0x4(%R13);  (21) 
+0x4767;/usr/include/c++/13/bits/stl_algo.h:1877;JL	4650 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPZL6sparsePdPiS3_iiiS3_PA16_iPA16_diiS3_ddE7TripletSt6vectorIS8_SaIS8_EEEElNS0_5__ops15_Iter_comp_iterIZL6sparseS2_S3_S3_iiiS3_S5_S7_iiS3_ddE11TripletLessEEEvT_SI_T0_T1_.isra.0+0xb0>;  (21) 
+0x476d;/usr/include/c++/13/bits/stl_algo.h:1877;JMP	4668 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPZL6sparsePdPiS3_iiiS3_PA16_iPA16_diiS3_ddE7TripletSt6vectorIS8_SaIS8_EEEElNS0_5__ops15_Iter_comp_iterIZL6sparseS2_S3_S3_iiiS3_S5_S7_iiS3_ddE11TripletLessEEEvT_SI_T0_T1_.isra.0+0xc8>;

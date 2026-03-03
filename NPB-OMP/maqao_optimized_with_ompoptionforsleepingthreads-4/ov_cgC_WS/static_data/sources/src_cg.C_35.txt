@@ -1,0 +1,16 @@
+/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 596 - 608
+--------------------------------------------------------------------------------
+
+596: 			const int row_start = rowstr_l[j];
+597: 			const int row_end = rowstr_l[j+1];
+598: 			#pragma omp simd reduction(+:suml)
+599: 			for(k = row_start; k < row_end; k++){
+600: 				const int pf = k + prefetch_dist;
+601: 				if(pf < row_end){
+602: 					__builtin_prefetch(&a_l[pf], 0, 1);
+603: 					__builtin_prefetch(&colidx_l[pf], 0, 1);
+604: 					__builtin_prefetch(&p_l[colidx_l[pf]], 0, 1);
+605: 				}
+606: 				suml += a_l[k]*p_l[colidx_l[k]];
+607: 			}
+608: 			q_l[j] = suml;

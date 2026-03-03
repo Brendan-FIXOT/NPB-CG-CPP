@@ -1,0 +1,14 @@
+loop_id;module;function_name;function_id;source_info;level;inc_time_p;inc_time_s;inc_time_s_min;inc_time_s_avg;inc_time_s_max;inc_cov_deviation;inc_time_deviation;exc_time_p;exc_time_s;exc_time_s_min;exc_time_s_avg;exc_time_s_max;exc_cov_deviation;exc_time_deviation;nb_threads;flops;flops_sca;flops_vec;flops_sp;flops_dp;flops_sca_sp;flops_sca_dp;flops_vec_sp;flops_vec_dp;
+37;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);8;;Innermost;88.629333496094;111.73500061035;;;;;;88.629333496094;111.73500061035;;;;;;;;;;;;;;;;
+22;cg.C;main;1;;Innermost;5.0210204124451;6.3300004005432;;;;;;5.0210204124451;6.3300004005432;;;;;;;;;;;;;;;;
+32;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);8;;Innermost;3.569445848465;4.5000004768372;;;;;;3.569445848465;4.5000004768372;;;;;;;;;;;;;;;;
+21;cg.C;main;1;;Innermost;1.3563892841339;1.7099999189377;;;;;;1.3563892841339;1.7099999189377;;;;;;;;;;;;;;;;
+19;cg.C;main;1;;InBetween;6.8692002296448;8.6599998474121;;;;;;0.49179029464722;0.62000000476837;;;;;;;;;;;;;;;;
+34;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);8;;Innermost;0.23796305060387;0.30000001192093;;;;;;0.23796305060387;0.30000001192093;;;;;;;;;;;;;;;;
+36;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);8;;InBetween;88.831596374512;111.98999786377;;;;;;0.20226858556271;0.25500002503395;;;;;;;;;;;;;;;;
+35;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);8;;Innermost;0.19037042558193;0.23999999463558;;;;;;0.19037042558193;0.23999999463558;;;;;;;;;;;;;;;;
+33;cg.C;conj_grad(int*, int*, double*, double*, double*, double*, double*, double*, double*);8;;Innermost;0.043626558035612;0.054999999701977;;;;;;0.043626558035612;0.054999999701977;;;;;;;;;;;;;;;;
+8;cg.C;main;1;;Innermost;0.039660505950451;0.050000000745058;;;;;;0.039660505950451;0.050000000745058;;;;;;;;;;;;;;;;
+17;cg.C;main;1;;Innermost;0.027762355282903;0.035000003874302;;;;;;0.027762355282903;0.035000003874302;;;;;;;;;;;;;;;;
+10;cg.C;main;1;;Innermost;0.015864202752709;0.019999999552965;;;;;;0.015864202752709;0.019999999552965;;;;;;;;;;;;;;;;
+20;cg.C;main;1;;InBetween;6.8810982704163;8.6750011444092;;;;;;0.011898151598871;0.014999999664724;;;;;;;;;;;;;;;;

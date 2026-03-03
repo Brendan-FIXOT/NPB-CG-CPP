@@ -1,0 +1,12 @@
+address;source_location;insn;indent
+0x2390;/usr/include/c++/13/bits/stl_algo.h:1799;CMP	%ESI,%EDX;
+0x2392;/usr/include/c++/13/bits/stl_algo.h:1799;JLE	23b1 <main+0x1031>;
+0x2394;/usr/include/c++/13/bits/stl_algo.h:1801;VMOVDQU	(%RAX),%XMM9;
+0x2398;/usr/include/c++/13/bits/stl_algo.h:1801;VMOVDQU	%XMM9,0x10(%RAX);
+0x239d;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:843;MOV	-0x10(%RAX),%EDX;
+0x23a0;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:843;MOV	%RAX,%RCX;
+0x23a3;/usr/include/c++/13/bits/stl_algo.h:1799;SUB	$0x10,%RAX;
+0x23a7;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:843;CMP	%ESI,%EDX;
+0x23a9;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:843;JNE	2390 <main+0x1010>;
+0x23ab;/usr/include/c++/13/bits/stl_algo.h:1799;CMP	%R9D,-0xc(%RCX);
+0x23af;/usr/include/c++/13/bits/stl_algo.h:1799;JG	2394 <main+0x1014>;

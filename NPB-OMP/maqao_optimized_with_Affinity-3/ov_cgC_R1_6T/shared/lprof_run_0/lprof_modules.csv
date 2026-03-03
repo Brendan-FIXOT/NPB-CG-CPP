@@ -1,0 +1,4 @@
+name;time_p;time_s;cpi_ratio;
+/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/ov_cgC_R1_6T/binaries/cg.C;96.861892700195;33.601367950439;;
+/usr/lib/x86_64-linux-gnu/libgomp.so.1.0.0;3.1145143508911;1.0804243087769;;
+/usr/lib/x86_64-linux-gnu/libc.so.6;0.023594805970788;0.0081850327551365;;

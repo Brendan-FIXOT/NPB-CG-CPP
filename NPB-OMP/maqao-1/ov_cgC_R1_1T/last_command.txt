@@ -1,0 +1,1 @@
+maqao oneview --replace -R1 --create-report=one --executable=./bin/cg.C --run-command=<executable> --lprof-params=-exclude-kernel --envv_OMP_NUM_THREADS=1 -xp=ov_cgC_R1_1T 

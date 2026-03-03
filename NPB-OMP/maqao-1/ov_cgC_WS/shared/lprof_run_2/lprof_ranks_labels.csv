@@ -1,0 +1,5 @@
+key;label;is_mpi;is_omp;
+platy-MS-7C02_16217;16217;false;false;
+platy-MS-7C02_16217_16217;0;false;true;
+platy-MS-7C02_16217_16230;1;false;true;
+platy-MS-7C02_16217_16231;2;false;true;

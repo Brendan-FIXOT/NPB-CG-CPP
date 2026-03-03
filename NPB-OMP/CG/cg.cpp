@@ -56,6 +56,8 @@ Authors of the OpenMP code:
 */
 
 #include "omp.h"
+#include <algorithm>
+#include <vector>
 #include "../common/npb-CPP.hpp"
 #include "npbparams.hpp"
 
@@ -448,7 +450,9 @@ int main(int argc, char **argv){
 	}else{
 		mflops = 0.0;
 	}
-	setenv("OMP_NUM_THREADS","1",0);
+	char omp_threads_str[32];
+	snprintf(omp_threads_str, sizeof(omp_threads_str), "%d", omp_get_max_threads());
+	setenv("OMP_NUM_THREADS", omp_threads_str, 1);
 	c_print_results((char*)"CG",
 			class_npb,
 			NA,
@@ -517,6 +521,18 @@ static void conj_grad(int colidx[],
 	int cgit, cgitmax;
 	double alpha, beta, suml;
 	static double d, sum, rho, rho0;
+	const int nrow = lastrow - firstrow + 1;
+	const int ncol = lastcol - firstcol + 1;
+
+	/* Local aliases help compilers reason about access patterns in hot loops. */
+	const int* __restrict rowstr_l = rowstr;
+	const int* __restrict colidx_l = colidx;
+	const double* __restrict a_l = a;
+	const double* __restrict x_l = x;
+	double* __restrict z_l = z;
+	double* __restrict p_l = p;
+	double* __restrict q_l = q;
+	double* __restrict r_l = r;
 
 	cgitmax = 25;
 	#pragma omp single nowait
@@ -528,10 +544,10 @@ static void conj_grad(int colidx[],
 	/* initialize the CG algorithm */
 	#pragma omp for
 	for(j = 0; j < naa+1; j++){
-		q[j] = 0.0;
-		z[j] = 0.0;
-		r[j] = x[j];
-		p[j] = r[j];
+		q_l[j] = 0.0;
+		z_l[j] = 0.0;
+		r_l[j] = x_l[j];
+		p_l[j] = r_l[j];
 	}
  
 	/*
@@ -541,8 +557,8 @@ static void conj_grad(int colidx[],
 	 * --------------------------------------------------------------------
 	 */
 	#pragma omp for reduction(+:rho)
-	for(j = 0; j < lastcol - firstcol + 1; j++){
-		rho += r[j]*r[j];
+	for(j = 0; j < ncol; j++){
+		rho += r_l[j]*r_l[j];
 	}
 
 	/* the conj grad iteration loop */
@@ -573,13 +589,20 @@ static void conj_grad(int colidx[],
 			rho = 0.0;
 		}
 
-		#pragma omp for nowait
-		for(j = 0; j < lastrow - firstrow + 1; j++){
+		#pragma omp for nowait schedule(static)
+		for(j = 0; j < nrow; j++){
 			suml = 0.0;
-			for(k = rowstr[j]; k < rowstr[j+1]; k++){
-				suml += a[k]*p[colidx[k]];
+			const int row_start = rowstr_l[j];
+			const int row_end = rowstr_l[j+1];
+			const int len = row_end - row_start;
+			const int* __restrict ci = colidx_l + row_start;
+			const double* __restrict av = a_l + row_start;
+			#pragma omp simd reduction(+:suml)
+			for(k = 0; k < len; k++){
+				const int idx = ci[k];
+				suml += av[k] * p_l[idx];
 			}
-			q[j] = suml;
+			q_l[j] = suml;
 		}
 
 		/*
@@ -589,8 +612,8 @@ static void conj_grad(int colidx[],
 		 */
 
 		#pragma omp for reduction(+:d)
-		for (j = 0; j < lastcol - firstcol + 1; j++) {
-			d += p[j]*q[j];
+		for (j = 0; j < ncol; j++) {
+			d += p_l[j]*q_l[j];
 		}
 
 		/*
@@ -608,9 +631,9 @@ static void conj_grad(int colidx[],
 		 */
 
 		#pragma omp for reduction(+:rho)
-		for(j = 0; j < lastcol - firstcol + 1; j++){
-			z[j] += alpha*p[j];
-			r[j] -= alpha*q[j];
+		for(j = 0; j < ncol; j++){
+			z_l[j] += alpha*p_l[j];
+			r_l[j] -= alpha*q_l[j];
 
 			/*
 			 * ---------------------------------------------------------------------
@@ -618,7 +641,7 @@ static void conj_grad(int colidx[],
 			 * now, obtain the norm of r: first, sum squares of r elements locally...
 			 * ---------------------------------------------------------------------
 			 */
-			rho += r[j]*r[j];
+			rho += r_l[j]*r_l[j];
 		}
 
 		/*
@@ -634,8 +657,8 @@ static void conj_grad(int colidx[],
 		 * ---------------------------------------------------------------------
 		 */
 		#pragma omp for
-		for(j = 0; j < lastcol - firstcol + 1; j++){
-			p[j] = r[j] + beta*p[j];
+		for(j = 0; j < ncol; j++){
+			p_l[j] = r_l[j] + beta*p_l[j];
 		}
 	} /* end of do cgit=1, cgitmax */
 
@@ -646,13 +669,20 @@ static void conj_grad(int colidx[],
 	 * the partition submatrix-vector multiply
 	 * ---------------------------------------------------------------------
 	 */
-	#pragma omp for nowait
-	for(j = 0; j < lastrow - firstrow + 1; j++){
+	#pragma omp for nowait schedule(static)
+	for(j = 0; j < nrow; j++){
 		suml = 0.0;
-		for(k = rowstr[j]; k < rowstr[j+1]; k++){
-			suml += a[k]*z[colidx[k]];
+		const int row_start = rowstr_l[j];
+		const int row_end = rowstr_l[j+1];
+		const int len = row_end - row_start;
+		const int* __restrict ci = colidx_l + row_start;
+		const double* __restrict av = a_l + row_start;
+		#pragma omp simd reduction(+:suml)
+		for(k = 0; k < len; k++){
+			const int idx = ci[k];
+			suml += av[k] * z_l[idx];
 		}
-		r[j] = suml;
+		r_l[j] = suml;
 	}
 
 	/*
@@ -661,8 +691,8 @@ static void conj_grad(int colidx[],
 	 * ---------------------------------------------------------------------
 	 */
 	#pragma omp for reduction(+:sum)
-	for(j = 0; j < lastcol-firstcol+1; j++){
-		suml   = x[j] - r[j];
+	for(j = 0; j < ncol; j++){
+		suml   = x_l[j] - r_l[j];
 		sum += suml*suml;
 	}
 	#pragma omp single
@@ -800,9 +830,20 @@ static void sparse(double a[],
 	 * [col, row, element] tri
 	 * ---------------------------------------------------
 	 */
-	int i, j, j1, j2, nza, k, kk, nzrow, jcol;
-	double size, scale, ratio, va;
-	boolean goto_40;
+	int i, j, nza;
+	double ratio;
+
+	struct Triplet{
+		int row;
+		int col;
+		double val;
+	};
+	struct TripletLess{
+		bool operator()(const Triplet& lhs, const Triplet& rhs) const{
+			if(lhs.row != rhs.row){return lhs.row < rhs.row;}
+			return lhs.col < rhs.col;
+		}
+	};
 
 	/*
 	 * --------------------------------------------------------------------
@@ -810,148 +851,104 @@ static void sparse(double a[],
 	 * --------------------------------------------------------------------
 	 */
 	nrows = lastrow - firstrow + 1;
+	ratio = pow(rcond, (1.0 / (double)(n)));
 
-	/*
-	 * --------------------------------------------------------------------
-	 * ...count the number of triples in each row
-	 * --------------------------------------------------------------------
-	 */
-	for(j = 0; j < nrows+1; j++){
-		rowstr[j] = 0;
+	int nthreads = 1;
+	#pragma omp parallel
+	{
+		#pragma omp single
+		nthreads = omp_get_num_threads();
 	}
-	for(i = 0; i < n; i++){
-		for(nza = 0; nza < arow[i]; nza++){
-			j = acol[i][nza] + 1;
-			rowstr[j] = rowstr[j] + arow[i];
+
+	std::vector<std::vector<Triplet> > thread_triplets((size_t)nthreads);
+
+	#pragma omp parallel
+	{
+		int tid = omp_get_thread_num();
+		std::vector<Triplet>& local = thread_triplets[(size_t)tid];
+		size_t reserve_hint = ((size_t)n / (size_t)nthreads + 1ULL) *
+			(size_t)(nozer + 1) * (size_t)(nozer + 1);
+		local.reserve(reserve_hint);
+
+		#pragma omp for schedule(static)
+		for(i = 0; i < n; i++){
+			const double size_i = pow(ratio, (double)i);
+			for(int nza_i = 0; nza_i < arow[i]; nza_i++){
+				const int row_i = acol[i][nza_i];
+				const double scale_i = size_i * aelt[i][nza_i];
+
+				for(int nzrow_i = 0; nzrow_i < arow[i]; nzrow_i++){
+					const int col_i = acol[i][nzrow_i];
+					double val_i = aelt[i][nzrow_i] * scale_i;
+					if(col_i == row_i && row_i == i){
+						val_i = val_i + rcond - shift;
+					}
+
+					Triplet t;
+					t.row = row_i;
+					t.col = col_i;
+					t.val = val_i;
+					local.push_back(t);
+				}
+			}
 		}
 	}
-	rowstr[0] = 0;
-	for(j = 1; j < nrows+1; j++){
-		rowstr[j] = rowstr[j] + rowstr[j-1];
-	}
-	nza = rowstr[nrows] - 1;
 
-	/*
-	 * ---------------------------------------------------------------------
-	 * ... rowstr(j) now is the location of the first nonzero
-	 * of row j of a
-	 * ---------------------------------------------------------------------
-	 */
+	size_t total_triplets = 0;
+	for(i = 0; i < nthreads; i++){
+		total_triplets += thread_triplets[(size_t)i].size();
+	}
+
+	std::vector<Triplet> triplets;
+	triplets.reserve(total_triplets);
+	for(i = 0; i < nthreads; i++){
+		std::vector<Triplet>& local = thread_triplets[(size_t)i];
+		triplets.insert(triplets.end(), local.begin(), local.end());
+	}
+
+	std::sort(triplets.begin(), triplets.end(), TripletLess());
+
+	std::vector<Triplet> reduced;
+	reduced.reserve(triplets.size());
+	for(size_t idx = 0; idx < triplets.size(); idx++){
+		if(!reduced.empty() &&
+				reduced.back().row == triplets[idx].row &&
+				reduced.back().col == triplets[idx].col){
+			reduced.back().val += triplets[idx].val;
+		}else{
+			reduced.push_back(triplets[idx]);
+		}
+	}
+
+	for(j = 0; j < nrows + 1; j++){
+		rowstr[j] = 0;
+	}
+	for(size_t idx = 0; idx < reduced.size(); idx++){
+		rowstr[reduced[idx].row + 1]++;
+	}
+	for(j = 1; j < nrows + 1; j++){
+		rowstr[j] += rowstr[j-1];
+	}
+
+	nza = rowstr[nrows] - 1;
 	if(nza > nz){
 		printf("Space for matrix elements exceeded in sparse\n");
 		printf("nza, nzmax = %d, %d\n", nza, nz);
 		exit(EXIT_FAILURE);
 	}
 
-	/*
-	 * ---------------------------------------------------------------------
-	 * ... preload data pages
-	 * ---------------------------------------------------------------------
-	 */
+	std::vector<int> write_pos((size_t)nrows);
 	for(j = 0; j < nrows; j++){
-		for(k = rowstr[j]; k < rowstr[j+1]; k++){
-			a[k] = 0.0;
-			colidx[k] = -1;
-		}
+		write_pos[(size_t)j] = rowstr[j];
 		nzloc[j] = 0;
 	}
 
-	/*
-	 * ---------------------------------------------------------------------
-	 * ... generate actual values by summing duplicates
-	 * ---------------------------------------------------------------------
-	 */
-	size = 1.0;
-	ratio = pow(rcond, (1.0 / (double)(n)));
-	for(i = 0; i < n; i++){
-		for(nza = 0; nza < arow[i]; nza++){
-			j = acol[i][nza];
-
-			scale = size * aelt[i][nza];
-			for(nzrow = 0; nzrow < arow[i]; nzrow++){
-				jcol = acol[i][nzrow];
-				va = aelt[i][nzrow] * scale;
-
-				/*
-				 * --------------------------------------------------------------------
-				 * ... add the identity * rcond to the generated matrix to bound
-				 * the smallest eigenvalue from below by rcond
-				 * --------------------------------------------------------------------
-				 */
-				if(jcol == j && j == i){
-					va = va + rcond - shift;
-				}
-
-				goto_40 = FALSE;
-				for(k = rowstr[j]; k < rowstr[j+1]; k++){
-					if(colidx[k] > jcol){
-						/*
-						 * ----------------------------------------------------------------
-						 * ... insert colidx here orderly
-						 * ----------------------------------------------------------------
-						 */
-						for(kk = rowstr[j+1]-2; kk >= k; kk--){
-							if(colidx[kk] > -1){
-								a[kk+1] = a[kk];
-								colidx[kk+1] = colidx[kk];
-							}
-						}
-						colidx[k] = jcol;
-						a[k]  = 0.0;
-						goto_40 = TRUE;
-						break;
-					}else if(colidx[k] == -1){
-						colidx[k] = jcol;
-						goto_40 = TRUE;
-						break;
-					}else if(colidx[k] == jcol){
-						/*
-						 * --------------------------------------------------------------
-						 * ... mark the duplicated entry
-						 * -------------------------------------------------------------
-						 */
-						nzloc[j] = nzloc[j] + 1;
-						goto_40 = TRUE;
-						break;
-					}
-				}
-				if(goto_40 == FALSE){
-					printf("internal error in sparse: i=%d\n", i);
-					exit(EXIT_FAILURE);
-				}
-				a[k] = a[k] + va;
-			}
-		}
-		size = size * ratio;
+	for(size_t idx = 0; idx < reduced.size(); idx++){
+		const int r = reduced[idx].row;
+		const int p = write_pos[(size_t)r]++;
+		colidx[p] = reduced[idx].col;
+		a[p] = reduced[idx].val;
 	}
-
-	/*
-	 * ---------------------------------------------------------------------
-	 * ... remove empty entries and generate final results
-	 * ---------------------------------------------------------------------
-	 */
-	for(j = 1; j < nrows; j++){
-		nzloc[j] = nzloc[j] + nzloc[j-1];
-	}
-
-	for(j = 0; j < nrows; j++){
-		if(j > 0){
-			j1 = rowstr[j] - nzloc[j-1];
-		}else{
-			j1 = 0;
-		}
-		j2 = rowstr[j+1] - nzloc[j];
-		nza = rowstr[j];
-		for(k = j1; k < j2; k++){
-			a[k] = a[nza];
-			colidx[k] = colidx[nza];
-			nza = nza + 1;
-		}
-	}
-	for(j = 1; j < nrows+1; j++){
-		rowstr[j] = rowstr[j] - nzloc[j-1];
-	}
-	nza = rowstr[nrows] - 1;
 }
 
 /*

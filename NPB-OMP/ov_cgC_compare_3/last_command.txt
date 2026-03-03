@@ -1,0 +1,1 @@
+maqao oneview --compare-reports --inputs=maqao_optimized_vectorisation-5/ov_cgC_S1_6T,maqao_optimized_vectorisation-6/ov_cgC_S1_6T,maqao_optimized_vectorisation-7/ov_cgC_S1_6T -xp=ov_cgC_compare_3 

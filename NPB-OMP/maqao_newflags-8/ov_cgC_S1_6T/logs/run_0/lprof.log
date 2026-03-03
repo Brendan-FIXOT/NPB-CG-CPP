@@ -1,0 +1,148 @@
+[LPROF] OMP_WAIT_POLICY=active: disabling OMP rank reading
+
+
+ NAS Parallel Benchmarks 4.1 Parallel C++ version with OpenMP - CG Benchmark
+
+ Size:      150000
+ Iterations:    75
+ Initialization time =           4.070 seconds
+
+   iteration           ||r||                 zeta
+        1       1.50926439189972e-13 1.0999944232374e+02
+        2       4.47514530119679e-16 2.7392043714652e+01
+        3       4.44219633771933e-16 2.8033976184027e+01
+        4       4.44797558558191e-16 2.8419150755129e+01
+        5       4.43183734963548e-16 2.8647167003889e+01
+        6       4.42165388202314e-16 2.8781296941841e+01
+        7       4.44617391370854e-16 2.8860045853735e+01
+        8       4.44050525891046e-16 2.8906314557269e+01
+        9       4.44107701914828e-16 2.8933564921462e+01
+       10       4.44612867087771e-16 2.8949669544900e+01
+       11       4.45422093819375e-16 2.8959226335375e+01
+       12       4.43629108715130e-16 2.8964923348489e+01
+       13       4.44116787195427e-16 2.8968335924893e+01
+       14       4.44061978229374e-16 2.8970390396000e+01
+       15       4.42343366850836e-16 2.8971633622837e+01
+       16       4.43393115417989e-16 2.8972389860085e+01
+       17       4.43547614788592e-16 2.8972852269223e+01
+       18       4.41264555974042e-16 2.8973136479778e+01
+       19       4.42269026611812e-16 2.8973312056929e+01
+       20       4.40554076265958e-16 2.8973421066375e+01
+       21       4.39205377176945e-16 2.8973489076055e+01
+       22       4.41107342418990e-16 2.8973531706488e+01
+       23       4.39843921315245e-16 2.8973558549725e+01
+       24       4.39887857955046e-16 2.8973575525665e+01
+       25       4.39334978340368e-16 2.8973586305938e+01
+       26       4.40916684628154e-16 2.8973593178737e+01
+       27       4.41125706331919e-16 2.8973597576737e+01
+       28       4.38857306586791e-16 2.8973600400999e+01
+       29       4.39819279934546e-16 2.8973602220677e+01
+       30       4.38932758597212e-16 2.8973603396763e+01
+       31       4.38856503025764e-16 2.8973604159115e+01
+       32       4.40746566993407e-16 2.8973604654641e+01
+       33       4.37581705874650e-16 2.8973604977562e+01
+       34       4.36212350909319e-16 2.8973605188510e+01
+       35       4.37995550276445e-16 2.8973605326625e+01
+       36       4.34575949466273e-16 2.8973605417245e+01
+       37       4.34117564816154e-16 2.8973605476823e+01
+       38       4.36389727916526e-16 2.8973605516064e+01
+       39       4.35876124720712e-16 2.8973605541957e+01
+       40       4.33662409212309e-16 2.8973605559070e+01
+       41       4.34104581668712e-16 2.8973605570398e+01
+       42       4.35830600287481e-16 2.8973605577908e+01
+       43       4.36589349617236e-16 2.8973605582893e+01
+       44       4.34364244460891e-16 2.8973605586207e+01
+       45       4.33570982193796e-16 2.8973605588413e+01
+       46       4.33708924359045e-16 2.8973605589882e+01
+       47       4.33353890962269e-16 2.8973605590863e+01
+       48       4.32723654723397e-16 2.8973605591518e+01
+       49       4.31213360910537e-16 2.8973605591955e+01
+       50       4.31151953036579e-16 2.8973605592248e+01
+       51       4.30878657748193e-16 2.8973605592445e+01
+       52       4.33136737568406e-16 2.8973605592576e+01
+       53       4.29491534213923e-16 2.8973605592664e+01
+       54       4.32534378455033e-16 2.8973605592723e+01
+       55       4.30016996001333e-16 2.8973605592763e+01
+       56       4.30220492542393e-16 2.8973605592790e+01
+       57       4.30933836675844e-16 2.8973605592808e+01
+       58       4.29881382090015e-16 2.8973605592820e+01
+       59       4.31525919068354e-16 2.8973605592828e+01
+       60       4.29703433463751e-16 2.8973605592834e+01
+       61       4.30272287983335e-16 2.8973605592838e+01
+       62       4.27657162307277e-16 2.8973605592840e+01
+       63       4.29580878450592e-16 2.8973605592842e+01
+       64       4.26812530373243e-16 2.8973605592843e+01
+       65       4.25586435805783e-16 2.8973605592844e+01
+       66       4.27210404395125e-16 2.8973605592844e+01
+       67       4.25755518703694e-16 2.8973605592845e+01
+       68       4.27076816848071e-16 2.8973605592845e+01
+       69       4.25535043753616e-16 2.8973605592845e+01
+       70       4.25826038159128e-16 2.8973605592845e+01
+       71       4.28000043421725e-16 2.8973605592845e+01
+       72       4.26846006290281e-16 2.8973605592845e+01
+       73       4.27098505359185e-16 2.8973605592845e+01
+       74       4.24883444037668e-16 2.8973605592845e+01
+       75       4.23899547633790e-16 2.8973605592845e+01
+ Benchmark completed
+ VERIFICATION SUCCESSFUL
+ Zeta is     2.8973605592845e+01
+ Error is    1.2874991863842e-14
+
+
+ CG Benchmark Completed
+ class_npb       =                        C
+ Size            =                   150000
+ Total threads   =                        6
+ Iterations      =                       75
+ Time in seconds =                    31.15
+ Mop/s total     =                  4601.84
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                      4.1
+ Compile date    =              26 Feb 2026
+ Compiler ver    =                   13.3.0
+ OpenMP version  =                   201511
+
+ Compile options:
+    CC           = g++ -std=c++14
+    CLINK        = $(CC)
+    C_LIB        = -lm
+    C_INC        = -I../common 
+    CFLAGS       = -O3 -fopenmp -fopenmp-simd -mcmodel=medium ...
+    CLINKFLAGS   = -O3 -fopenmp -fopenmp-simd -mcmodel=medium ...
+    RAND         = randdp
+
+
+----------------------------------------------------------------------
+    NPB-CPP is developed by: 
+        Dalvan Griebler
+        Gabriell Araujo (Sequential Porting)
+        Júnior Löff (Parallel Implementation)
+
+    In case of questions or problems, please send an e-mail to us:
+        dalvan.griebler; gabriell.araujo; junior.loff@edu.pucrs.br
+----------------------------------------------------------------------
+
+
+* [MAQAO] Info: Dumping samples (host platy-MS-7C02, process 26522)
+* [MAQAO] Info: Dumping source info for callchain nodes (host platy-MS-7C02, process 26522)
+* [MAQAO] Info: Building/writing metadata (host platy-MS-7C02)
+* [MAQAO] Info: Finished collect step (host platy-MS-7C02, process 26522)
+
+
+Your experiment path is /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/ov_cgC_S1_6T/tools/lprof_run_0
+
+To display your profiling results:
+#################################################################################################################################
+#    LEVEL    |     REPORT     |                                            COMMAND                                             #
+#################################################################################################################################
+#  Functions  |  Cluster-wide  |  maqao lprof -df xp=/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/ov_cgC_S1_6T/tools/lprof_run_0      #
+#  Functions  |  Per-node      |  maqao lprof -df -dn xp=/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/ov_cgC_S1_6T/tools/lprof_run_0  #
+#  Functions  |  Per-process   |  maqao lprof -df -dp xp=/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/ov_cgC_S1_6T/tools/lprof_run_0  #
+#  Functions  |  Per-thread    |  maqao lprof -df -dt xp=/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/ov_cgC_S1_6T/tools/lprof_run_0  #
+#  Loops      |  Cluster-wide  |  maqao lprof -dl xp=/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/ov_cgC_S1_6T/tools/lprof_run_0      #
+#  Loops      |  Per-node      |  maqao lprof -dl -dn xp=/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/ov_cgC_S1_6T/tools/lprof_run_0  #
+#  Loops      |  Per-process   |  maqao lprof -dl -dp xp=/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/ov_cgC_S1_6T/tools/lprof_run_0  #
+#  Loops      |  Per-thread    |  maqao lprof -dl -dt xp=/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/ov_cgC_S1_6T/tools/lprof_run_0  #
+#################################################################################################################################
+

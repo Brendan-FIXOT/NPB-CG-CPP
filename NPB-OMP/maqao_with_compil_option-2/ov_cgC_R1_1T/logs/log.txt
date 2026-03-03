@@ -1,0 +1,10 @@
+********************************************************************************
+MAQAO 2026.0.0 - 7e198a7ec9fb425c75ec6c6a36a98893b37a86d6::20260204-112052 || 2026/02/04
+maqao oneview --replace -R1 --create-report=one --executable=./bin/cg.C --run-command=<executable> --lprof-params=-exclude-kernel --envv_OMP_NUM_THREADS=1 -xp=ov_cgC_R1_1T 
+CPY:  [true] ./bin/cg.C --> /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/ov_cgC_R1_1T/binaries/cg.C
+CMD:  OMP_NUM_THREADS=1   /usr/local/bin/maqao lprof _caller=oneview -exclude-kernel --xp="/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/ov_cgC_R1_1T/tools/lprof_run_0" --mpi-command="" --collect-CPU-time-intervals --collect-topology tpp=1   -- /home/platy/Desktop/NPB-CG-CPP/NPB-OMP/ov_cgC_R1_1T/binaries/cg.C
+Run run_0: At cluster level, discarded 2 functions cumulating 0.0% of application profiled time
+
+Run run_0: At cluster level, discarded 7 loops cumulating 0.0% of application profiled time
+
+CMD:  /usr/local/bin/maqao otter  -input=/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/ov_cgC_R1_1T/OTTER/input_manifest.csv -output=/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/ov_cgC_R1_1T/OTTER/output_manifest.csv --reduce-threads-files=on

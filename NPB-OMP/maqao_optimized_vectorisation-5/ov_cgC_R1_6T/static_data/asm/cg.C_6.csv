@@ -1,0 +1,14 @@
+address;source_location;insn;indent
+0x28e0;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:940;MOVSXD	(%RBX),%RAX;
+0x28e3;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:942;VMOVSD	0x8(%RBX),%XMM0;
+0x28e8;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:938;INC	%RDX;
+0x28eb;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:938;ADD	$0x10,%RBX;
+0x28ef;/usr/include/c++/13/bits/stl_vector.h:1129;LEA	(%R13,%RAX,4),%RCX;
+0x28f4;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:940;MOVSXD	(%RCX),%RAX;
+0x28f7;:0;LEA	0x1(%RAX),%ESI;
+0x28fa;:0;MOV	%ESI,(%RCX);
+0x28fc;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:941;MOV	-0xc(%RBX),%ECX;
+0x28ff;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:941;MOV	%ECX,(%RDI,%RAX,4);
+0x2902;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:942;VMOVSD	%XMM0,(%R8,%RAX,8);
+0x2908;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:938;CMP	%R12,%RDX;
+0x290b;:0;JB	28e0 <main+0x14b0>;

@@ -1,0 +1,5 @@
+/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 280 - 281
+--------------------------------------------------------------------------------
+
+280: 			for(k = rowstr[j]; k < rowstr[j+1]; k++){
+281: 				colidx[k] = colidx[k] - firstcol;

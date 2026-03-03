@@ -1,0 +1,12 @@
+/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 940 - 944
+--------------------------------------------------------------------------------
+
+940: 	for(size_t idx = 0; idx < reduced.size(); idx++){
+941: 		const int r = reduced[idx].row;
+942: 		const int p = write_pos[(size_t)r]++;
+943: 		colidx[p] = reduced[idx].col;
+944: 		a[p] = reduced[idx].val;
+/usr/include/c++/13/bits/stl_vector.h: 1129 - 1129
+--------------------------------------------------------------------------------
+
+1129: 	return *(this->_M_impl._M_start + __n);

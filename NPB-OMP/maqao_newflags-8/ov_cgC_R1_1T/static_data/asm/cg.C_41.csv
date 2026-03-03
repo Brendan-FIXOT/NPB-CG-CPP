@@ -1,0 +1,28 @@
+address;source_location;insn;indent
+0x7545;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:661;VMOVUPD	(%RDX,%R8,1),%YMM2;
+0x754b;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:661;VFMADD213PD	(%RCX,%R8,1),%YMM13,%YMM2;
+0x7551;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:661;VMOVUPD	0x20(%RDX,%R8,1),%YMM7;
+0x7558;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:661;VMOVUPD	0x40(%RDX,%R8,1),%YMM12;
+0x755f;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:661;VMOVUPD	0x60(%RDX,%R8,1),%YMM3;
+0x7566;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:661;VMOVUPD	0x80(%RDX,%R8,1),%YMM14;
+0x7570;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:661;VMOVUPD	0xa0(%RDX,%R8,1),%YMM0;
+0x757a;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:661;VMOVUPD	0xc0(%RDX,%R8,1),%YMM15;
+0x7584;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:661;VMOVUPD	0xe0(%RDX,%R8,1),%YMM8;
+0x758e;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:661;VMOVUPD	%YMM2,(%RDX,%R8,1);
+0x7594;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:661;VFMADD213PD	0x20(%RCX,%R8,1),%YMM13,%YMM7;
+0x759b;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:661;VMOVUPD	%YMM7,0x20(%RDX,%R8,1);
+0x75a2;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:661;VFMADD213PD	0x40(%RCX,%R8,1),%YMM13,%YMM12;
+0x75a9;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:661;VMOVUPD	%YMM12,0x40(%RDX,%R8,1);
+0x75b0;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:661;VFMADD213PD	0x60(%RCX,%R8,1),%YMM13,%YMM3;
+0x75b7;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:661;VMOVUPD	%YMM3,0x60(%RDX,%R8,1);
+0x75be;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:661;VFMADD213PD	0x80(%RCX,%R8,1),%YMM13,%YMM14;
+0x75c8;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:661;VMOVUPD	%YMM14,0x80(%RDX,%R8,1);
+0x75d2;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:661;VFMADD213PD	0xa0(%RCX,%R8,1),%YMM13,%YMM0;
+0x75dc;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:661;VMOVUPD	%YMM0,0xa0(%RDX,%R8,1);
+0x75e6;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:661;VFMADD213PD	0xc0(%RCX,%R8,1),%YMM13,%YMM15;
+0x75f0;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:661;VMOVUPD	%YMM15,0xc0(%RDX,%R8,1);
+0x75fa;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:661;VFMADD213PD	0xe0(%RCX,%R8,1),%YMM13,%YMM8;
+0x7604;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:661;VMOVUPD	%YMM8,0xe0(%RDX,%R8,1);
+0x760e;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:661;ADD	$0x100,%R8;
+0x7615;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:661;CMP	%R8,0x80(%RSP);
+0x761d;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:661;JNE	7545 <_ZL9conj_gradPiS_PdS0_S0_S0_S0_S0_S0_+0x2315>;

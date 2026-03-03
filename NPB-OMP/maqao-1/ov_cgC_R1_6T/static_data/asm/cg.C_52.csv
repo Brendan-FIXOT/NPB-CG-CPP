@@ -1,0 +1,5 @@
+address;source_location;insn;indent
+0x35f0;:0;SUB	%ESI,(%RDX,%RAX,4);
+0x35f3;:0;ADD	$0x1,%RAX;
+0x35f7;:0;CMP	%EAX,0x4(%RCX);
+0x35fa;:0;JG	35f0 <main._omp_fn.0+0x80>;

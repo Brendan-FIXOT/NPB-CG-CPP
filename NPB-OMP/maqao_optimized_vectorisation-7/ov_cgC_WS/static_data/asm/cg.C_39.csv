@@ -1,0 +1,11 @@
+address;source_location;insn;indent
+0x3579;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:547;MOV	0xe8(%RSP),%RCX;
+0x3581;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:547;VMOVUPD	%YMM1,(%RCX,%RAX,1);
+0x3586;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:549;MOV	0xf0(%RSP),%RCX;
+0x358e;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:548;VMOVUPD	%YMM1,(%R11,%RAX,1);
+0x3594;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:549;VMOVUPD	(%RCX,%RAX,1),%YMM0;
+0x3599;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:549;VMOVUPD	%YMM0,(%R9,%RAX,1);
+0x359f;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:550;VMOVUPD	%YMM0,(%R8,%RAX,1);
+0x35a5;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:550;ADD	$0x20,%RAX;
+0x35a9;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:550;CMP	%RAX,%RDX;
+0x35ac;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:550;JNE	3579 <_ZL9conj_gradPiS_PdS0_S0_S0_S0_S0_S0_+0x2a9>;

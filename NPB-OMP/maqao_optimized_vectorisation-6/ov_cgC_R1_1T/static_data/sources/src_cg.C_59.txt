@@ -1,0 +1,58 @@
+/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 837 - 838
+--------------------------------------------------------------------------------
+
+837: 			if(lhs.row != rhs.row){return lhs.row < rhs.row;}
+838: 			return lhs.col < rhs.col;
+/usr/include/c++/13/bits/move.h: 197 - 199
+--------------------------------------------------------------------------------
+
+197:       _Tp __tmp = _GLIBCXX_MOVE(__a);
+198:       __a = _GLIBCXX_MOVE(__b);
+199:       __b = _GLIBCXX_MOVE(__tmp);
+/usr/include/c++/13/bits/stl_iterator.h: 1111 - 1337
+--------------------------------------------------------------------------------
+
+1111: 	++_M_current;
+1112: 	return *this;
+[...]
+1125: 	--_M_current;
+[...]
+1148:       { return __normal_iterator(_M_current + __n); }
+[...]
+1337:     { return __lhs.base() - __rhs.base(); }
+/usr/include/c++/13/bits/stl_algo.h: 88 - 1932
+--------------------------------------------------------------------------------
+
+88:       if (__comp(__a, __b))
+89: 	{
+90: 	  if (__comp(__b, __c))
+91: 	    std::iter_swap(__result, __b);
+92: 	  else if (__comp(__a, __c))
+93: 	    std::iter_swap(__result, __c);
+94: 	  else
+95: 	    std::iter_swap(__result, __a);
+96: 	}
+97:       else if (__comp(__a, __c))
+98: 	std::iter_swap(__result, __a);
+99:       else if (__comp(__b, __c))
+[...]
+1877: 	  while (__comp(__first, __pivot))
+1878: 	    ++__first;
+1879: 	  --__last;
+1880: 	  while (__comp(__pivot, __last))
+1881: 	    --__last;
+1882: 	  if (!(__first < __last))
+[...]
+1896:       _RandomAccessIterator __mid = __first + (__last - __first) / 2;
+[...]
+1922:       while (__last - __first > int(_S_threshold))
+1923: 	{
+1924: 	  if (__depth_limit == 0)
+1925: 	    {
+1926: 	      std::__partial_sort(__first, __last, __last, __comp);
+1927: 	      return;
+1928: 	    }
+1929: 	  --__depth_limit;
+1930: 	  _RandomAccessIterator __cut =
+1931: 	    std::__unguarded_partition_pivot(__first, __last, __comp);
+1932: 	  std::__introsort_loop(__cut, __last, __depth_limit, __comp);

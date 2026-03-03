@@ -1,0 +1,5 @@
+/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 682 - 683
+--------------------------------------------------------------------------------
+
+682: 			const int idx = ci[k];
+683: 			suml += av[k] * z_l[idx];

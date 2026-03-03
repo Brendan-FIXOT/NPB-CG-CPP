@@ -1,0 +1,26 @@
+address;source_location;insn;indent
+0x6490;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/common/c_randdp.cpp:80;ENDBR64;
+0x6494;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/common/c_randdp.cpp:88;VMOVSD	0x148c(%RIP),%XMM1;
+0x649c;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/common/c_randdp.cpp:99;VMOVSD	(%RDI),%XMM4;
+0x64a0;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/common/c_randdp.cpp:90;VMOVSD	0x1488(%RIP),%XMM5;
+0x64a8;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/common/c_randdp.cpp:88;VMULSD	%XMM1,%XMM0,%XMM2;
+0x64ac;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/common/c_randdp.cpp:99;VMULSD	%XMM1,%XMM4,%XMM3;
+0x64b0;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/common/c_randdp.cpp:89;VROUNDSD	$0xb,%XMM2,%XMM2,%XMM2;
+0x64b6;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/common/c_randdp.cpp:100;VROUNDSD	$0xb,%XMM3,%XMM3,%XMM3;
+0x64bc;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/common/c_randdp.cpp:90;VFNMADD231SD	%XMM5,%XMM2,%XMM0;
+0x64c1;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/common/c_randdp.cpp:101;VFNMADD231SD	%XMM5,%XMM3,%XMM4;
+0x64c6;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/common/c_randdp.cpp:102;VMULSD	%XMM3,%XMM0,%XMM3;
+0x64ca;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/common/c_randdp.cpp:105;VMULSD	%XMM4,%XMM0,%XMM0;
+0x64ce;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/common/c_randdp.cpp:102;VFMADD132SD	%XMM4,%XMM3,%XMM2;
+0x64d3;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/common/c_randdp.cpp:103;VMULSD	%XMM1,%XMM2,%XMM1;
+0x64d7;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/common/c_randdp.cpp:103;VROUNDSD	$0xb,%XMM1,%XMM1,%XMM1;
+0x64dd;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/common/c_randdp.cpp:104;VFNMADD132SD	%XMM5,%XMM2,%XMM1;
+0x64e2;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/common/c_randdp.cpp:106;VMOVSD	0x144e(%RIP),%XMM2;
+0x64ea;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/common/c_randdp.cpp:105;VFMADD132SD	%XMM5,%XMM0,%XMM1;
+0x64ef;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/common/c_randdp.cpp:106;VMULSD	%XMM2,%XMM1,%XMM0;
+0x64f3;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/common/c_randdp.cpp:106;VROUNDSD	$0xb,%XMM0,%XMM0,%XMM0;
+0x64f9;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/common/c_randdp.cpp:107;VFNMADD132SD	0x143e(%RIP),%XMM1,%XMM0;
+0x6502;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/common/c_randdp.cpp:107;VMOVSD	%XMM0,(%RDI);
+0x6506;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/common/c_randdp.cpp:109;VMULSD	%XMM2,%XMM0,%XMM0;
+0x650a;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/common/c_randdp.cpp:110;RET;
+0x650b;:0;NOPL	(%RAX,%RAX,1);

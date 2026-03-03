@@ -1,0 +1,12 @@
+address;source_location;insn;indent
+0x1d00;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:903;CMP	$-0x1,%EAX;
+0x1d03;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:903;JE	1da0 <main+0xae0>;
+0x1d09;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:907;CMP	%EAX,%R8D;
+0x1d0c;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:907;JE	1db0 <main+0xaf0>;
+0x1d12;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:886;INC	%RDX;
+0x1d15;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:886;ADD	$0x4,%R10;
+0x1d19;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:886;CMP	%EDX,%ECX;
+0x1d1b;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:886;JLE	2284 <main+0xfc4>;
+0x1d21;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:887;MOV	(%R10),%EAX;
+0x1d24;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:887;CMP	%EAX,%R8D;
+0x1d27;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:887;JGE	1d00 <main+0xa40>;

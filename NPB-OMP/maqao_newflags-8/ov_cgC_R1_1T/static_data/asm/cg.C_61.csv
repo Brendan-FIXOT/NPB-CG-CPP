@@ -1,0 +1,5 @@
+address;source_location;insn;indent
+0x7c90;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:281;SUB	%ESI,(%R9,%R14,4);
+0x7c94;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:280;INC	%R14;
+0x7c97;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:280;CMP	%R14D,(%R13);
+0x7c9b;/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp:280;JG	7c90 <main._omp_fn.0+0xb0>;

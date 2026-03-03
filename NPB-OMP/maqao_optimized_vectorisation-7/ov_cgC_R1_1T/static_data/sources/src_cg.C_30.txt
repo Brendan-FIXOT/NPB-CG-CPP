@@ -1,0 +1,14 @@
+/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 675 - 685
+--------------------------------------------------------------------------------
+
+675: 		const int row_start = rowstr_l[j];
+676: 		const int row_end = rowstr_l[j+1];
+677: 		const int len = row_end - row_start;
+678: 		const int* __restrict ci = colidx_l + row_start;
+679: 		const double* __restrict av = a_l + row_start;
+680: 		#pragma omp simd reduction(+:suml)
+681: 		for(k = 0; k < len; k++){
+682: 			const int idx = ci[k];
+683: 			suml += av[k] * z_l[idx];
+684: 		}
+685: 		r_l[j] = suml;

@@ -1,16 +1,16 @@
-/* CLASS = B */
+/* CLASS = C */
 					/*
 					  c  This file is generated automatically by the setparams utility.
 					  c  It sets the number of processors and the class_npb of the NPB
 					  c  in this directory. Do not modify it by hand.
 					 */
-#define NA     75000
-#define NONZER 13
+#define NA     150000
+#define NONZER 15
 #define NITER  75
-#define SHIFT  60.0
+#define SHIFT  110.0
 #define RCOND  1.0e-1
 #define	CONVERTDOUBLE	FALSE
-#define COMPILETIME "24 Feb 2026"
+#define COMPILETIME "26 Feb 2026"
 #define NPBVERSION "4.1"
 #define LIBVERSION "201511"
 #define COMPILERVERSION "13.3.0"
@@ -18,6 +18,6 @@
 #define CS2 "$(CC)"
 #define CS3 "-lm"
 #define CS4 "-I../common "
-#define CS5 "-O3 -fopenmp -mcmodel=medium"
-#define CS6 "-O3 -fopenmp -mcmodel=medium"
+#define CS5 "-O3 -fopenmp -mcmodel=medium -g -grecord-gc..."
+#define CS6 "-O3 -fopenmp -mcmodel=medium -g -fno-omit-f..."
 #define CS7 "randdp"

@@ -1,0 +1,10 @@
+/home/platy/Desktop/NPB-CG-CPP/NPB-OMP/CG/cg.cpp: 837 - 837
+--------------------------------------------------------------------------------
+
+837: 			if(lhs.row != rhs.row){return lhs.row < rhs.row;}
+/usr/include/c++/13/bits/stl_algo.h: 1799 - 1801
+--------------------------------------------------------------------------------
+
+1799:       while (__comp(__val, __next))
+1800: 	{
+1801: 	  *__last = _GLIBCXX_MOVE(*__next);
