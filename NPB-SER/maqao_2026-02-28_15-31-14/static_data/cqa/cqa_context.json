@@ -1,0 +1,171 @@
+{
+  "_cqa_uarch_const":
+    {
+      "load latency": 4,
+      "vector-unaligned optimal pattern": "1x256",
+      "unlamination threshold": 4,
+      "LFB size": 10,
+      "Is supported by UFS": true,
+      "predicted taken branch ports":
+        [
+        6
+        ],
+      "LM size": 32,
+      "ROB size": 224,
+      "INT vector size in bytes": 32,
+      "vector size in bytes": 32,
+      "RS size": 97,
+      "store latency": 3,
+      "UQ throughput": 4,
+      "PRF size": 200,
+      "PRF_INT size": 180,
+      "IQ throughput": 4,
+      "PRF_FLOAT size": 168,
+      "uop cache capacity": 1000,
+      "Max Loop Buffer uops": 64,
+      "NOP 0f 1f decode": "fast",
+      "retire throughput": 4,
+      "predec insns per cycle": 6,
+      "decode throughput": 5,
+      "Max Loop Buffer bytes": 1024,
+      "SB size": 56,
+      "ports":
+        [
+          {
+            "width": 256,
+            "name": "ALU/V256",
+            "units":
+              {
+                "VPU":
+                  {
+                    "FMA": true,
+                    "FMUL": true,
+                    "FADD": true
+                  },
+                "BRU":
+                  [
+
+                  ],
+                "ALU":
+                  [
+
+                  ],
+                "DIV/SQRT":
+                  {
+                    "width": 128
+                  }
+              }
+          },
+          {
+            "width": 256,
+            "name": "ALU/V256",
+            "units":
+              {
+                "ALU":
+                  [
+
+                  ],
+                "VPU":
+                  {
+                    "FMA": true,
+                    "FMUL": true,
+                    "FADD": true
+                  }
+              }
+          },
+          {
+            "width": 256,
+            "name": "LD/STA",
+            "units":
+              {
+                "store address":
+                  [
+
+                  ],
+                "load":
+                  [
+
+                  ]
+              }
+          },
+          {
+            "width": 256,
+            "name": "LD/STA",
+            "units":
+              {
+                "store address":
+                  [
+
+                  ],
+                "load":
+                  [
+
+                  ]
+              }
+          },
+          {
+            "width": 256,
+            "name": "STD",
+            "units":
+              {
+                "store data":
+                  [
+
+                  ]
+              }
+          },
+          {
+            "name": "ALU",
+            "units":
+              {
+                "ALU":
+                  [
+
+                  ]
+              }
+          },
+          {
+            "name": "ALU",
+            "units":
+              {
+                "ALU":
+                  [
+
+                  ],
+                "BRU":
+                  [
+
+                  ]
+              }
+          },
+          {
+            "name": "STA",
+            "units":
+              {
+                "store address":
+                  [
+
+                  ]
+              }
+          }
+        ],
+      "UFS resources":
+        [
+        "ROB",
+        "RS",
+        "LB",
+        "LM",
+        "LFB",
+        "SB",
+        "PRF_INT",
+        "PRF_FLOAT",
+        "PRF"
+        ],
+      "nb complex decoders": 1,
+      "LB size": 72,
+      "bytes fetched per cycle": 16,
+      "FP load latency": 6,
+      "nb execution ports": 8,
+      "nb simple decoders": 3
+    }
+}

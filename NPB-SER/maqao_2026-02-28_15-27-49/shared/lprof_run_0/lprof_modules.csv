@@ -1,0 +1,4 @@
+name;time_p;time_s;cpi_ratio;
+/home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-28_15-27-49/binaries/cg.B;99.605270385742;64.35001373291;;
+kernel;0.35600942373276;0.23000000417233;;
+/usr/lib/x86_64-linux-gnu/libc.so.6;0.038696676492691;0.025000002235174;;

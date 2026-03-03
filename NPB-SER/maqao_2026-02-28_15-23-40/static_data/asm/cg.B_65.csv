@@ -1,0 +1,11 @@
+address;source_location;insn;indent
+0x32b2;:0;MOVSXD	(%R9,%RAX,1),%R11;
+0x32b6;:0;VMOVSD	(%RDI,%RAX,2),%XMM0;
+0x32bb;:0;MOV	(%R10,%R11,4),%R11D;
+0x32bf;:0;MOV	%R11D,(%R8,%RAX,1);
+0x32c3;:0;MOV	-0x330(%RBP),%R11;
+0x32ca;:0;VMOVSD	%XMM0,(%R11,%RAX,2);
+0x32d0;:0;MOV	-0x348(%RBP),%R11;
+0x32d7;:0;ADD	$0x4,%RAX;
+0x32db;:0;CMP	%R11,%RAX;
+0x32de;:0;JNE	32b2 <main+0x1de2>;

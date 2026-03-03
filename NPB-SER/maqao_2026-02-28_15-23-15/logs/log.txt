@@ -1,0 +1,5 @@
+********************************************************************************
+MAQAO 2026.0.0 - 7e198a7ec9fb425c75ec6c6a36a98893b37a86d6::20260204-112052 || 2026/02/04
+maqao oneview -R1 -- ./bin/cg.B 
+CPY:  [true] ./bin/cg.B --> /home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-28_15-23-15/binaries/cg.B
+CMD:   /home/nico/Downloads/maqao.x86_64.2026.0.0/bin/maqao lprof _caller=oneview  --xp="/home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-28_15-23-15/tools/lprof_run_0" --mpi-command="" --collect-CPU-time-intervals --collect-topology tpp=1   -- /home/nico/Desktop/M2_CHPS/advanced_oc/projet/NPB-CG-CPP/NPB-SER/maqao_2026-02-28_15-23-15/binaries/cg.B 

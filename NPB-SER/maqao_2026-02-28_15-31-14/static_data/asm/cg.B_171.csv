@@ -1,0 +1,6 @@
+address;source_location;insn;indent
+0x7b60;:0;MOV	%RAX,%RDI;
+0x7b63;:0;MOV	(%RAX),%ESI;
+0x7b65;:0;SUB	$0x10,%RAX;
+0x7b69;:0;CMP	%ESI,%EDX;
+0x7b6b;:0;JL	7b60 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIidESt6vectorIS3_SaIS3_EEEElNS0_5__ops15_Iter_comp_iterIZL31csr_apply_symmetric_permutationiPKiSC_PKdRKS5_IiSaIiEERSG_SJ_RS5_IdSaIdEEEUlRT_RT0_E_EEEvSN_SN_SP_T1_+0xb0>;

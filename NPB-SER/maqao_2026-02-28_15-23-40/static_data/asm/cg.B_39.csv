@@ -1,0 +1,7 @@
+address;source_location;insn;indent
+0x593b;:0;VMOVAPD	(%RCX,%RAX,1),%YMM7;
+0x5940;:0;VMOVAPD	%YMM7,(%R13,%RAX,1);
+0x5947;:0;VMOVAPD	%YMM7,(%RBX,%RAX,1);
+0x594c;:0;ADD	$0x20,%RAX;
+0x5950;:0;CMP	%RDX,%RAX;
+0x5953;:0;JNE	593b <main+0x446b>;

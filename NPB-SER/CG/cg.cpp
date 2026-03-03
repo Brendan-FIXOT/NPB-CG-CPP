@@ -167,6 +167,345 @@ static boolean timeron;
 // 		double q[],
 // 		double r[],
 // 		double* rnorm);
+//
+#include <math.h>
+#include <stddef.h>
+#include <stdint.h>
+
+#ifndef CG_ASSUME_ALIGNED
+#  define CG_ASSUME_ALIGNED(ptr, A) (__typeof__(ptr))__builtin_assume_aligned((ptr), (A))
+#endif
+
+// Tuneable knobs (reasonable defaults)
+#ifndef CG_CGITMAX
+#  define CG_CGITMAX 25
+#endif
+#ifndef CG_PREFETCH_DIST
+#  define CG_PREFETCH_DIST 48   // in "k" iterations (nonzeros) ahead
+#endif
+
+// Unrolled dot product (vector-friendly)
+static inline double dot_u4(const double *__restrict a,
+                            const double *__restrict b,
+                            int n)
+{
+  double s0 = 0.0, s1 = 0.0, s2 = 0.0, s3 = 0.0;
+  int i = 0;
+
+  // Help auto-vectorizer: contiguous, no alias, fixed stride
+  #pragma GCC ivdep
+  for (; i + 3 < n; i += 4) {
+    s0 += a[i+0] * b[i+0];
+    s1 += a[i+1] * b[i+1];
+    s2 += a[i+2] * b[i+2];
+    s3 += a[i+3] * b[i+3];
+  }
+  double s = (s0 + s1) + (s2 + s3);
+  for (; i < n; ++i) s += a[i] * b[i];
+  return s;
+}
+
+static inline double dot_self_u4(const double *__restrict a, int n)
+{
+  double s0 = 0.0, s1 = 0.0, s2 = 0.0, s3 = 0.0;
+  int i = 0;
+  #pragma GCC ivdep
+  for (; i + 3 < n; i += 4) {
+    const double x0 = a[i+0], x1 = a[i+1], x2 = a[i+2], x3 = a[i+3];
+    s0 += x0 * x0;
+    s1 += x1 * x1;
+    s2 += x2 * x2;
+    s3 += x3 * x3;
+  }
+  double s = (s0 + s1) + (s2 + s3);
+  for (; i < n; ++i) s += a[i] * a[i];
+  return s;
+}
+
+// CSR SpMV: q = A * p
+static inline void spmv_csr(const int *__restrict rowstr,
+                            const int *__restrict colidx,
+                            const double *__restrict a,
+                            const double *__restrict p,
+                            double *__restrict q,
+                            int nrow)
+{
+  for (int j = 0; j < nrow; ++j) {
+    const int start = rowstr[j];
+    const int end   = rowstr[j + 1];
+
+    double s0 = 0.0, s1 = 0.0, s2 = 0.0, s3 = 0.0;
+    int k = start;
+
+    // Unroll by 4; prefetch future gathers
+    #pragma GCC ivdep
+    for (; k + 3 < end; k += 4) {
+      const int pf = k + CG_PREFETCH_DIST;
+      if (pf < end) __builtin_prefetch(&p[colidx[pf]], 0, 1);
+
+      const int c0 = colidx[k+0];
+      const int c1 = colidx[k+1];
+      const int c2 = colidx[k+2];
+      const int c3 = colidx[k+3];
+
+      s0 += a[k+0] * p[c0];
+      s1 += a[k+1] * p[c1];
+      s2 += a[k+2] * p[c2];
+      s3 += a[k+3] * p[c3];
+    }
+
+    double sum = (s0 + s1) + (s2 + s3);
+    for (; k < end; ++k) {
+      sum += a[k] * p[colidx[k]];
+    }
+    q[j] = sum;
+  }
+}
+
+// Fused update: z += alpha*p; r -= alpha*q; rho = r.r
+static inline double axpy_axmy_rho(const double *__restrict p,
+                                  const double *__restrict q,
+                                  double *__restrict z,
+                                  double *__restrict r,
+                                  double alpha,
+                                  int n)
+{
+  double s0 = 0.0, s1 = 0.0, s2 = 0.0, s3 = 0.0;
+  int i = 0;
+
+  #pragma GCC ivdep
+  for (; i + 3 < n; i += 4) {
+    z[i+0] += alpha * p[i+0];
+    z[i+1] += alpha * p[i+1];
+    z[i+2] += alpha * p[i+2];
+    z[i+3] += alpha * p[i+3];
+
+    const double r0 = r[i+0] - alpha * q[i+0];
+    const double r1 = r[i+1] - alpha * q[i+1];
+    const double r2 = r[i+2] - alpha * q[i+2];
+    const double r3 = r[i+3] - alpha * q[i+3];
+
+    r[i+0] = r0; r[i+1] = r1; r[i+2] = r2; r[i+3] = r3;
+
+    s0 += r0 * r0;
+    s1 += r1 * r1;
+    s2 += r2 * r2;
+    s3 += r3 * r3;
+  }
+
+  double rho = (s0 + s1) + (s2 + s3);
+  for (; i < n; ++i) {
+    z[i] += alpha * p[i];
+    const double ri = r[i] - alpha * q[i];
+    r[i] = ri;
+    rho += ri * ri;
+  }
+  return rho;
+}
+
+static inline void p_update(const double *__restrict r,
+                            double *__restrict p,
+                            double beta,
+                            int n)
+{
+  int i = 0;
+  #pragma GCC ivdep
+  for (; i + 3 < n; i += 4) {
+    p[i+0] = r[i+0] + beta * p[i+0];
+    p[i+1] = r[i+1] + beta * p[i+1];
+    p[i+2] = r[i+2] + beta * p[i+2];
+    p[i+3] = r[i+3] + beta * p[i+3];
+  }
+  for (; i < n; ++i) p[i] = r[i] + beta * p[i];
+}
+
+static inline double residual_norm2(const double *__restrict x,
+                                    const double *__restrict Az,
+                                    int n)
+{
+  double s0 = 0.0, s1 = 0.0, s2 = 0.0, s3 = 0.0;
+  int i = 0;
+  #pragma GCC ivdep
+  for (; i + 3 < n; i += 4) {
+    const double d0 = x[i+0] - Az[i+0];
+    const double d1 = x[i+1] - Az[i+1];
+    const double d2 = x[i+2] - Az[i+2];
+    const double d3 = x[i+3] - Az[i+3];
+    s0 += d0 * d0;
+    s1 += d1 * d1;
+    s2 += d2 * d2;
+    s3 += d3 * d3;
+  }
+  double s = (s0 + s1) + (s2 + s3);
+  for (; i < n; ++i) {
+    const double d = x[i] - Az[i];
+    s += d * d;
+  }
+  return s;
+}
+
+// static void conj_grad(const int *__restrict colidx,
+//                       const int *__restrict rowstr,
+//                       const double *__restrict x,
+//                       double *__restrict z,
+//                       const double *__restrict a,
+//                       double *__restrict p,
+//                       double *__restrict q,
+//                       double *__restrict r,
+//                       double *__restrict rnorm)
+// {
+//   const int n    = lastcol - firstcol + 1;
+//   const int nrow = lastrow - firstrow + 1;
+
+//   // Alignment hints (keep them as local aliases to help the optimizer)
+//   p = CG_ASSUME_ALIGNED(p, 64);
+//   q = CG_ASSUME_ALIGNED(q, 64);
+//   r = CG_ASSUME_ALIGNED(r, 64);
+//   z = CG_ASSUME_ALIGNED(z, 64);
+//   x = CG_ASSUME_ALIGNED(x, 64);
+//   a = CG_ASSUME_ALIGNED(a, 64);
+
+//   // init: q=0, z=0, r=x, p=r
+//   {
+//     int i = 0;
+//     #pragma GCC ivdep
+//     for (; i + 3 < n; i += 4) {
+//       q[i+0] = 0.0; q[i+1] = 0.0; q[i+2] = 0.0; q[i+3] = 0.0;
+//       z[i+0] = 0.0; z[i+1] = 0.0; z[i+2] = 0.0; z[i+3] = 0.0;
+//       const double x0 = x[i+0], x1 = x[i+1], x2 = x[i+2], x3 = x[i+3];
+//       r[i+0] = x0; r[i+1] = x1; r[i+2] = x2; r[i+3] = x3;
+//       p[i+0] = x0; p[i+1] = x1; p[i+2] = x2; p[i+3] = x3;
+//     }
+//     for (; i < n; ++i) {
+//       q[i] = 0.0;
+//       z[i] = 0.0;
+//       r[i] = x[i];
+//       p[i] = x[i];
+//     }
+//   }
+
+//   double rho = dot_self_u4(r, n);
+
+//   for (int cgit = 1; cgit <= CG_CGITMAX; ++cgit) {
+//     // q = A*p
+//     spmv_csr(rowstr, colidx, a, p, q, nrow);
+
+//     // d = p.q
+//     const double d = dot_u4(p, q, n);
+
+//     // alpha = rho / d
+//     const double alpha = rho / d;
+//     const double rho0  = rho;
+
+//     // z,r update + rho recompute (fused)
+//     rho = axpy_axmy_rho(p, q, z, r, alpha, n);
+
+//     // beta = rho / rho0
+//     const double beta = rho / rho0;
+
+//     // p = r + beta*p
+//     p_update(r, p, beta, n);
+//   }
+
+//   // Explicit residual: r = A*z (store in r), then ||x - r||
+//   spmv_csr(rowstr, colidx, a, z, r, nrow);
+//   const double rn2 = residual_norm2(x, r, n);
+//   *rnorm = sqrt(rn2);
+// }
+
+#include <immintrin.h>
+#include <cmath>
+
+// static inline double hsum256_pd(__m256d v) {
+//   __m128d lo = _mm256_castpd256_pd128(v);
+//   __m128d hi = _mm256_extractf128_pd(v, 1);
+//   __m128d sum = _mm_add_pd(lo, hi);
+//   __m128d shuf = _mm_shuffle_pd(sum, sum, 0x1);
+//   sum = _mm_add_sd(sum, shuf);
+//   return _mm_cvtsd_f64(sum);
+// }
+
+static inline double dot_avx2(const double* __restrict a,
+                              const double* __restrict b,
+                              int n) {
+  __m256d acc = _mm256_setzero_pd();
+  int i = 0;
+  for (; i + 3 < n; i += 4) {
+    __m256d va = _mm256_load_pd(a + i);
+    __m256d vb = _mm256_load_pd(b + i);
+    acc = _mm256_fmadd_pd(va, vb, acc);
+  }
+  double s = hsum256_pd(acc);
+  for (; i < n; ++i) s += a[i] * b[i];
+  return s;
+}
+
+static inline double dot_self_avx2(const double* __restrict a, int n) {
+  __m256d acc = _mm256_setzero_pd();
+  int i = 0;
+  for (; i + 3 < n; i += 4) {
+    __m256d va = _mm256_load_pd(a + i);
+    acc = _mm256_fmadd_pd(va, va, acc);
+  }
+  double s = hsum256_pd(acc);
+  for (; i < n; ++i) s += a[i] * a[i];
+  return s;
+}
+
+// z += alpha*p ; r -= alpha*q ; return rho = r.r
+static inline double update_z_r_rho_avx2(double* __restrict z,
+                                         double* __restrict r,
+                                         const double* __restrict p,
+                                         const double* __restrict q,
+                                         double alpha, int n) {
+  __m256d aval = _mm256_set1_pd(alpha);
+  __m256d acc  = _mm256_setzero_pd();
+
+  int i = 0;
+  for (; i + 3 < n; i += 4) {
+    __m256d zv = _mm256_load_pd(z + i);
+    __m256d pv = _mm256_load_pd(p + i);
+    __m256d rv = _mm256_load_pd(r + i);
+    __m256d qv = _mm256_load_pd(q + i);
+
+    // z = z + alpha*p
+    zv = _mm256_fmadd_pd(aval, pv, zv);
+    _mm256_store_pd(z + i, zv);
+
+    // r = r - alpha*q
+    rv = _mm256_fnmadd_pd(aval, qv, rv); // rv = rv - aval*qv
+    _mm256_store_pd(r + i, rv);
+
+    // rho += r*r
+    acc = _mm256_fmadd_pd(rv, rv, acc);
+  }
+
+  double rho = hsum256_pd(acc);
+  for (; i < n; ++i) {
+    z[i] += alpha * p[i];
+    const double ri = r[i] - alpha * q[i];
+    r[i] = ri;
+    rho += ri * ri;
+  }
+  return rho;
+}
+
+// p = r + beta*p
+static inline void update_p_avx2(double* __restrict p,
+                                 const double* __restrict r,
+                                 double beta, int n) {
+  __m256d bval = _mm256_set1_pd(beta);
+  int i = 0;
+  for (; i + 3 < n; i += 4) {
+    __m256d pv = _mm256_load_pd(p + i);
+    __m256d rv = _mm256_load_pd(r + i);
+    pv = _mm256_fmadd_pd(bval, pv, rv);
+    _mm256_store_pd(p + i, pv);
+  }
+  for (; i < n; ++i) p[i] = r[i] + beta * p[i];
+}
+
+
 
 static void conj_grad(const int *__restrict colidx,
                       const int *__restrict rowstr, const double *__restrict
@@ -231,28 +570,30 @@ static void conj_grad(const int *__restrict colidx,
 		 // 	}
 		 // 	q[j] = sum;
 		 // }
-// 		 for (j = 0; j < nrow; j++) {
-//     const int start = rowstr[j];
-//     const int end   = rowstr[j + 1];
-//     double sum = 0.0;
+		 for (j = 0; j < nrow; j++) {
+    const int start = rowstr[j];
+    const int end   = rowstr[j + 1];
+    double sum = 0.0;
 
-//     const int PF = 32;  // un peu plus grand avec unroll
+    const int PF = 32;  // un peu plus grand avec unroll
 
-//     int k = start;
-//     for (; k + 3 < end; k += 4) {
-//         int pf = k + PF;
-//         if (pf < end) __builtin_prefetch(&p[colidx[pf]], 0, 1);
+    int k = start;
+    // #pragma GCC ivdep
+    for (; k + 3 < end; k += 4) {
+        int pf = k + PF;
+        // if (pf < end)
+        __builtin_prefetch(&colidx[pf], 0, 1);
 
-//         sum += a[k+0] * p[colidx[k+0]];
-//         sum += a[k+1] * p[colidx[k+1]];
-//         sum += a[k+2] * p[colidx[k+2]];
-//         sum += a[k+3] * p[colidx[k+3]];
-//     }
-//     for (; k < end; k++) {
-//         sum += a[k] * p[colidx[k]];
-//     }
-//     q[j] = sum;
-// }
+        sum += a[k+0] * p[colidx[k+0]];
+        sum += a[k+1] * p[colidx[k+1]];
+        sum += a[k+2] * p[colidx[k+2]];
+        sum += a[k+3] * p[colidx[k+3]];
+    }
+    for (; k < end; k++) {
+        sum += a[k] * p[colidx[k]];
+    }
+    q[j] = sum;
+}
 		
 
     // for (j = 0; j < nrow; j++) {
@@ -260,7 +601,8 @@ static void conj_grad(const int *__restrict colidx,
     //   const int end = rowstr[j + 1];
     //   int kk = start;
     //   double s0 = 0.0, s1 = 0.0, s2 = 0.0, s3 = 0.0;
-
+      
+    //   #pragma GCC ivdep
     //   for (; kk + 3 < end; kk += 4) {
     //     s0 += a[kk] * p[colidx[kk]];
     //     s1 += a[kk + 1] * p[colidx[kk + 1]];

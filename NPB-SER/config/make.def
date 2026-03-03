@@ -49,13 +49,13 @@ C_INC = -I../common
 #---------------------------------------------------------------------------
 # Global *compile time* flags for C programs
 #---------------------------------------------------------------------------
-CFLAGS	= -O3 -mcmodel=medium -mavx -mfma 
+CFLAGS	= -O3 -mcmodel=medium -mavx2 -mfma -fno-math-errno -fno-trapping-math -ffp-contract=fast -fopt-info-vec-optimized -fopt-info-vec-missed 
 
 #---------------------------------------------------------------------------
 # Global *link time* flags. Flags for increasing maximum executable 
 # size usually go here. 
 #---------------------------------------------------------------------------
-CLINKFLAGS = -O3 -mcmodel=medium -mavx -mfma  
+CLINKFLAGS = -O3 -mcmodel=medium -mavx2 -mfma  -fno-math-errno -fno-trapping-math -ffp-contract=fast
 
 # CFLAGS     = -O3 -march=native -mtune=native -flto -fno-math-errno -fno-trapping-math -ffp-contract=fast
 # CLINKFLAGS = -O3 -march=native -mtune=native -flto

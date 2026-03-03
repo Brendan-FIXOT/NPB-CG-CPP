@@ -1,0 +1,2 @@
+address;source_location;insn;indent
+0x7b5c;:0;LEA	-0x20(%RDI),%RAX;

@@ -1,0 +1,27 @@
+address;source_location;insn;indent
+0x6c90;:0;MOV	%R10,0x8(%RSP);
+0x6c95;:0;MOV	%R12,%RCX;
+0x6c98;:0;XOR	%EAX,%EAX;
+0x6c9a;:0;LEA	(%R15,%R10,1),%RDI;
+0x6c9e;:0;JMP	6cad <_ZL19sell_spmv_new_orderRK10SellCSigmaPKdPd+0xfd>;
+0x6ca0;:0;ADD	$0x1,%RAX;  (131) 
+0x6ca4;:0;ADD	$0x8,%RCX;  (131) 
+0x6ca8;:0;CMP	%R9,%RAX;  (131) 
+0x6cab;:0;JE	6cd8 <_ZL19sell_spmv_new_orderRK10SellCSigmaPKdPd+0x128>;  (131) 
+0x6cad;:0;MOVSXD	(%RDI,%RAX,4),%RDX;  (131) 
+0x6cb1;:0;TEST	%EDX,%EDX;  (131) 
+0x6cb3;:0;JS	6cd3 <_ZL19sell_spmv_new_orderRK10SellCSigmaPKdPd+0x123>;  (131) 
+0x6cb5;:0;MOV	0x88(%RBX),%R10;  (131) 
+0x6cbc;:0;VMOVSD	(%RSI,%RAX,8),%XMM1;  (131) 
+0x6cc1;:0;VMOVSD	(%R10,%RCX,1),%XMM0;  (131) 
+0x6cc7;:0;VFMADD132SD	(%RBP,%RDX,8),%XMM1,%XMM0;  (131) 
+0x6cce;:0;VMOVSD	%XMM0,(%RSI,%RAX,8);  (131) 
+0x6cd3;:0;CMP	%R8,%RAX;  (131) 
+0x6cd6;:0;JNE	6ca0 <_ZL19sell_spmv_new_orderRK10SellCSigmaPKdPd+0xf0>;  (131) 
+0x6cd8;:0;MOV	0x8(%RSP),%R10;
+0x6cdd;:0;MOV	0x10(%RSP),%RAX;
+0x6ce2;:0;ADD	$0x1,%R11D;
+0x6ce6;:0;ADD	%R14,%R12;
+0x6ce9;:0;ADD	%RAX,%R10;
+0x6cec;:0;CMP	%R11D,%R13D;
+0x6cef;:0;JNE	6c90 <_ZL19sell_spmv_new_orderRK10SellCSigmaPKdPd+0xe0>;

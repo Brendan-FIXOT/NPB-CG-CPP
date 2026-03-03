@@ -1,0 +1,16 @@
+address;source_location;insn;indent
+0x2a54;:0;MOV	%ECX,0x4(%RDX);  (89) 
+0x2a57;:0;MOV	%RDX,%RDI;  (89) 
+0x2a5a;:0;MOV	-0x4(%RDX),%ECX;  (89) 
+0x2a5d;:0;SUB	$0x4,%RDX;  (89) 
+0x2a61;:0;CMP	%ECX,%ESI;  (89) 
+0x2a63;:0;JL	2a54 <main+0x1584>;  (89) 
+0x2a65;:0;ADD	$0x4,%R10;
+0x2a69;:0;MOV	%ESI,(%RDI);
+0x2a6b;:0;CMP	%R10,%R15;
+0x2a6e;:0;JE	4173 <main+0x2ca3>;
+0x2a74;:0;MOV	(%R10),%ESI;
+0x2a77;:0;MOV	-0x4(%R10),%ECX;
+0x2a7b;:0;LEA	-0x4(%R10),%RDX;
+0x2a7f;:0;CMP	%ECX,%ESI;
+0x2a81;:0;JL	2a54 <main+0x1584>;

@@ -1,0 +1,11 @@
+address;source_location;insn;indent
+0x47dc;:0;ADD	$0x4,%RAX;
+0x47e0;:0;MOV	%ECX,0x4(%RDX);
+0x47e3;:0;LEA	0x4(%RDX),%RSI;
+0x47e7;:0;CMP	%R14,%RAX;
+0x47ea;:0;JE	2843 <main+0x1373>;
+0x47f0;:0;MOV	%RSI,%RDX;
+0x47f3;:0;MOV	%ECX,%ESI;
+0x47f5;:0;MOV	(%RAX),%ECX;
+0x47f7;:0;CMP	%ESI,%ECX;
+0x47f9;:0;JNE	47dc <main+0x330c>;

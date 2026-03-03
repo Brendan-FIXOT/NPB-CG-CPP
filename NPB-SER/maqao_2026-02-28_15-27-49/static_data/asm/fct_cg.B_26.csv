@@ -1,0 +1,508 @@
+address;source_location;insn;indent
+0x8370;:0;PUSH	%R15;
+0x8372;:0;PUSH	%R14;
+0x8374;:0;PUSH	%R13;
+0x8376;:0;PUSH	%R12;
+0x8378;:0;PUSH	%RBP;
+0x8379;:0;PUSH	%RBX;
+0x837a;:0;SUB	$0xf8,%RSP;
+0x8381;:0;MOV	%EDI,0x44(%RSP);
+0x8385;:0;MOV	%RSI,0x20(%RSP);
+0x838a;:0;MOV	%RCX,0x10(%RSP);
+0x838f;:0;MOV	%R8,0x50(%RSP);
+0x8394;:0;MOV	%FS:0x28,%RAX;
+0x839d;:0;MOV	%RAX,0xe8(%RSP);
+0x83a5;:0;XOR	%EAX,%EAX;
+0x83a7;:0;MOVSXD	%EDI,%RAX;
+0x83aa;:0;MOV	%RAX,0x38(%RSP);
+0x83af;:0;TEST	%EDI,%EDI;
+0x83b1;:0;JS	8b65 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x7f5>;
+0x83b7;:0;VPXOR	%XMM0,%XMM0,%XMM0;
+0x83bb;:0;CMPQ	$0,0x38(%RSP);
+0x83c1;:0;MOV	%RDX,%R15;
+0x83c4;:0;VMOVDQU	%XMM0,0x78(%RSP);
+0x83ca;:0;JE	8a36 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x6c6>;
+0x83d0;:0;MOV	0x38(%RSP),%R14;
+0x83d5;:0;MOV	%R14,%RDI;
+0x83d8;:0;CALL	1250 <.plt.sec@start+0xb0>;
+0x83dd;:0;MOV	%R14,%RDX;
+0x83e0;:0;XOR	%ESI,%ESI;
+0x83e2;:0;LEA	(%RAX,%R14,1),%RBX;
+0x83e6;:0;MOV	%RAX,%RDI;
+0x83e9;:0;MOV	%RAX,0x70(%RSP);
+0x83ee;:0;MOV	%RAX,%R12;
+0x83f1;:0;MOV	%RBX,0x80(%RSP);
+0x83f9;:0;CALL	11d0 <.plt.sec@start+0x30>;
+0x83fe;:0;LEA	0x90(%RSP),%RAX;
+0x8406;:0;MOV	%R14,%RSI;
+0x8409;:0;LEA	0xd0(%RSP),%RDX;
+0x8411;:0;MOV	%RAX,%RDI;
+0x8414;:0;MOV	%RBX,0x78(%RSP);
+0x8419;:0;MOV	%RDX,0x28(%RSP);
+0x841e;:0;MOV	%RAX,0x18(%RSP);
+0x8423;:0;CALL	9010 <_ZNSt6vectorIiSaIiEEC1EmRKS0_>;
+0x8428;:0;MOV	0x20(%RSP),%RAX;
+0x842d;:0;CMPL	$0x1,0x44(%RSP);
+0x8432;:0;MOV	0x90(%RSP),%RSI;
+0x843a;:0;MOV	(%RAX),%RDX;
+0x843d;:0;JE	8453 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0xe3>;
+0x843f;:0;LEA	0x4(%RDX),%RCX;
+0x8443;:0;MOV	%RSI,%RAX;
+0x8446;:0;SUB	%RCX,%RAX;
+0x8449;:0;CMP	$0xc,%RAX;
+0x844d;:0;JA	8752 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x3e2>;
+0x8453;:0;MOV	0x38(%RSP),%RAX;
+0x8458;:0;LEA	(,%RAX,4),%RDI;
+0x8460;:0;XOR	%EAX,%EAX;
+0x8462;:0;MOV	0x4(%RDX,%RAX,1),%ECX;(200) 
+0x8466;:0;SUB	(%RDX,%RAX,1),%ECX;(200) 
+0x8469;:0;MOV	%ECX,(%RSI,%RAX,1);(200) 
+0x846c;:0;ADD	$0x4,%RAX;(200) 
+0x8470;:0;CMP	%RDI,%RAX;(200) 
+0x8473;:0;JNE	8462 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0xf2>;(200) 
+0x8475;:0;MOV	0x10(%RSP),%RSI;
+0x847a;:0;MOV	(%RSI),%RAX;
+0x847d;:0;CMP	%RAX,0x8(%RSI);
+0x8481;:0;JE	848c <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x11c>;
+0x8483;:0;MOV	0x10(%RSP),%RSI;
+0x8488;:0;MOV	%RAX,0x8(%RSI);
+0x848c;:0;MOV	0x38(%RSP),%RBX;
+0x8491;:0;MOV	%RSI,%RDI;
+0x8494;:0;MOV	%RBX,%RSI;
+0x8497;:0;CALL	9100 <_ZNSt6vectorIiSaIiEE7reserveEm>;
+0x849c;:0;LEA	0xb0(%RSP),%RAX;
+0x84a4;:0;VPXOR	%XMM0,%XMM0,%XMM0;
+0x84a8;:0;MOV	%RBX,%RSI;
+0x84ab;:0;MOVQ	$0,0xc0(%RSP);
+0x84b7;:0;MOV	%RAX,%RDI;
+0x84ba;:0;MOV	%RAX,0x30(%RSP);
+0x84bf;:0;VMOVDQA	%XMM0,0xb0(%RSP);
+0x84c8;:0;CALL	9100 <_ZNSt6vectorIiSaIiEE7reserveEm>;
+0x84cd;:0;MOV	0x28(%RSP),%RDI;
+0x84d2;:0;VPXOR	%XMM0,%XMM0,%XMM0;
+0x84d6;:0;MOV	$0x100,%ESI;
+0x84db;:0;MOVQ	$0,0xe0(%RSP);
+0x84e7;:0;VMOVDQA	%XMM0,0xd0(%RSP);
+0x84f0;:0;CALL	9100 <_ZNSt6vectorIiSaIiEE7reserveEm>;
+0x84f5;:0;MOV	0x10(%RSP),%RAX;
+0x84fa;:0;MOV	0x44(%RSP),%ECX;
+0x84fe;:0;MOV	0x8(%RAX),%RSI;
+0x8502;:0;MOV	(%RAX),%RDI;
+0x8505;:0;MOV	%RSI,%RAX;
+0x8508;:0;SUB	%RDI,%RAX;
+0x850b;:0;SAR	$0x2,%RAX;
+0x850f;:0;CMP	%EAX,%ECX;
+0x8511;:0;JLE	8b48 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x7d8>;
+0x8517;:0;LEA	0x64(%RSP),%RAX;
+0x851c;:0;MOV	%RAX,0x58(%RSP);
+0x8521;:0;LEA	0x68(%RSP),%RAX;
+0x8526;:0;MOV	%RAX,0x48(%RSP);
+0x852b;:0;TEST	%ECX,%ECX;
+0x852d;:0;JE	8a1c <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x6ac>;
+0x8533;:0;MOV	0x90(%RSP),%R8;(194) 
+0x853b;:0;MOV	0x38(%RSP),%R9;(194) 
+0x8540;:0;XOR	%EAX,%EAX;(194) 
+0x8542;:0;MOV	$-0x1,%EBX;(194) 
+0x8547;:0;MOV	$0x7fffffff,%EDX;(194) 
+0x854c;:0;NOPL	(%RAX);(194) 
+0x8550;:0;CMPB	$0,(%R12,%RAX,1);  (193) 
+0x8555;:0;JNE	8563 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x1f3>;  (193) 
+0x8557;:0;MOV	(%R8,%RAX,4),%ECX;  (193) 
+0x855b;:0;CMP	%ECX,%EDX;  (193) 
+0x855d;:0;CMOVG	%EAX,%EBX;  (193) 
+0x8560;:0;CMOVG	%ECX,%EDX;  (193) 
+0x8563;:0;ADD	$0x1,%RAX;  (193) 
+0x8567;:0;CMP	%RAX,%R9;  (193) 
+0x856a;:0;JNE	8550 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x1e0>;  (193) 
+0x856c;:0;MOV	%EBX,0x64(%RSP);(194) 
+0x8570;:0;TEST	%EBX,%EBX;(194) 
+0x8572;:0;JS	8b2b <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x7bb>;(194) 
+0x8578;:0;MOV	0xb0(%RSP),%RAX;(194) 
+0x8580;:0;MOV	%RAX,0x8(%RSP);(194) 
+0x8585;:0;CMP	0xb8(%RSP),%RAX;(194) 
+0x858d;:0;JE	8597 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x227>;(194) 
+0x858f;:0;MOV	%RAX,0xb8(%RSP);(194) 
+0x8597;:0;MOV	0x8(%RSP),%RAX;(194) 
+0x859c;:0;CMP	%RAX,0xc0(%RSP);(194) 
+0x85a4;:0;JE	89e7 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x677>;(194) 
+0x85aa;:0;LEA	0x4(%RAX),%R14;(194) 
+0x85ae;:0;MOV	%EBX,(%RAX);(194) 
+0x85b0;:0;MOV	%R14,0xb8(%RSP);(194) 
+0x85b8;:0;MOVSXD	%EBX,%RBX;(194) 
+0x85bb;:0;MOVQ	$0,(%RSP);(194) 
+0x85c3;:0;MOVB	$0x1,(%R12,%RBX,1);(194) 
+0x85c8;:0;CMP	%R14,0x8(%RSP);(194) 
+0x85cd;:0;JE	8864 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x4f4>;(194) 
+0x85d3;:0;NOPL	(%RAX,%RAX,1);(194) 
+0x85d8;:0;MOV	0x8(%RSP),%RAX;  (195) 
+0x85dd;:0;MOV	(%RSP),%RCX;  (195) 
+0x85e1;:0;MOVSXD	(%RAX,%RCX,4),%RBX;  (195) 
+0x85e5;:0;MOV	0x10(%RSP),%RAX;  (195) 
+0x85ea;:0;MOV	%EBX,0x68(%RSP);  (195) 
+0x85ee;:0;CMP	0x10(%RAX),%RSI;  (195) 
+0x85f2;:0;JE	89d5 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x665>;  (195) 
+0x85f8;:0;MOV	%EBX,(%RSI);  (195) 
+0x85fa;:0;ADD	$0x4,%RSI;  (195) 
+0x85fe;:0;MOV	%RSI,0x8(%RAX);  (195) 
+0x8602;:0;MOV	0xd0(%RSP),%R13;  (195) 
+0x860a;:0;MOV	%R13,%RBP;  (195) 
+0x860d;:0;CMP	0xd8(%RSP),%R13;  (195) 
+0x8615;:0;JE	861f <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x2af>;  (195) 
+0x8617;:0;MOV	%R13,0xd8(%RSP);  (195) 
+0x861f;:0;MOV	0x20(%RSP),%RAX;  (195) 
+0x8624;:0;MOV	(%RAX),%RAX;  (195) 
+0x8627;:0;MOV	(%RAX,%RBX,4),%EDX;  (195) 
+0x862a;:0;MOV	0x4(%RAX,%RBX,4),%EAX;  (195) 
+0x862e;:0;CMP	%EAX,%EDX;  (195) 
+0x8630;:0;JGE	8699 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x329>;  (195) 
+0x8632;:0;MOVSXD	%EDX,%RCX;  (195) 
+0x8635;:0;SUB	%EDX,%EAX;  (195) 
+0x8637;:0;LEA	(%RAX,%RCX,1),%R13;  (195) 
+0x863b;:0;LEA	(,%RCX,4),%RBX;  (195) 
+0x8643;:0;SAL	$0x2,%R13;  (195) 
+0x8647;:0;JMP	8659 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x2e9>;  (195) 
+0x8649;:0;NOPL	(%RAX);
+0x8650;:0;ADD	$0x4,%RBX;    (199) 
+0x8654;:0;CMP	%RBX,%R13;    (199) 
+0x8657;:0;JE	8691 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x321>;    (199) 
+0x8659;:0;MOV	(%R15),%RAX;    (199) 
+0x865c;:0;MOVSXD	(%RAX,%RBX,1),%RDX;    (199) 
+0x8660;:0;CMPB	$0,(%R12,%RDX,1);    (199) 
+0x8665;:0;MOV	%EDX,0x6c(%RSP);    (199) 
+0x8669;:0;JNE	8650 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x2e0>;    (199) 
+0x866b;:0;CMP	%RBP,0xe0(%RSP);    (199) 
+0x8673;:0;JE	89a0 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x630>;    (199) 
+0x8679;:0;MOV	%EDX,(%RBP);    (199) 
+0x867c;:0;ADD	$0x4,%RBX;    (199) 
+0x8680;:0;ADD	$0x4,%RBP;    (199) 
+0x8684;:0;MOV	%RBP,0xd8(%RSP);    (199) 
+0x868c;:0;CMP	%RBX,%R13;    (199) 
+0x868f;:0;JNE	8659 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x2e9>;    (199) 
+0x8691;:0;MOV	0xd0(%RSP),%R13;  (195) 
+0x8699;:0;CMP	%RBP,%R13;  (195) 
+0x869c;:0;JE	883a <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x4ca>;  (195) 
+0x86a2;:0;MOV	%RBP,%RBX;  (195) 
+0x86a5;:0;MOV	$-0x2,%RDX;  (195) 
+0x86ac;:0;SUB	%R13,%RBX;  (195) 
+0x86af;:0;MOV	%RBX,%RAX;  (195) 
+0x86b2;:0;SAR	$0x2,%RAX;  (195) 
+0x86b6;:0;JE	86c2 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x352>;  (195) 
+0x86b8;:0;BSR	%RAX,%RAX;  (195) 
+0x86bc;:0;CLTQ;  (195) 
+0x86be;:0;LEA	(%RAX,%RAX,1),%RDX;  (195) 
+0x86c2;:0;MOV	0x18(%RSP),%RCX;  (195) 
+0x86c7;:0;MOV	%RBP,%RSI;  (195) 
+0x86ca;:0;MOV	%R13,%RDI;  (195) 
+0x86cd;:0;CALL	6ed0 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPiSt6vectorIiSaIiEEEElNS0_5__ops15_Iter_comp_iterIZL27rcm_ordering_from_adjacencyiRKS5_SA_RS5_SB_EUliiE_EEEvT_SE_T0_T1_>;  (195) 
+0x86d2;:0;CMP	$0x40,%RBX;  (195) 
+0x86d6;:0;JLE	89c0 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x650>;  (195) 
+0x86dc;:0;LEA	0x40(%R13),%RBX;  (195) 
+0x86e0;:0;MOV	0x18(%RSP),%RDX;  (195) 
+0x86e5;:0;MOV	%R13,%RDI;  (195) 
+0x86e8;:0;MOV	%RBX,%RSI;  (195) 
+0x86eb;:0;CALL	7ce0 <_ZSt16__insertion_sortIN9__gnu_cxx17__normal_iteratorIPiSt6vectorIiSaIiEEEENS0_5__ops15_Iter_comp_iterIZL27rcm_ordering_from_adjacencyiRKS5_SA_RS5_SB_EUliiE_EEEvT_SE_T0_>;  (195) 
+0x86f0;:0;CMP	%RBP,%RBX;  (195) 
+0x86f3;:0;JE	8811 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x4a1>;  (195) 
+0x86f9;:0;MOV	0x90(%RSP),%RSI;  (195) 
+0x8701;:0;MOV	%RBX,%RDX;  (195) 
+0x8704;:0;NOPL	(%RAX);  (195) 
+0x8708;:0;MOVSXD	(%RDX),%RAX;    (198) 
+0x870b;:0;MOV	%RAX,%R9;    (198) 
+0x870e;:0;LEA	(%RSI,%RAX,4),%R8;    (198) 
+0x8712;:0;MOV	%RDX,%RAX;    (198) 
+0x8715;:0;JMP	8726 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x3b6>;    (198) 
+0x8717;:0;NOPW	(%RAX,%RAX,1);
+0x8720;:0;MOV	%ECX,(%RAX);      (197) 
+0x8722;:0;SUB	$0x4,%RAX;      (197) 
+0x8726;:0;MOVSXD	-0x4(%RAX),%RDI;      (197) 
+0x872a;:0;MOV	(%RSI,%RDI,4),%EBX;      (197) 
+0x872d;:0;MOV	%RDI,%RCX;      (197) 
+0x8730;:0;CMP	%EBX,(%R8);      (197) 
+0x8733;:0;JNE	8738 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x3c8>;      (197) 
+0x8735;:0;CMP	%EDI,%R9D;      (197) 
+0x8738;:0;SETL	%DIL;      (197) 
+0x873c;:0;TEST	%DIL,%DIL;      (197) 
+0x873f;:0;JNE	8720 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x3b0>;      (197) 
+0x8741;:0;ADD	$0x4,%RDX;    (198) 
+0x8745;:0;MOV	%R9D,(%RAX);    (198) 
+0x8748;:0;CMP	%RBP,%RDX;    (198) 
+0x874b;:0;JNE	8708 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x398>;    (198) 
+0x874d;:0;JMP	8811 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x4a1>;  (195) 
+0x8752;:0;MOV	0x44(%RSP),%EBX;
+0x8756;:0;LEA	-0x1(%RBX),%EAX;
+0x8759;:0;MOV	%EBX,%ECX;
+0x875b;:0;CMP	$0x2,%EAX;
+0x875e;:0;JBE	8b84 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x814>;
+0x8764;:0;SHR	$0x2,%ECX;
+0x8767;:0;XOR	%EAX,%EAX;
+0x8769;:0;SAL	$0x4,%RCX;
+0x876d;:0;VMOVDQU	0x4(%RDX,%RAX,1),%XMM2;(201) 
+0x8773;:0;VPSUBD	(%RDX,%RAX,1),%XMM2,%XMM0;(201) 
+0x8778;:0;VMOVDQU	%XMM0,(%RSI,%RAX,1);(201) 
+0x877d;:0;ADD	$0x10,%RAX;(201) 
+0x8781;:0;CMP	%RAX,%RCX;(201) 
+0x8784;:0;JNE	876d <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x3fd>;(201) 
+0x8786;:0;MOV	0x44(%RSP),%ECX;
+0x878a;:0;MOV	%ECX,%EAX;
+0x878c;:0;AND	$-0x4,%EAX;
+0x878f;:0;MOV	%EAX,%EDI;
+0x8791;:0;CMP	%EAX,%ECX;
+0x8793;:0;JE	8475 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x105>;
+0x8799;:0;SUB	%EAX,%ECX;
+0x879b;:0;CMP	$0x1,%ECX;
+0x879e;:0;JE	87d0 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x460>;
+0x87a0;:0;LEA	0x1(%RDI),%R8D;
+0x87a4;:0;LEA	(,%R8,4),%RDI;
+0x87ac;:0;VMOVQ	(%RDX,%R8,4),%XMM0;
+0x87b2;:0;VMOVQ	-0x4(%RDX,%RDI,1),%XMM1;
+0x87b8;:0;VPSUBD	%XMM1,%XMM0,%XMM0;
+0x87bc;:0;VMOVQ	%XMM0,-0x4(%RSI,%RDI,1);
+0x87c2;:0;TEST	$0x1,%CL;
+0x87c5;:0;JE	8475 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x105>;
+0x87cb;:0;AND	$-0x2,%ECX;
+0x87ce;:0;ADD	%ECX,%EAX;
+0x87d0;:0;ADD	$0x1,%EAX;
+0x87d3;:0;CLTQ;
+0x87d5;:0;MOV	(%RDX,%RAX,4),%ECX;
+0x87d8;:0;SUB	-0x4(%RDX,%RAX,4),%ECX;
+0x87dc;:0;MOV	%ECX,-0x4(%RSI,%RAX,4);
+0x87e0;:0;JMP	8475 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x105>;
+0x87e5;:0;NOPL	(%RAX);
+0x87e8;:0;MOVB	$0x1,(%RAX);    (196) 
+0x87eb;:0;CMP	%R14,0xc0(%RSP);    (196) 
+0x87f3;:0;JE	8980 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x610>;    (196) 
+0x87f9;:0;MOV	%EDX,(%R14);    (196) 
+0x87fc;:0;ADD	$0x4,%R14;    (196) 
+0x8800;:0;MOV	%R14,0xb8(%RSP);    (196) 
+0x8808;:0;ADD	$0x4,%R13;    (196) 
+0x880c;:0;CMP	%R13,%RBP;    (196) 
+0x880f;:0;JE	882d <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x4bd>;    (196) 
+0x8811;:0;MOVSXD	(%R13),%RAX;    (196) 
+0x8815;:0;MOV	%EAX,0x6c(%RSP);    (196) 
+0x8819;:0;MOV	%RAX,%RDX;    (196) 
+0x881c;:0;ADD	%R12,%RAX;    (196) 
+0x881f;:0;CMPB	$0,(%RAX);    (196) 
+0x8822;:0;JE	87e8 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x478>;    (196) 
+0x8824;:0;ADD	$0x4,%R13;    (196) 
+0x8828;:0;CMP	%R13,%RBP;    (196) 
+0x882b;:0;JNE	8811 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x4a1>;    (196) 
+0x882d;:0;MOV	0xb0(%RSP),%RAX;  (195) 
+0x8835;:0;MOV	%RAX,0x8(%RSP);  (195) 
+0x883a;:0;MOV	0x8(%RSP),%RCX;  (195) 
+0x883f;:0;MOV	%R14,%RAX;  (195) 
+0x8842;:0;ADDQ	$0x1,(%RSP);  (195) 
+0x8847;:0;MOV	(%RSP),%RBX;  (195) 
+0x884b;:0;SUB	%RCX,%RAX;  (195) 
+0x884e;:0;SAR	$0x2,%RAX;  (195) 
+0x8852;:0;CMP	%RAX,%RBX;  (195) 
+0x8855;:0;MOV	0x10(%RSP),%RAX;  (195) 
+0x885a;:0;MOV	0x8(%RAX),%RSI;  (195) 
+0x885e;:0;JB	85d8 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x268>;  (195) 
+0x8864;:0;MOV	0x10(%RSP),%RAX;(194) 
+0x8869;:0;MOV	(%RAX),%RDI;(194) 
+0x886c;:0;MOV	%RSI,%RAX;(194) 
+0x886f;:0;SUB	%RDI,%RAX;(194) 
+0x8872;:0;SAR	$0x2,%RAX;(194) 
+0x8876;:0;CMP	%EAX,0x44(%RSP);(194) 
+0x887a;:0;JG	8533 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x1c3>;(194) 
+0x8880;:0;CMP	%RDI,%RSI;
+0x8883;:0;JE	8b34 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x7c4>;
+0x8889;:0;LEA	-0x4(%RSI),%RAX;
+0x888d;:0;CMP	%RAX,%RDI;
+0x8890;:0;JAE	88e7 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x577>;
+0x8892;:0;LEA	-0x5(%RSI),%R8;
+0x8896;:0;MOV	%RDI,%RDX;
+0x8899;:0;SUB	%RDI,%R8;
+0x889c;:0;CMP	$0x7,%R8;
+0x88a0;:0;JBE	88d0 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x560>;
+0x88a2;:0;MOV	%R8,%R9;
+0x88a5;:0;MOV	%RSI,%R11;
+0x88a8;:0;SHR	$0x3,%R9;
+0x88ac;:0;LEA	0x1(%R9),%RCX;
+0x88b0;:0;LEA	(,%RCX,4),%R10;
+0x88b8;:0;SUB	%R10,%R11;
+0x88bb;:0;ADD	%RDI,%R10;
+0x88be;:0;CMP	%R10,%R11;
+0x88c1;:0;JAE	8a76 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x706>;
+0x88c7;:0;CMP	%RSI,%RDI;
+0x88ca;:0;JAE	8a76 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x706>;
+0x88d0;:0;MOV	(%RDX),%ECX;(191) 
+0x88d2;:0;MOV	(%RAX),%ESI;(191) 
+0x88d4;:0;ADD	$0x4,%RDX;(191) 
+0x88d8;:0;SUB	$0x4,%RAX;(191) 
+0x88dc;:0;MOV	%ESI,-0x4(%RDX);(191) 
+0x88df;:0;MOV	%ECX,0x4(%RAX);(191) 
+0x88e2;:0;CMP	%RAX,%RDX;(191) 
+0x88e5;:0;JB	88d0 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x560>;(191) 
+0x88e7;:0;MOV	0x38(%RSP),%RSI;(189) 
+0x88ec;:0;MOV	0x50(%RSP),%RDI;(189) 
+0x88f1;:0;CALL	8e50 <_ZNSt6vectorIiSaIiEE6resizeEm>;(189) 
+0x88f6;:0;MOV	0x44(%RSP),%EAX;(189) 
+0x88fa;:0;TEST	%EAX,%EAX;(189) 
+0x88fc;:0;JE	8925 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x5b5>;(189) 
+0x88fe;:0;MOV	0x10(%RSP),%RAX;(189) 
+0x8903;:0;MOV	0x38(%RSP),%RDI;(189) 
+0x8908;:0;MOV	(%RAX),%RSI;(189) 
+0x890b;:0;MOV	0x50(%RSP),%RAX;(189) 
+0x8910;:0;MOV	(%RAX),%RCX;(189) 
+0x8913;:0;XOR	%EAX,%EAX;(189) 
+0x8915;:0;MOVSXD	(%RSI,%RAX,4),%RDX;  (190) 
+0x8919;:0;MOV	%EAX,(%RCX,%RDX,4);  (190) 
+0x891c;:0;ADD	$0x1,%RAX;  (190) 
+0x8920;:0;CMP	%RAX,%RDI;  (190) 
+0x8923;:0;JNE	8915 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x5a5>;  (190) 
+0x8925;:0;MOV	0x28(%RSP),%RDI;(189) 
+0x892a;:0;CALL	8e20 <_ZNSt6vectorIiSaIiEED1Ev>;(189) 
+0x892f;:0;MOV	0x30(%RSP),%RDI;(189) 
+0x8934;:0;CALL	8e20 <_ZNSt6vectorIiSaIiEED1Ev>;(189) 
+0x8939;:0;MOV	0x18(%RSP),%RDI;(189) 
+0x893e;:0;CALL	8e20 <_ZNSt6vectorIiSaIiEED1Ev>;(189) 
+0x8943;:0;LEA	0x70(%RSP),%RDI;(189) 
+0x8948;:0;CALL	90d0 <_ZNSt6vectorIhSaIhEED1Ev>;(189) 
+0x894d;:0;MOV	0xe8(%RSP),%RAX;(189) 
+0x8955;:0;SUB	%FS:0x28,%RAX;(189) 
+0x895e;:0;JNE	8b56 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x7e6>;(189) 
+0x8964;:0;ADD	$0xf8,%RSP;
+0x896b;:0;POP	%RBX;
+0x896c;:0;POP	%RBP;
+0x896d;:0;POP	%R12;
+0x896f;:0;POP	%R13;
+0x8971;:0;POP	%R14;
+0x8973;:0;POP	%R15;
+0x8975;:0;RET;
+0x8976;:0;NOPW	%CS:(%RAX,%RAX,1);
+0x8980;:0;MOV	0x30(%RSP),%RDI;    (196) 
+0x8985;:0;LEA	0x6c(%RSP),%RDX;    (196) 
+0x898a;:0;MOV	%R14,%RSI;    (196) 
+0x898d;:0;CALL	9380 <_ZNSt6vectorIiSaIiEE17_M_realloc_insertIJRKiEEEvN9__gnu_cxx17__normal_iteratorIPiS1_EEDpOT_>;    (196) 
+0x8992;:0;MOV	0xb8(%RSP),%R14;    (196) 
+0x899a;:0;JMP	8808 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x498>;    (196) 
+0x899f;:0;NOP;
+0x89a0;:0;MOV	0x28(%RSP),%RDI;    (199) 
+0x89a5;:0;LEA	0x6c(%RSP),%RDX;    (199) 
+0x89aa;:0;MOV	%RBP,%RSI;    (199) 
+0x89ad;:0;CALL	9380 <_ZNSt6vectorIiSaIiEE17_M_realloc_insertIJRKiEEEvN9__gnu_cxx17__normal_iteratorIPiS1_EEDpOT_>;    (199) 
+0x89b2;:0;MOV	0xd8(%RSP),%RBP;    (199) 
+0x89ba;:0;JMP	8650 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x2e0>;    (199) 
+0x89bf;:0;NOP;
+0x89c0;:0;MOV	0x18(%RSP),%RDX;  (195) 
+0x89c5;:0;MOV	%RBP,%RSI;  (195) 
+0x89c8;:0;MOV	%R13,%RDI;  (195) 
+0x89cb;:0;CALL	7ce0 <_ZSt16__insertion_sortIN9__gnu_cxx17__normal_iteratorIPiSt6vectorIiSaIiEEEENS0_5__ops15_Iter_comp_iterIZL27rcm_ordering_from_adjacencyiRKS5_SA_RS5_SB_EUliiE_EEEvT_SE_T0_>;  (195) 
+0x89d0;:0;JMP	8811 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x4a1>;  (195) 
+0x89d5;:0;MOV	0x48(%RSP),%RDX;  (195) 
+0x89da;:0;MOV	%RAX,%RDI;  (195) 
+0x89dd;:0;CALL	9380 <_ZNSt6vectorIiSaIiEE17_M_realloc_insertIJRKiEEEvN9__gnu_cxx17__normal_iteratorIPiS1_EEDpOT_>;  (195) 
+0x89e2;:0;JMP	8602 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x292>;  (195) 
+0x89e7;:0;MOV	0x58(%RSP),%RDX;(194) 
+0x89ec;:0;MOV	0x30(%RSP),%RDI;(194) 
+0x89f1;:0;MOV	%RAX,%RSI;(194) 
+0x89f4;:0;CALL	9380 <_ZNSt6vectorIiSaIiEE17_M_realloc_insertIJRKiEEEvN9__gnu_cxx17__normal_iteratorIPiS1_EEDpOT_>;(194) 
+0x89f9;:0;MOV	0xb0(%RSP),%RAX;(194) 
+0x8a01;:0;MOV	0xb8(%RSP),%R14;(194) 
+0x8a09;:0;MOV	%RAX,0x8(%RSP);(194) 
+0x8a0e;:0;MOV	0x10(%RSP),%RAX;(194) 
+0x8a13;:0;MOV	0x8(%RAX),%RSI;(194) 
+0x8a17;:0;JMP	85b8 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x248>;(194) 
+0x8a1c;:0;CMP	%RSI,%RDI;
+0x8a1f;:0;JNE	8889 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x519>;
+0x8a25;:0;MOV	0x50(%RSP),%RDI;
+0x8a2a;:0;XOR	%ESI,%ESI;
+0x8a2c;:0;CALL	8e50 <_ZNSt6vectorIiSaIiEE6resizeEm>;
+0x8a31;:0;JMP	8925 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x5b5>;
+0x8a36;:0;XOR	%EDX,%EDX;
+0x8a38;:0;LEA	0x90(%RSP),%RAX;
+0x8a40;:0;XOR	%ESI,%ESI;
+0x8a42;:0;MOV	%RDX,0x70(%RSP);
+0x8a47;:0;MOV	%RAX,%RDI;
+0x8a4a;:0;MOV	%RDX,0x80(%RSP);
+0x8a52;:0;MOV	%RDX,0x78(%RSP);
+0x8a57;:0;LEA	0xd0(%RSP),%RDX;
+0x8a5f;:0;MOV	%RDX,0x28(%RSP);
+0x8a64;:0;MOV	%RAX,0x18(%RSP);
+0x8a69;:0;CALL	9010 <_ZNSt6vectorIiSaIiEEC1EmRKS0_>;
+0x8a6e;:0;XOR	%R12D,%R12D;
+0x8a71;:0;JMP	8475 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x105>;
+0x8a76;:0;CMP	$0x17,%R8;
+0x8a7a;:0;JBE	8b5b <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x7eb>;
+0x8a80;:0;MOV	%RCX,%R8;
+0x8a83;:0;LEA	-0x10(%RSI),%R10;
+0x8a87;:0;SHR	$0x2,%R8;
+0x8a8b;:0;SAL	$0x4,%R8;
+0x8a8f;:0;ADD	%RDI,%R8;
+0x8a92;:0;VMOVDQU	(%RDX),%XMM0;(192) 
+0x8a96;:0;VPSHUFD	$0x1b,(%R10),%XMM1;(192) 
+0x8a9c;:0;ADD	$0x10,%RDX;(192) 
+0x8aa0;:0;SUB	$0x10,%R10;(192) 
+0x8aa4;:0;VMOVDQU	%XMM1,-0x10(%RDX);(192) 
+0x8aa9;:0;VPSHUFD	$0x1b,%XMM0,%XMM0;(192) 
+0x8aae;:0;VMOVDQU	%XMM0,0x10(%R10);(192) 
+0x8ab4;:0;CMP	%R8,%RDX;(192) 
+0x8ab7;:0;JNE	8a92 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x722>;(192) 
+0x8ab9;:0;MOV	%RCX,%R10;
+0x8abc;:0;AND	$-0x4,%R10;
+0x8ac0;:0;LEA	(,%R10,4),%RDX;
+0x8ac8;:0;LEA	(%RDI,%RDX,1),%R8;
+0x8acc;:0;SUB	%RDX,%RAX;
+0x8acf;:0;TEST	$0x3,%CL;
+0x8ad2;:0;JE	88e7 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x577>;
+0x8ad8;:0;SUB	%R10,%RCX;
+0x8adb;:0;CMP	%R9,%R10;
+0x8ade;:0;JE	8b1c <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x7ac>;
+0x8ae0;:0;ADD	%RDX,%RDI;(189) 
+0x8ae3;:0;SUB	%RDX,%RSI;(189) 
+0x8ae6;:0;VMOVQ	(%RDI),%XMM0;(189) 
+0x8aea;:0;VMOVQ	-0x8(%RSI),%XMM1;(189) 
+0x8aef;:0;VPSHUFD	$-0x1f,%XMM0,%XMM0;(189) 
+0x8af4;:0;VPSHUFD	$-0x1f,%XMM1,%XMM1;(189) 
+0x8af9;:0;VMOVQ	%XMM1,(%RDI);(189) 
+0x8afd;:0;VMOVQ	%XMM0,-0x8(%RSI);(189) 
+0x8b02;:0;TEST	$0x1,%CL;(189) 
+0x8b05;:0;JE	88e7 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x577>;(189) 
+0x8b0b;:0;AND	$-0x2,%RCX;(189) 
+0x8b0f;:0;MOV	%RCX,%RDX;(189) 
+0x8b12;:0;SAL	$0x2,%RDX;(189) 
+0x8b16;:0;ADD	%RDX,%R8;(189) 
+0x8b19;:0;SUB	%RDX,%RAX;(189) 
+0x8b1c;:0;MOV	(%R8),%EDX;(189) 
+0x8b1f;:0;MOV	(%RAX),%ECX;(189) 
+0x8b21;:0;MOV	%ECX,(%R8);(189) 
+0x8b24;:0;MOV	%EDX,(%RAX);(189) 
+0x8b26;:0;JMP	88e7 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x577>;(189) 
+0x8b2b;:0;CMP	%RSI,%RDI;
+0x8b2e;:0;JNE	8889 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x519>;
+0x8b34;:0;MOV	0x38(%RSP),%RSI;
+0x8b39;:0;MOV	0x50(%RSP),%RDI;
+0x8b3e;:0;CALL	8e50 <_ZNSt6vectorIiSaIiEE6resizeEm>;
+0x8b43;:0;JMP	88fe <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x58e>;
+0x8b48;:0;CMP	%RSI,%RDI;
+0x8b4b;:0;JNE	8889 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x519>;
+0x8b51;:0;JMP	88e7 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x577>;
+0x8b56;:0;CALL	1270 <.plt.sec@start+0xd0>;(189) 
+0x8b5b;:0;MOV	%RDI,%R8;(189) 
+0x8b5e;:0;XOR	%EDX,%EDX;(189) 
+0x8b60;:0;JMP	8ae0 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x770>;(189) 
+0x8b65;:0;MOV	0xe8(%RSP),%RAX;
+0x8b6d;:0;SUB	%FS:0x28,%RAX;
+0x8b76;:0;JNE	8b56 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x7e6>;
+0x8b78;:0;LEA	0x25d1(%RIP),%RDI;
+0x8b7f;:0;CALL	11c0 <.plt.sec@start+0x20>;
+0x8b84;:0;XOR	%EDI,%EDI;
+0x8b86;:0;XOR	%EAX,%EAX;
+0x8b88;:0;JMP	87a0 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x430>;
+0x8b8d;:0;ENDBR64;
+0x8b91;:0;MOV	%RAX,%RBX;
+0x8b94;:0;VZEROUPPER;
+0x8b97;:0;JMP	1321 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_.cold+0x21>;
+0x8b9c;:0;ENDBR64;
+0x8ba0;:0;MOV	%RAX,%RBX;
+0x8ba3;:0;VZEROUPPER;
+0x8ba6;:0;JMP	1317 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_.cold+0x17>;
+0x8bab;:0;ENDBR64;
+0x8baf;:0;MOV	%RAX,%RBX;
+0x8bb2;:0;VZEROUPPER;
+0x8bb5;:0;JMP	130d <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_.cold+0xd>;
+0x8bba;:0;ENDBR64;
+0x8bbe;:0;MOV	%RAX,%RBX;
+0x8bc1;:0;JMP	1300 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_.cold>;
+0x8bc6;:0;NOPW	%CS:(%RAX,%RAX,1);

@@ -1,0 +1,159 @@
+address;source_location;insn;indent
+0x7ab0;:0;MOV	%RSI,%RAX;
+0x7ab3;:0;SUB	%RDI,%RAX;
+0x7ab6;:0;CMP	$0x100,%RAX;
+0x7abc;:0;JLE	7cd3 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIidESt6vectorIS3_SaIS3_EEEElNS0_5__ops15_Iter_comp_iterIZL31csr_apply_symmetric_permutationiPKiSC_PKdRKS5_IiSaIiEERSG_SJ_RS5_IdSaIdEEEUlRT_RT0_E_EEEvSN_SN_SP_T1_+0x223>;
+0x7ac2;:0;PUSH	%R13;
+0x7ac4;:0;MOV	%RSI,%R9;
+0x7ac7;:0;MOV	%RDX,%R13;
+0x7aca;:0;PUSH	%R12;
+0x7acc;:0;PUSH	%RBP;
+0x7acd;:0;MOV	%RDI,%RBP;
+0x7ad0;:0;PUSH	%RBX;
+0x7ad1;:0;LEA	0x10(%RDI),%RBX;
+0x7ad5;:0;SUB	$0x8,%RSP;
+0x7ad9;:0;TEST	%RDX,%RDX;
+0x7adc;:0;JE	7c41 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIidESt6vectorIS3_SaIS3_EEEElNS0_5__ops15_Iter_comp_iterIZL31csr_apply_symmetric_permutationiPKiSC_PKdRKS5_IiSaIiEERSG_SJ_RS5_IdSaIdEEEUlRT_RT0_E_EEEvSN_SN_SP_T1_+0x191>;
+0x7ae2;:0;SAR	$0x5,%RAX;(172) 
+0x7ae6;:0;MOV	0x10(%RBP),%EDX;(172) 
+0x7ae9;:0;MOV	-0x10(%R9),%EDI;(172) 
+0x7aed;:0;SUB	$0x1,%R13;(172) 
+0x7af1;:0;SAL	$0x4,%RAX;(172) 
+0x7af5;:0;MOV	(%RBP),%ECX;(172) 
+0x7af8;:0;VMOVSD	0x8(%RBP),%XMM0;(172) 
+0x7afd;:0;ADD	%RBP,%RAX;(172) 
+0x7b00;:0;MOV	(%RAX),%ESI;(172) 
+0x7b02;:0;CMP	%ESI,%EDX;(172) 
+0x7b04;:0;JGE	7bed <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIidESt6vectorIS3_SaIS3_EEEElNS0_5__ops15_Iter_comp_iterIZL31csr_apply_symmetric_permutationiPKiSC_PKdRKS5_IiSaIiEERSG_SJ_RS5_IdSaIdEEEUlRT_RT0_E_EEEvSN_SN_SP_T1_+0x13d>;(172) 
+0x7b0a;:0;CMP	%EDI,%ESI;(172) 
+0x7b0c;:0;JL	7c1e <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIidESt6vectorIS3_SaIS3_EEEElNS0_5__ops15_Iter_comp_iterIZL31csr_apply_symmetric_permutationiPKiSC_PKdRKS5_IiSaIiEERSG_SJ_RS5_IdSaIdEEEUlRT_RT0_E_EEEvSN_SN_SP_T1_+0x16e>;(172) 
+0x7b12;:0;CMP	%EDI,%EDX;(172) 
+0x7b14;:0;JL	7bf9 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIidESt6vectorIS3_SaIS3_EEEElNS0_5__ops15_Iter_comp_iterIZL31csr_apply_symmetric_permutationiPKiSC_PKdRKS5_IiSaIiEERSG_SJ_RS5_IdSaIdEEEUlRT_RT0_E_EEEvSN_SN_SP_T1_+0x149>;(172) 
+0x7b1a;:0;VMOVSD	0x18(%RBP),%XMM1;(172) 
+0x7b1f;:0;MOV	%EDX,(%RBP);(172) 
+0x7b22;:0;MOV	%ECX,0x10(%RBP);(172) 
+0x7b25;:0;MOV	-0x10(%R9),%ESI;(172) 
+0x7b29;:0;VMOVSD	%XMM1,0x8(%RBP);(172) 
+0x7b2e;:0;VMOVSD	%XMM0,0x18(%RBP);(172) 
+0x7b33;:0;MOV	%R9,%RDI;(172) 
+0x7b36;:0;MOV	%RBX,%RAX;(172) 
+0x7b39;:0;CMP	%EDX,%ECX;(172) 
+0x7b3b;:0;JGE	7ba4 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIidESt6vectorIS3_SaIS3_EEEElNS0_5__ops15_Iter_comp_iterIZL31csr_apply_symmetric_permutationiPKiSC_PKdRKS5_IiSaIiEERSG_SJ_RS5_IdSaIdEEEUlRT_RT0_E_EEEvSN_SN_SP_T1_+0xf4>;(172) 
+0x7b3d;:0;NOPL	(%RAX);(172) 
+0x7b40;:0;ADD	$0x10,%RAX;  (174) 
+0x7b44;:0;NOPL	(%RAX);  (174) 
+0x7b48;:0;MOV	%RAX,%R8;    (173) 
+0x7b4b;:0;MOV	(%RAX),%ECX;    (173) 
+0x7b4d;:0;ADD	$0x10,%RAX;    (173) 
+0x7b51;:0;CMP	%ECX,%EDX;    (173) 
+0x7b53;:0;JG	7b48 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIidESt6vectorIS3_SaIS3_EEEElNS0_5__ops15_Iter_comp_iterIZL31csr_apply_symmetric_permutationiPKiSC_PKdRKS5_IiSaIiEERSG_SJ_RS5_IdSaIdEEEUlRT_RT0_E_EEEvSN_SN_SP_T1_+0x98>;    (173) 
+0x7b55;:0;MOV	%R8,%R12;  (174) 
+0x7b58;:0;CMP	%ESI,%EDX;  (174) 
+0x7b5a;:0;JGE	7bb0 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIidESt6vectorIS3_SaIS3_EEEElNS0_5__ops15_Iter_comp_iterIZL31csr_apply_symmetric_permutationiPKiSC_PKdRKS5_IiSaIiEERSG_SJ_RS5_IdSaIdEEEUlRT_RT0_E_EEEvSN_SN_SP_T1_+0x100>;  (174) 
+0x7b5c;:0;LEA	-0x20(%RDI),%RAX;  (175) 
+0x7b60;:0;MOV	%RAX,%RDI;  (171) 
+0x7b63;:0;MOV	(%RAX),%ESI;  (171) 
+0x7b65;:0;SUB	$0x10,%RAX;  (171) 
+0x7b69;:0;CMP	%ESI,%EDX;  (171) 
+0x7b6b;:0;JL	7b60 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIidESt6vectorIS3_SaIS3_EEEElNS0_5__ops15_Iter_comp_iterIZL31csr_apply_symmetric_permutationiPKiSC_PKdRKS5_IiSaIiEERSG_SJ_RS5_IdSaIdEEEUlRT_RT0_E_EEEvSN_SN_SP_T1_+0xb0>;  (171) 
+0x7b6d;:0;CMP	%RDI,%R12;(172) 
+0x7b70;:0;JAE	7bc0 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIidESt6vectorIS3_SaIS3_EEEElNS0_5__ops15_Iter_comp_iterIZL31csr_apply_symmetric_permutationiPKiSC_PKdRKS5_IiSaIiEERSG_SJ_RS5_IdSaIdEEEUlRT_RT0_E_EEEvSN_SN_SP_T1_+0x110>;(172) 
+0x7b72;:0;MOV	%ESI,(%R12);  (174) 
+0x7b76;:0;VMOVSD	0x8(%RDI),%XMM1;  (174) 
+0x7b7b;:0;LEA	0x10(%R12),%RAX;  (174) 
+0x7b80;:0;VMOVSD	0x8(%R12),%XMM0;  (174) 
+0x7b87;:0;MOV	-0x10(%RDI),%ESI;  (174) 
+0x7b8a;:0;MOV	%ECX,(%RDI);  (174) 
+0x7b8c;:0;MOV	(%RBP),%EDX;  (174) 
+0x7b8f;:0;MOV	0x10(%R12),%ECX;  (174) 
+0x7b94;:0;VMOVSD	%XMM1,0x8(%R12);  (174) 
+0x7b9b;:0;VMOVSD	%XMM0,0x8(%RDI);  (174) 
+0x7ba0;:0;CMP	%EDX,%ECX;  (174) 
+0x7ba2;:0;JL	7b40 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIidESt6vectorIS3_SaIS3_EEEElNS0_5__ops15_Iter_comp_iterIZL31csr_apply_symmetric_permutationiPKiSC_PKdRKS5_IiSaIiEERSG_SJ_RS5_IdSaIdEEEUlRT_RT0_E_EEEvSN_SN_SP_T1_+0x90>;  (174) 
+0x7ba4;:0;MOV	%RAX,%R12;  (176) 
+0x7ba7;:0;CMP	%ESI,%EDX;  (176) 
+0x7ba9;:0;JL	7b5c <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIidESt6vectorIS3_SaIS3_EEEElNS0_5__ops15_Iter_comp_iterIZL31csr_apply_symmetric_permutationiPKiSC_PKdRKS5_IiSaIiEERSG_SJ_RS5_IdSaIdEEEUlRT_RT0_E_EEEvSN_SN_SP_T1_+0xac>;  (176) 
+0x7bab;:0;NOPL	(%RAX,%RAX,1);(172) 
+0x7bb0;:0;SUB	$0x10,%RDI;  (174) 
+0x7bb4;:0;CMP	%RDI,%R12;  (174) 
+0x7bb7;:0;JB	7b72 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIidESt6vectorIS3_SaIS3_EEEElNS0_5__ops15_Iter_comp_iterIZL31csr_apply_symmetric_permutationiPKiSC_PKdRKS5_IiSaIiEERSG_SJ_RS5_IdSaIdEEEUlRT_RT0_E_EEEvSN_SN_SP_T1_+0xc2>;  (174) 
+0x7bb9;:0;NOPL	(%RAX);(172) 
+0x7bc0;:0;MOV	%R13,%RDX;(172) 
+0x7bc3;:0;MOV	%R9,%RSI;(172) 
+0x7bc6;:0;MOV	%R12,%RDI;(172) 
+0x7bc9;:0;CALL	7ab0 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIidESt6vectorIS3_SaIS3_EEEElNS0_5__ops15_Iter_comp_iterIZL31csr_apply_symmetric_permutationiPKiSC_PKdRKS5_IiSaIiEERSG_SJ_RS5_IdSaIdEEEUlRT_RT0_E_EEEvSN_SN_SP_T1_>;(172) 
+0x7bce;:0;MOV	%R12,%RAX;(172) 
+0x7bd1;:0;SUB	%RBP,%RAX;(172) 
+0x7bd4;:0;CMP	$0x100,%RAX;(172) 
+0x7bda;:0;JLE	7cc8 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIidESt6vectorIS3_SaIS3_EEEElNS0_5__ops15_Iter_comp_iterIZL31csr_apply_symmetric_permutationiPKiSC_PKdRKS5_IiSaIiEERSG_SJ_RS5_IdSaIdEEEUlRT_RT0_E_EEEvSN_SN_SP_T1_+0x218>;(172) 
+0x7be0;:0;TEST	%R13,%R13;(172) 
+0x7be3;:0;JE	7c44 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIidESt6vectorIS3_SaIS3_EEEElNS0_5__ops15_Iter_comp_iterIZL31csr_apply_symmetric_permutationiPKiSC_PKdRKS5_IiSaIiEERSG_SJ_RS5_IdSaIdEEEUlRT_RT0_E_EEEvSN_SN_SP_T1_+0x194>;(172) 
+0x7be5;:0;MOV	%R12,%R9;(172) 
+0x7be8;:0;JMP	7ae2 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIidESt6vectorIS3_SaIS3_EEEElNS0_5__ops15_Iter_comp_iterIZL31csr_apply_symmetric_permutationiPKiSC_PKdRKS5_IiSaIiEERSG_SJ_RS5_IdSaIdEEEUlRT_RT0_E_EEEvSN_SN_SP_T1_+0x32>;(172) 
+0x7bed;:0;CMP	%EDI,%EDX;(172) 
+0x7bef;:0;JL	7b1a <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIidESt6vectorIS3_SaIS3_EEEElNS0_5__ops15_Iter_comp_iterIZL31csr_apply_symmetric_permutationiPKiSC_PKdRKS5_IiSaIiEERSG_SJ_RS5_IdSaIdEEEUlRT_RT0_E_EEEvSN_SN_SP_T1_+0x6a>;(172) 
+0x7bf5;:0;CMP	%EDI,%ESI;(172) 
+0x7bf7;:0;JGE	7c1e <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIidESt6vectorIS3_SaIS3_EEEElNS0_5__ops15_Iter_comp_iterIZL31csr_apply_symmetric_permutationiPKiSC_PKdRKS5_IiSaIiEERSG_SJ_RS5_IdSaIdEEEUlRT_RT0_E_EEEvSN_SN_SP_T1_+0x16e>;(172) 
+0x7bf9;:0;VMOVSD	-0x8(%R9),%XMM1;(172) 
+0x7bff;:0;MOV	%EDI,(%RBP);(172) 
+0x7c02;:0;MOV	%ECX,%ESI;(172) 
+0x7c04;:0;MOV	%ECX,-0x10(%R9);(172) 
+0x7c08;:0;MOV	(%RBP),%EDX;(172) 
+0x7c0b;:0;VMOVSD	%XMM1,0x8(%RBP);(172) 
+0x7c10;:0;MOV	0x10(%RBP),%ECX;(172) 
+0x7c13;:0;VMOVSD	%XMM0,-0x8(%R9);(172) 
+0x7c19;:0;JMP	7b33 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIidESt6vectorIS3_SaIS3_EEEElNS0_5__ops15_Iter_comp_iterIZL31csr_apply_symmetric_permutationiPKiSC_PKdRKS5_IiSaIiEERSG_SJ_RS5_IdSaIdEEEUlRT_RT0_E_EEEvSN_SN_SP_T1_+0x83>;(172) 
+0x7c1e;:0;VMOVSD	0x8(%RAX),%XMM1;(172) 
+0x7c23;:0;MOV	%ESI,(%RBP);(172) 
+0x7c26;:0;MOV	%ECX,(%RAX);(172) 
+0x7c28;:0;MOV	0x10(%RBP),%ECX;(172) 
+0x7c2b;:0;VMOVSD	%XMM1,0x8(%RBP);(172) 
+0x7c30;:0;MOV	(%RBP),%EDX;(172) 
+0x7c33;:0;MOV	-0x10(%R9),%ESI;(172) 
+0x7c37;:0;VMOVSD	%XMM0,0x8(%RAX);(172) 
+0x7c3c;:0;JMP	7b33 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIidESt6vectorIS3_SaIS3_EEEElNS0_5__ops15_Iter_comp_iterIZL31csr_apply_symmetric_permutationiPKiSC_PKdRKS5_IiSaIiEERSG_SJ_RS5_IdSaIdEEEUlRT_RT0_E_EEEvSN_SN_SP_T1_+0x83>;(172) 
+0x7c41;:0;MOV	%RSI,%R12;
+0x7c44;:0;SAR	$0x4,%RAX;
+0x7c48;:0;LEA	-0x2(%RAX),%RSI;
+0x7c4c;:0;MOV	%RAX,%RBX;
+0x7c4f;:0;SAR	$0x1,%RSI;
+0x7c52;:0;MOV	%RSI,%R13;
+0x7c55;:0;SAL	$0x4,%R13;
+0x7c59;:0;ADD	%RBP,%R13;
+0x7c5c;:0;JMP	7c62 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIidESt6vectorIS3_SaIS3_EEEElNS0_5__ops15_Iter_comp_iterIZL31csr_apply_symmetric_permutationiPKiSC_PKdRKS5_IiSaIiEERSG_SJ_RS5_IdSaIdEEEUlRT_RT0_E_EEEvSN_SN_SP_T1_+0x1b2>;
+0x7c5e;:0;SUB	$0x1,%RSI;(169) 
+0x7c62;:0;MOV	(%R13),%ECX;(169) 
+0x7c66;:0;VMOVSD	0x8(%R13),%XMM0;(169) 
+0x7c6c;:0;MOV	%RBX,%RDX;(169) 
+0x7c6f;:0;MOV	%RBP,%RDI;(169) 
+0x7c72;:0;SUB	$0x10,%R13;(169) 
+0x7c76;:0;CALL	7140 <_ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPSt4pairIidESt6vectorIS3_SaIS3_EEEElS3_NS0_5__ops15_Iter_comp_iterIZL31csr_apply_symmetric_permutationiPKiSC_PKdRKS5_IiSaIiEERSG_SJ_RS5_IdSaIdEEEUlRT_RT0_E_EEEvSN_SP_SP_T1_T2_.isra.0>;(169) 
+0x7c7b;:0;TEST	%RSI,%RSI;(169) 
+0x7c7e;:0;JNE	7c5e <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIidESt6vectorIS3_SaIS3_EEEElNS0_5__ops15_Iter_comp_iterIZL31csr_apply_symmetric_permutationiPKiSC_PKdRKS5_IiSaIiEERSG_SJ_RS5_IdSaIdEEEUlRT_RT0_E_EEEvSN_SN_SP_T1_+0x1ae>;(169) 
+0x7c80;:0;SUB	$0x10,%R12;
+0x7c84;:0;NOPL	(%RAX);
+0x7c88;:0;MOV	(%RBP),%EAX;(170) 
+0x7c8b;:0;MOV	%R12,%RBX;(170) 
+0x7c8e;:0;MOV	(%R12),%ECX;(170) 
+0x7c92;:0;XOR	%ESI,%ESI;(170) 
+0x7c94;:0;VMOVSD	0x8(%RBP),%XMM1;(170) 
+0x7c99;:0;SUB	%RBP,%RBX;(170) 
+0x7c9c;:0;MOV	%RBP,%RDI;(170) 
+0x7c9f;:0;SUB	$0x10,%R12;(170) 
+0x7ca3;:0;MOV	%EAX,0x10(%R12);(170) 
+0x7ca8;:0;VMOVSD	0x18(%R12),%XMM0;(170) 
+0x7caf;:0;MOV	%RBX,%RDX;(170) 
+0x7cb2;:0;VMOVSD	%XMM1,0x18(%R12);(170) 
+0x7cb9;:0;SAR	$0x4,%RDX;(170) 
+0x7cbd;:0;CALL	7140 <_ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPSt4pairIidESt6vectorIS3_SaIS3_EEEElS3_NS0_5__ops15_Iter_comp_iterIZL31csr_apply_symmetric_permutationiPKiSC_PKdRKS5_IiSaIiEERSG_SJ_RS5_IdSaIdEEEUlRT_RT0_E_EEEvSN_SP_SP_T1_T2_.isra.0>;(170) 
+0x7cc2;:0;CMP	$0x10,%RBX;(170) 
+0x7cc6;:0;JG	7c88 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIidESt6vectorIS3_SaIS3_EEEElNS0_5__ops15_Iter_comp_iterIZL31csr_apply_symmetric_permutationiPKiSC_PKdRKS5_IiSaIiEERSG_SJ_RS5_IdSaIdEEEUlRT_RT0_E_EEEvSN_SN_SP_T1_+0x1d8>;(170) 
+0x7cc8;:0;ADD	$0x8,%RSP;
+0x7ccc;:0;POP	%RBX;
+0x7ccd;:0;POP	%RBP;
+0x7cce;:0;POP	%R12;
+0x7cd0;:0;POP	%R13;
+0x7cd2;:0;RET;
+0x7cd3;:0;RET;
+0x7cd4;:0;NOPW	%CS:(%RAX,%RAX,1);
+0x7cdf;:0;NOP;

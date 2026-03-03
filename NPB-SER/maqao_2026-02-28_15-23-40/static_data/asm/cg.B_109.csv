@@ -1,0 +1,9 @@
+address;source_location;insn;indent
+0x2639;:0;MOVSXD	(%RSI),%RDX;
+0x263c;:0;CMP	%EAX,%EDX;
+0x263e;:0;JE	2647 <main+0x1177>;
+0x2640;:0;ADDL	$0x1,(%RCX);
+0x2643;:0;ADDL	$0x1,(%RDI,%RDX,4);
+0x2647;:0;ADD	$0x4,%RSI;
+0x264b;:0;CMP	%R9,%RSI;
+0x264e;:0;JNE	2639 <main+0x1169>;

@@ -1,0 +1,7 @@
+address;source_location;insn;indent
+0x2a54;:0;MOV	%ECX,0x4(%RDX);
+0x2a57;:0;MOV	%RDX,%RDI;
+0x2a5a;:0;MOV	-0x4(%RDX),%ECX;
+0x2a5d;:0;SUB	$0x4,%RDX;
+0x2a61;:0;CMP	%ECX,%ESI;
+0x2a63;:0;JL	2a54 <main+0x1584>;

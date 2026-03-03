@@ -1,0 +1,23 @@
+address;source_location;insn;indent
+0x8650;:0;ADD	$0x4,%RBX;
+0x8654;:0;CMP	%RBX,%R13;
+0x8657;:0;JE	8691 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x321>;
+0x8659;:0;MOV	(%R15),%RAX;
+0x865c;:0;MOVSXD	(%RAX,%RBX,1),%RDX;
+0x8660;:0;CMPB	$0,(%R12,%RDX,1);
+0x8665;:0;MOV	%EDX,0x6c(%RSP);
+0x8669;:0;JNE	8650 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x2e0>;
+0x866b;:0;CMP	%RBP,0xe0(%RSP);
+0x8673;:0;JE	89a0 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x630>;
+0x8679;:0;MOV	%EDX,(%RBP);
+0x867c;:0;ADD	$0x4,%RBX;
+0x8680;:0;ADD	$0x4,%RBP;
+0x8684;:0;MOV	%RBP,0xd8(%RSP);
+0x868c;:0;CMP	%RBX,%R13;
+0x868f;:0;JNE	8659 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x2e9>;
+0x89a0;:0;MOV	0x28(%RSP),%RDI;
+0x89a5;:0;LEA	0x6c(%RSP),%RDX;
+0x89aa;:0;MOV	%RBP,%RSI;
+0x89ad;:0;CALL	9380 <_ZNSt6vectorIiSaIiEE17_M_realloc_insertIJRKiEEEvN9__gnu_cxx17__normal_iteratorIPiS1_EEDpOT_>;
+0x89b2;:0;MOV	0xd8(%RSP),%RBP;
+0x89ba;:0;JMP	8650 <_ZL27rcm_ordering_from_adjacencyiRKSt6vectorIiSaIiEES3_RS1_S4_+0x2e0>;

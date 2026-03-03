@@ -1,0 +1,26 @@
+address;source_location;insn;indent
+0x7b40;:0;ADD	$0x10,%RAX;
+0x7b44;:0;NOPL	(%RAX);
+0x7b48;:0;MOV	%RAX,%R8;  (173) 
+0x7b4b;:0;MOV	(%RAX),%ECX;  (173) 
+0x7b4d;:0;ADD	$0x10,%RAX;  (173) 
+0x7b51;:0;CMP	%ECX,%EDX;  (173) 
+0x7b53;:0;JG	7b48 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIidESt6vectorIS3_SaIS3_EEEElNS0_5__ops15_Iter_comp_iterIZL31csr_apply_symmetric_permutationiPKiSC_PKdRKS5_IiSaIiEERSG_SJ_RS5_IdSaIdEEEUlRT_RT0_E_EEEvSN_SN_SP_T1_+0x98>;  (173) 
+0x7b55;:0;MOV	%R8,%R12;
+0x7b58;:0;CMP	%ESI,%EDX;
+0x7b5a;:0;JGE	7bb0 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIidESt6vectorIS3_SaIS3_EEEElNS0_5__ops15_Iter_comp_iterIZL31csr_apply_symmetric_permutationiPKiSC_PKdRKS5_IiSaIiEERSG_SJ_RS5_IdSaIdEEEUlRT_RT0_E_EEEvSN_SN_SP_T1_+0x100>;
+0x7b72;:0;MOV	%ESI,(%R12);
+0x7b76;:0;VMOVSD	0x8(%RDI),%XMM1;
+0x7b7b;:0;LEA	0x10(%R12),%RAX;
+0x7b80;:0;VMOVSD	0x8(%R12),%XMM0;
+0x7b87;:0;MOV	-0x10(%RDI),%ESI;
+0x7b8a;:0;MOV	%ECX,(%RDI);
+0x7b8c;:0;MOV	(%RBP),%EDX;
+0x7b8f;:0;MOV	0x10(%R12),%ECX;
+0x7b94;:0;VMOVSD	%XMM1,0x8(%R12);
+0x7b9b;:0;VMOVSD	%XMM0,0x8(%RDI);
+0x7ba0;:0;CMP	%EDX,%ECX;
+0x7ba2;:0;JL	7b40 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIidESt6vectorIS3_SaIS3_EEEElNS0_5__ops15_Iter_comp_iterIZL31csr_apply_symmetric_permutationiPKiSC_PKdRKS5_IiSaIiEERSG_SJ_RS5_IdSaIdEEEUlRT_RT0_E_EEEvSN_SN_SP_T1_+0x90>;
+0x7bb0;:0;SUB	$0x10,%RDI;
+0x7bb4;:0;CMP	%RDI,%R12;
+0x7bb7;:0;JB	7b72 <_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIidESt6vectorIS3_SaIS3_EEEElNS0_5__ops15_Iter_comp_iterIZL31csr_apply_symmetric_permutationiPKiSC_PKdRKS5_IiSaIiEERSG_SJ_RS5_IdSaIdEEEUlRT_RT0_E_EEEvSN_SN_SP_T1_+0xc2>;

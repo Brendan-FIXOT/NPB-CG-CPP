@@ -1,0 +1,4 @@
+address;source_location;insn;indent
+0x307a;:0;ADD	$0x4,%RDX;
+0x307e;:0;CMP	%RBX,%RDX;
+0x3081;:0;JNE	3072 <main+0x1ba2>;

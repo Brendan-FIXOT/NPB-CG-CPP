@@ -1,0 +1,61 @@
+address;source_location;insn;indent
+0x1df8;:0;VMULSD	(%R12,%R8,8),%XMM5,%XMM6;
+0x1dfe;:0;MOV	(%R10,%R8,4),%ECX;
+0x1e02;:0;CMP	%ECX,-0x2d0(%RBP);
+0x1e08;:0;JNE	1e1b <main+0x94b>;
+0x1e0a;:0;CMPB	$0,-0x2d8(%RBP);
+0x1e11;:0;JE	1e1b <main+0x94b>;
+0x1e13;:0;VADDSD	%XMM3,%XMM6,%XMM2;
+0x1e17;:0;VSUBSD	%XMM4,%XMM2,%XMM6;
+0x1e1b;:0;MOVSXD	(%RBX),%RAX;
+0x1e1e;:0;MOV	(%R11),%EDI;
+0x1e21;:0;CMP	%EDI,%EAX;
+0x1e23;:0;JGE	230d <main+0xe3d>;
+0x1e29;:0;LEA	(%R15,%RAX,4),%RDX;
+0x1e2d;:0;JMP	1e51 <main+0x981>;
+0x1e30;:0;CMP	$-0x1,%ESI;  (127) 
+0x1e33;:0;JE	1edd <main+0xa0d>;  (127) 
+0x1e39;:0;CMP	%ESI,%ECX;  (127) 
+0x1e3b;:0;JE	1eea <main+0xa1a>;  (127) 
+0x1e41;:0;ADD	$0x1,%RAX;  (127) 
+0x1e45;:0;ADD	$0x4,%RDX;  (127) 
+0x1e49;:0;CMP	%EAX,%EDI;  (127) 
+0x1e4b;:0;JLE	230d <main+0xe3d>;  (127) 
+0x1e51;:0;MOV	(%RDX),%ESI;  (127) 
+0x1e53;:0;CMP	%ESI,%ECX;  (127) 
+0x1e55;:0;JGE	1e30 <main+0x960>;  (127) 
+0x1e57;:0;SUB	$0x2,%EDI;
+0x1e5a;:0;MOV	%EAX,%R9D;
+0x1e5d;:0;MOVSXD	%EDI,%RSI;
+0x1e60;:0;CMP	%EDI,%EAX;
+0x1e62;:0;JG	1e8c <main+0x9bc>;
+0x1e64;:0;NOPL	(%RAX);
+0x1e68;:0;MOV	(%R15,%RSI,4),%EDI;  (128) 
+0x1e6c;:0;TEST	%EDI,%EDI;  (128) 
+0x1e6e;:0;JS	1e83 <main+0x9b3>;  (128) 
+0x1e70;:0;VMOVSD	(%R13,%RSI,8),%XMM7;  (128) 
+0x1e77;:0;VMOVSD	%XMM7,0x8(%R13,%RSI,8);  (128) 
+0x1e7e;:0;MOV	%EDI,0x4(%R15,%RSI,4);  (128) 
+0x1e83;:0;SUB	$0x1,%RSI;  (128) 
+0x1e87;:0;CMP	%ESI,%R9D;  (128) 
+0x1e8a;:0;JLE	1e68 <main+0x998>;  (128) 
+0x1e8c;:0;LEA	(%R13,%RAX,8),%RAX;
+0x1e91;:0;MOV	%ECX,(%RDX);
+0x1e93;:0;VXORPD	%XMM7,%XMM7,%XMM7;
+0x1e97;:0;MOVQ	$0,(%RAX);
+0x1e9e;:0;VADDSD	%XMM7,%XMM6,%XMM2;
+0x1ea2;:0;ADD	$0x1,%R8;
+0x1ea6;:0;VMOVSD	%XMM2,(%RAX);
+0x1eaa;:0;MOV	-0x2c8(%RBP),%RAX;
+0x1eb1;:0;MOV	(%RAX,%R14,4),%EAX;
+0x1eb5;:0;CMP	%R8D,%EAX;
+0x1eb8;:0;JG	1df8 <main+0x928>;
+0x1edd;:0;LEA	(%R13,%RAX,8),%RAX;
+0x1ee2;:0;MOV	%ECX,(%RDX);
+0x1ee4;:0;VMOVSD	(%RAX),%XMM7;
+0x1ee8;:0;JMP	1e9e <main+0x9ce>;
+0x1eea;:0;MOV	-0x2e8(%RBP),%RDI;
+0x1ef1;:0;LEA	(%R13,%RAX,8),%RAX;
+0x1ef6;:0;VMOVSD	(%RAX),%XMM7;
+0x1efa;:0;ADDL	$0x1,(%RDI);
+0x1efd;:0;JMP	1e9e <main+0x9ce>;

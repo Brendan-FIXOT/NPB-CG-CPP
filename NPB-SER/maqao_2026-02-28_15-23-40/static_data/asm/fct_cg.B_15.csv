@@ -1,0 +1,96 @@
+address;source_location;insn;indent
+0x72d0;:0;LEA	-0x1(%RDX),%RAX;
+0x72d4;:0;PUSH	%R13;
+0x72d6;:0;MOV	%RDX,%R13;
+0x72d9;:0;MOV	%RSI,%R8;
+0x72dc;:0;PUSH	%R12;
+0x72de;:0;MOV	%ECX,%R9D;
+0x72e1;:0;MOV	%RDX,%R12;
+0x72e4;:0;AND	$0x1,%R13D;
+0x72e8;:0;PUSH	%RBP;
+0x72e9;:0;MOV	%RAX,%RBP;
+0x72ec;:0;SHR	$0x3f,%RBP;
+0x72f0;:0;PUSH	%RBX;
+0x72f1;:0;ADD	%RAX,%RBP;
+0x72f4;:0;SAR	$0x1,%RBP;
+0x72f7;:0;CMP	%RBP,%RSI;
+0x72fa;:0;JL	730b <_ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPiSt6vectorIiSaIiEEEEliNS0_5__ops15_Iter_less_iterEEvT_T0_SA_T1_T2_.isra.0+0x3b>;
+0x72fc;:0;JMP	7398 <_ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPiSt6vectorIiSaIiEEEEliNS0_5__ops15_Iter_less_iterEEvT_T0_SA_T1_T2_.isra.0+0xc8>;
+0x7301;:0;NOPL	(%RAX);
+0x7308;:0;MOV	%RAX,%RSI;(142) 
+0x730b;:0;LEA	0x1(%RSI),%RDX;(142) 
+0x730f;:0;LEA	(%RDX,%RDX,1),%RAX;(142) 
+0x7313;:0;LEA	(%RDI,%RDX,8),%RDX;(142) 
+0x7317;:0;LEA	-0x1(%RAX),%R10;(142) 
+0x731b;:0;MOV	(%RDX),%ECX;(142) 
+0x731d;:0;LEA	(%RDI,%R10,4),%R11;(142) 
+0x7321;:0;MOV	(%R11),%EBX;(142) 
+0x7324;:0;CMP	%ECX,%EBX;(142) 
+0x7326;:0;JLE	7330 <_ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPiSt6vectorIiSaIiEEEEliNS0_5__ops15_Iter_less_iterEEvT_T0_SA_T1_T2_.isra.0+0x60>;(142) 
+0x7328;:0;MOV	%EBX,%ECX;(142) 
+0x732a;:0;MOV	%R11,%RDX;(142) 
+0x732d;:0;MOV	%R10,%RAX;(142) 
+0x7330;:0;MOV	%ECX,(%RDI,%RSI,4);(142) 
+0x7333;:0;CMP	%RAX,%RBP;(142) 
+0x7336;:0;JG	7308 <_ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPiSt6vectorIiSaIiEEEEliNS0_5__ops15_Iter_less_iterEEvT_T0_SA_T1_T2_.isra.0+0x38>;(142) 
+0x7338;:0;TEST	%R13,%R13;
+0x733b;:0;JE	73a8 <_ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPiSt6vectorIiSaIiEEEEliNS0_5__ops15_Iter_less_iterEEvT_T0_SA_T1_T2_.isra.0+0xd8>;
+0x733d;:0;LEA	-0x1(%RAX),%RSI;
+0x7341;:0;MOV	%RSI,%RCX;
+0x7344;:0;SHR	$0x3f,%RCX;
+0x7348;:0;ADD	%RSI,%RCX;
+0x734b;:0;SAR	$0x1,%RCX;
+0x734e;:0;CMP	%R8,%RAX;
+0x7351;:0;JG	7379 <_ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPiSt6vectorIiSaIiEEEEliNS0_5__ops15_Iter_less_iterEEvT_T0_SA_T1_T2_.isra.0+0xa9>;
+0x7353;:0;JMP	7389 <_ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPiSt6vectorIiSaIiEEEEliNS0_5__ops15_Iter_less_iterEEvT_T0_SA_T1_T2_.isra.0+0xb9>;
+0x7355;:0;NOPL	(%RAX);
+0x7358;:0;MOV	%ESI,(%RDX);(143) 
+0x735a;:0;LEA	-0x1(%RCX),%RDX;(143) 
+0x735e;:0;MOV	%RDX,%RAX;(143) 
+0x7361;:0;SHR	$0x3f,%RAX;(143) 
+0x7365;:0;ADD	%RDX,%RAX;(143) 
+0x7368;:0;SAR	$0x1,%RAX;(143) 
+0x736b;:0;MOV	%RAX,%RDX;(143) 
+0x736e;:0;MOV	%RCX,%RAX;(143) 
+0x7371;:0;CMP	%RCX,%R8;(143) 
+0x7374;:0;JGE	73e0 <_ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPiSt6vectorIiSaIiEEEEliNS0_5__ops15_Iter_less_iterEEvT_T0_SA_T1_T2_.isra.0+0x110>;(143) 
+0x7376;:0;MOV	%RDX,%RCX;(143) 
+0x7379;:0;LEA	(%RDI,%RCX,4),%R10;(143) 
+0x737d;:0;LEA	(%RDI,%RAX,4),%RDX;(143) 
+0x7381;:0;MOV	(%R10),%ESI;(143) 
+0x7384;:0;CMP	%R9D,%ESI;(143) 
+0x7387;:0;JL	7358 <_ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPiSt6vectorIiSaIiEEEEliNS0_5__ops15_Iter_less_iterEEvT_T0_SA_T1_T2_.isra.0+0x88>;(143) 
+0x7389;:0;MOV	%R9D,(%RDX);
+0x738c;:0;POP	%RBX;
+0x738d;:0;POP	%RBP;
+0x738e;:0;POP	%R12;
+0x7390;:0;POP	%R13;
+0x7392;:0;RET;
+0x7393;:0;NOPL	(%RAX,%RAX,1);
+0x7398;:0;LEA	(%RDI,%RSI,4),%RDX;
+0x739c;:0;TEST	%R13,%R13;
+0x739f;:0;JNE	7389 <_ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPiSt6vectorIiSaIiEEEEliNS0_5__ops15_Iter_less_iterEEvT_T0_SA_T1_T2_.isra.0+0xb9>;
+0x73a1;:0;MOV	%R8,%RAX;
+0x73a4;:0;NOPL	(%RAX);
+0x73a8;:0;SUB	$0x2,%R12;
+0x73ac;:0;MOV	%R12,%RCX;
+0x73af;:0;SHR	$0x3f,%RCX;
+0x73b3;:0;ADD	%R12,%RCX;
+0x73b6;:0;SAR	$0x1,%RCX;
+0x73b9;:0;CMP	%RCX,%RAX;
+0x73bc;:0;JNE	733d <_ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPiSt6vectorIiSaIiEEEEliNS0_5__ops15_Iter_less_iterEEvT_T0_SA_T1_T2_.isra.0+0x6d>;
+0x73c2;:0;LEA	0x1(%RAX,%RAX,1),%RAX;
+0x73c7;:0;LEA	(%RDI,%RAX,4),%RCX;
+0x73cb;:0;MOV	(%RCX),%ESI;
+0x73cd;:0;MOV	%ESI,(%RDX);
+0x73cf;:0;MOV	%RCX,%RDX;
+0x73d2;:0;JMP	733d <_ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPiSt6vectorIiSaIiEEEEliNS0_5__ops15_Iter_less_iterEEvT_T0_SA_T1_T2_.isra.0+0x6d>;
+0x73d7;:0;NOPW	(%RAX,%RAX,1);
+0x73e0;:0;MOV	%R10,%RDX;
+0x73e3;:0;MOV	%R9D,(%RDX);
+0x73e6;:0;POP	%RBX;
+0x73e7;:0;POP	%RBP;
+0x73e8;:0;POP	%R12;
+0x73ea;:0;POP	%R13;
+0x73ec;:0;RET;
+0x73ed;:0;NOPL	(%RAX);
